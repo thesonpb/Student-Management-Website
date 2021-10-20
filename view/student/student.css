@@ -1,4 +1,5 @@
 body {
+    width: 100%;
     background-color: #1f1f1f;
 }
 .sidenav, .rightsidebar, .main {
@@ -7,7 +8,7 @@ body {
 
 .sidenav {
     height: 100%;
-    width: 160px;
+    width: 10%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -15,6 +16,7 @@ body {
     background-color: #1a1a1a;
     overflow-x: hidden;
     padding: 20px 10px 0 10px;
+    border-radius: 5px;
 }
 
 .sidenav h1 {
@@ -40,10 +42,12 @@ body {
 }
 
 .main {
+    width: 80%;
     margin-left: 160px; /* Same as the width of the sidenav */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
     background-color: #1f1f1f;
+    
 }
 
 .main p {
@@ -51,14 +55,24 @@ body {
 }
 .rightsidebar {
     height: 100%;
-    width: 400px;
-    position: fixed;
+    width: 20px;
     z-index: 1;
     top: 0;
-    right: 0;
+    border-radius: 5px;
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
+
+    position: fixed;
+    right: 0px;
+    transition: 0.3s;
+    padding: 15px;
+}
+
+.rightsidebar:hover {
+    position: absolute;
+    right: 0;
+    width: 400px;
 }
 
 .dropbtn {

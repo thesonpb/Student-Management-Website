@@ -7,18 +7,18 @@
 body {
     font-family: sans-serif;
     width: 100%;
-    background-color: #3598dc;
+    background-image: linear-gradient(to right, #31c5b4 , #48cae4);
 }
 
 form {
-    display: block;
+    display: inline-block;
     background-color: #fff;
     position: absolute;
     width: 25%;
     height: 350px;
     padding-top:15;
     padding: 10px 5px 20px 5px;
-    margin: 20vh 65%;
+    margin: 5% 10% 20% 30%;
     border-radius: 5px;
     box-shadow: 6px 6px 6px -7px;
 }
@@ -64,6 +64,7 @@ a {
     margin-top: 12px;
     font-size: 14px;
     font-weight: 400;
+    color: grey;
 }
 footer {
     position: absolute;
@@ -73,4 +74,31 @@ footer {
     margin: auto;
     text-align: center;
     font-size: 14px;
+}
+
+img {
+    max-width: 300px;
+    display: inline-block;
+    width: 20%;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+img:hover {
+    cursor: pointer;
+}
+#head {
+    width: 35%;
+    color: whitesmoke;
+    text-shadow: 2px 2px 4px #000000;
+    text-align: center;
+    line-height: 40px;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+#head h1 {
+    font-size: 2.5vw;
+}
+#head h2 {
+    font-size: 1.8vw;
 }

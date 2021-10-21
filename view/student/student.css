@@ -1,13 +1,18 @@
+html {
+    scroll-behavior: smooth;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
 body {
     background-color: #1f1f1f;
 }
-.sidenav, .rightsidebar, .main {
+.header, .rightsidebar, .main {
     display: inline-block;
 }
 
-.sidenav {
+.header {
     height: 100%;
-    width: 160px;
+    width: 21%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -17,30 +22,59 @@ body {
     padding: 20px 10px 0 10px;
 }
 
-.sidenav h1 {
+.header h1 {
+    display: inline-block;
+    width: 260px;
+    margin-left: 10px;
     color: white;
-    font-size: 20px;
+    font-size: 26px;
     text-align: center;
     font-family: sans-serif;
-    font-weight: 100;
+    font-weight: 600;
 }
 
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #e9e9e9;
+.header label {
+    display: inline-block;
+    color: #999;
+    padding: 0px 32px;
+    margin-top: 64px;
+    margin-bottom: 8px;
+}
+
+.header .nav {
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    list-style: none;
+    padding-left: 16px;
+    margin: 0px 0;
+}
+
+.header .nav li {
+    display: inline-block;
+}
+
+.header .nav  a {
+    color: #fff;
+    padding: 20px 16px;
+    width: 200px;
     display: block;
+    text-decoration: none;
 }
 
-.sidenav a:hover {
+.header .nav a:hover {
     color: #eef0fe;
     background-image: linear-gradient(to right, #af92f2, #74c2ee);
     border-radius: 10px;
 }
 
+.header .nav i {
+    width: 30px;
+    display: inline-block;
+}
+
 .main {
-    margin-left: 160px; /* Same as the width of the sidenav */
+    margin-left: 22%; /* Same as the width of the sidenav */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
     background-color: #1f1f1f;

@@ -14,7 +14,7 @@
 
 <body>
     <div class="left-side">
-        <h1 class = "title">Student Management</h1>
+        <h1 class="title">Student Management</h1>
         <label for="">Tools</label>
         <ul class="nav">
             <li class=""><a href="#about"><i class="ti-user"></i> Sinh viên</a></li>
@@ -30,22 +30,56 @@
         </ul>
     </div>
     <div class="main">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolores odit, repellendus pariatur hic tenetur ipsum non ullam amet laborum cumque, quis quidem iusto molestias maiores unde placeat. Vel, reiciendis?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolores odit, repellendus pariatur hic tenetur ipsum non ullam amet laborum cumque, quis quidem iusto molestias maiores unde placeat. Vel, reiciendis?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolores odit, repellendus pariatur hic tenetur ipsum non ullam amet laborum cumque, quis quidem iusto molestias maiores unde placeat. Vel, reiciendis?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolores odit, repellendus pariatur hic tenetur
+            ipsum non ullam amet laborum cumque, quis quidem iusto molestias maiores unde placeat. Vel, reiciendis?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolores odit, repellendus pariatur hic tenetur
+            ipsum non ullam amet laborum cumque, quis quidem iusto molestias maiores unde placeat. Vel, reiciendis?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolores odit, repellendus pariatur hic tenetur
+            ipsum non ullam amet laborum cumque, quis quidem iusto molestias maiores unde placeat. Vel, reiciendis?</p>
     </div>
     <div class="rightsidebar">
-        <img id="avatar" src="/images/cat.jpg" alt="">
+        <img class="avatar" src="/images/cat.jpg" alt="">
         <!-- hien ra menu de chinh sua ho so, log out -->
         <div class="dropdown">
-            <button class="dropbtn"><i class="fas fa-caret-down"></i></button>
-            <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
-            </div>
-          </div>
+            <button id="dropbtn" class="dropbtn"><i class="fas fa-caret-down"></i></button>
+            <ul class="dropdown-item">
+                <li><a href="#">
+                        <img class="margin-top avatar" id="" src="/images/cat.jpg" alt="">
+                        <label for="">Name</label>
+                    </a></li>
+                <hr>
+                <li><a href="#">Kết quả học tập</a></li>
+                <li><a href="#">Điểm rèn luyện</a></li>
+
+                <hr>
+                <li><a href="#">Cài đặt</a></li>
+                <li><a href="#">Đăng xuất</a></li>
+            </ul>
+        </div>
     </div>
+
+    <script>
+
+        var dropBtn = document.getElementById('dropbtn')
+        var dropdownItem = document.querySelector('.dropdown .dropdown-item');
+        const main = document.querySelector('#main')
+
+        dropBtn.onclick = function () {
+            if (dropdownItem.style.display !== 'block') {
+                dropdownItem.style.display = 'block';
+            } else {
+                dropdownItem.style.display = 'none';
+                main.addEventListener('click', function () {
+                    dropdownItem.style.display = 'none';
+                })
+
+                dropBtn.addEventListener('click', function (event) {
+                    event.stopPropagation()
+                })
+            }
+        }
+    </script>
+
 </body>
 
 </html>

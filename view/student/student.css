@@ -1,3 +1,7 @@
+.ml-0{
+    margin-left: 0 !important;
+}
+
 html {
     scroll-behavior: smooth;
     font-family: Helvetica, Arial, sans-serif;
@@ -5,6 +9,7 @@ html {
 
 body {
     background-color: #1f1f1f;
+    box-sizing: border-box;
 }
 .left-side, .rightsidebar, .main {
     display: inline-block;
@@ -96,42 +101,82 @@ body {
     padding-top: 20px;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
 .dropbtn {
     background-color: #04AA6D;
     color: white;
     padding: 16px;
     font-size: 16px;
     border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
+.dropdown-item {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
+    background-color: #FFFFFF1A;
+    min-width: 230px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    list-style-type: none;
+    padding: 8px 16px;
+    margin-top: 4px;
+    border-radius: 8%;
 }
 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
+.dropdown-item li {
+}
+
+.dropdown-item a {
+    display: flex;
+    color: #fff;
     text-decoration: none;
-    display: block;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px 8px;
+    margin: 8px;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-item a:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown-item a > label {
+    font-size: 28px;
+    align-self: start;
+    padding-left: 8px;
+    font-weight: 600;
+}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown-item a > img {
+    min-width: 80px;
+    margin: 0;
+}
 
-#avatar {
+.dropdown-item a > label:hover {
+    cursor: pointer;
+}
+
+.dropdown-item > hr {
+    border: 0;
+    height: 1px;
+    background-color: #dadde1;
+    margin: 8px 0;
+}
+
+/* .dropdown:hover .dropdown-item {display: block;} */
+
+.dropdown:hover .dropbtn {opacity: 0.8;}
+
+.avatar {
     width: 60px;
     border-radius: 50%;
+    margin-left: 16px;
 }

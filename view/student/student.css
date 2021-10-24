@@ -7,9 +7,12 @@ html {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #1f1f1f;
-    box-sizing: border-box;
 }
 .left-side, .rightsidebar, .main {
     display: inline-block;
@@ -79,16 +82,107 @@ body {
 }
 
 .main {
-    margin-left: 16%; /* Same as the width of the left-side */
+    margin-left: 15%; /* Same as the width of the left-side */
     margin-right: 25%; /* Same as the width of the rightsidebar */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 32px;
     background-color: #1f1f1f;
+    color: #e8e8e8;
+    width: 60%;
+
 }
 
-.main p {
-    color: #e8e8e8;
+.main .adding-member {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
 }
+
+.main .adding-avt {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 16px;
+}
+
+.input-inf {
+  padding: 8px;
+  width: 100%;
+  display: block;
+  border: 1px solid #b5bfc9;
+  border-radius: 18px;
+  color: #0d1f36;
+  font-size: 20px;
+  outline: none;
+  background-color: white;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+.input-inf::-webkit-input-placeholder {
+  color: #8d97a9;
+}
+.input-inf::-moz-input-placeholder {
+  color: #8d97a9;
+}
+.input-inf:focus {
+  border-color: #ff695b;
+  box-shadow: 0 0 0 4px #ffe2df;
+}
+
+.main .name-inf {
+    font-size: 18px;
+    padding-left: 8px;
+}
+
+.main .adding-btn {
+    background-color: greenyellow;
+    padding: 12px 24px;
+    border-radius: 16px;
+    align-self: end;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.main .adding-btn:hover {
+    opacity: 0.8;
+}
+
+.member-list {
+    padding-top: 64px;
+    display: flex;
+    justify-content: space-around;
+    align-content: space-between;
+    flex-wrap: wrap; 
+}
+
+.member-list .member {
+    background-color: #3a3b3c;
+    width: 200px;
+    height: 250px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 32px;
+}
+
+.member-list .member-ava {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.member-list .member-name {
+    margin: 16px 0 0;
+    font-size: 30px;
+}
+
+.member-list .member-pos {
+    margin-top: 4px;
+    font-size: 16px;
+    color: #999;
+}
+
 .rightsidebar {
     height: 100%;
     width: 25%;

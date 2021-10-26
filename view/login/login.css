@@ -118,3 +118,19 @@ img:hover {
     color: red;
     display: none;
 }
+
+#enter-username {
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+    color: red;
+    display: none;
+}
+
+#enter-password {
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+    color: red;
+    display: none;
+}

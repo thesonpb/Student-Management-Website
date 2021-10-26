@@ -14,6 +14,20 @@ html {
 body {
     background-color: #1f1f1f;
 }
+
+.btn {
+    color: #e8e8e8;
+    background-color: #71be34;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
 .left-side, .rightsidebar, .main {
     display: inline-block;
 }
@@ -136,6 +150,7 @@ body {
 
 .main .adding-btn {
     background-color: #71be34;
+    color: #fff;
     padding: 12px 24px;
     border-radius: 16px;
     align-self: end;
@@ -164,6 +179,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 16px 32px;
+    margin-bottom: 16px;
     cursor: pointer;
 }
 
@@ -188,8 +204,106 @@ body {
     color: #999;
 }
 
+/* todo css */
+
+.todo-form {
+    background-color: #3a3b3c;
+    padding: 16px;
+    display: none;
+    flex-direction: column;
+    border-radius: 12px;
+    animation: modalFadeIn ease .3s;
+}
+
+.todo-form.open {
+    display: flex;
+}
+
+.todo-form label {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.todo-form .todo-input-subject,
+.todo-dur-input>input {
+    /* display: block; */
+    /* width: 100%; */
+    margin-bottom: 8px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.todo-form hr {
+    margin: 16px 0;
+}
+
+.todo-form .todo-input-content {
+    background-color: #fff;
+    color: #000;
+    min-height: 200px;
+    font-size: 20px;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.todo-form .todo-input-btn {
+    display: inline-block;
+    background-color: #71be34;
+    color: #fff;
+    margin-top: 16px;
+    padding: 8px;
+    width: 100px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.main .todo {
+    color: #e8e8e8;
+    background-color: #3a3b3c;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 64px;
+}
+.todo .todo-title {
+    margin: 0;
+    padding: 16px;
+}
+
+.todo .todo-intro {
+    display: flex;
+    padding: 8px;
+}
+
+.todo .todo-content{
+    display: block;
+    font-size: 20px;
+    width: 60%;
+    word-wrap: break-word;
+    padding: 8px;
+}
+
+.todo .todo-duration{
+    font-size: 16px;
+}
+
+.todo .todo-opinion {
+    font-size: 16px;
+    padding-left: 16px;
+}
+
+.todo-opinion .todo-yk {
+    color: #ff695b;
+    margin-right: 32px;
+}
+
+.todo-opinion .todo-cmt-btn {
+    text-decoration: none;
+    color: #fff;
+}
+
 /* forum css */
-.new-question {
+.question-btn {
     color: #e8e8e8;
     background-color: #71be34;
     padding: 12px 16px;
@@ -198,10 +312,66 @@ body {
     cursor: pointer;
 }
 
+.question-btn:hover {
+    opacity: 0.8;
+}
+
+.question-form {
+    background-color: #3a3b3c;
+    padding: 16px;
+    display: none;
+    flex-direction: column;
+    border-radius: 12px;
+    animation: modalFadeIn ease .3s;
+}
+
+.question-form.open {
+    display: flex;
+}
+
+.question-form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.question-form .input-subject {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.question-form hr {
+    margin: 16px 0;
+}
+
+.question-form .input-content {
+    background-color: #fff;
+    color: #000;
+    min-height: 200px;
+    font-size: 20px;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.question-form .input-btn {
+    display: inline-block;
+    background-color: #71be34;
+    color: #fff;
+    margin-top: 16px;
+    padding: 8px;
+    width: 100px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
 .main .question {
     color: #e8e8e8;
     background-color: #3a3b3c;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 16px;
     margin-top: 64px;
 }
@@ -318,6 +488,7 @@ p.post-time {
 
 .dropdown-item {
     display: none;
+    flex-direction: column;
     position: absolute;
     background-color: #FFFFFF1A;
     min-width: 230px;
@@ -327,6 +498,10 @@ p.post-time {
     padding: 8px 16px;
     margin-top: 4px;
     border-radius: 8%;
+}
+
+.dropdown-item.open {
+    display: flex;
 }
 
 .dropdown-item li {
@@ -339,7 +514,6 @@ p.post-time {
     border-radius: 10px;
     font-size: 20px;
     padding: 10px 8px;
-    margin: 8px;
 }
 
 .dropdown-item a:hover {

@@ -72,10 +72,71 @@
         </div>
     </div>
 
-    <!-- Phần giữa trang diễn đàn -->
+    <!-- Công việc -->
+    <div class="main">
+        <h1 class="title-name">Công việc</h1>
+        <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
+        <div class="todo-form js-todo-form">
+            <label for="">Tiêu đề</label>
+            <input type="text" class="todo-input-subject">
+            <hr>
+
+            <div class="todo-dur-input">
+                <label for="birthdaytime">Opened:</label>
+                <input type="datetime-local">
+                <label for="birthdaytime">Due:</label>
+                <input type="datetime-local">
+            </div>
+            <hr>
+            <label for="">Nội dung</label>
+            <div contenteditable="true" role="textbox" spellcheck="true" class="todo-input-content">
+                <p>
+                    <br>
+                </p>
+            </div>
+            <div>
+                <input type="submit" value="Đăng lên" class="todo-input-btn"> 
+                <button class="todo-input-btn js-close-todo-btn">Huỷ bỏ</button>            
+            </div>
+        </div>
+
+        <div class="todo">
+            <h3 class="todo-title">DO YOUR HOME WORK</h3>
+            <div class="todo-intro">
+                <p class="todo-content">Do this, Do that</p>
+                <div class="todo-duration">
+                    <p class="todo-opened">Opened: Wednesday, 22 September 2021, 11:00 AM</p>
+                    <p class="todo-due">Due: Wednesday, 22 September 2021, 13:00 AM</p>
+                </div>
+            </div>
+
+            <div class="todo-opinion">
+                <span class="todo-yk">Gửi ý kiến</span>
+                <a href="#" class="todo-cmt-btn"><i class="ti-angle-right"></i> Bình luận</a>
+            </div>
+        </div>
+    </div>
+
+    <!--diễn đàn -->
     <div class="main">
         <h1 class="title-name">Diễn đàn</h1>
-        <button class="new-question">Thêm một chủ đề thảo luận</button>
+        <button class="question-btn js-add-question">Thêm một chủ đề thảo luận</button>
+        <div class="question-form js-question-form">
+            <label for="">Tiêu đề</label>
+            <input type="text" class="input-subject">
+            <hr>
+            <label for="">Nội dung</label>
+            <div contenteditable="true" role="textbox" spellcheck="true" class="input-content">
+                <p>
+                    <br>
+                </p>
+            </div>
+            <div>
+                <input type="submit" value="Đăng lên" class="input-btn"> 
+                <button class="input-btn js-close-btn">Huỷ bỏ</button>            
+            </div>
+        </div>
+
         <div class="question">
             <div class="ques-inf">
                 <div class="inf-item author-ava">
@@ -106,8 +167,8 @@
         <img class="avatar" src="/images/cat.jpg" alt="">
         <!-- hien ra menu de chinh sua ho so, log out -->
         <div class="dropdown">
-            <button id="dropbtn" class="dropbtn"><i class="fas fa-caret-down"></i></button>
-            <ul class="dropdown-item">
+            <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button>
+            <ul class="dropdown-item js-drop-item">
                 <li><a href="#">
                         <img class="margin-top avatar" id="" src="/images/cat.jpg" alt="">
                         <label for="">Name</label>
@@ -124,25 +185,69 @@
     </div>
 
     <script>
+        const addBtnQuestion = document.querySelector('.js-add-question')
+        const questionForm = document.querySelector('.js-question-form')
+        const formQuestionClose = document.querySelector('.js-close-btn')
 
-        var dropBtn = document.getElementById('dropbtn')
-        var dropdownItem = document.querySelector('.dropdown .dropdown-item');
-        const main = document.querySelector('#main')
+        const addBtnTodo = document.querySelector('.js-add-todo')
+        const todoForm = document.querySelector('.js-todo-form')
+        const formTodoClose = document.querySelector('.js-close-todo-btn')
 
-        dropBtn.onclick = function () {
-            if (dropdownItem.style.display !== 'block') {
-                dropdownItem.style.display = 'block';
-            } else {
-                dropdownItem.style.display = 'none';
-                main.addEventListener('click', function () {
-                    dropdownItem.style.display = 'none';
-                })
-
-                dropBtn.addEventListener('click', function (event) {
-                    event.stopPropagation()
-                })
+        function showQuestionForm() {
+            if(!questionForm.classList.contains('open'))
+            {   
+                questionForm.classList.add('open')
+            } else { 
+                questionForm.classList.remove('open')
             }
         }
+
+        function closeQuestionForm() {
+            questionForm.classList.remove('open')
+        }
+
+        function showTodoForm() {
+            if(!todoForm.classList.contains('open'))
+            {   
+                todoForm.classList.add('open')
+            } else { 
+                todoForm.classList.remove('open')
+            }
+        }
+
+        function closeTodoForm() {
+            todoForm.classList.remove('open')
+        }
+
+        addBtnQuestion.addEventListener('click', showQuestionForm)
+
+        formQuestionClose.addEventListener('click', closeQuestionForm)
+
+        addBtnTodo.addEventListener('click', showTodoForm)
+
+        formTodoClose.addEventListener('click', closeTodoForm)
+    </script>
+
+    <script>
+        const dropBtn = document.querySelector('.js-dropbtn')
+        const dropItem = document.querySelector('.js-drop-item')
+        const main = document.querySelector('#main')
+
+        function showDropdown() {
+            if(!dropItem.classList.contains('open')) {
+                dropItem.classList.add('open')
+            } else { 
+            dropItem.classList.remove('open')
+            }
+        }
+
+        function closeDropdown() {
+            dropItem.classList.remove('open')
+        }
+
+        // main.addEventListener('click', closeDropdown)
+
+        dropBtn.addEventListener('click', showDropdown)
     </script>
 
 </body>

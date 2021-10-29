@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="left-side">
+    <div class="left-side ">
         <h1 class="title">Student Management</h1>
         <label for="">Tools</label>
         <ul class="nav">
@@ -37,13 +37,13 @@
             <img src="/images/cat.jpg" alt="" class="adding-avt">
             <div class="adding-id-inf">
                 <h2 class="name-inf">Student's id</h2>
-                <input autocomplete="off" type="text" class="input-inf" placeholder="id"/>
+                <input autocomplete="off" type="text" class="input-inf" placeholder="id" />
             </div>
             <div class="adding-name-inf">
                 <h2 class="name-inf">Name</h2>
-                <input autocomplete="off" type="text" class="input-inf" placeholder="Name"/>
+                <input autocomplete="off" type="text" class="input-inf" placeholder="Name" />
             </div>
-            <input type="button" value="ADD NOW" id="" class="adding-btn">
+            <input type="button" value="ADD NOW" id="" class="adding-btn btn">
         </div>
         <div class="member-list">
             <div class="member">
@@ -72,13 +72,133 @@
         </div>
     </div>
 
+    <!-- Học tập -->
+    <div class="main">
+        <h1 class="title-main">Học tập</h1>
+        <div class="quater-selection">
+            <label for="quater">Học kỳ:</label>
+            <select>
+                <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
+                <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
+                <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
+                <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
+            </select>
+        </div>
+
+        <div class="">
+            <table class="mark">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã SV</th>
+                    <th>Họ Tên</th>
+                    <th>Ngày Sinh</th>
+                    <th>Số TC ĐK</th>
+                    <th>ĐTB</th>
+                    <th>Số điểm C</th>
+                    <th>Số điểm C+</th>
+                    <th>Số điểm D</th>
+                    <th>Số điểm D+</th>
+                    <th>Số điểm F</th>
+                    <th>Ghi chú</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>19021234</td>
+                    <td>Hà Văn Đạt</td>
+                    <td>01/12/2001</td>
+                    <td>13</td>
+                    <td>1.0</td>
+                    <td>0</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>19021234</td>
+                    <td>Hà Văn Đạt</td>
+                    <td>01/12/2001</td>
+                    <td>13</td>
+                    <td>1.0</td>
+                    <td>0</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Rèn luyện -->
+    <div class="main">
+        <h1 class="title-main">Rèn luyện</h1>
+        <div class="quater-selection">
+            <label for="quater">Học kỳ:</label>
+            <select>
+                <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
+                <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
+                <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
+                <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
+            </select>
+        </div>
+
+        <div class="">
+            <table class="work">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã SV</th>
+                    <th>Họ Tên</th>
+                    <th>Ngày Sinh</th>
+                    <th>Ý thức học tập</th>
+                    <th>Chấp hành nội quy</th>
+                    <th>Tham gia hoạt động</th>
+                    <th>Phẩm chất</th>
+                    <th>Phụ trách lớp</th>
+                    <th>Tổng</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>19021234</td>
+                    <td>Hà Văn Đạt</td>
+                    <td>01/12/2001</td>
+                    <td>30</td>
+                    <td>20</td>
+                    <td>15</td>
+                    <td>15</td>
+                    <td>0</td>
+                    <td>80</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>19021234</td>
+                    <td>Hà Văn Đạt</td>
+                    <td>01/12/2001</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
     <!-- Công việc -->
     <div class="main">
         <h1 class="title-name">Công việc</h1>
         <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
-        <div class="todo-form js-todo-form">
+        <div class="form js-todo-form">
             <label for="">Tiêu đề</label>
-            <input type="text" class="todo-input-subject">
+            <input type="text" class="input-subject">
             <hr>
 
             <div class="todo-dur-input">
@@ -89,14 +209,14 @@
             </div>
             <hr>
             <label for="">Nội dung</label>
-            <div contenteditable="true" role="textbox" spellcheck="true" class="todo-input-content">
+            <div contenteditable="true" role="textbox" spellcheck="true" class="input-content">
                 <p>
                     <br>
                 </p>
             </div>
             <div>
-                <input type="submit" value="Đăng lên" class="todo-input-btn"> 
-                <button class="todo-input-btn js-close-todo-btn">Huỷ bỏ</button>            
+                <input type="submit" value="Đăng lên" class="btn">
+                <button class="btn js-close-todo-btn">Huỷ bỏ</button>
             </div>
         </div>
 
@@ -110,18 +230,18 @@
                 </div>
             </div>
 
-            <div class="todo-opinion">
+            <!-- <div class="todo-opinion">
                 <span class="todo-yk">Gửi ý kiến</span>
                 <a href="#" class="todo-cmt-btn"><i class="ti-angle-right"></i> Bình luận</a>
-            </div>
+            </div> -->
         </div>
     </div>
 
     <!--diễn đàn -->
     <div class="main">
         <h1 class="title-name">Diễn đàn</h1>
-        <button class="question-btn js-add-question">Thêm một chủ đề thảo luận</button>
-        <div class="question-form js-question-form">
+        <button class="question-btn btn js-add-question">Thêm một chủ đề thảo luận</button>
+        <div class="form js-question-form">
             <label for="">Tiêu đề</label>
             <input type="text" class="input-subject">
             <hr>
@@ -132,8 +252,8 @@
                 </p>
             </div>
             <div>
-                <input type="submit" value="Đăng lên" class="input-btn"> 
-                <button class="input-btn js-close-btn">Huỷ bỏ</button>            
+                <input type="submit" value="Đăng lên" class="btn">
+                <button class="btn js-close-btn">Huỷ bỏ</button>
             </div>
         </div>
 
@@ -157,8 +277,8 @@
             </div>
 
             <div class="question-respone">
-                <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>                
-                <p class="question-cmt"><i class="ti-comment"></i>Bình luận</p>                
+                <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>
+                <p class="question-cmt"><i class="ti-comment"></i>Bình luận</p>
             </div>
         </div>
     </div>
@@ -194,10 +314,9 @@
         const formTodoClose = document.querySelector('.js-close-todo-btn')
 
         function showQuestionForm() {
-            if(!questionForm.classList.contains('open'))
-            {   
+            if (!questionForm.classList.contains('open')) {
                 questionForm.classList.add('open')
-            } else { 
+            } else {
                 questionForm.classList.remove('open')
             }
         }
@@ -207,10 +326,9 @@
         }
 
         function showTodoForm() {
-            if(!todoForm.classList.contains('open'))
-            {   
+            if (!todoForm.classList.contains('open')) {
                 todoForm.classList.add('open')
-            } else { 
+            } else {
                 todoForm.classList.remove('open')
             }
         }
@@ -234,10 +352,10 @@
         const main = document.querySelector('#main')
 
         function showDropdown() {
-            if(!dropItem.classList.contains('open')) {
+            if (!dropItem.classList.contains('open')) {
                 dropItem.classList.add('open')
-            } else { 
-            dropItem.classList.remove('open')
+            } else {
+                dropItem.classList.remove('open')
             }
         }
 

@@ -18,15 +18,57 @@ body {
 .btn {
     color: #e8e8e8;
     background-color: #71be34;
-    padding: 12px 16px;
-    margin-bottom: 16px;
+    padding: 8px 24px;
+    margin-top: 16px;
     border-radius: 16px;
     cursor: pointer;
 }
 
+.btn + .btn {
+    margin-left: 16px;
+}
+
 .btn:hover {
     opacity: 0.8;
+    color: #fff;
 }
+
+.form {
+    background-color: #3a3b3c;
+    padding: 16px;
+    display: none;
+    flex-direction: column;
+    border-radius: 12px;
+    margin-top: 16px;
+    animation: modalFadeIn ease .3s;
+}
+
+.form.open {
+    display: flex;
+}
+
+.form .input-subject {
+    margin-bottom: 8px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.form hr {
+    background-color: #eef0fe;
+    margin: 16px 0;
+}
+
+
+.form .input-content {
+    background-color: #fff;
+    color: #000;
+    min-height: 200px;
+    font-size: 20px;
+    border-radius: 12px;
+    padding: 16px;
+}
+
 
 .left-side, .rightsidebar, .main {
     display: inline-block;
@@ -85,7 +127,6 @@ body {
 }
 
 .left-side .nav a:hover {
-    color: #eef0fe;
     background-image: linear-gradient(to right, #af92f2, #74c2ee);
     border-radius: 10px;
 }
@@ -98,12 +139,17 @@ body {
 .main {
     margin-left: 15%; /* Same as the width of the left-side */
     margin-right: 25%; /* Same as the width of the rightsidebar */
-    font-size: 28px; /* Increased text to enable scrolling */
+    /* Increased text to enable scrolling */
+    /* font-size: 28px;  */
     padding: 0px 32px;
     background-color: #1f1f1f;
     color: #e8e8e8;
     width: 60%;
 
+}
+
+.main .title-main {
+    margin: 32px 0;
 }
 
 .main .adding-member {
@@ -132,12 +178,15 @@ body {
   transition: all 0.2s ease;
   margin-bottom: 10px;
 }
+
 .input-inf::-webkit-input-placeholder {
   color: #8d97a9;
 }
+
 .input-inf::-moz-input-placeholder {
   color: #8d97a9;
 }
+
 .input-inf:focus {
   border-color: #ff695b;
   box-shadow: 0 0 0 4px #ffe2df;
@@ -149,17 +198,8 @@ body {
 }
 
 .main .adding-btn {
-    background-color: #71be34;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 16px;
     align-self: end;
     margin-bottom: 10px;
-    cursor: pointer;
-}
-
-.main .adding-btn:hover {
-    opacity: 0.8;
 }
 
 .member-list {
@@ -184,7 +224,7 @@ body {
 }
 
 .member-list .member:hover {
-    opacity: 0.5;
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
 }
 
 .member-list .member-ava {
@@ -204,58 +244,99 @@ body {
     color: #999;
 }
 
-/* todo css */
+/* hoc tap css */
+.quater-selection {
+    margin: 0 auto 32px;
+    width: 350px;
+}
 
-.todo-form {
+.quater-selection label{
+    font-size: 24px;
+}
+
+.quater-selection select {
+    background-color: #FFF1A8;
+    padding: 4px;
+    border-radius: 12px;
+    margin-left: 16px;
+
+}
+
+.mark {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.mark td, .mark th {
+    border: 1px solid #fff;
+    padding: 8px;
+    text-align: center;
+}
+
+.mark tr {
+    background-color: #2a2b2c;
+    border-radius: 16px;
+}
+
+.mark tr:nth-child(odd){
     background-color: #3a3b3c;
-    padding: 16px;
-    display: none;
-    flex-direction: column;
-    border-radius: 12px;
-    animation: modalFadeIn ease .3s;
 }
 
-.todo-form.open {
-    display: flex;
-}
-
-.todo-form label {
-    font-size: 16px;
-    margin-bottom: 8px;
-}
-
-.todo-form .todo-input-subject,
-.todo-dur-input>input {
-    /* display: block; */
-    /* width: 100%; */
-    margin-bottom: 8px;
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 12px;
-}
-
-.todo-form hr {
-    margin: 16px 0;
-}
-
-.todo-form .todo-input-content {
-    background-color: #fff;
+.mark tr:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
     color: #000;
-    min-height: 200px;
-    font-size: 20px;
-    border-radius: 12px;
-    padding: 16px;
 }
 
-.todo-form .todo-input-btn {
-    display: inline-block;
-    background-color: #71be34;
-    color: #fff;
-    margin-top: 16px;
+.mark th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+
+  /* Rèn luyện css */
+.work {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.work td, .work th {
+    border: 1px solid #fff;
     padding: 8px;
-    width: 100px;
+    text-align: center;
+}
+
+.work tr {
+    background-color: #2a2b2c;
+    border-radius: 16px;
+}
+
+.work tr:nth-child(odd){
+    background-color: #3a3b3c;
+}
+
+.work tr:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+    color: #000;
+}
+
+.work th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+
+/* todo css */
+.todo-dur-input>input {
+    margin-bottom: 8px;
+    padding: 8px;
+    font-size: 16px;
     border-radius: 12px;
-    cursor: pointer;
 }
 
 .main .todo {
@@ -303,71 +384,6 @@ body {
 }
 
 /* forum css */
-.question-btn {
-    color: #e8e8e8;
-    background-color: #71be34;
-    padding: 12px 16px;
-    margin-bottom: 16px;
-    border-radius: 16px;
-    cursor: pointer;
-}
-
-.question-btn:hover {
-    opacity: 0.8;
-}
-
-.question-form {
-    background-color: #3a3b3c;
-    padding: 16px;
-    display: none;
-    flex-direction: column;
-    border-radius: 12px;
-    animation: modalFadeIn ease .3s;
-}
-
-.question-form.open {
-    display: flex;
-}
-
-.question-form label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 8px;
-}
-
-.question-form .input-subject {
-    display: block;
-    width: 100%;
-    margin-bottom: 8px;
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 12px;
-}
-
-.question-form hr {
-    margin: 16px 0;
-}
-
-.question-form .input-content {
-    background-color: #fff;
-    color: #000;
-    min-height: 200px;
-    font-size: 20px;
-    border-radius: 12px;
-    padding: 16px;
-}
-
-.question-form .input-btn {
-    display: inline-block;
-    background-color: #71be34;
-    color: #fff;
-    margin-top: 16px;
-    padding: 8px;
-    width: 100px;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
 .main .question {
     color: #e8e8e8;
     background-color: #3a3b3c;
@@ -457,6 +473,8 @@ p.post-time {
     margin-left: 24px;
 }
 
+
+
 .rightsidebar {
     height: 100%;
     width: 25%;
@@ -545,7 +563,9 @@ p.post-time {
 
 /* .dropdown:hover .dropdown-item {display: block;} */
 
-.dropdown:hover .dropbtn {opacity: 0.8;}
+.dropdown:hover .dropbtn {
+    opacity: 0.8;
+}
 
 .avatar {
     width: 60px;

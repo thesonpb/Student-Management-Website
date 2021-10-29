@@ -1,13 +1,74 @@
 body{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
+.left-side {
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #0f64b4;
+    overflow-x: hidden;
+    padding: 20px 10px 0 10px;
+}
+
+.left-side h1 {
+    display: inline-block;
+    width: 200px;
+    margin-left: 10px;
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+.left-side label {
+    display: inline-block;
+    color: #999;
+    padding: 0px 32px;
+    margin-top: 64px;
+    margin-bottom: 8px;
+}
+
+.left-side .nav {
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    list-style: none;
+    padding-left: 16px;
+    margin: 0px 0;
+}
+
+.left-side .nav li {
+    display: inline-block;
+}
+
+.left-side .nav  a {
+    color: #fff;
+    padding: 20px 16px;
+    width: 200px;
+    display: block;
+    text-decoration: none;
+}
+
+.left-side .nav a:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+    border-radius: 10px;
+}
+
+.left-side .nav i {
+    width: 30px;
+    display: inline-block;
+}
 .rightsidebar {
     height: 100%;
     width: 20px;
     z-index: 1;
     top: 0;
     border-radius: 5px;
-    background-color: rgb(113, 25, 131);
+    background-color: rgb(66, 76, 211);
     overflow-x: hidden;
     padding-top: 20px;
 
@@ -20,11 +81,11 @@ body{
 .rightsidebar:hover {
     position: absolute;
     right: 0;
-    width: 400px;
+    width: 300px;
 }
 
 .dropbtn {
-    background-color: #04AA6D;
+    background-color: #2c6fec;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -39,9 +100,9 @@ body{
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: #fcfcfc;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(35, 53, 216, 0.2);
     z-index: 1;
 }
 
@@ -56,7 +117,7 @@ body{
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #3678c4;}
 
 .dropdown, .avatar {
     width: 60px;

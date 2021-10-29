@@ -34,7 +34,7 @@ exports.login = async (req, res) => {
         // );
         //De tam
         if (req.body.password != user.password) {
-            return res.status(401).json({
+            return res.status(402).json({
                 accessToken: null,
                 message: "Sai mật khẩu"
             });

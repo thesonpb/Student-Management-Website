@@ -22,6 +22,8 @@ app.use(morgan('combined'));
 //Set view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public/views'));
+app.use(express.static(__dirname + '/public'));
+console.log(__dirname);
 
 //co thể sau này nó là restfull api, cứ để sẵn
 // var corsOptions = {

@@ -10,5 +10,7 @@ module.exports = function(app) {
       next();
     });
   
-    app.post("/auth/login", controller.login);
+    app.post("/login", controller.login);
+
+
   };

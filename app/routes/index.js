@@ -1,4 +1,7 @@
-const controller = require('../controller/login');
+const controller = require('../controller/index');
+const test = require('../controller/test');
+const { verifyToken } = require('../middleware/authJWT');
+const authJwt = require('../middleware/authJWT');
 
 function route(app){
     app.use(function(req, res, next) {
@@ -8,30 +11,37 @@ function route(app){
         );
         next();
       });
+
+    app.get('*', authJwt.checkUser);
+
     //Điều hướng đăng nhập
     app.post("/login", controller.login);
-    
-    
-    app.get('/', (req, res) => {
-        res.render('home');
-    })
 
-    
+    //dieu huong dang xuat
+    app.get('/logout', controller.logout);
+
+
     //điều hướng đến trang cá nhân cua ban than
-    app.get('/my/', (req, res) => {
+    app.get('/my',authJwt.verifyToken, (req, res) => {
         res.render('my');
     })
 
-    //dieu huong dang xuat
-    app.post('/users/logout', (req, res)=>{
-
+    
+    //test token
+    app.get(
+        "/test",
+        authJwt.verifyToken,
+        test.studentContent
+    );  
+    
+    app.get('/', (req, res) => {
+        if(req.cookies.jwt){
+            res.redirect('/my');
+        }else{
+            res.render('home');
+        }
+        //res.render('home');
     })
-
-      
-    app.post('/search', (req, res) => {
-      
-        res.send(req.body);
-    });
 }
 
 module.exports = route;

@@ -1,7 +1,6 @@
 const db = require("../models/index");
 const config = require("../config/auth");
 const User = db.user;
-const Role = db.role;
 
 const Op = db.Sequelize.Op;
 
@@ -41,11 +40,12 @@ exports.login = async (req, res) => {
         }
 
         //Tạo token hết hạn trong 1h
-        var token = jwt.sign({ id: user.id }, config.secretKey, {
-            expiresIn: 3600 // 1 hours
+        const maxAge = 1*60*60;
+        let token = jwt.sign({ id: user.username }, config.secretKey, {
+            expiresIn: maxAge, // 1 hours
+            //noTimestamp:true,
         });
-        //res.cookie('jwt', token, {httpOnly: true, maxAge: 3600});
-        
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.status(200).json({
             username: user.username,
             role: user.role,

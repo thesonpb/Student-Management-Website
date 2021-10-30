@@ -32,7 +32,9 @@
 
     <!-- phần giữa trang chủ -->
     <div class="main">
-        <h1 class="title-main">39 People</h1>
+        <% if(user) { %>
+        <h1 class="title-main">Welcome, <%= user.username %></h1>
+        <% } %>
         <div class="adding-member">
             <img src="/images/cat.jpg" alt="" class="adding-avt">
             <div class="adding-id-inf">
@@ -179,7 +181,7 @@
 
                 <hr>
                 <li><a href="#">Cài đặt</a></li>
-                <li><a href="http://127.0.0.1:5500/view/login/login.html">Đăng xuất</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
             </ul>
         </div>
     </div>
@@ -247,7 +249,7 @@
         }
 
         // main.addEventListener('click', closeDropdown)
-
+        console.log(document.cookie);
         dropBtn.addEventListener('click', showDropdown)
     </script>
 

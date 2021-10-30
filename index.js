@@ -1,11 +1,13 @@
 const path = require('path');
 const express = require("express");
-const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser')
 const cors = require("cors");
 const morgan = require('morgan')
 const db = require('./app/models/index');
 
+
 const app = express();
+app.use(cookieParser());
 const port = 3000;
 
 //import module

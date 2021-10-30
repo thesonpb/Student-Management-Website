@@ -1,5 +1,6 @@
 const controller = require('../controller/login');
 const mycontroller = require('../controller/userinfo');
+const uploadTaskController = require('../controller/uploadtask');
 const express = require('express');
 
 function route(app){
@@ -29,6 +30,7 @@ function route(app){
 
     })
 
+    app.post('/upload', uploadTaskController.uploadTask);
       
     app.post('/search', (req, res) => {
       

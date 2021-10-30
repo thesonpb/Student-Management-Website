@@ -1,8 +1,5 @@
 const db = require("../models/index");
-const config = require("../config/auth");
 const bodyParser = require("body-parser");
-const Nguoidung = db.nguoidung;
-const Vaitro = db.vaitro;
 const Thongbao = db.thongbao;
 
 

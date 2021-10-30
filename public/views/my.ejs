@@ -94,7 +94,7 @@
     <div class="main">
         <h1 class="title-name">Công việc</h1>
         <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
-        <form action="/upload" class="todo-form js-todo-form" method="post">
+        <form action="/upload/task" class="todo-form js-todo-form" method="post">
             <label for="">Tiêu đề</label>
             <input type="text" class="todo-input-subject" name="subject">
             <hr>
@@ -108,8 +108,6 @@
             <hr>
             <label for="">Nội dung</label>
             <input contenteditable="true" role="textbox" spellcheck="true" class="input-content" name="content">
-
-            </input>
             <div>
                 <input type="submit" value="Đăng lên" class="todo-input-btn">
                 <button class="todo-input-btn js-close-todo-btn">Huỷ bỏ</button>
@@ -143,21 +141,17 @@
     <div class="main">
         <h1 class="title-name">Diễn đàn</h1>
         <button class="question-btn js-add-question">Thêm một chủ đề thảo luận</button>
-        <div class="question-form js-question-form">
+        <form action="/upload/question" class="question-form js-question-form" method="post">
             <label for="">Tiêu đề</label>
-            <input type="text" class="input-subject">
+            <input type="text" class="input-subject" name="subject">
             <hr>
             <label for="">Nội dung</label>
-            <div contenteditable="true" role="textbox" spellcheck="true" class="input-content">
-                <p>
-                    <br>
-                </p>
-            </div>
+            <input contenteditable="true" role="textbox" spellcheck="true" class="input-content" name="content">
             <div>
                 <input type="submit" value="Đăng lên" class="input-btn">
                 <button class="input-btn js-close-btn">Huỷ bỏ</button>
             </div>
-        </div>
+        </form>
 
         <div class="question">
             <div class="ques-inf">

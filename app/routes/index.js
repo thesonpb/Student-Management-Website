@@ -1,6 +1,7 @@
 const controller = require('../controller/login');
 const mycontroller = require('../controller/load');
 const uploadTaskController = require('../controller/uploadtask');
+const uploadQuesController = require('../controller/uploadques');
 const express = require('express');
 
 function route(app){
@@ -30,7 +31,9 @@ function route(app){
 
     })
 
-    app.post('/upload', uploadTaskController.uploadTask);
+    app.post('/upload/task', uploadTaskController.uploadTask);
+
+    app.post('/upload/question', uploadQuesController.uploadQues);
       
     app.post('/search', (req, res) => {
       

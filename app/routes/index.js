@@ -1,4 +1,5 @@
 const controller = require('../controller/login');
+const mycontroller = require('../controller/userinfo');
 const express = require('express');
 
 function route(app){
@@ -21,9 +22,7 @@ function route(app){
 
     
     //điều hướng đến trang cá nhân cua ban than
-    app.get('/my/', (req, res) => {
-        res.render('my');
-    })
+    app.get('/my/', mycontroller.userinfo);
 
     //dieu huong dang xuat
     app.post('/users/logout', (req, res)=>{

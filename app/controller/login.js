@@ -45,7 +45,7 @@ exports.login = async (req, res) => {
             expiresIn: 3600 // 1 hours
         });
         //res.cookie('jwt', token, {httpOnly: true, maxAge: 3600});
-        
+
         res.status(200).json({
             username: nguoidung.tennguoidung,
             role: nguoidung.vaitro,

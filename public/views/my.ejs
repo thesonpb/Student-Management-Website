@@ -35,18 +35,18 @@
         <h1 class="title-main">
             <%= numberOfStudent %> People
         </h1>
-        <div class="adding-member">
+        <form class="adding-member" action="/add/student" method="post">
             <img src="<%= avatar %>" alt="" class="adding-avt">
             <div class="adding-id-inf">
                 <h2 class="name-inf">Student's id</h2>
-                <input autocomplete="off" type="text" class="input-inf" placeholder="id" />
+                <input autocomplete="off" type="text" class="input-inf" placeholder="id" name="mssv" />
             </div>
             <div class="adding-name-inf">
                 <h2 class="name-inf">Name</h2>
-                <input autocomplete="off" type="text" class="input-inf" placeholder="Name" />
+                <input autocomplete="off" type="text" class="input-inf" placeholder="Name" name="hoten"/>
             </div>
-            <input type="button" value="ADD NOW" id="" class="adding-btn">
-        </div>
+            <input type="submit" value="ADD NOW" id="" class="adding-btn">
+        </form>
         <div class="member-list">
             <div class="member">
                 <img src="<%= avatar1 %>" alt="" class="member-ava">
@@ -193,7 +193,7 @@
         <div class="dropdown">
             <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button>
             <ul class="dropdown-item js-drop-item">
-                <li><a href="#">
+                <li><a href="/profile">
                         <img class="margin-top avatar" id="" src="<%= avatar %>" alt="">
                         <label for="">
                             <%= name %>

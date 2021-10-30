@@ -4,14 +4,12 @@ const Cauhoi = db.cauhoi;
 
 
 exports.uploadQues = async (req, res) => {
-    console.log('helooooooooooooooooooooooooooo1');
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + ' ' + time;
     var tieude = JSON.stringify(req.body.subject);
     var noidung = JSON.stringify(req.body.content);
-    console.log(tieude, noidung);
     await Cauhoi.create({
         malop: 'k64caclc2',
         mssv: 19021358, 

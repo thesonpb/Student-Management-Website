@@ -2,6 +2,7 @@ const controller = require('../controller/login');
 const mycontroller = require('../controller/load');
 const uploadTaskController = require('../controller/uploadtask');
 const uploadQuesController = require('../controller/uploadques');
+const addStudentController = require('../controller/addstudent');
 const express = require('express');
 
 function route(app){
@@ -20,8 +21,11 @@ function route(app){
     
     app.get('/', (req, res) => {
         res.render('home');
-    })
+    });
 
+    app.get('/profile', (req, res) => {
+      res.render('profile');
+    })
     
     //điều hướng đến trang cá nhân cua ban than
     app.get('/my/', mycontroller.userinfo);
@@ -34,6 +38,8 @@ function route(app){
     app.post('/upload/task', uploadTaskController.uploadTask);
 
     app.post('/upload/question', uploadQuesController.uploadQues);
+
+    // app.post('/add/student', addStudentController.addStudent);
       
     app.post('/search', (req, res) => {
       

@@ -4,12 +4,10 @@ const Thongbao = db.thongbao;
 
 
 exports.uploadTask = async (req, res) => {
-
     var subject = JSON.stringify(req.body.subject);
     var opendate = JSON.stringify(req.body.opendate);
     var duedate = JSON.stringify(req.body.duedate);
     var content = JSON.stringify(req.body.content);
-    console.log(subject, opendate, duedate, content);
     await Thongbao.create({
         malop: 'k64caclc2' ,
         tieude: subject,

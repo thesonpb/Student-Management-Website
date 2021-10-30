@@ -41,11 +41,13 @@
             var password = document.getElementById("password").value;
             if (username == null || username == "") {
                 document.getElementById("enter-username").style.display = "block";
+                document.getElementById("enter-password").style.display = "none";
                 event.preventDefault();
                 return false;
             }
             else if (password == null || password == "") {
                 document.getElementById("enter-password").style.display = "block";
+                document.getElementById("enter-username").style.display = "none";
                 event.preventDefault();
                 return false;
             }

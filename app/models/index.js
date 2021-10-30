@@ -29,8 +29,13 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.nguoidung = require('../models/user')(sequelize, Sequelize);
-//db.role = require('../models/role');
 db.sinhvien = require('../models/sinhvien')(sequelize, Sequelize);
+db.bangdiem = require('../models/bangdiem')(sequelize, Sequelize);
+db.cauhoi = require('../models/cauhoi')(sequelize, Sequelize);
+db.cautraloi = require('../models/cautraloi')(sequelize, Sequelize);
+db.diemrenluyen = require('../models/diemrenluyen')(sequelize, Sequelize);
+db.lophoc = require('../models/lophoc')(sequelize, Sequelize);
+db.thongbao = require('../models/thongbao')(sequelize, Sequelize);
 
 db.vaitro = ['sinhvien', 'covan', 'admin'];
 

@@ -1,18 +1,16 @@
+const { Sequelize } = require(".");
+
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define('userInfo', {
-        id: {
+    const Lophoc = sequelize.define('lophoc', {
+        malop: {
             type: Sequelize.STRING,
             primaryKey: true,
-        },
-        firtName: {
+        }, 
+        emailcovan: {
             type: Sequelize.STRING
-        },
-        lastName: {
-            type: Sequelize.STRING
-        },
+        }, 
     }, {
         timestamps: false
     });
-
-    return User;
+    return Lophoc;
 }

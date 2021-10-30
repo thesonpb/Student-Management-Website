@@ -47,6 +47,10 @@ body {
     display: flex;
 }
 
+.form label {
+    margin-bottom: 8px;
+}
+
 .form .input-subject {
     margin-bottom: 8px;
     padding: 8px;
@@ -66,7 +70,8 @@ body {
     min-height: 200px;
     font-size: 20px;
     border-radius: 12px;
-    padding: 16px;
+    padding: 8px;
+    vertical-align:top;
 }
 
 
@@ -118,17 +123,22 @@ body {
     display: inline-block;
 }
 
-.left-side .nav  a {
+.left-side .nav li {
     color: #fff;
     padding: 20px 16px;
     width: 200px;
     display: block;
     text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.left-side .nav a:hover {
+.left-side .nav li:hover {
     background-image: linear-gradient(to right, #af92f2, #74c2ee);
-    border-radius: 10px;
+}
+
+.left-side .nav .active{
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
 }
 
 .left-side .nav i {
@@ -145,7 +155,11 @@ body {
     background-color: #1f1f1f;
     color: #e8e8e8;
     width: 60%;
+    display: none;
+}
 
+.content .main:first-of-type {
+    display: block;
 }
 
 .main .title-main {
@@ -539,14 +553,13 @@ p.post-time {
 }
 
 .dropdown-item a > label {
-    font-size: 28px;
-    align-self: start;
+    font-size: 24px;
+    align-self: center;
     padding-left: 8px;
     font-weight: 600;
 }
 
 .dropdown-item a > img {
-    min-width: 80px;
     margin: 0;
 }
 

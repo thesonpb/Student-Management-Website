@@ -102,3 +102,35 @@ img:hover {
 #head h2 {
     font-size: 1.8vw;
 }
+
+#wrong-pass {
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+    color: red;
+    display: none;
+}
+
+#wrong-acc {
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+    color: red;
+    display: none;
+}
+
+#enter-username {
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+    color: red;
+    display: none;
+}
+
+#enter-password {
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+    color: red;
+    display: none;
+}

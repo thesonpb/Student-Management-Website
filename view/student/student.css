@@ -12,6 +12,7 @@ html {
 }
 
 body {
+    width: 100%;
     background-color: #1f1f1f;
 }
 
@@ -89,6 +90,7 @@ body {
     background-color: #1a1a1a;
     overflow-x: hidden;
     padding: 20px 10px 0 10px;
+    border-radius: 5px;
 }
 
 .left-side h1 {
@@ -495,10 +497,21 @@ p.post-time {
     position: fixed;
     z-index: 1;
     top: 0;
-    right: 0;
+    border-radius: 5px;
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
+
+    position: fixed;
+    right: 0px;
+    transition: 0.3s;
+    padding: 15px;
+}
+
+.rightsidebar:hover {
+    position: absolute;
+    right: 0;
+    width: 400px;
 }
 
 .dropdown {

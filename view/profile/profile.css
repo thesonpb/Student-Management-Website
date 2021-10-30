@@ -85,17 +85,41 @@ body{
 }
 
 .dropbtn {
-    background-color: #2c6fec;
+    background-color: #04AA6D;
     color: white;
     padding: 16px;
     font-size: 16px;
     border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.fa-caret-down:before {
+    content: "\f0d7";
+}
+.dropdown-item {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: #FFFFFF1A;
+    min-width: 230px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style-type: none;
+    padding: 8px 16px;
+    margin-top: 4px;
+    border-radius: 8%;
 }
 
+.dropdown-item.open {
+    display: flex;
+}
 .dropdown {
     position: relative;
     display: inline-block;
 }
+
 
 .dropdown-content {
     display: none;

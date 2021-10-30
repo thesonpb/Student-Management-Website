@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Thế Sơn</title>
+    <title>Nguyễn Thế Sơn xấu trai nhất nhóm</title>
     <link rel="stylesheet" href="profile.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -12,41 +12,72 @@
 
 </head>
 <body>
+    <div class="left-side ">
+        <h1 class="title">Student Management</h1>
+        <label for="">Tools</label>
+        <ul class="nav">
+            <li class=""><a href=""><i class="ti-user"></i> Sinh viên</a></li>
+            <li class=""><a href=""><i class="ti-book"></i> Học tập</a></li>
+            <li class=""><a href=""><i class="ti-clipboard"></i> Rèn luyện</a></li>
+            <li class=""><a href=""><i class="ti-arrow-circle-down"></i> Công việc</a></li>
+            <li class=""><a href=""><i class="ti-help-alt"></i> Diễn đàn</a></li>
+        </ul>
+
+        <label for="">Others</label>
+        <ul class="nav">
+            <li><a href="#about"><i class="ti-headphone-alt"></i> Hỗ trợ</a></li>
+        </ul>
+    </div>
+        <div class="rightsidebar">
+            <img class="avatar" src="/images/cat.jpg" alt="">
+                <div class="dropdown">
+                <button class="dropbtn"><i class="fas fa-caret-down"></i></button>
+                <ul class="dropdown-item js-drop-item open">
+                    <div class="dropdown-content">
+                    <li><a href="#">Kết quả học tập</a></li>
+                    <li><a href="#">Điểm rèn luyện</a></li>
+    
+                    <hr>
+                    <li><a href="http://127.0.0.1:5500/view/student/student.html">Trang chủ</a></li>
+                    <li><a href="http://127.0.0.1:5500/view/login/login.html">Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>
     <div class="container emp-profile">
-        <form method="post">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="profile-img">
-                        <img src="/images/cat.jpg" alt=""/>
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file"/>
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="/images/cat.jpg" alt=""/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="profile-head">
-                                <h5>
-                                    Nguyễn Thế Sơn
-                                </h5>
-                                <h6>
-                                    Sinh viên
-                                </h6>
-                                
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                            </li>
-                        </ul>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        Nguyễn Thế Sơn
+                                    </h5>
+                                    <h6>
+                                        Sinh viên
+                                    </h6>
+                                    
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-work">

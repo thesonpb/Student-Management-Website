@@ -1,5 +1,5 @@
 const controller = require('../controller/login');
-const mycontroller = require('../controller/userinfo');
+const mycontroller = require('../controller/load');
 const uploadTaskController = require('../controller/uploadtask');
 const express = require('express');
 

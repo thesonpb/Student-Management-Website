@@ -1,6 +1,5 @@
 const controller = require('../controller/index');
 const test = require('../controller/test');
-const { verifyToken } = require('../middleware/authJWT');
 const authJwt = require('../middleware/authJWT');
 
 function route(app){
@@ -12,16 +11,17 @@ function route(app){
         next();
       });
 
+    //Kiểm tra xem user có hợp lệ không với tất cả phương thức get
     app.get('*', authJwt.checkUser);
 
-    //Điều hướng đăng nhập
+    //Điều hướng đăng nhập khi submit
     app.post("/login", controller.login);
 
-    //dieu huong dang xuat
+    //Điều huong dang xuat
     app.get('/logout', controller.logout);
 
 
-    //điều hướng đến trang cá nhân cua ban than
+    //Điều hướng đến trang cá nhân cua ban than
     app.get('/my',authJwt.verifyToken, (req, res) => {
         res.render('my');
     })

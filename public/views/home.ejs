@@ -65,13 +65,14 @@
                 try{
                     const res = await fetch('/login', {
                         method: 'POST',
-                        credentials: 'include',
                         body: JSON.stringify({username, password}),
                         headers: {'Content-Type': 'application/json'}
                     });
                     const data = await res.json();
                     if(data.username){
                         location.assign('/my');
+                    }else{
+                        console.log(data.message);
                     }
                 }catch(e){
                     console.log(e);

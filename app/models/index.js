@@ -1,6 +1,8 @@
 const config = require('../config/db');
 
 const Sequelize = require('sequelize');
+
+//Config database
 const sequelize = new Sequelize(
     config.DB,
     config.USER,
@@ -24,8 +26,8 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.user = require('../models/user')(sequelize, Sequelize);
-//db.role = require('../models/role');
+db.user = require('./user')(sequelize, Sequelize);
+db.userInfo = require('./userInfo')(sequelize, Sequelize);
 
 db.ROLES = ['student', 'lecturerer', 'admin'];
 

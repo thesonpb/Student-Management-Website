@@ -27,7 +27,9 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.user = require('./user')(sequelize, Sequelize);
-db.userInfo = require('./userInfo')(sequelize, Sequelize);
+//db.userInfo = require('./userInfo')(sequelize, Sequelize);
+db.sinhvien = require('./sinhvien')(sequelize, Sequelize);
+db.covan = require('./covan')(sequelize, Sequelize);
 
 db.ROLES = ['student', 'lecturerer', 'admin'];
 

@@ -12,21 +12,22 @@ function route(app){
       });
 
     //Kiểm tra xem user có hợp lệ không với tất cả phương thức get
-    app.get('*', authJwt.checkUser);
+    
 
     //Điều hướng đăng nhập khi submit
     app.post("/login", controller.login);
 
+    app.get('*', authJwt.checkUser);
     //Điều huong dang xuat
     app.get('/logout', controller.logout);
 
 
     //Điều hướng đến trang cá nhân cua ban than
-    app.get('/my',authJwt.verifyToken, (req, res) => {
-        res.render('my');
-    })
+    app.get('/my',authJwt.verifyToken, controller.getUserInfo);
 
     
+    app.get('/profile', controller.getProfile)
+
     //test token
     app.get(
         "/test",

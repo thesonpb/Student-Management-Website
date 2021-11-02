@@ -32,8 +32,8 @@
 
     <!-- phần giữa trang chủ -->
     <div class="main">
-        <% if(user) { %>
-        <h1 class="title-main">Welcome, <%= user.username %></h1>
+        <% if(hoten) { %>
+        <h1 class="title-main">Welcome, <%= hoten %></h1>
         <% } %>
         <div class="adding-member">
             <img src="/images/cat.jpg" alt="" class="adding-avt">
@@ -171,9 +171,9 @@
         <div class="dropdown">
             <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button>
             <ul class="dropdown-item js-drop-item">
-                <li><a href="#">
-                        <img class="margin-top avatar" id="" src="/images/cat.jpg" alt="">
-                        <label for="">Name</label>
+                <li><a href="/profile">
+                        <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt="">
+                        <label for=""><%= hoten %></label>
                     </a></li>
                 <hr>
                 <li><a href="#">Kết quả học tập</a></li>

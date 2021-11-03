@@ -1,5 +1,15 @@
-exports.userinfo = (req, res) => {
+const db = require("../models/index");
+const bodyParser = require("body-parser");
+const Sinhvien = db.sinhvien;
+
+
+exports.userinfo = async (req, res) => {
+    const sinhviens = await Sinhvien.findAll({
+        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop'], 
+        raw: true
+    });
     res.render('my', {
+        sinhvien: sinhviens,
         name: "Nguyen The Son",
         avatar: "../assets/img/cat.jpg",
         numberOfStudent: '40',

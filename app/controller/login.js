@@ -14,7 +14,6 @@ var bcrypt = require("bcryptjs");
 // tạo ra 1 token dùng jsonwebtoken
 // trả về thông tin người dùng và access Token
 exports.login = async (req, res) => {
-
     console.log(JSON.stringify(req.body));
 
     //Truy vấn tên người dùng

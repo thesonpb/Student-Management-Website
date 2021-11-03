@@ -90,6 +90,27 @@
         </div>
     </div>
 
+    <!--Bảng danh sách sinh viên-->
+    <div class="student-list">
+        <table id="student-table">
+            <tr>
+                <th>STT</th>
+                <th>MSSV</th>
+                <th>Họ và tên</th>
+                <th>Ngày sinh</th>
+                <th>Lớp khoá học</th>
+            </tr>
+            <% for (var i = 0; i < sinhvien.length; i++) { %>
+                <tr>
+                  <td><%= i+1 %></td>
+                  <td><%= sinhvien[i].mssv %></td>
+                  <td><%= sinhvien[i].hoten %></td>
+                  <td><%= sinhvien[i].ngaysinh %></td>
+                  <td><%= sinhvien[i].malop %></td>
+                </tr>    
+               <% } %>
+        </table>
+    </div>
     <!-- Công việc -->
     <div class="main">
         <h1 class="title-name">Công việc</h1>

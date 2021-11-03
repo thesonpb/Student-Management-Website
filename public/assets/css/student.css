@@ -552,3 +552,19 @@ p.post-time {
     border-radius: 50%;
     margin-left: 16px;
 }
+.student-list {
+    margin-left: 15%;
+    width: 60%;
+}
+#student-table th{
+    border: 1px solid white;
+    color: white;
+    font-size: 20px;
+    padding: 10px 25px;
+}
+#student-table td {
+    border: 1px solid white;
+    color: white;
+    font-size: 20px;
+    padding: 10px 25px;
+}

@@ -260,6 +260,23 @@ html body {
     color: #999;
 }
 
+.student-list {
+    margin-left: 15%;
+    width: 60%;
+}
+#student-table th{
+    border: 1px solid white;
+    color: white;
+    font-size: 20px;
+    padding: 10px 25px;
+}
+#student-table td {
+    border: 1px solid white;
+    color: white;
+    font-size: 20px;
+    padding: 10px 25px;
+}
+
 /* hoc tap css */
 .quater-selection {
     margin: 0 auto 32px;

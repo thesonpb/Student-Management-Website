@@ -63,6 +63,11 @@ dropBtn.addEventListener('click', showDropdown);
 
 
 (function ($) {
+    $('.class-list li').click(function () {
+        $(this).addClass('active')
+        $('.class-list li').not($(this)).removeClass('active');
+    });
+
     $('.nav li').click(function () {
         $(this).addClass('active')
         $('.nav li').not($(this)).removeClass('active');

@@ -13,7 +13,7 @@ html {
 
 html body {
     width: 100%;
-    background-color: #1f1f1f;
+    background-color: #18191a;
     color: #fff;
 }
 
@@ -88,16 +88,16 @@ html body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #1a1a1a;
+    background-color: #18191a;
     overflow-x: hidden;
     padding: 20px 10px 0 10px;
     border-radius: 5px;
+    box-shadow: 0 0 3px rgba(192, 192, 192, 0.4);
 }
 
 .left-side h1 {
     display: inline-block;
     width: 260px;
-    margin-left: 10px;
     color: white;
     font-size: 26px;
     text-align: center;
@@ -155,7 +155,6 @@ html body {
     /* Increased text to enable scrolling */
     /* font-size: 28px;  */
     padding: 0px 32px;
-    background-color: #1f1f1f;
     color: #e8e8e8;
     width: 75%;
     display: none;
@@ -598,9 +597,9 @@ p.post-time {
     z-index: 1;
     top: 0;
     border-radius: 5px;
-    background-color: #111;
+    background-color: #18191a;
     overflow-x: hidden;
-
+    box-shadow: 0 0 3px rgba(192, 192, 192, 0.4);
     position: fixed;
     right: 0px;
     transition: 0.3s;
@@ -633,9 +632,9 @@ p.post-time {
     display: none;
     flex-direction: column;
     position: absolute;
-    background-color: #FFFFFF1A;
+    background-color: #242526;
     min-width: 230px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 0 2px rgba(192, 192, 192, 0.8);
     z-index: 1;
     list-style-type: none;
     padding: 8px 16px;
@@ -660,7 +659,9 @@ p.post-time {
 }
 
 .dropdown-list a:hover {
-    background-image: linear-gradient(to right, #af92f2, #74c2ee);;
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+    text-decoration: none;
+    color: #fff;
 }
 
 .dropdown-list a > label {
@@ -691,8 +692,42 @@ p.post-time {
     opacity: 0.8;
 }
 
+.right-nav {
+    color: #ccc;
+}
+
+.right-nav i {
+    padding-right: 4px;
+}
+
+.right-nav>label {
+    margin-top: 32px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.right-nav:hover .class-list{
+    display: block;
+}
+
+.right-nav .class-list {
+    list-style-type: none;
+    display: none;
+}
+
+.right-nav .class-list li {
+    padding: 8px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.class-list li.active{
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+}
+
 .avatar {
     width: 60px;
+    height: 60px;
     border-radius: 50%;
     margin-left: 8px;
 }

@@ -97,7 +97,6 @@ html body {
 
 .left-side h1 {
     display: inline-block;
-    width: 260px;
     color: white;
     font-size: 26px;
     text-align: center;
@@ -626,7 +625,7 @@ p.post-time {
 .rightsidebar:hover {
     position: absolute;
     right: 0;
-    width: 18%;
+    width: 22%;
 }
 
 .dropdown {

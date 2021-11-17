@@ -1,20 +1,20 @@
 const db = require("../models/index");
-const Student = db.sinhvien;
-const Lecturer = db.covan;
+const Sinhvien = db.sinhvien;
+const Covan = db.covan;
 
 
 const getUserInfo = async (req, res) => {
-    const username = res.locals.user.username;
-    const userRole = res.locals.user.role;
-    console.log(userRole);
-    let userInfo = '';
-    if(userRole == 'student'){
-        userInfo = await Student.findByPk(username);
-    }else if(role == 'lectuerer'){
-        userInfo = await Lecturer.findByPk(username);
+    const tennguoidung = res.locals.user.tennguoidung;
+    const vaitro = res.locals.user.vaitro;
+    console.log('ten nguoi dung: ', tennguoidung);
+    console.log('vaitro: vaitro');
+    let thongtin = '';
+    if(vaitro == 'sinhvien'){
+        thongtin = await Sinhvien.findByPk(tennguoidung);
+    }else if(vaitro == 'covan'){
+        thongtin = await Covan.findByPk(tennguoidung);
     }
-    console.log(userInfo.dataValues);
-    res.render('my', userInfo.dataValues);
+    console.log(thongtin.dataValues);
 }
 
 const changeUserInfo = '';

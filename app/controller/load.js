@@ -1,9 +1,23 @@
 const db = require("../models/index");
 const bodyParser = require("body-parser");
 const Sinhvien = db.sinhvien;
+const Lophoc = db.lophoc;
 
 
 exports.userinfo = async (req, res) => {
+    // const userRole = res.locals.user.vaitro;
+    // if (userRole == 'sinhvien') {
+    //     const malop = res.locals.user.malop;
+    // } 
+    // else if (userRole == 'covan') {
+    //     const danhsachmalop = await Lophoc.findAll({
+    //         where: {
+    //             emailcovan: res.local.user.tennguoidung
+    //         },
+    //         attributes: ['malop'],
+    //         raw: true
+    //     });
+    // }
     const sinhviens = await Sinhvien.findAll({
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop'], 
         raw: true

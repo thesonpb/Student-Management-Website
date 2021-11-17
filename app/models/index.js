@@ -39,7 +39,7 @@ db.thongbao = require('../models/thongbao')(sequelize, Sequelize);
 
 db.vaitro = ['sinhvien', 'covan', 'admin'];
 
-let connectDb = async ()=>{
+const connectDb = async ()=>{
     try {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');

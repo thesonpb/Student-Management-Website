@@ -17,23 +17,27 @@ const sequelize = new Sequelize(
         min: config.pool.min,
         acquire: config.pool.acquire,
         idle: config.pool.idle
+        },
+        define: {
+            freezeTableName: true,
         }
     }
 ); 
 
+//Tạo Object tên db
 const db = {};
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+// db.Sequelize = Sequelize;
+// db.sequelize = sequelize;
 
-db.user = require('./user')(sequelize, Sequelize);
+db.Taikhoan = require('./taikhoan')(sequelize, Sequelize);
 //db.userInfo = require('./userInfo')(sequelize, Sequelize);
-db.sinhvien = require('./sinhvien')(sequelize, Sequelize);
-db.covan = require('./covan')(sequelize, Sequelize);
+db.Sinhvien = require('./sinhvien')(sequelize, Sequelize);
+db.Covan = require('./covan')(sequelize, Sequelize);
 
-db.ROLES = ['student', 'lecturerer', 'admin'];
 
-let connectDb = async ()=>{
+
+const connectDb = async ()=>{
     try {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');

@@ -13,6 +13,7 @@ function route(app){
       });
 
 
+    //Phần đăng nhập
     //**********************************************************************************************
     //POST: Điều hướng đăng nhập khi submit
     app.post("/login", controller.login);

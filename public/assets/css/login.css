@@ -40,6 +40,14 @@ input[type="text"], input[type="password"] {
     border-radius: 5px;
     font-size: 18px;
 }
+
+.warning{
+    margin-left: 10%;
+    margin-bottom: 5px;
+    color: red;
+
+}
+
 input[type="submit"] {
     display: block;
     width: 80%;

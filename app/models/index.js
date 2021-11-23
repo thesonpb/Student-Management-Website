@@ -1,6 +1,8 @@
 const config = require('../config/db');
 
 const Sequelize = require('sequelize');
+
+//Config database
 const sequelize = new Sequelize(
     config.DB,
     config.USER,
@@ -17,29 +19,25 @@ const sequelize = new Sequelize(
         idle: config.pool.idle
         },
         define: {
-            freezeTableName: true
+            freezeTableName: true,
         }
-
     }
 ); 
 
+//Tạo Object tên db
 const db = {};
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+// db.Sequelize = Sequelize;
+// db.sequelize = sequelize;
 
-db.nguoidung = require('../models/user')(sequelize, Sequelize);
-db.sinhvien = require('../models/sinhvien')(sequelize, Sequelize);
-db.bangdiem = require('../models/bangdiem')(sequelize, Sequelize);
-db.cauhoi = require('../models/cauhoi')(sequelize, Sequelize);
-db.cautraloi = require('../models/cautraloi')(sequelize, Sequelize);
-db.diemrenluyen = require('../models/diemrenluyen')(sequelize, Sequelize);
-db.lophoc = require('../models/lophoc')(sequelize, Sequelize);
-db.thongbao = require('../models/thongbao')(sequelize, Sequelize);
+db.Taikhoan = require('./taikhoan')(sequelize, Sequelize);
+//db.userInfo = require('./userInfo')(sequelize, Sequelize);
+db.Sinhvien = require('./sinhvien')(sequelize, Sequelize);
+db.Covan = require('./covan')(sequelize, Sequelize);
 
-db.vaitro = ['sinhvien', 'covan', 'admin'];
 
-let connectDb = async ()=>{
+
+const connectDb = async ()=>{
     try {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');

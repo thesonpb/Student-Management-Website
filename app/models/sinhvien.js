@@ -1,5 +1,3 @@
-const { Sequelize } = require(".");
-
 module.exports = (sequelize, Sequelize) => {
     const Sinhvien = sequelize.define('sinhvien', {
         mssv: {
@@ -16,7 +14,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DATE
         }, 
         sdt: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         }, 
         khoa: {
             type: Sequelize.STRING
@@ -30,12 +28,12 @@ module.exports = (sequelize, Sequelize) => {
         malop: {
             type: Sequelize.STRING
         }, 
-        avatar: {
-            type: Sequelize.STRING
-        }, 
-        canhbaohocvu: {
-            type: Sequelize.STRING
-        },
+        // avatar: {
+        //     type: Sequelize.STRING
+        // }, 
+        // canhbaohocvu: {
+        //     type: Sequelize.STRING
+        // },
     }, {
         timestamps: false
     });

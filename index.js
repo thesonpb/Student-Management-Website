@@ -1,11 +1,13 @@
 const path = require('path');
 const express = require("express");
-const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser')
 const cors = require("cors");
 const morgan = require('morgan')
 const db = require('./app/models/index');
 
+
 const app = express();
+app.use(cookieParser());
 const port = 3000;
 
 //import module
@@ -23,7 +25,10 @@ app.use(morgan('combined'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public/views'));
 app.use(express.static(__dirname + '/public'));
+//app.use('/uploads', express.static('uploads'));
+
 console.log(__dirname);
+global.appRoot = path.resolve(__dirname);
 
 //co thể sau này nó là restfull api, cứ để sẵn
 // var corsOptions = {

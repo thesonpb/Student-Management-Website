@@ -1,9 +1,7 @@
-const { Sequelize } = require(".");
-
 module.exports = (sequelize, Sequelize) => {
     const Covan = sequelize.define('covan', {
         email: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             primaryKey: true,
         }, 
         hoten: {
@@ -13,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DATE
         }, 
         sdt: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         }, 
         khoa: {
             type: Sequelize.STRING

@@ -16,38 +16,53 @@
     </div>
     <img id="logo" src="../assets/img/IMG_8672.png" alt="logo">
 
-    <form action="/login" method="post">
+    <form action="#">
         <h1>Login</h1><br>
         <input type="text" name="username" id="username" placeholder="Username"><br>
+        <p class="warning" id="enter-username"></p>
         <input type="password" name="password" id="password" placeholder="Password"><br>
+        <p class="warning" id="enter-password"></p>
         <input type="submit" value="Login"><br>
-        <a href="#">Forget password?</a>
-        <p class="warning" id="wrong-pass">Mật khẩu bạn đã nhập không chính xác.</p>
-        <p class="warning" id="wrong-acc">Tài khoản bạn đã nhập không tồn tại.</p>
-        <p class="warning" id="enter-username">Hãy điền tên người dùng.</p>
-        <p class="warning" id="enter-password">Hãy điền mật khẩu.</p>
+        <a href="https://forms.gle/dyD2eHJ8DEvGbXEj9">Forget password?</a>
+        
+        
     </form>
     <footer>
         &copy Trường Đại học Công nghệ - Đại học Quốc gia Hà Nội
     </footer>
 
     <script>
-        document.getElementById("enter-password").style.display = "none";
-        document.getElementById("enter-username").style.display = "none";
-        document.getElementById("wrong-pass").style.display = "none";
-        document.getElementById("wrong-acc").style.display = "none";
-        function validate() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            if (username == null || username == "") {
-                document.getElementById("enter-username").style.display = "block";
-                document.getElementById("enter-password").style.display = "none";
-                event.preventDefault();
-                return false;
+        const usernameInput = document.getElementById("username");
+        const usernameWarning = document.getElementById("enter-username");
+        usernameWarning.style.display = "none";
+        usernameInput.oninput = (e) => {
+            usernameWarning.style.display = "none";
+        }
+        usernameInput.onblur = (e) => {
+            if(!usernameInput.value){
+                usernameWarning.innerHTML = "Hãy điền tên người dùng!";
+                usernameWarning.style.display = "block";
             }
-            else if (password == null || password == "") {
-                document.getElementById("enter-password").style.display = "block";
-                document.getElementById("enter-username").style.display = "none";
+        }
+
+        const passwordInput = document.getElementById("password");
+        const passwordWarning = document.getElementById("enter-password");
+        passwordWarning.style.display = "none";
+
+        passwordInput.oninput = (e) => {
+            passwordWarning.style.display = "none";
+        }
+        passwordInput.onblur = (e) => {
+            if(!passwordInput.value){
+                passwordWarning.innerHTML = "Hãy điền mật khẩu!";
+                passwordWarning.style.display = "block";
+            }
+        }
+        
+        function validate() {
+            var username = usernameInput.value;
+            var password = passwordInput.value;
+            if (!username || !password) {
                 event.preventDefault();
                 return false;
             }
@@ -56,10 +71,8 @@
    
 
 
-        let form = document.querySelector('form');
-
+        const form = document.querySelector('form');
         form.addEventListener('submit', async (e) => {
-            e.preventDefault();
             if(validate()){
                 const username = form.username.value;
                 const password = form.password.value;
@@ -70,11 +83,13 @@
                         body: JSON.stringify({username, password}),
                         headers: {'Content-Type': 'application/json'}
                     });
-                    console.log('Go here');
                     const data = await res.json();
-                    console.log(data);
                     if(data.username){
-                        location.assign('/my/');
+                        location.assign('/my');
+                    }else{
+                        passwordWarning.innerHTML = data.message;
+                        passwordWarning.style.display = "block";
+                        console.log(data.message);
                     }
                 }catch(e){
                     console.log(e);

@@ -1,50 +1,62 @@
-const controller = require('../controller/login');
-const mycontroller = require('../controller/load');
-const uploadTaskController = require('../controller/uploadtask');
-const uploadQuesController = require('../controller/uploadques');
-const addStudentController = require('../controller/addstudent');
-const express = require('express');
+const controller = require('../controller/index');
+const authJwt = require('../middleware/authJWT');
+
 
 function route(app){
-
-    app.use("../../public", express.static(__dirname + '../../public'));
+    
     app.use(function(req, res, next) {
         res.header(
-          "Access-Control-Allow-Headers",
-          "x-access-token, Origin, Content-Type, Accept"
+            "Access-Control-Allow-Headers",
+            "x-access-token, Origin, Content-Type, Accept"
         );
         next();
       });
-    //Điều hướng đăng nhập
+
+
+    //Phần đăng nhập
+    //**********************************************************************************************
+    //POST: Điều hướng đăng nhập khi submit
     app.post("/login", controller.login);
-    
-    
+
+    //Kiểm tra xem user có hợp lệ không với tất cả phương thức get
+    app.get('*', authJwt.checkUser);
+    //GET: Điều hướng đăng xuất
+    app.get('/logout', controller.logout);
+    //**********************************************************************************************
+
+
+    //**********************************************************************************************
+    //GET: Điều hướng đến trang cá nhân cua ban than
+    app.get('/my',authJwt.verifyToken, controller.getUserInfo);
+
+
+    //**********************************************************************************************
+    //GET: Lấy profile
+    app.get('/profile', controller.getProfile)
+
+    //**********************************************************************************************
+    //testUploadxlsx
+    app.get('/upload', (req, res) => {
+        res.render('testUpload')
+    })
+
+    //POST: Upload ảnh và lưu vào db
+    const upload = require('../middleware/upload');
+    app.post("/upload", upload.single("file"), controller.upload);
+    //**********************************************************************************************
+
+
+    //**********************************************************************************************
+    //GET: Điều hướng đến trang chủ
     app.get('/', (req, res) => {
-        res.render('home');
-    });
-
-    app.get('/profile', (req, res) => {
-      res.render('profile');
+        if(req.cookies.jwt){
+            res.redirect('/my');
+        }else{
+            res.render('home');
+        }
+        //res.render('home');
     })
-    
-    //điều hướng đến trang cá nhân cua ban than
-    app.get('/my/', mycontroller.userinfo);
-
-    //dieu huong dang xuat
-    app.post('/users/logout', (req, res)=>{
-
-    })
-
-    app.post('/upload/task', uploadTaskController.uploadTask);
-
-    app.post('/upload/question', uploadQuesController.uploadQues);
-
-    // app.post('/add/student', addStudentController.addStudent);
-      
-    app.post('/search', (req, res) => {
-      
-        res.send(req.body);
-    });
+    //**********************************************************************************************
 }
 
 module.exports = route;

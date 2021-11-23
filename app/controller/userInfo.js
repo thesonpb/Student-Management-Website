@@ -1,17 +1,17 @@
 const db = require("../models/index");
-const Student = db.sinhvien;
-const Lecturer = db.covan;
+const Sinhvien = db.Sinhvien;
+const Covan = db.Covan;
 
-
+//
 const getUserInfo = async (req, res) => {
-    const username = res.locals.user.username;
-    const userRole = res.locals.user.role;
+    const username = res.locals.user.tennguoidung;
+    const userRole = res.locals.user.vaitro;
     console.log(userRole);
     let userInfo = '';
-    if(userRole == 'student'){
-        userInfo = await Student.findByPk(username);
-    }else if(role == 'lectuerer'){
-        userInfo = await Lecturer.findByPk(username);
+    if(userRole == 'sinhvien'){
+        userInfo = await Sinhvien.findByPk(username);
+    }else if(userRole == 'covan'){
+        userInfo = await Covan.findByPk(username);
     }
     console.log(userInfo.dataValues);
     res.render('my', userInfo.dataValues);

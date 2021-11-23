@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Thế Sơn xấu trai nhất nhóm</title>
-    <link rel="stylesheet" href="../assets/css/profile.css">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="/assets/css/profile.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
-
 <body>
     <div class="left-side ">
         <h1 class="title">Student Management</h1>
@@ -40,8 +38,8 @@
                     <li><a href="#">Điểm rèn luyện</a></li>
     
                     <hr>
-                    <li><a href="http://127.0.0.1:5500/view/student/student.html">Trang chủ</a></li>
-                    <li><a href="http://127.0.0.1:5500/view/login/login.html">Đăng xuất</a></li>
+                    <li><a href="/my">Trang chủ</a></li>
+                    <li><a href="/logout">Đăng xuất</a></li>
                 </ul>
             </div>
         </div>
@@ -60,7 +58,7 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Nguyễn Thế Sơn
+                                        <%= hoten %>
                                     </h5>
                                     <h6>
                                         Sinh viên
@@ -83,73 +81,146 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-work">
-                        <p>WORK LINK</p>
-                        <a href="">Website Link</a><br/>
-                        <a href="">Bootsnipp Profile</a><br/>
-                        <a href="">Bootply Profile</a>
-                        <p>SKILLS</p>
-                        <a href="">Web Designer</a><br/>
-                        <a href="">Web Developer</a><br/>
-                        <a href="">WordPress</a><br/>
-                        <a href="">WooCommerce</a><br/>
-                        <a href="">PHP, .Net</a><br/>
+                        <p>Link 1</p>
+                        <a href="">1</a><br/>
+                        <a href="">2</a><br/>
+                        <a href="">3</a>
+                        <p>Link 2</p>
+                        <a href="">1</a><br/>
+                        <a href="">2</a><br/>
+                        <a href="">3</a><br/>
+                        <a href="">4</a><br/>
+                        <a href="">5</a><br/>
                     </div>
                 </div>
-                <div class="tab-content profile-tab col-md-8" id="myTabContent">
-                    <div class="tab-pane fade " id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                            <label class="col-md-6"> Mã số sinh viên:</label>
-                            <p class="col-md-6">19021358</p>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Họ và tên:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= hoten %></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Mã số sinh viên:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= mssv %></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Khoa:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= khoa %></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Lớp:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= malop %></p>
+                                </div>
+                            </div>
+                                   
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= email %></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Số điện thoại:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= sdt %></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Số tín chỉ:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= tinchi %></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>GPA:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= gpa %></p>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="row">
-                            <label class="col-md-6">Họ và tên:</label>
-                            <p class="col-md-6">Nguyễn Thế Sơn</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Email:</label>
-                            <p class="col-md-6">19021358@vnu.edu.vn</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Số điện thoại:</label>
-                            <p class="col-md-6">0949553672</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Khoa:</label>
-                            <p class="col-md-6">CNTT</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                            <label class="col-md-6">Experience</label>
-                            <p class="col-md-6">Expert</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Hourly Rate</label>
-                            <p class="col-md-6">10$/hr</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Total Projects</label>
-                            <p class="col-md-6">230</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">English Level</label>
-                            <p class="col-md-6">Expert</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Availability</label>
-                            <p class="col-md-6">6 months</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Your Bio</label><br />
-                                <p>Your detail description</p>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Experience</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>Expert</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Hourly Rate</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>10$/hr</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Total Projects</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>230</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>English Level</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>Expert</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Availability</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>6 months</p>
+                                        </div>
+                                    </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Your Bio</label><br/>
+                                    <p>Your detail description</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+        </form>           
     </div>
 </body>
-
 </html>

@@ -69,10 +69,9 @@
             return true;
         }
 
-
-
         const form = document.querySelector('form');
         form.addEventListener('submit', async (e) => {
+            e.preventDefault();
             if(validate()){
                 const username = form.username.value;
                 const password = form.password.value;
@@ -85,7 +84,7 @@
                     });
                     const data = await res.json();
                     if(data.username){
-                        location.assign('/myf');
+                        location.assign('/my');
                     }else{
                         passwordWarning.innerHTML = data.message;
                         passwordWarning.style.display = "block";

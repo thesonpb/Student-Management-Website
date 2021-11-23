@@ -68,7 +68,7 @@
             }
             return true;
         }
-   
+
 
 
         const form = document.querySelector('form');
@@ -85,7 +85,7 @@
                     });
                     const data = await res.json();
                     if(data.username){
-                        location.assign('/my');
+                        location.assign('/myf');
                     }else{
                         passwordWarning.innerHTML = data.message;
                         passwordWarning.style.display = "block";

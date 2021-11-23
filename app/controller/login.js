@@ -1,6 +1,6 @@
 const db = require("../models/index");
 const config = require("../config/auth");
-const Nguoidung = db.nguoidung;
+const Nguoidung = db.Taikhoan;
 const Vaitro = db.vaitro;
 
 const Op = db.Sequelize.Op;

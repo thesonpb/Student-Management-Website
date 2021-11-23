@@ -1,39 +1,58 @@
-const express = require('express');
-const db = require('./database');
+const path = require('path');
+const express = require("express");
+const cookieParser = require('cookie-parser')
+const cors = require("cors");
+const morgan = require('morgan')
+const db = require('./app/models/index');
+
 
 const app = express();
+app.use(cookieParser());
+const port = 3000;
 
-app.use("/library", express.static(__dirname + '/library'));
-app.set('view engine', 'pug');
+//import module
+const route = require('./app/routes');
+
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.sendFile('./view/login.html', { root: __dirname });
-});
+//HTTP logger
+app.use(morgan('combined'));
 
-app.post('/', (req, res) => {
-    const { malop, emailcovan } = req.body;
-    if (malop && emailcovan) {
-        try {
-            db.promise().query(`INSERT INTO lophoc VALUES('${malop}', '${emailcovan}')`);
-        } catch (err) {
-            console.log(err);
-        }
-    }
-});
+//Set view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'public/views'));
+app.use(express.static(__dirname + '/public'));
+//app.use('/uploads', express.static('uploads'));
 
-app.post('/admin/secret/signup', (req, res) => {
-    const { username, password, type } = req.body;
-    if (username && password && type) {
-        try {
-            db.promise().query(`INSERT INTO nguoidung VALUES('${username}', '${password}', '${type}')`);
-            res.send('success');
-        } catch (err) {
-            console.log(err);
-        }
-    }
+console.log(__dirname);
+global.appRoot = path.resolve(__dirname);
+
+//co thể sau này nó là restfull api, cứ để sẵn
+// var corsOptions = {
+//     origin: `http://localhost:${port}`,
+// }
+// app.use(cors(corsOptions));
+
+
+//routes init
+route(app);
+
+db.connectDb();
+// let getData = async (req, res) =>{
+//   try{
+//     let data = await db.user.findAll();
+//     console.log(data);
+//   }catch(e){
+//     console.log(e);
+//   }
+// }
+// getData();
+
+
+app.listen(port, () => {
+  console.log(`The web app is listening at http://localhost:${port}`)
 })
 
-app.listen(3000, ()=> {
-    console.log('listening on port 3000...');
-});

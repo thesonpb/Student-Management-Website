@@ -41,15 +41,7 @@ global.appRoot = path.resolve(__dirname);
 route(app);
 
 db.connectDb();
-// let getData = async (req, res) =>{
-//   try{
-//     let data = await db.user.findAll();
-//     console.log(data);
-//   }catch(e){
-//     console.log(e);
-//   }
-// }
-// getData();
+
 
 
 app.listen(port, () => {

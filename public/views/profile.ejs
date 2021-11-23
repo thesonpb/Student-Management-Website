@@ -28,31 +28,41 @@
             <li><a href="#about"><i class="ti-headphone-alt"></i> Hỗ trợ</a></li>
         </ul>
     </div>
-        <div class="rightsidebar">
-            <img class="avatar" src="/images/cat.jpg" alt="">
-                <div class="dropdown">
-                <button class="dropbtn"><i class="fas fa-caret-down"></i></button>
-                <ul class="dropdown-item js-drop-item open">
-                    <div class="dropdown-content">
-                    <li><a href="#">Kết quả học tập</a></li>
-                    <li><a href="#">Điểm rèn luyện</a></li>
+
+
+    <div class="rightsidebar">
+        <img class="avatar" src="/images/cat.jpg" alt="">
+            <div class="dropdown">
+            <button class="dropbtn"><i class="fas fa-caret-down"></i></button>
+            <ul class="dropdown-item js-drop-item open">
+                <div class="dropdown-content">
+                <li><a href="#">Kết quả học tập</a></li>
+                <li><a href="#">Điểm rèn luyện</a></li>
     
-                    <hr>
-                    <li><a href="/my">Trang chủ</a></li>
-                    <li><a href="/logout">Đăng xuất</a></li>
-                </ul>
-            </div>
+                <hr>
+                <li><a href="/my">Trang chủ</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
+            </ul>
         </div>
+    </div>
+
+
     <div class="container emp-profile">
-            <form method="post">
+            <form action="/uploadImage" enctype="multipart/form-data" method="post">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="/images/cat.jpg" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
+                            <img src="" alt="">
+
+                            <% if(avatar) {%>
+                                <img src=<%= avatar %> alt=""/>
+                            <% }else{ %>
+                                <img src="/assets/img/avatar/default.png" alt=""/>
+                            <% } %>
+                                <input type="file" name="img" accept="image/*" />
+                                <input type="submit" value="Đăng tải">
+                
+
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -61,7 +71,7 @@
                                         <%= hoten %>
                                     </h5>
                                     <h6>
-                                        Sinh viên
+                                        <%= user.vaitro %>
                                     </h6>
                                     
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -79,7 +89,7 @@
                     </div>
                 </div>
             <div class="row">
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="profile-work">
                         <p>Link 1</p>
                         <a href="">1</a><br/>
@@ -92,10 +102,13 @@
                         <a href="">4</a><br/>
                         <a href="">5</a><br/>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            
+                        <% if(user.vaitro == 'sinhvien') { %>
+                                
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Họ và tên:</label>
@@ -167,6 +180,8 @@
                                     <p><%= gpa %></p>
                                 </div>
                             </div>
+
+                            <% } %>
 
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

@@ -20,8 +20,8 @@ const excelStorage = multer.diskStorage({
         cb(null, appRoot + '/public/assets/uploads/');
     },
     filename: (req, file, cb) => {
-        console.log(file.originalname);
-        cb(null, file.originalname);
+        let fileName = file.originalname.replace(/ /g,'');
+        cb(null, fileName);
     },
 });
 
@@ -32,10 +32,19 @@ const imgStorage = multer.diskStorage({
         cb(null, appRoot + '/public/assets/img/avatar/');
     },
     filename: (req, file, cb) => {
-        console.log(file.originalname);
-        cb(null, file.originalname);
+        let fileName = file.originalname.replace(/ /g,'');
+        cb(null, fileName);
     },
 });
   
-  var uploadFile = multer({ storage: excelStorage, fileFilter: excelFilter });
-  module.exports = uploadFile;
+  const uploadFile = multer({ storage: excelStorage, fileFilter: excelFilter });
+  const uploadImg = multer({
+      storage: imgStorage, 
+      fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(png|jpg|jpeg|gif)$/)) { 
+              return cb(new Error('Please upload document'))
+        }
+        cb(undefined, true)
+      }
+    })
+  module.exports = {uploadFile, uploadImg};

@@ -16,7 +16,7 @@ const upload = async (req, res) => {
         //the data which is returned as rows will be changed to array
         readXlsxFile(path).then((rows) => {
         
-            // skip header
+            // skip header (first row)
         rows.shift();
   
         let students = [];

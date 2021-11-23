@@ -16,7 +16,7 @@
     </div>
     <img id="logo" src="../assets/img/IMG_8672.png" alt="logo">
 
-    <form action="#">
+    <form method="POST">
         <h1>Login</h1><br>
         <input type="text" name="username" id="username" placeholder="Username"><br>
         <p class="warning" id="enter-username"></p>
@@ -63,7 +63,6 @@
             var username = usernameInput.value;
             var password = passwordInput.value;
             if (!username || !password) {
-                event.preventDefault();
                 return false;
             }
             return true;
@@ -94,6 +93,8 @@
                 }catch(e){
                     console.log(e);
                 }
+            }else{
+                e.preventDefault();
             }
 
         })

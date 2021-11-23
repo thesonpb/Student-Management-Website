@@ -28,9 +28,9 @@ module.exports = (sequelize, Sequelize) => {
         malop: {
             type: Sequelize.STRING
         }, 
-        // avatar: {
-        //     type: Sequelize.STRING
-        // }, 
+        avatar: {
+            type: Sequelize.STRING
+        }, 
         // canhbaohocvu: {
         //     type: Sequelize.STRING
         // },

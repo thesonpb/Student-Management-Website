@@ -2,7 +2,6 @@ const db = require("../models/index");
 const bodyParser = require("body-parser");
 const Cauhoi = db.cauhoi;
 
-
 exports.uploadQues = async (req, res) => {
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();

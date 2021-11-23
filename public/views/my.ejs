@@ -6,497 +6,189 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management</title>
-    <link rel="stylesheet" href="../assets/css/teacher.css">
-    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="../assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/student.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="/fontawesome/icon-font/themify-icons/themify-icons.css">
 
 </head>
 
 <body>
-    <div class="left-side ">
+    <div class="left-side">
         <h1 class="title">Student Management</h1>
         <label for="">Tools</label>
         <ul class="nav">
-            <li data-rel="1" class="active"><i class="ti-user"></i> Sinh viên</li>
-            <li data-rel="2" class=""><i class="ti-book"></i> Học tập</li>
-            <li data-rel="3" class=""><i class="ti-clipboard"></i> Rèn luyện</li>
-            <li data-rel="4" class=""><i class="ti-arrow-circle-down"></i> Công việc</li>
-            <li data-rel="5" class=""><i class="ti-help-alt"></i> Diễn đàn</li>
+            <li class=""><a href=""><i class="ti-user"></i> Sinh viên</a></li>
+            <li class=""><a href=""><i class="ti-book"></i> Học tập</a></li>
+            <li class=""><a href=""><i class="ti-clipboard"></i> Rèn luyện</a></li>
+            <li class=""><a href=""><i class="ti-arrow-circle-down"></i> Công việc</a></li>
+            <li class=""><a href=""><i class="ti-help-alt"></i> Diễn đàn</a></li>
         </ul>
 
         <label for="">Others</label>
         <ul class="nav">
-            <li data-rel="6"><i class="ti-headphone-alt"></i> Hỗ trợ</li>
+            <li><a href="#about"><i class="ti-headphone-alt"></i> Hỗ trợ</a></li>
         </ul>
     </div>
 
-
-    <div class="content">
-
-        <!-- phần giữa trang chủ -->
-        <div class="main">
-            <h1 class="title-main">
-            </h1>
-            <form class="adding-member" action="/add/student" method="post">
-                <img src="<%= avatar %>" alt="" class="adding-avt">
-                <div class="adding-id-inf">
-                    <h2 class="name-inf">MSSV</h2>
-                    <input autocomplete="off" type="text" class="input-inf" name="mssv" placeholder="mã sv" />
-                </div>
-                <div class="adding-name-inf">
-                    <h2 class="name-inf">Họ tên</h2>
-                    <input autocomplete="off" type="text" class="input-inf" placeholder="Tên" name="hoten" />
-                </div>
-
-                <div class="adding-name-inf">
-                    <h2 class="name-inf">Ngày sinh</h2>
-                    <input autocomplete="off" type="date" class="input-inf" placeholder="Name" />
-                </div>
-                <input type="submit" value="ADD NOW" id="" class="adding-btn btn">
-            </form>
-            <div class="member-list">
-                <div class="member">
-                    <img src="<%= avatar1 %>" alt="" class="member-ava">
-                    <p class="member-name">
-                        <%= name1 %>
-                    </p>
-                    <p class="member-pos">
-                        <%= position1 %>
-                    </p>
-                </div>
-
-                <div class="member">
-                    <img src="<%= avatar2 %>" alt="" class="member-ava">
-                    <p class="member-name">
-                        <%= name2 %>
-                    </p>
-                    <p class="member-pos">
-                        <%= position2 %>
-                    </p>
-                </div>
-
-                <div class="member">
-                    <img src="<%= avatar3 %>" alt="" class="member-ava">
-                    <p class="member-name">
-                        <%= name3 %>
-                    </p>
-                    <p class="member-pos">
-                        <%= position3 %>
-                    </p>
-                </div>
-
-                <div class="member">
-                    <img src="<%= avatar4 %>" alt="" class="member-ava">
-                    <p class="member-name">
-                        <%= name4 %>
-                    </p>
-                    <p class="member-pos">
-                        <%= position4 %>
-                    </p>
-                </div>
+    <!-- phần giữa trang chủ -->
+    <div class="main">
+        <% if(hoten) { %>
+        <h1 class="title-main">Welcome, <%= hoten %></h1>
+        <% } %>
+        <div class="adding-member">
+            <img src="/images/cat.jpg" alt="" class="adding-avt">
+            <div class="adding-id-inf">
+                <h2 class="name-inf">Student's id</h2>
+                <input autocomplete="off" type="text" class="input-inf" placeholder="id"/>
             </div>
-            <!--Bảng danh sách sinh viên-->
-            <div class="student-list">
-                <table id="student-table">
-                    <tr>
-                        <th>STT</th>
-                        <th>MSSV</th>
-                        <th>Họ và tên</th>
-                        <th>Ngày sinh</th>
-                        <th>Lớp khoá học</th>
-                    </tr>
-                    <% for (var i=0; i < sinhvien.length; i++) { %>
-                        <tr>
-                            <td>
-                                <%= i+1 %>
-                            </td>
-                            <td>
-                                <%= sinhvien[i].mssv %>
-                            </td>
-                            <td>
-                                <%= sinhvien[i].hoten %>
-                            </td>
-                            <td>
-                                <%= sinhvien[i].ngaysinh %>
-                            </td>
-                            <td>
-                                <%= sinhvien[i].malop %>
-                            </td>
-                        </tr>
-                        <% } %>
-                </table>
+            <div class="adding-name-inf">
+                <h2 class="name-inf">Name</h2>
+                <input autocomplete="off" type="text" class="input-inf" placeholder="Name"/>
+            </div>
+            <input type="button" value="ADD NOW" id="" class="adding-btn">
+        </div>
+        <div class="member-list">
+            <div class="member">
+                <img src="/images/cat.jpg" alt="" class="member-ava">
+                <p class="member-name">Name</p>
+                <p class="member-pos">position</p>
+            </div>
+
+            <div class="member">
+                <img src="/images/cat.jpg" alt="" class="member-ava">
+                <p class="member-name">Name</p>
+                <p class="member-pos">position</p>
+            </div>
+
+            <div class="member">
+                <img src="/images/cat.jpg" alt="" class="member-ava">
+                <p class="member-name">Name</p>
+                <p class="member-pos">position</p>
+            </div>
+
+            <div class="member">
+                <img src="/images/cat.jpg" alt="" class="member-ava">
+                <p class="member-name">Name</p>
+                <p class="member-pos">position</p>
             </div>
         </div>
-
-        <!-- Học tập -->
-        <div class="main">
-            <h1 class="title-main">Học tập</h1>
-            <div class="quater-selection">
-                <label for="quater">Học kỳ:</label>
-                <select>
-                    <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
-                    <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
-                </select>
-            </div>
-
-            <div class="">
-                <table class="mark">
-                    <tr>
-                        <th>STT</th>
-                        <th>Mã SV</th>
-                        <th>Họ Tên</th>
-                        <th>Ngày Sinh</th>
-                        <th>Số TC ĐK</th>
-                        <th>ĐTB</th>
-                        <th>Số điểm C</th>
-                        <th>Số điểm C+</th>
-                        <th>Số điểm D</th>
-                        <th>Số điểm D+</th>
-                        <th>Số điểm F</th>
-                        <th>Ghi chú</th>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>19021234</td>
-                        <td>Hà Văn Đạt</td>
-                        <td>01/12/2001</td>
-                        <td>13</td>
-                        <td>1.0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>19021234</td>
-                        <td>Hà Văn Đạt</td>
-                        <td>01/12/2001</td>
-                        <td>13</td>
-                        <td>1.0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <!-- Rèn luyện -->
-        <div class="main">
-            <h1 class="title-main">Rèn luyện</h1>
-            <div class="quater-selection">
-                <label for="quater">Học kỳ:</label>
-                <select>
-                    <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
-                    <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
-                </select>
-            </div>
-
-            <div class="">
-                <table class="work">
-                    <tr>
-                        <th>STT</th>
-                        <th>Mã SV</th>
-                        <th>Họ Tên</th>
-                        <th>Ngày Sinh</th>
-                        <th>Ý thức học tập</th>
-                        <th>Chấp hành nội quy</th>
-                        <th>Tham gia hoạt động</th>
-                        <th>Phẩm chất</th>
-                        <th>Phụ trách lớp</th>
-                        <th>Tổng</th>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>19021234</td>
-                        <td>Hà Văn Đạt</td>
-                        <td>01/12/2001</td>
-                        <td>30</td>
-                        <td>20</td>
-                        <td>15</td>
-                        <td>15</td>
-                        <td>0</td>
-                        <td>80</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>19021234</td>
-                        <td>Hà Văn Đạt</td>
-                        <td>01/12/2001</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <!-- Công việc -->
-        <div class="main">
-            <h1 class="title-name">Công việc</h1>
-            <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
-            <form action="/upload/task" class="form js-todo-form" method="post">
-                <label for="">Tiêu đề</label>
-                <input type="text" class="input-subject" name="subject">
-                <hr>
-
-                <div class="todo-dur-input">
-                    <label for="birthdaytime">Opened:</label>
-                    <input type="datetime-local" name="opendate">
-                    <label for="birthdaytime">Due:</label>
-                    <input type="datetime-local" name="duedate">
-                </div>
-                <hr>
-                <label for="">Nội dung</label>
-                <input role="textbox" spellcheck="true" class="input-content" name="content">
-                <div>
-                    <input type="submit" value="Đăng lên" class="btn">
-                    <button class="btn js-close-todo-btn">Huỷ bỏ</button>
-                </div>
-            </form>
-
-            <div class="todo">
-                <h3 class="todo-title">
-                    <%= todo_title %>
-                </h3>
-                <div class="todo-intro">
-                    <p class="todo-content">
-                        <%= todo_content %>
-                    </p>
-                    <div class="todo-duration">
-                        <p class="todo-opened">Opened: <%= todo_open %>
-                        </p>
-                        <p class="todo-due">Due: <%= todo_due %>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- <div class="todo-opinion">
-                    <span class="todo-yk">Gửi ý kiến</span>
-                    <a href="#" class="todo-cmt-btn"><i class="ti-angle-right"></i> Bình luận</a>
-                </div> -->
-            </div>
-        </div>
-
-        <!--diễn đàn -->
-        <div class="main">
-            <h1 class="title-name">Diễn đàn</h1>
-            <button class="question-btn btn js-add-question">Thêm một chủ đề thảo luận</button>
-            <form action="/upload/question" class="form js-question-form" method="post">
-                <label for="">Tiêu đề</label>
-                <input type="text" class="input-subject" name="subject">
-                <hr>
-                <label for="">Nội dung</label>
-                <input contenteditable="true" role="textbox" spellcheck="true" class="input-content" name="content">
-                <div>
-                    <input type="submit" value="Đăng lên" class="btn">
-                    <button class="btn js-close-btn">Huỷ bỏ</button>
-                </div>
-            </form>
-
-            <div class="question">
-                <div class="ques-inf">
-                    <div class="inf-item author-ava">
-                        <img src="<%= author_avt %>" alt="" class="">
-                    </div>
-                    <div class="inf-item">
-                        <p class="author-name">
-                            <%= author_name %>
-                        </p>
-                        <p class="post-time">
-                            <%= post_time %>
-                        </p>
-                    </div>
-                    <div class="inf-item favourite">
-                        <i class="ti-star"></i>
-                    </div>
-                </div>
-
-                <div class="question-body">
-                    <h3 class="question-subject">
-                        <%= question_title1 %>
-                    </h3>
-                    <p class="question-content">
-                        <%= question_content1 %>
-                    </p>
-                </div>
-
-                <div class="question-respone">
-                    <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>
-                    <p class="question-cmt"><i class="ti-comment"></i>Bình luận</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="main">
-            <h1 class="title-main">Hỗ trợ</h1>
-        </div>
-
-        <!-- profile -->
-        <div class="main emp-profile">
-            <form method="post">
-                <div class="row profile-header">
-                    <div class="profile-img col-md-4">
-                        <img src="/images/cat.jpg" alt="" />
-                        <div class="file btn btn-lg btn-primary">
-                            <i class="ti-camera"></i>
-                            <input type="file" name="file" />
-                        </div>
-                    </div>
-                    <div class="profile-title col-md-6">
-                        <h5 class="profile-name">
-                            Nguyễn Thế Sơn
-                        </h5>
-                        <h6>
-                            Sinh viên
-                        </h6>
-
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                    aria-controls="home" aria-selected="true">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                    aria-controls="profile" aria-selected="false">Timeline</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
-                    </div>
-                </div>
-                <div class="row profile-content">
-                    <div class="profile-work col-md-4">
-                        <p>Link 1</p>
-                        <a href="">1</a><br />
-                        <a href="">2</a><br />
-                        <a href="">3</a>
-                        <p>Link 2</p>
-                        <a href="">1</a><br />
-                        <a href="">2</a><br />
-                        <a href="">3</a><br />
-                        <a href="">4</a><br />
-                        <a href="">5</a><br />
-                    </div>
-                    <div class="tab-content profile-tab col-md-8" id="myTabContent">
-                        <div class="tab-pane fade  show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="row">
-                                <label class="col-md-6"> Mã số sinh viên:</label>
-                                <p class="col-md-6">19021358</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Họ và tên:</label>
-                                <p class="col-md-6">Nguyễn Thế Sơn</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Email:</label>
-                                <p class="col-md-6">19021358@vnu.edu.vn</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Số điện thoại:</label>
-                                <p class="col-md-6">0949553672</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Khoa:</label>
-                                <p class="col-md-6">CNTT</p>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row">
-                                <label class="col-md-6">Experience</label>
-                                <p class="col-md-6">Expert</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Hourly Rate</label>
-                                <p class="col-md-6">10$/hr</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Total Projects</label>
-                                <p class="col-md-6">230</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">English Level</label>
-                                <p class="col-md-6">Expert</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Availability</label>
-                                <p class="col-md-6">6 months</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br />
-                                    <p>Your detail description</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-
     </div>
 
+    <!-- Công việc -->
+    <div class="main">
+        <h1 class="title-name">Công việc</h1>
+        <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
+        <div class="todo-form js-todo-form">
+            <label for="">Tiêu đề</label>
+            <input type="text" class="todo-input-subject">
+            <hr>
 
-
-    <div class="rightsidebar">
-        <div class="preference">
-            <img class="avatar" src="/images/cat.jpg" alt="">
-            <!-- hien ra menu de chinh sua ho so, log out -->
-            <div class="dropdown">
-                <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button>
-                <ul class="dropdown-list js-drop-item">
-                    <li><a class="profile" href="#">
-                            <img class="margin-top avatar" id="" src="<%= avatar %>" alt="">
-                            <label for="">
-                                <%= name %>
-                            </label>
-                        </a></li>
-                    <hr>
-                    <li><a href="#">Kết quả học tập</a></li>
-                    <li><a href="#">Điểm rèn luyện</a></li>
-
-                    <hr>
-                    <li><a href="#">Cài đặt</a></li>
-                    <li><a href="http://127.0.0.1:5500/view/login/login.html">Đăng xuất</a></li>
-                </ul>
+            <div class="todo-dur-input">
+                <label for="birthdaytime">Opened:</label>
+                <input type="datetime-local">
+                <label for="birthdaytime">Due:</label>
+                <input type="datetime-local">
+            </div>
+            <hr>
+            <label for="">Nội dung</label>
+            <div contenteditable="true" role="textbox" spellcheck="true" class="todo-input-content">
+                <p>
+                    <br>
+                </p>
+            </div>
+            <div>
+                <input type="submit" value="Đăng lên" class="todo-input-btn"> 
+                <button class="todo-input-btn js-close-todo-btn">Huỷ bỏ</button>            
             </div>
         </div>
 
-        <div class="right-nav">
-            <label for=""><i class="ti-angle-right"></i>Các lớp học tôi quản lý</label>
-            <ul class="class-list">
-                <li data-rel="1" class="active"><i class="ti-angle-right"></i> QHI-2019-CA-CLC-1</li>
-                <li data-rel="2" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
-                <li data-rel="3" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
-                <li data-rel="4" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
-                <li data-rel="5" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
+        <div class="todo">
+            <h3 class="todo-title">DO YOUR HOME WORK</h3>
+            <div class="todo-intro">
+                <p class="todo-content">Do this, Do that</p>
+                <div class="todo-duration">
+                    <p class="todo-opened">Opened: Wednesday, 22 September 2021, 11:00 AM</p>
+                    <p class="todo-due">Due: Wednesday, 22 September 2021, 13:00 AM</p>
+                </div>
+            </div>
+
+            <div class="todo-opinion">
+                <span class="todo-yk">Gửi ý kiến</span>
+                <a href="#" class="todo-cmt-btn"><i class="ti-angle-right"></i> Bình luận</a>
+            </div>
+        </div>
+    </div>
+
+    <!--diễn đàn -->
+    <div class="main">
+        <h1 class="title-name">Diễn đàn</h1>
+        <button class="question-btn js-add-question">Thêm một chủ đề thảo luận</button>
+        <div class="question-form js-question-form">
+            <label for="">Tiêu đề</label>
+            <input type="text" class="input-subject">
+            <hr>
+            <label for="">Nội dung</label>
+            <div contenteditable="true" role="textbox" spellcheck="true" class="input-content">
+                <p>
+                    <br>
+                </p>
+            </div>
+            <div>
+                <input type="submit" value="Đăng lên" class="input-btn"> 
+                <button class="input-btn js-close-btn">Huỷ bỏ</button>            
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="ques-inf">
+                <div class="inf-item author-ava">
+                    <img src="/images/cat.jpg" alt="" class="">
+                </div>
+                <div class="inf-item">
+                    <p class="author-name">Name</p>
+                    <p class="post-time">5 minutes</p>
+                </div>
+                <div class="inf-item favourite">
+                    <i class="ti-star"></i>
+                </div>
+            </div>
+
+            <div class="question-body">
+                <h3 class="question-subject">Ask about sthg</h3>
+                <p class="question-content">What am i doing?</p>
+            </div>
+
+            <div class="question-respone">
+                <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>                
+                <p class="question-cmt"><i class="ti-comment"></i>Bình luận</p>                
+            </div>
+        </div>
+    </div>
+
+    <!-- rightsidebar -->
+    <div class="rightsidebar">
+        <img class="avatar" src="/images/cat.jpg" alt="">
+        <!-- hien ra menu de chinh sua ho so, log out -->
+        <div class="dropdown">
+            <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button>
+            <ul class="dropdown-item js-drop-item">
+                <li><a href="/profile">
+                        <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt="">
+                        <label for=""><%= hoten %></label>
+                    </a></li>
+                <hr>
+                <li><a href="#">Kết quả học tập</a></li>
+                <li><a href="#">Điểm rèn luyện</a></li>
+
+                <hr>
+                <li><a href="#">Cài đặt</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
             </ul>
         </div>
     </div>
 
-    <script>
 
+    <script>
         const addBtnQuestion = document.querySelector('.js-add-question')
         const questionForm = document.querySelector('.js-question-form')
         const formQuestionClose = document.querySelector('.js-close-btn')
@@ -506,9 +198,10 @@
         const formTodoClose = document.querySelector('.js-close-todo-btn')
 
         function showQuestionForm() {
-            if (!questionForm.classList.contains('open')) {
+            if(!questionForm.classList.contains('open'))
+            {   
                 questionForm.classList.add('open')
-            } else {
+            } else { 
                 questionForm.classList.remove('open')
             }
         }
@@ -518,9 +211,10 @@
         }
 
         function showTodoForm() {
-            if (!todoForm.classList.contains('open')) {
+            if(!todoForm.classList.contains('open'))
+            {   
                 todoForm.classList.add('open')
-            } else {
+            } else { 
                 todoForm.classList.remove('open')
             }
         }
@@ -536,18 +230,18 @@
         addBtnTodo.addEventListener('click', showTodoForm)
 
         formTodoClose.addEventListener('click', closeTodoForm)
+    </script>
 
-
-
+    <script>
         const dropBtn = document.querySelector('.js-dropbtn')
         const dropItem = document.querySelector('.js-drop-item')
         const main = document.querySelector('#main')
 
         function showDropdown() {
-            if (!dropItem.classList.contains('open')) {
+            if(!dropItem.classList.contains('open')) {
                 dropItem.classList.add('open')
-            } else {
-                dropItem.classList.remove('open')
+            } else { 
+            dropItem.classList.remove('open')
             }
         }
 
@@ -556,27 +250,8 @@
         }
 
         // main.addEventListener('click', closeDropdown)
-
-        dropBtn.addEventListener('click', showDropdown);
-
-
-        (function ($) {
-            $('.class-list li').click(function () {
-                $(this).addClass('active')
-                $('.class-list li').not($(this)).removeClass('active');
-            });
-
-            $('.nav li').click(function () {
-                $(this).addClass('active')
-                $('.nav li').not($(this)).removeClass('active');
-                $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
-            });
-
-            $('li .profile').click(function () {
-                $('.nav li').removeClass('active');
-                $('.main:last-of-type').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
-            });
-        })(jQuery);
+        console.log(document.cookie);
+        dropBtn.addEventListener('click', showDropdown)
     </script>
 
 </body>

@@ -1,6 +1,6 @@
 const db = require("../models/index");
-const Sinhvien = db.sinhvien;
-const Covan = db.covan;
+const Sinhvien = db.Sinhvien;
+const Covan = db.Covan;
 
 
 //************************************************************************************************************************

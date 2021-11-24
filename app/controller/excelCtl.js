@@ -1,5 +1,5 @@
 const db = require("../models/index");
-const Sinhvien = db.sinhvien;
+const Sinhvien = db.Sinhvien;
 
 const readXlsxFile = require("read-excel-file/node");
 

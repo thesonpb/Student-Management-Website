@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management</title>
     <link rel="stylesheet" href="../assets/css/teacher.css">
-    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -38,67 +37,67 @@
         <!-- phần giữa trang chủ -->
         <div class="main">
             <% if(hoten) { %>
-                <h1 class="title-main">Welcome, <%= hoten %>
+                <h1 class="title-main">Xin chào, <%= hoten %>
                 </h1>
                 <% } %>
 
-                    <form class="adding-member" action="/add/student" method="post">
-                        <img src="cat.jpg" alt="" class="adding-avt">
-                        <div class="adding-id-inf">
-                            <h2 class="name-inf">MSSV</h2>
-                            <input autocomplete="off" type="text" class="input-inf" name="mssv" placeholder="mã sv" />
-                        </div>
-                        <div class="adding-name-inf">
-                            <h2 class="name-inf">Họ tên</h2>
-                            <input autocomplete="off" type="text" class="input-inf" placeholder="Tên" name="hoten" />
-                        </div>
+            <form class="adding-member" action="/add/student" method="post">
+                <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
+                <div class="adding-id-inf col-md-3">
+                    <h2 class="name-inf">MSSV</h2>
+                    <input autocomplete="off" type="text" class="input-inf" name="mssv" placeholder="mã sv" />
+                </div>
+                <div class="adding-name-inf col-md-3">
+                    <h2 class="name-inf">Họ tên</h2>
+                    <input autocomplete="off" type="text" class="input-inf" placeholder="Tên" name="hoten" />
+                </div>
 
-                        <div class="adding-name-inf">
-                            <h2 class="name-inf">Ngày sinh</h2>
-                            <input autocomplete="off" type="date" class="input-inf" placeholder="Name" />
-                        </div>
-                        <input type="submit" value="ADD NOW" id="" class="adding-btn btn">
-                    </form>
+                <div class="adding-name-inf col-md-3">
+                    <h2 class="name-inf">Ngày sinh</h2>
+                    <input autocomplete="off" type="date" class="input-inf"/>
+                </div>
+                <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
+            </form>
 
-                    <div class="member-list">
-                        <div class="member">
-                            <img src="/images/cat.jpg" alt="" class="member-ava">
-                            <p class="member-name">Name</p>
-                            <p class="member-pos">position</p>
-                        </div>
+            <div class="member-list">
+                <div class="member">
+                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                    <p class="member-name">Name</p>
+                    <p class="member-pos">position</p>
+                </div>
 
-                        <div class="member">
-                            <img src="/images/cat.jpg" alt="" class="member-ava">
-                            <p class="member-name">Name</p>
-                            <p class="member-pos">position</p>
-                        </div>
+                <div class="member">
+                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                    <p class="member-name">Name</p>
+                    <p class="member-pos">position</p>
+                </div>
 
-                        <div class="member">
-                            <img src="/images/cat.jpg" alt="" class="member-ava">
-                            <p class="member-name">Name</p>
-                            <p class="member-pos">position</p>
-                        </div>
+                <div class="member">
+                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                    <p class="member-name">Name</p>
+                    <p class="member-pos">position</p>
+                </div>
 
-                        <div class="member">
-                            <img src="/images/cat.jpg" alt="" class="member-ava">
-                            <p class="member-name">Name</p>
-                            <p class="member-pos">position</p>
-                        </div>
-                    </div>
+                <div class="member">
+                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                    <p class="member-name">Name</p>
+                    <p class="member-pos">position</p>
+                </div>
+            </div>
 
-                    <!--Bảng danh sách sinh viên-->
-                    <div class="student-list">
-                        <table id="student-table">
-                            <tr>
-                                <th>STT</th>
-                                <th>MSSV</th>
-                                <th>Họ và tên</th>
-                                <th>Ngày sinh</th>
-                                <th>Lớp khoá học</th>
-                            </tr>
+            <!--Bảng danh sách sinh viên-->
+            <table id="student-table">
+                <tr>
+                    <th>STT</th>
+                    <th>MSSV</th>
+                    <th>Họ và tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Lớp khoá học</th>
+                    <th>Email</th>
+                    <th>SĐT</th>
+                </tr>
 
-                        </table>
-                    </div>
+            </table>
         </div>
 
         <!-- Học tập -->
@@ -223,7 +222,7 @@
 
         <!-- Công việc -->
         <div class="main">
-            <h1 class="title-name">Công việc</h1>
+            <h1 class="title-main">Công việc</h1>
             <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
             <form action="/upload/task" class="form js-todo-form" method="post">
                 <label for="">Tiêu đề</label>
@@ -241,7 +240,7 @@
                 <input role="textbox" spellcheck="true" class="input-content" name="content">
                 <div>
                     <input type="submit" value="Đăng lên" class="btn">
-                    <button class="btn js-close-todo-btn">Huỷ bỏ</button>
+                    <div class="btn js-close-todo-btn">Huỷ bỏ</div>
                 </div>
             </form>
 
@@ -271,9 +270,8 @@
         </div>
 
         <!--diễn đàn -->
-        <!--diễn đàn -->
         <div class="main">
-            <h1 class="title-name">Diễn đàn</h1>
+            <h1 class="title-main">Diễn đàn</h1>
             <button class="question-btn btn js-add-question">Thêm một chủ đề thảo luận</button>
             <form action="/upload/question" class="form js-question-form" method="post">
                 <label for="">Tiêu đề</label>
@@ -283,7 +281,7 @@
                 <input contenteditable="true" role="textbox" spellcheck="true" class="input-content" name="content">
                 <div>
                     <input type="submit" value="Đăng lên" class="btn">
-                    <button class="btn js-close-btn">Huỷ bỏ</button>
+                    <div class="btn js-close-btn">Huỷ bỏ</div>
                 </div>
             </form>
 
@@ -330,7 +328,7 @@
             <form method="post">
                 <div class="row profile-header">
                     <div class="profile-img col-md-4">
-                        <img src="/images/cat.jpg" alt="" />
+                        <img src="../assets/img/IMG_8672.png" alt="" />
                         <div class="file btn btn-lg btn-primary">
                             <i class="ti-camera"></i>
                             <input type="file" name="file" />
@@ -458,42 +456,40 @@
         </div>
     </div>
 
-    <!-- rightsidebar -->
-    <div class="rightsidebar">
-        <div class="preference">
-            <img class="avatar" src="/images/cat.jpg" alt="">
-            <!-- hien ra menu de chinh sua ho so, log out -->
-            <div class="dropdown">
-                <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button>
-                <ul class="dropdown-list js-drop-item">
-                    <li><a class="profile" href="#">
-                            <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt="">
-                            <label for="">
-                                <%= hoten %>
-                            </label>
-                        </a></li>
-                    <hr>
-                    <li><a href="#">Kết quả học tập</a></li>
-                    <li><a href="#">Điểm rèn luyện</a></li>
+    <div class="dropdown">
+        <img id="dropbtn" class=" dropbtn js-dropbtn" src="../assets/img/IMG_8672.png" alt="">
+        <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
+        <ul class="dropdown-list js-drop-item">
+            <li><a class="profile" href="#">
+                    <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->
+                    <label for="">
+                        <%= hoten %>
+                    </label>
+                </a></li>
+            <hr>
+            <li><a href="#">Kết quả học tập</a></li>
+            <li><a href="#">Điểm rèn luyện</a></li>
 
-                    <hr>
-                    <li><a href="#">Cài đặt</a></li>
-                    <li><a href="/logout">Đăng xuất</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="right-nav">
-            <label for=""><i class="ti-angle-right"></i>Các lớp học tôi quản lý</label>
-            <ul class="class-list">
-                <li data-rel="1" class="active"><i class="ti-angle-right"></i> QHI-2019-CA-CLC-1</li>
-                <li data-rel="2" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
-                <li data-rel="3" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
-                <li data-rel="4" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
-                <li data-rel="5" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
-            </ul>
-        </div>
+            <hr>
+            <li><a href="#">Cài đặt</a></li>
+            <li><a href="/logout">Đăng xuất</a></li>
+        </ul>
     </div>
+
+    <div class="right-nav">
+        <label for=""><i class="ti-list"></i></label>
+        <ul class="class-list">
+            <li data-rel="1" class="active"><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
+            <li data-rel="2" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-2</li>
+            <li data-rel="3" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-3</li>
+            <li data-rel="4" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-4</li>
+            <li data-rel="5" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-5</li>
+        </ul>
+    </div>
+    <!-- rightsidebar -->
+    <!-- <div class="rightsidebar">
+        
+    </div> -->
 
 
     <script>
@@ -530,38 +526,64 @@
             todoForm.classList.remove('open')
         }
 
-        addBtnQuestion.addEventListener('click', showQuestionForm)
+        // addBtnQuestion.addEventListener('click', showQuestionForm);
 
-        formQuestionClose.addEventListener('click', closeQuestionForm)
+        formQuestionClose.addEventListener('click', closeQuestionForm);
 
-        addBtnTodo.addEventListener('click', showTodoForm)
+        // addBtnTodo.addEventListener('click', showTodoForm);
 
-        formTodoClose.addEventListener('click', closeTodoForm)
-
-
-
-        const dropBtn = document.querySelector('.js-dropbtn')
-        const dropItem = document.querySelector('.js-drop-item')
-        const main = document.querySelector('#main')
-
-        function showDropdown() {
-            if (!dropItem.classList.contains('open')) {
-                dropItem.classList.add('open')
-            } else {
-                dropItem.classList.remove('open')
-            }
-        }
-
-        function closeDropdown() {
-            dropItem.classList.remove('open')
-        }
-
-        // main.addEventListener('click', closeDropdown)
-
-        dropBtn.addEventListener('click', showDropdown);
-
+        formTodoClose.addEventListener('click', closeTodoForm);
 
         (function ($) {
+            // hiển thị dropdown 
+            $('.js-dropbtn').click(function (e) {
+                e.stopPropagation();
+                var droplist = $('.js-drop-item');
+                if (droplist.css('display') === 'none') {
+                    droplist.css({ "display": "block" });
+                } else {
+                    $('.js-drop-item').fadeOut(200);
+                }
+            })
+
+            $(document).click(function (e) {
+                $('.js-drop-item').fadeOut(200);
+            });
+
+            // hiển thị đăng công việc
+            $('.js-add-todo').click(function (e) {
+                e.stopPropagation();
+                var todoForm = $('.js-todo-form');
+                console.log(todoForm.css('display'))
+                if (todoForm.css('display') === 'none') {
+                    todoForm.css({ "display": "block" });
+                } else {
+                    todoForm.fadeOut(100);
+                }
+            })
+
+            $('.js-close-todo-btn').click(function (e) {
+                $('.js-todo-form').fadeOut(100);
+            })
+
+            // hiển thị đăng câu hỏi diễn đàn
+            $('.js-add-question').click(function (e) {
+                e.stopPropagation();
+                var quesForm = $('.js-question-form');
+                console.log(quesForm.css('display'))
+                if (quesForm.css('display') === 'none') {
+                    quesForm.css({ "display": "block" });
+                } else {
+                    quesForm.fadeOut(100);
+                }
+            })
+
+            $('.js-close-btn').click(function (e) {
+                e.stopPropagation();
+                $('.js-question-form').fadeOut(100);
+            })
+
+            // chọn lớp học
             $('.class-list li').click(function () {
                 $(this).addClass('active')
                 $('.class-list li').not($(this)).removeClass('active');

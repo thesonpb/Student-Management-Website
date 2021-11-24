@@ -107,7 +107,7 @@ html body {
 .left-side label {
     display: inline-block;
     color: #999;
-    padding: 0px 32px;
+    padding: 0px 16px;
     margin-top: 64px;
     margin-bottom: 8px;
 }
@@ -115,21 +115,18 @@ html body {
 .left-side .nav {
     display: inline-block;
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
     list-style: none;
-    padding-left: 16px;
+    padding-left: 8px;
     margin: 0px 0;
-}
-
-.left-side .nav li {
-    display: inline-block;
+    width: 100%;
 }
 
 .left-side .nav li {
     color: #fff;
     padding: 20px 16px;
-    width: 200px;
-    display: block;
+    width: 100%;
+    display: inline-block;
     text-decoration: none;
     border-radius: 10px;
     cursor: pointer;
@@ -144,18 +141,18 @@ html body {
 }
 
 .left-side .nav i {
-    width: 30px;
+    padding-left: 8px;
     display: inline-block;
 }
 
 .main {
     margin-left: 15%; /* Same as the width of the left-side */
-    margin-right: 20%; /* Same as the width of the rightsidebar */
+    /* margin-right: 20%; Same as the width of the rightsidebar */
     /* Increased text to enable scrolling */
     /* font-size: 28px;  */
     padding: 0px 32px;
     color: #e8e8e8;
-    width: 75%;
+    width: 80%;
     display: none;
 }
 
@@ -165,12 +162,14 @@ html body {
 
 .main .title-main {
     margin: 32px 0;
+    font-size: 32px;
 }
 
 .main .adding-member {
     display: flex;
-    column-gap: 20px;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .main .adding-avt {
@@ -212,10 +211,10 @@ html body {
     padding-left: 8px;
 }
 
-.main .adding-btn {
+/* .main .adding-btn {
     align-self: end;
     margin-bottom: 10px;
-}
+} */
 
 .member-list {
     padding-top: 64px;
@@ -259,10 +258,11 @@ html body {
     color: #999;
 }
 
-.student-list {
-    margin-left: 15%;
-    width: 60%;
+#student-table {
+    width: 100%;
+    margin-left: 15px;
 }
+
 #student-table th{
     border: 1px solid white;
     color: white;
@@ -299,7 +299,7 @@ html body {
     width: 100%;
 }
 
-.mark td, .mark th {
+td, th {
     border: 1px solid #fff;
     padding: 8px;
     text-align: center;
@@ -319,25 +319,10 @@ html body {
     color: #000;
 }
 
-.mark th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #04AA6D;
-    color: white;
-  }
-
-
   /* Rèn luyện css */
 .work {
     border-collapse: collapse;
     width: 100%;
-}
-
-.work td, .work th {
-    border: 1px solid #fff;
-    padding: 8px;
-    text-align: center;
 }
 
 .work tr {
@@ -354,7 +339,7 @@ html body {
     color: #000;
 }
 
-.work th {
+th { 
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
@@ -581,8 +566,6 @@ p.post-time {
     margin: 64px 48px;
 }
 
-.profile-work{
-}
 .profile-work p{
     font-size: 12px;
     color: #818182;
@@ -628,17 +611,19 @@ p.post-time {
     width: 22%;
 }
 
-.dropdown {
-    position: relative;
+body > .dropdown {
+    position: fixed;
+    top: 13px;
+    right: 16px;
     display: inline-block;
 }
 
 .dropdown .dropbtn {
-    background-color: #04AA6D;
+    background-color: #fff;
     color: white;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     cursor: pointer;
     outline: none;
@@ -656,13 +641,12 @@ p.post-time {
     padding: 8px 16px;
     margin-top: 4px;
     border-radius: 8%;
+    top: 64px;
+    right: 4px;
 }
 
 .dropdown-list.open {
     display: flex;
-}
-
-.dropdown-list li {
 }
 
 .dropdown-list a {
@@ -710,15 +694,14 @@ p.post-time {
 
 .right-nav {
     color: #ccc;
+    position: fixed;
+    top: 24px;
+    right: 92px;
 }
 
 .right-nav i {
     padding-right: 4px;
-}
-
-.right-nav>label {
-    margin-top: 32px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
 }
 
@@ -728,7 +711,16 @@ p.post-time {
 
 .right-nav .class-list {
     list-style-type: none;
+    background-color: #242526;
+    box-shadow: 0 0 2px rgba(192, 192, 192, 0.8);
     display: none;
+    position: absolute;
+    width: 224px;
+    padding: 16px;
+    border-radius: 12px;
+    top: 36px;
+    right: 1px;
+    font-size: 15px;
 }
 
 .right-nav .class-list li {

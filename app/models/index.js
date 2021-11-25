@@ -34,6 +34,9 @@ db.Taikhoan = require('./taikhoan')(sequelize, Sequelize);
 //db.userInfo = require('./userInfo')(sequelize, Sequelize);
 db.Sinhvien = require('./sinhvien')(sequelize, Sequelize);
 db.Covan = require('./covan')(sequelize, Sequelize);
+db.Bangdiem = require('./bangdiem')(sequelize, Sequelize);
+db.Diemrenluyen = require('./diemrenluyen')(sequelize, Sequelize);
+
 
 
 

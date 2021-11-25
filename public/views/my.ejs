@@ -96,6 +96,17 @@
                     <th>Email</th>
                     <th>SĐT</th>
                 </tr>
+                <% for (var i = 0; i < sinhvien.length; i++) { %>
+                    <tr>
+                      <td><%= i+1 %></td>
+                      <td><%= sinhvien[i].mssv %></td>
+                      <td><%= sinhvien[i].hoten %></td>
+                      <td><%= sinhvien[i].ngaysinh %></td>
+                      <td><%= sinhvien[i].malop %></td>
+                      <td><%= sinhvien[i].email %></td>
+                      <td><%= sinhvien[i].sdt %></td>
+                    </tr>    
+                   <% } %>
 
             </table>
         </div>
@@ -120,45 +131,25 @@
                         <th>Mã SV</th>
                         <th>Họ Tên</th>
                         <th>Ngày Sinh</th>
+                        <th>Mã lớp</th>
                         <th>Số TC ĐK</th>
                         <th>ĐTB</th>
-                        <th>Số điểm C</th>
-                        <th>Số điểm C+</th>
-                        <th>Số điểm D</th>
-                        <th>Số điểm D+</th>
-                        <th>Số điểm F</th>
-                        <th>Ghi chú</th>
+                        <th>Cảnh báo học vụ</th>
                     </tr>
 
-                    <tr>
-                        <td>1</td>
-                        <td>19021234</td>
-                        <td>Hà Văn Đạt</td>
-                        <td>01/12/2001</td>
-                        <td>13</td>
-                        <td>1.0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>19021234</td>
-                        <td>Hà Văn Đạt</td>
-                        <td>01/12/2001</td>
-                        <td>13</td>
-                        <td>1.0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td></td>
-                    </tr>
+                    <% for (var i = 0; i < diemSinhVien.length; i++) { %>
+                        <tr>
+                          <td><%= i+1 %></td>
+                          <td><%= diemSinhVien[i].mssv %></td>
+                          <td><%= diemSinhVien[i].hoten %></td>
+                          <td><%= diemSinhVien[i].ngaysinh %></td>
+                          <td><%= diemSinhVien[i].malop %></td>
+                          <td><%= diemSinhVien[i].tinchi %></td>
+                          <td><%= diemSinhVien[i].gpa %></td>
+                          <td><%= diemSinhVien[i].canhbaohocvu %></td>
+                        </tr>    
+                       <% } %>
+                
                 </table>
             </div>
         </div>

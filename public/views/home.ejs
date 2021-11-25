@@ -16,7 +16,7 @@
     </div>
     <img id="logo" src="../assets/img/IMG_8672.png" alt="logo">
 
-    <form action="#">
+    <form method="">
         <h1>Login</h1><br>
         <input type="text" name="username" id="username" placeholder="Username"><br>
         <p class="warning" id="enter-username"></p>
@@ -68,11 +68,10 @@
             }
             return true;
         }
-   
-
 
         const form = document.querySelector('form');
         form.addEventListener('submit', async (e) => {
+            e.preventDefault();
             if(validate()){
                 const username = form.username.value;
                 const password = form.password.value;

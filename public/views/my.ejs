@@ -41,76 +41,127 @@
                 </h1>
                 <% } %>
 
-            <form class="adding-member" action="/add/student" method="post">
-                <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
-                <div class="adding-id-inf col-md-3">
-                    <h2 class="name-inf">MSSV</h2>
-                    <input autocomplete="off" type="text" class="input-inf" name="mssv" placeholder="mã sv" />
-                </div>
-                <div class="adding-name-inf col-md-3">
-                    <h2 class="name-inf">Họ tên</h2>
-                    <input autocomplete="off" type="text" class="input-inf" placeholder="Tên" name="hoten" />
-                </div>
+                    <form class="adding-member" action="/add/student" method="post">
+                        <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
+                        <div class="adding-id-inf col-md-3">
+                            <h2 class="name-inf">MSSV</h2>
+                            <input autocomplete="off" type="text" class="input-inf" name="mssv" placeholder="mã sv" />
+                        </div>
+                        <div class="adding-name-inf col-md-3">
+                            <h2 class="name-inf">Họ tên</h2>
+                            <input autocomplete="off" type="text" class="input-inf" placeholder="Tên" name="hoten" />
+                        </div>
 
-                <div class="adding-name-inf col-md-3">
-                    <h2 class="name-inf">Ngày sinh</h2>
-                    <input autocomplete="off" type="date" class="input-inf"/>
-                </div>
-                <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
-            </form>
+                        <div class="adding-name-inf col-md-3">
+                            <h2 class="name-inf">Ngày sinh</h2>
+                            <input autocomplete="off" type="date" class="input-inf" />
+                        </div>
+                        <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
+                    </form>
 
-            <div class="member-list">
-                <div class="member">
-                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                    <p class="member-name">Name</p>
-                    <p class="member-pos">position</p>
-                </div>
+                    <div class="member-list">
+                        <div class="member">
+                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                            <p class="member-name">Name</p>
+                            <p class="member-pos">position</p>
+                        </div>
 
-                <div class="member">
-                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                    <p class="member-name">Name</p>
-                    <p class="member-pos">position</p>
-                </div>
+                        <div class="member">
+                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                            <p class="member-name">Name</p>
+                            <p class="member-pos">position</p>
+                        </div>
 
-                <div class="member">
-                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                    <p class="member-name">Name</p>
-                    <p class="member-pos">position</p>
-                </div>
+                        <div class="member">
+                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                            <p class="member-name">Name</p>
+                            <p class="member-pos">position</p>
+                        </div>
 
-                <div class="member">
-                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                    <p class="member-name">Name</p>
-                    <p class="member-pos">position</p>
-                </div>
-            </div>
+                        <div class="member">
+                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                            <p class="member-name">Name</p>
+                            <p class="member-pos">position</p>
+                        </div>
+                    </div>
 
-            <!--Bảng danh sách sinh viên-->
-            <table id="student-table">
-                <tr>
-                    <th>STT</th>
-                    <th>MSSV</th>
-                    <th>Họ và tên</th>
-                    <th>Ngày sinh</th>
-                    <th>Lớp khoá học</th>
-                    <th>Email</th>
-                    <th>SĐT</th>
-                </tr>
+                    <input class="form-control ml-3 mt-4 mb-4" id="myInput" type="text" placeholder="Search..">
 
-            </table>
+
+                    <!--Bảng danh sách sinh viên-->
+                    <div class="table-responsive">
+
+                        <table id="student-table" class="ml-3 w-100 table">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>MSSV</th>
+                                    <th>Họ và tên</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Lớp khoá học</th>
+                                    <th>Email</th>
+                                    <th>SĐT</th>
+                                </tr>
+                            </thead>
+                            <tbody class="stu-table-body">
+                                <tr>
+                                    <td>1</td>
+                                    <td>19021234</td>
+                                    <td>Hà Đạt</td>
+                                    <td>1/12/2001</td>
+                                    <td>CACLC2</td>
+                                    <td>john@example.com</td>
+                                    <td>0913230131</td>
+                                </tr>
+    
+                                <tr>
+                                    <td>2</td>
+                                    <td>19021235</td>
+                                    <td>HUY</td>
+                                    <td>1/1/2001</td>
+                                    <td>CACLC2</td>
+                                    <td>john@example.com</td>
+                                    <td>0913230131</td>
+                                </tr>
+    
+                                <tr>
+                                    <td>3</td>
+                                    <td>19021224</td>
+                                    <td>Hà Sơn</td>
+                                    <td>1/2/2001</td>
+                                    <td>CACLC2</td>
+                                    <td>john@example.com</td>
+                                    <td>0913230131</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
         </div>
 
         <!-- Học tập -->
         <div class="main">
             <h1 class="title-main">Học tập</h1>
-            <div class="quater-selection">
-                <label for="quater">Học kỳ:</label>
-                <select>
-                    <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
-                    <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
-                </select>
+            <div class="selections d-flex justify-content-between">
+                <div class="">
+                    <label for="quater">Học kỳ:</label>
+                    <select>
+                        <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
+                        <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
+                        <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
+                        <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
+                    </select>
+                </div>
+
+                <div class="">
+                    <label for="quater">Phân loại:</label>
+                    <select>
+                        <option value="volvo">Tất cả sinh viên</option>
+                        <option value="volvo">Sv có thành tích học tập tốt</option>
+                        <option value="volvo">Sv nguy cơ nghỉ học</option>
+                        <option value="volvo">Sv bị nhắc nhở</option>
+                        <option value="volvo">Sv thiếu tín chỉ</option>
+                    </select>
+                </div>
             </div>
 
             <div class="">
@@ -120,13 +171,8 @@
                         <th>Mã SV</th>
                         <th>Họ Tên</th>
                         <th>Ngày Sinh</th>
-                        <th>Số TC ĐK</th>
+                        <th>GPA</th>
                         <th>ĐTB</th>
-                        <th>Số điểm C</th>
-                        <th>Số điểm C+</th>
-                        <th>Số điểm D</th>
-                        <th>Số điểm D+</th>
-                        <th>Số điểm F</th>
                         <th>Ghi chú</th>
                     </tr>
 
@@ -137,11 +183,6 @@
                         <td>01/12/2001</td>
                         <td>13</td>
                         <td>1.0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
                         <td></td>
                     </tr>
 
@@ -152,11 +193,6 @@
                         <td>01/12/2001</td>
                         <td>13</td>
                         <td>1.0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
                         <td></td>
                     </tr>
                 </table>
@@ -166,7 +202,7 @@
         <!-- Rèn luyện -->
         <div class="main">
             <h1 class="title-main">Rèn luyện</h1>
-            <div class="quater-selection">
+            <div class="selections">
                 <label for="quater">Học kỳ:</label>
                 <select>
                     <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
@@ -329,7 +365,7 @@
                 <div class="row profile-header">
                     <div class="profile-img col-md-4">
                         <img src="../assets/img/IMG_8672.png" alt="" />
-                        <div class="file btn btn-lg btn-primary">
+                        <div class="file btn-lg btn-primary">
                             <i class="ti-camera"></i>
                             <input type="file" name="file" />
                         </div>
@@ -354,7 +390,9 @@
                         </ul>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                        <!-- <div class="profile--btn btn">Edit</div>
+                        <br> -->
+                        <input type="submit" class="btn profile-edit-btn" name="btnAddMore" value="Edit" />
                     </div>
                 </div>
                 <div class="row profile-content">
@@ -371,7 +409,8 @@
                         <a href="">5</a><br /> -->
                     </div>
                     <div class="tab-content profile-tab col-md-8" id="myTabContent">
-                        <div class="tab-pane fade  show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade  show active about" id="home" role="tabpanel"
+                            aria-labelledby="home-tab">
                             <div class="row">
                                 <label class="col-md-6">Họ và tên:</label>
                                 <p class="col-md-6">
@@ -493,48 +532,15 @@
 
 
     <script>
-
-        const addBtnQuestion = document.querySelector('.js-add-question')
-        const questionForm = document.querySelector('.js-question-form')
-        const formQuestionClose = document.querySelector('.js-close-btn')
-
-        const addBtnTodo = document.querySelector('.js-add-todo')
-        const todoForm = document.querySelector('.js-todo-form')
-        const formTodoClose = document.querySelector('.js-close-todo-btn')
-
-        function showQuestionForm() {
-            if (!questionForm.classList.contains('open')) {
-                questionForm.classList.add('open')
-            } else {
-                questionForm.classList.remove('open')
-            }
-        }
-
-        function closeQuestionForm() {
-            questionForm.classList.remove('open')
-        }
-
-        function showTodoForm() {
-            if (!todoForm.classList.contains('open')) {
-                todoForm.classList.add('open')
-            } else {
-                todoForm.classList.remove('open')
-            }
-        }
-
-        function closeTodoForm() {
-            todoForm.classList.remove('open')
-        }
-
-        // addBtnQuestion.addEventListener('click', showQuestionForm);
-
-        formQuestionClose.addEventListener('click', closeQuestionForm);
-
-        // addBtnTodo.addEventListener('click', showTodoForm);
-
-        formTodoClose.addEventListener('click', closeTodoForm);
-
         (function ($) {
+            // Tìm kiếm sinh viên
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $(".stu-table-body tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
             // hiển thị dropdown 
             $('.js-dropbtn').click(function (e) {
                 e.stopPropagation();
@@ -589,16 +595,49 @@
                 $('.class-list li').not($(this)).removeClass('active');
             });
 
+            // chọn phần bên nav 
             $('.nav li').click(function () {
                 $(this).addClass('active')
                 $('.nav li').not($(this)).removeClass('active');
                 $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
             });
 
+            // hiển thị profile
             $('li .profile').click(function () {
                 $('.nav li').removeClass('active');
                 $('.main:last-of-type').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
             });
+
+
+            //edit prơfile
+            var editBtn = $('.profile-edit-btn');
+            var contents = $(".about p");
+            delete contents.length;
+            delete contents.prevObject;
+
+            // window.onload = function () {
+            //     if (localStorage.getItem('content')) {
+            //         document.querySelector('.content').innerHTML = localStorage.getItem('content');
+            //     }
+            // }
+
+            editBtn.click(function (e) {
+                e.preventDefault();
+                for (const [key, value] of Object.entries(contents)) {
+                    content = value;
+                    content.contentEditable = !content.isContentEditable;
+                    if (content.contentEditable === 'false') {
+                        content.style.background = 'none';
+                        content.style.color = '#fff';
+                        // localStorage.setItem('content', content.innerHTML);
+                    } else {
+                        content.style.background = '#fff';
+                        content.style.color = '#0062cc';
+                        content.value = "Save";
+                    }
+                }
+            });
+
         })(jQuery);
     </script>
 

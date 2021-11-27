@@ -54,7 +54,7 @@
 
                 <div class="adding-name-inf col-md-3">
                     <h2 class="name-inf">Ngày sinh</h2>
-                    <input autocomplete="off" type="date" class="input-inf"/>
+                    <input autocomplete="off" type="date" class="input-inf" name="ngaysinh"/>
                 </div>
                 <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
             </form>
@@ -174,6 +174,7 @@
                         <th>Mã SV</th>
                         <th>Họ Tên</th>
                         <th>Ngày Sinh</th>
+                        <th>Mã lớp</th>
                         <th>Ý thức học tập</th>
                         <th>Chấp hành nội quy</th>
                         <th>Tham gia hoạt động</th>
@@ -181,32 +182,23 @@
                         <th>Phụ trách lớp</th>
                         <th>Tổng</th>
                     </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>19021234</td>
-                        <td>Hà Văn Đạt</td>
-                        <td>01/12/2001</td>
-                        <td>30</td>
-                        <td>20</td>
-                        <td>15</td>
-                        <td>15</td>
-                        <td>0</td>
-                        <td>80</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>19021234</td>
-                        <td>Hà Văn Đạt</td>
-                        <td>01/12/2001</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                   
+                    <% for (var i = 0; i < diemRenLuyen.length; i++) { %>
+                        <tr>
+                          <td><%= i+1 %></td>
+                          <td><%= diemRenLuyen[i].mssv %></td>
+                          <td><%= diemRenLuyen[i].hoten %></td>
+                          <td><%= diemRenLuyen[i].ngaysinh %></td>
+                          <td><%= diemRenLuyen[i].malop %></td>
+                          <td><%= diemRenLuyen[i].diemrenluyen['ythuc'] %></td>
+                          <td><%= diemRenLuyen[i].diemrenluyen['noiquy'] %></td>
+                          <td><%= diemRenLuyen[i].diemrenluyen['hoatdong'] %></td>
+                          <td><%= diemRenLuyen[i].diemrenluyen['phamchat'] %></td>
+                          <td><%= diemRenLuyen[i].diemrenluyen['phutrachlop'] %></td>
+                          <td><%= diemRenLuyen[i].diemrenluyen['ythuc'] + diemRenLuyen[i].diemrenluyen['noiquy'] + diemRenLuyen[i].diemrenluyen['hoatdong'] + diemRenLuyen[i].diemrenluyen['phamchat'] + diemRenLuyen[i].diemrenluyen['phutrachlop'] %></td>
+                        </tr>    
+                       <% } %>
+                    
                 </table>
             </div>
         </div>

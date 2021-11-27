@@ -39,6 +39,9 @@ function route(app){
     app.get('/upload', (req, res) => {
         res.render('testUpload')
     })
+    app.post('/add/student', (req, res) => {
+        controller.addStudent
+    })
 
     //POST: Upload ảnh và lưu vào db
     const upload = require('../middleware/upload');

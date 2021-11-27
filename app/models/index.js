@@ -37,6 +37,9 @@ db.Covan = require('./covan')(sequelize, Sequelize);
 db.Bangdiem = require('./bangdiem')(sequelize, Sequelize);
 db.Diemrenluyen = require('./diemrenluyen')(sequelize, Sequelize);
 
+db.Diemrenluyen.belongsTo(db.Sinhvien, {foreignKey: 'mssv'});
+db.Sinhvien.hasOne(db.Diemrenluyen, {foreignKey: 'mssv'});
+
 
 
 

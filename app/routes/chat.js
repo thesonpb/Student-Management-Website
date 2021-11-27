@@ -14,7 +14,7 @@ function chatBox(app){
 
     io.on('connection', socket => {
         socket.on('new-user', username => {
-            users[socket.id] = username
+            users[socket.id] = username;
         })
         socket.on('send-chat-message', message => {
             socket.broadcast.emit('chat-message', { message: message, username: users[socket.id] })

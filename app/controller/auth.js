@@ -52,7 +52,8 @@ const login = async (req, res) => {
 
         //************************************************************************************************************************
         //response trả về khi tìm thấy người dùng
-        res.status(200).json({
+        
+        return res.status(200).json({
             username: user.tennguoidung,
             role: user.vaitro,
             accessToken: token,

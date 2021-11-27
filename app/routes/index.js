@@ -21,14 +21,13 @@ function route(app){
     //**********************************************************************************************
     //POST: Điều hướng đăng nhập khi submit
     app.post("/login", controller.login);
-
-    //Kiểm tra xem user có hợp lệ không với tất cả phương thức get
-    app.get('*', authJwt.checkUser);
     //GET: Điều hướng đăng xuất
     app.get('/logout', controller.logout);
     //**********************************************************************************************
 
 
+     //Kiểm tra xem user có hợp lệ không với tất cả phương thức get
+     app.get('*', authJwt.checkUser);
     //**********************************************************************************************
     //GET: Điều hướng đến trang cá nhân cua ban than
     app.get('/my',authJwt.verifyToken, controller.getUserInfo);
@@ -49,7 +48,7 @@ function route(app){
         console.log("File: " + req.file.filename);
         res.send("success")
     })
-
+    app.get('/download', controller.exportExcel)
 
     //********************************************************************************************* */
     //Route: Chức năng chat giữ giảng viên và sv
@@ -86,7 +85,6 @@ function route(app){
         }else{
             res.render('home');
         }
-        //res.render('home');
     })
     //**********************************************************************************************
 }

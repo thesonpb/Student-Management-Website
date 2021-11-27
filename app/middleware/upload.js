@@ -17,7 +17,7 @@ const excelFilter = (req, file, cb) => {
 // Cấu hình multer để sử dụng Disk Storage egine để lưu file excel
 const excelStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, appRoot + '/public/assets/uploads/');
+        cb(null, appRoot + '/public/assets/uploads/excel');
     },
     filename: (req, file, cb) => {
         let fileName = file.originalname.replace(/ /g,'');

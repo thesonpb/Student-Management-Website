@@ -7,5 +7,7 @@ module.exports = {
     logout: auth.logout,
     getUserInfo: user.getUserInfo,
     getProfile: profile.getProfile,
+    
     upload : excel.upload,
+    exportExcel: excel.exportExcel,
 }

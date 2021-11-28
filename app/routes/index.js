@@ -1,17 +1,22 @@
 const controller = require('../controller/index');
 const authJwt = require('../middleware/authJWT');
+const bodyParser = require('body-parser');
 
 
-function route(app){
-    
-    app.use(function(req, res, next) {
+function route(app) {
+
+    app.use(function (req, res, next) {
         res.header(
             "Access-Control-Allow-Headers",
             "x-access-token, Origin, Content-Type, Accept"
         );
         next();
-      });
+    });
 
+    app.use(bodyParser.json());       
+    app.use(bodyParser.urlencoded({   
+        extended: true
+    }));
 
     //Phần đăng nhập
     //**********************************************************************************************
@@ -27,9 +32,9 @@ function route(app){
 
     //**********************************************************************************************
     //GET: Điều hướng đến trang cá nhân cua ban than
-    app.get('/my',authJwt.verifyToken, controller.getUserInfo);
+    app.get('/my', authJwt.verifyToken, controller.getUserInfo);
 
-
+    app.post('/myclass', authJwt.verifyToken, controller.getTeacherInfo);
     //**********************************************************************************************
     //GET: Lấy profile
     app.get('/profile', controller.getProfile)
@@ -42,6 +47,7 @@ function route(app){
     app.post('/add/student', (req, res) => {
         controller.addStudent
     })
+    app.get('/hoctap', controller.hoctap)
 
     //POST: Upload ảnh và lưu vào db
     const upload = require('../middleware/upload');
@@ -52,9 +58,9 @@ function route(app){
     //**********************************************************************************************
     //GET: Điều hướng đến trang chủ
     app.get('/', (req, res) => {
-        if(req.cookies.jwt){
+        if (req.cookies.jwt) {
             res.redirect('/my');
-        }else{
+        } else {
             res.render('home');
         }
         //res.render('home');

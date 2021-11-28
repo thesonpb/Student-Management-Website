@@ -7,39 +7,30 @@ const Lophoc = db.Lophoc;
 const { QueryTypes, Sequelize } = require('sequelize');
 
 //
-const getUserInfo = async (req, res) => {
-    const username = res.locals.user.tennguoidung;
-    const userRole = res.locals.user.vaitro;
-    let sinhviens = null;
-    let drl = null;
-    let diemsinhvien = null;
-    let classId = null;
+const teacherInfo = async (req, res) => {
+    // const username = res.locals.user.tennguoidung;
+    const username = req.body.emailcovan;
     let userInfo = '';
-    classId = await Lophoc.findAll({
+    let malop = req.body.class;
+    const classId = await Lophoc.findAll({
         where: { emailcovan: username },
         attributes: ['malop'],
         raw: true
     });
-    let malop = classId[0].malop;
-    if (userRole == 'sinhvien') {
-        userInfo = await Sinhvien.findByPk(username);
-        userInfo.dataValues.role = 'sinhvien';
-    } else if (userRole == 'covan') {
-        userInfo = await Covan.findByPk(username);
-        userInfo.dataValues.role = 'covan';
-    }
-    sinhviens = await Sinhvien.findAll({
+    userInfo = await Covan.findByPk(username);
+    userInfo.dataValues.role = 'covan';
+    const sinhviens = await Sinhvien.findAll({
         where: { malop: malop },
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt'],
         raw: true
     });
 
-    diemsinhvien = await Bangdiem.findAll({
+    const diemsinhvien = await Bangdiem.findAll({
         where: { malop: malop },
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'tinchi', 'gpa', 'canhbaohocvu'],
         raw: true
     });
-    drl = await Sinhvien.findAll({
+    const drl = await Sinhvien.findAll({
         where: { malop: malop },
         include: [
             {
@@ -53,6 +44,7 @@ const getUserInfo = async (req, res) => {
         ],
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
     });
+    
     userInfo.dataValues.sinhvien = sinhviens;
     userInfo.dataValues.diemSinhVien = diemsinhvien;
     userInfo.dataValues.diemRenLuyen = drl;
@@ -64,7 +56,7 @@ const getUserInfo = async (req, res) => {
 const changeUserInfo = '';
 
 const user = {
-    getUserInfo: getUserInfo,
+    teacherInfo: teacherInfo,
 }
 
 module.exports = user;

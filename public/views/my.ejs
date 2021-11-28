@@ -41,87 +41,125 @@
                 </h1>
                 <% } %>
 
-            <form class="adding-member" action="/add/student" method="post">
-                <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
-                <div class="adding-id-inf col-md-3">
-                    <h2 class="name-inf">MSSV</h2>
-                    <input autocomplete="off" type="text" class="input-inf" name="mssv" placeholder="mã sv" />
-                </div>
-                <div class="adding-name-inf col-md-3">
-                    <h2 class="name-inf">Họ tên</h2>
-                    <input autocomplete="off" type="text" class="input-inf" placeholder="Tên" name="hoten" />
-                </div>
+                    <form class="adding-member" action="/add/student" method="post">
+                        <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
+                        <div class="adding-id-inf col-md-3">
+                            <h2 class="name-inf">MSSV</h2>
+                            <input autocomplete="off" type="text" class="input-inf" name="mssv" placeholder="mã sv" />
+                        </div>
+                        <div class="adding-name-inf col-md-3">
+                            <h2 class="name-inf">Họ tên</h2>
+                            <input autocomplete="off" type="text" class="input-inf" placeholder="Tên" name="hoten" />
+                        </div>
 
-                <div class="adding-name-inf col-md-3">
-                    <h2 class="name-inf">Ngày sinh</h2>
-                    <input autocomplete="off" type="date" class="input-inf" name="ngaysinh"/>
-                </div>
-                <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
-            </form>
+                        <div class="adding-name-inf col-md-3">
+                            <h2 class="name-inf">Ngày sinh</h2>
+                            <input autocomplete="off" type="date" class="input-inf" />
+                        </div>
+                        <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
+                    </form>
 
-            <div class="member-list">
-                <div class="member">
-                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                    <p class="member-name">Name</p>
-                    <p class="member-pos">position</p>
-                </div>
+                    <div class="member-list">
+                        <div class="member">
+                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                            <p class="member-name">Name</p>
+                            <p class="member-pos">position</p>
+                        </div>
 
-                <div class="member">
-                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                    <p class="member-name">Name</p>
-                    <p class="member-pos">position</p>
-                </div>
+                        <div class="member">
+                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                            <p class="member-name">Name</p>
+                            <p class="member-pos">position</p>
+                        </div>
 
-                <div class="member">
-                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                    <p class="member-name">Name</p>
-                    <p class="member-pos">position</p>
-                </div>
+                        <div class="member">
+                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                            <p class="member-name">Name</p>
+                            <p class="member-pos">position</p>
+                        </div>
 
-                <div class="member">
-                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                    <p class="member-name">Name</p>
-                    <p class="member-pos">position</p>
-                </div>
-            </div>
+                        <div class="member">
+                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                            <p class="member-name">Name</p>
+                            <p class="member-pos">position</p>
+                        </div>
+                    </div>
 
-            <!--Bảng danh sách sinh viên-->
-            <table id="student-table">
-                <tr>
-                    <th>STT</th>
-                    <th>MSSV</th>
-                    <th>Họ và tên</th>
-                    <th>Ngày sinh</th>
-                    <th>Lớp khoá học</th>
-                    <th>Email</th>
-                    <th>SĐT</th>
-                </tr>
-                <% for (var i = 0; i < sinhvien.length; i++) { %>
-                    <tr>
-                      <td><%= i+1 %></td>
-                      <td><%= sinhvien[i].mssv %></td>
-                      <td><%= sinhvien[i].hoten %></td>
-                      <td><%= sinhvien[i].ngaysinh %></td>
-                      <td><%= sinhvien[i].malop %></td>
-                      <td><%= sinhvien[i].email %></td>
-                      <td><%= sinhvien[i].sdt %></td>
-                    </tr>    
-                   <% } %>
+                    <input class="form-control ml-3 mt-4 mb-4" id="myInput" type="text" placeholder="Search..">
 
-            </table>
+
+                    <!--Bảng danh sách sinh viên-->
+                    <div class="table-responsive">
+
+                        <table id="student-table" class="ml-3 w-100 table">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>MSSV</th>
+                                    <th>Họ và tên</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Lớp khoá học</th>
+                                    <th>Email</th>
+                                    <th>SĐT</th>
+                                </tr>
+                            </thead>
+                            <tbody class="stu-table-body">
+                                <% if(sinhvien) { %>
+                                    <% for (var i=0; i < sinhvien.length; i++) { %>
+                                        <tr>
+                                            <td>
+                                                <%= i+1 %>
+                                            </td>
+                                            <td>
+                                                <%= sinhvien[i].mssv %>
+                                            </td>
+                                            <td>
+                                                <%= sinhvien[i].hoten %>
+                                            </td>
+                                            <td>
+                                                <%= sinhvien[i].ngaysinh %>
+                                            </td>
+                                            <td>
+                                                <%= sinhvien[i].malop %>
+                                            </td>
+                                            <td>
+                                                <%= sinhvien[i].email %>
+                                            </td>
+                                            <td>
+                                                <%= sinhvien[i].sdt %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
         </div>
 
         <!-- Học tập -->
         <div class="main">
             <h1 class="title-main">Học tập</h1>
-            <div class="quater-selection">
-                <label for="quater">Học kỳ:</label>
-                <select>
-                    <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
-                    <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
-                </select>
+            <div class="selections d-flex justify-content-between">
+                <form class="" action="/hoctap" method="get">
+                    <label for="hocky">Học kỳ:</label>
+                    <select name="hocky" onchange='if(this.value != 0) { this.form.submit(); }'>
+                        <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
+                        <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
+                        <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
+                        <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
+                    </select>
+                </form>
+
+                <form class="" action="/classify" method="get">
+                    <label for="classify">Phân loại:</label>
+                    <select name="classify" onchange='if(this.value != 0) { this.form.submit(); }'>
+                        <option value="volvo">Tất cả sinh viên</option>
+                        <option value="volvo">Sv có thành tích học tập tốt</option>
+                        <option value="volvo">Sv nguy cơ nghỉ học</option>
+                        <option value="volvo">Sv bị nhắc nhở</option>
+                        <option value="volvo">Sv thiếu tín chỉ</option>
+                    </select>
+                </form>
             </div>
 
             <div class="">
@@ -132,24 +170,41 @@
                         <th>Họ Tên</th>
                         <th>Ngày Sinh</th>
                         <th>Mã lớp</th>
-                        <th>Số TC ĐK</th>
-                        <th>ĐTB</th>
+                        <th>Tín chỉ</th>
+                        <th>GPA</th>
                         <th>Cảnh báo học vụ</th>
                     </tr>
+                    <% if(diemSinhVien) { %>
+                        <% for (var i=0; i < diemSinhVien.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= i+1 %>
+                                </td>
+                                <td>
+                                    <%= diemSinhVien[i].mssv %>
+                                </td>
+                                <td>
+                                    <%= diemSinhVien[i].hoten %>
+                                </td>
+                                <td>
+                                    <%= diemSinhVien[i].ngaysinh %>
+                                </td>
+                                <td>
+                                    <%= diemSinhVien[i].malop %>
+                                </td>
+                                <td>
+                                    <%= diemSinhVien[i].tinchi %>
+                                </td>
+                                <td>
+                                    <%= diemSinhVien[i].gpa %>
+                                </td>
+                                <td>
+                                    <%= diemSinhVien[i].canhbaohocvu %>
+                                </td>
+                            </tr>
+                            <% } %>
+                                <% } %>
 
-                    <% for (var i = 0; i < diemSinhVien.length; i++) { %>
-                        <tr>
-                          <td><%= i+1 %></td>
-                          <td><%= diemSinhVien[i].mssv %></td>
-                          <td><%= diemSinhVien[i].hoten %></td>
-                          <td><%= diemSinhVien[i].ngaysinh %></td>
-                          <td><%= diemSinhVien[i].malop %></td>
-                          <td><%= diemSinhVien[i].tinchi %></td>
-                          <td><%= diemSinhVien[i].gpa %></td>
-                          <td><%= diemSinhVien[i].canhbaohocvu %></td>
-                        </tr>    
-                       <% } %>
-                
                 </table>
             </div>
         </div>
@@ -157,15 +212,15 @@
         <!-- Rèn luyện -->
         <div class="main">
             <h1 class="title-main">Rèn luyện</h1>
-            <div class="quater-selection">
-                <label for="quater">Học kỳ:</label>
-                <select>
+            <form class="selections" method="get" action="/renluyen">
+                <label for="hockyrenluyen">Học kỳ:</label>
+                <select name="hockyrenluyen" onchange='if(this.value != 0) { this.form.submit(); }'>
                     <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
                     <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
                     <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
                     <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
                 </select>
-            </div>
+            </form>
 
             <div class="">
                 <table class="work">
@@ -182,23 +237,48 @@
                         <th>Phụ trách lớp</th>
                         <th>Tổng</th>
                     </tr>
-                   
-                    <% for (var i = 0; i < diemRenLuyen.length; i++) { %>
-                        <tr>
-                          <td><%= i+1 %></td>
-                          <td><%= diemRenLuyen[i].mssv %></td>
-                          <td><%= diemRenLuyen[i].hoten %></td>
-                          <td><%= diemRenLuyen[i].ngaysinh %></td>
-                          <td><%= diemRenLuyen[i].malop %></td>
-                          <td><%= diemRenLuyen[i].diemrenluyen['ythuc'] %></td>
-                          <td><%= diemRenLuyen[i].diemrenluyen['noiquy'] %></td>
-                          <td><%= diemRenLuyen[i].diemrenluyen['hoatdong'] %></td>
-                          <td><%= diemRenLuyen[i].diemrenluyen['phamchat'] %></td>
-                          <td><%= diemRenLuyen[i].diemrenluyen['phutrachlop'] %></td>
-                          <td><%= diemRenLuyen[i].diemrenluyen['ythuc'] + diemRenLuyen[i].diemrenluyen['noiquy'] + diemRenLuyen[i].diemrenluyen['hoatdong'] + diemRenLuyen[i].diemrenluyen['phamchat'] + diemRenLuyen[i].diemrenluyen['phutrachlop'] %></td>
-                        </tr>    
-                       <% } %>
-                    
+                    <% if(diemRenLuyen) { %>
+                        <% for (var i=0; i < diemRenLuyen.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= i+1 %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].mssv %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].hoten %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].ngaysinh %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].malop %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].diemrenluyen['ythuc'] %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].diemrenluyen['noiquy'] %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].diemrenluyen['hoatdong'] %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].diemrenluyen['phamchat'] %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
+                                </td>
+                                <td>
+                                    <%= diemRenLuyen[i].diemrenluyen['ythuc'] + diemRenLuyen[i].diemrenluyen['noiquy'] +
+                                        diemRenLuyen[i].diemrenluyen['hoatdong'] +
+                                        diemRenLuyen[i].diemrenluyen['phamchat'] +
+                                        diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
+                                </td>
+                            </tr>
+                            <% } %>
+                                <% } %>
                 </table>
             </div>
         </div>
@@ -312,7 +392,7 @@
                 <div class="row profile-header">
                     <div class="profile-img col-md-4">
                         <img src="../assets/img/IMG_8672.png" alt="" />
-                        <div class="file btn btn-lg btn-primary">
+                        <div class="file btn-lg btn-primary">
                             <i class="ti-camera"></i>
                             <input type="file" name="file" />
                         </div>
@@ -337,7 +417,9 @@
                         </ul>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                        <!-- <div class="profile--btn btn">Edit</div>
+                        <br> -->
+                        <input type="submit" class="btn profile-edit-btn" name="btnAddMore" value="Edit" />
                     </div>
                 </div>
                 <div class="row profile-content">
@@ -354,56 +436,64 @@
                         <a href="">5</a><br /> -->
                     </div>
                     <div class="tab-content profile-tab col-md-8" id="myTabContent">
-                        <div class="tab-pane fade  show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade  show active about" id="home" role="tabpanel"
+                            aria-labelledby="home-tab">
                             <div class="row">
                                 <label class="col-md-6">Họ và tên:</label>
                                 <p class="col-md-6">
                                     <%= hoten %>
                                 </p>
                             </div>
-                            <div class="row">
-                                <label class="col-md-6"> Mã số sinh viên:</label>
-                                <p class="col-md-6">
-                                    <%= mssv %>
-                                </p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Khoa:</label>
-                                <p class="col-md-6">
-                                    <%= khoa %>
-                                </p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Lớp:</label>
-                                <p class="col-md-6">
-                                    <%= malop %>
-                                </p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Email:</label>
-                                <p class="col-md-6">
-                                    <%= email %>
-                                </p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Số điện thoại:</label>
-                                <p class="col-md-6">
-                                    <%= sdt %>
-                                </p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Số tín chỉ:</label>
-                                <p class="col-md-6">
-                                    <%= tinchi %>
-                                </p>
-                            </div>
-
-                            <div class="row">
-                                <label class="col-md-6">GPA:</label>
-                                <p class="col-md-6">
-                                    <%= gpa %>
-                                </p>
-                            </div>
+                            <% if(role=='sinhvien' ) { %>
+                                <div class="row">
+                                    <label class="col-md-6"> Mã số sinh viên:</label>
+                                    <p class="col-md-6">
+                                        <%= mssv %>
+                                    </p>
+                                </div>
+                                <% } %>
+                                    <div class="row">
+                                        <label class="col-md-6">Khoa:</label>
+                                        <p class="col-md-6">
+                                            <%= khoa %>
+                                        </p>
+                                    </div>
+                                    <% if(role=='sinhvien' ) { %>
+                                        <div class="row">
+                                            <label class="col-md-6">Lớp:</label>
+                                            <p class="col-md-6">
+                                                <%= malop %>
+                                            </p>
+                                        </div>
+                                        <% } %>
+                                            <div class="row">
+                                                <label class="col-md-6">Email:</label>
+                                                <p class="col-md-6">
+                                                    <%= email %>
+                                                </p>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-md-6">Số điện thoại:</label>
+                                                <p class="col-md-6">
+                                                    <%= sdt %>
+                                                </p>
+                                            </div>
+                                            <% if(role=='sinhvien' ) { %>
+                                                <div class="row">
+                                                    <label class="col-md-6">Số tín chỉ:</label>
+                                                    <p class="col-md-6">
+                                                        <%= tinchi %>
+                                                    </p>
+                                                </div>
+                                                <% } %>
+                                                    <% if(role=='sinhvien' ) { %>
+                                                        <div class="row">
+                                                            <label class="col-md-6">GPA:</label>
+                                                            <p class="col-md-6">
+                                                                <%= gpa %>
+                                                            </p>
+                                                        </div>
+                                                        <% } %>
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="row">
@@ -449,122 +539,137 @@
                         <%= hoten %>
                     </label>
                 </a></li>
-            <hr>
-            <li><a href="#">Kết quả học tập</a></li>
-            <li><a href="#">Điểm rèn luyện</a></li>
-
-            <hr>
-            <li><a href="#">Cài đặt</a></li>
-            <li><a href="/logout">Đăng xuất</a></li>
+            <% if(role=='sinhvien' ) { %>
+                <hr>
+                <li><a href="#">Kết quả học tập</a></li>
+                <li><a href="#">Điểm rèn luyện</a></li>
+                <% } %>
+                    <hr>
+                    <li><a href="#">Cài đặt</a></li>
+                    <li><a href="/logout">Đăng xuất</a></li>
         </ul>
     </div>
+    <% if(role=='covan' ) { %>
+        <form class="right-nav" method="post" action="/myclass">
+            <% if(username) { %>
 
-    <div class="right-nav">
-        <label for=""><i class="ti-list"></i></label>
-        <ul class="class-list">
-            <li data-rel="1" class="active"><i class="ti-angle-right"></i>QHI-2019-CA-CLC-1</li>
-            <li data-rel="2" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-2</li>
-            <li data-rel="3" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-3</li>
-            <li data-rel="4" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-4</li>
-            <li data-rel="5" class=""><i class="ti-angle-right"></i>QHI-2019-CA-CLC-5</li>
-        </ul>
-    </div>
-    <!-- rightsidebar -->
-    <!-- <div class="rightsidebar">
+                <input name="emailcovan" type="hidden" value="<%= username %>">
+                <% } %>
+                    <label for="class"><i class="ti-list"></i></label>
+                    <select name="class" class="class-list" onchange='if(this.value != 0) { this.form.submit(); }'>
+                        <option value="" selected="selected">--Chọn mã lớp học--</option>
+                        <% if(classId) { %>
+                            <% for (var i=0; i < classId.length; i++) { %>
+                                <option data-rel="1"><i class="ti-angle-right"></i>
+                                    <%= classId[i].malop %>
+                                </option>
+                                <% } %>
+                                    <% } %>
+                    </select>
+        </form>
+        <% } %>
+            <!-- rightsidebar -->
+            <!-- <div class="rightsidebar">
         
     </div> -->
 
 
-    <script>
-        const addBtnQuestion = document.querySelector('.js-add-question')
-        const questionForm = document.querySelector('.js-question-form')
-        const formQuestionClose = document.querySelector('.js-close-btn')
-        const addBtnTodo = document.querySelector('.js-add-todo')
-        const todoForm = document.querySelector('.js-todo-form')
-        const formTodoClose = document.querySelector('.js-close-todo-btn')
-        function showQuestionForm() {
-            if (!questionForm.classList.contains('open')) {
-                questionForm.classList.add('open')
-            } else {
-                questionForm.classList.remove('open')
-            }
-        }
-        function closeQuestionForm() {
-            questionForm.classList.remove('open')
-        }
-        function showTodoForm() {
-            if (!todoForm.classList.contains('open')) {
-                todoForm.classList.add('open')
-            } else {
-                todoForm.classList.remove('open')
-            }
-        }
-        function closeTodoForm() {
-            todoForm.classList.remove('open')
-        }
-        // addBtnQuestion.addEventListener('click', showQuestionForm);
-        formQuestionClose.addEventListener('click', closeQuestionForm);
-        // addBtnTodo.addEventListener('click', showTodoForm);
-        formTodoClose.addEventListener('click', closeTodoForm);
-        (function ($) {
-            // hiển thị dropdown 
-            $('.js-dropbtn').click(function (e) {
-                e.stopPropagation();
-                var droplist = $('.js-drop-item');
-                if (droplist.css('display') === 'none') {
-                    droplist.css({ "display": "block" });
-                } else {
-                    $('.js-drop-item').fadeOut(200);
-                }
-            })
-            $(document).click(function (e) {
-                $('.js-drop-item').fadeOut(200);
-            });
-            // hiển thị đăng công việc
-            $('.js-add-todo').click(function (e) {
-                e.stopPropagation();
-                var todoForm = $('.js-todo-form');
-                console.log(todoForm.css('display'))
-                if (todoForm.css('display') === 'none') {
-                    todoForm.css({ "display": "block" });
-                } else {
-                    todoForm.fadeOut(100);
-                }
-            })
-            $('.js-close-todo-btn').click(function (e) {
-                $('.js-todo-form').fadeOut(100);
-            })
-            // hiển thị đăng câu hỏi diễn đàn
-            $('.js-add-question').click(function (e) {
-                e.stopPropagation();
-                var quesForm = $('.js-question-form');
-                console.log(quesForm.css('display'))
-                if (quesForm.css('display') === 'none') {
-                    quesForm.css({ "display": "block" });
-                } else {
-                    quesForm.fadeOut(100);
-                }
-            })
-            $('.js-close-btn').click(function (e) {
-                e.stopPropagation();
-                $('.js-question-form').fadeOut(100);
-            })
-            // chọn lớp học
-            $('.class-list li').click(function () {
-                $(this).addClass('active')
-                $('.class-list li').not($(this)).removeClass('active');
-            });
-            $('.nav li').click(function () {
-                $(this).addClass('active')
-                $('.nav li').not($(this)).removeClass('active');
-                $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
-            });
-            $('li .profile').click(function () {
-                $('.nav li').removeClass('active');
-                $('.main:last-of-type').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
-            });
-        })(jQuery);
-    </script>
+            <script>
+                (function ($) {
+                    // Tìm kiếm sinh viên
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $(".stu-table-body tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                    // hiển thị dropdown 
+                    $('.js-dropbtn').click(function (e) {
+                        e.stopPropagation();
+                        var droplist = $('.js-drop-item');
+                        if (droplist.css('display') === 'none') {
+                            droplist.css({ "display": "block" });
+                        } else {
+                            $('.js-drop-item').fadeOut(200);
+                        }
+                    })
+                    $(document).click(function (e) {
+                        $('.js-drop-item').fadeOut(200);
+                    });
+                    // hiển thị đăng công việc
+                    $('.js-add-todo').click(function (e) {
+                        e.stopPropagation();
+                        var todoForm = $('.js-todo-form');
+                        console.log(todoForm.css('display'))
+                        if (todoForm.css('display') === 'none') {
+                            todoForm.css({ "display": "block" });
+                        } else {
+                            todoForm.fadeOut(100);
+                        }
+                    })
+                    $('.js-close-todo-btn').click(function (e) {
+                        $('.js-todo-form').fadeOut(100);
+                    })
+                    // hiển thị đăng câu hỏi diễn đàn
+                    $('.js-add-question').click(function (e) {
+                        e.stopPropagation();
+                        var quesForm = $('.js-question-form');
+                        console.log(quesForm.css('display'))
+                        if (quesForm.css('display') === 'none') {
+                            quesForm.css({ "display": "block" });
+                        } else {
+                            quesForm.fadeOut(100);
+                        }
+                    })
+                    $('.js-close-btn').click(function (e) {
+                        e.stopPropagation();
+                        $('.js-question-form').fadeOut(100);
+                    })
+                    // chọn lớp học
+                    $('.class-list li').click(function () {
+                        $(this).addClass('active')
+                        $('.class-list li').not($(this)).removeClass('active');
+                    });
+                    // chọn phần bên nav 
+                    $('.nav li').click(function () {
+                        $(this).addClass('active')
+                        $('.nav li').not($(this)).removeClass('active');
+                        $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
+                    });
+                    // hiển thị profile
+                    $('li .profile').click(function () {
+                        $('.nav li').removeClass('active');
+                        $('.main:last-of-type').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
+                    });
+                    //edit prơfile
+                    var editBtn = $('.profile-edit-btn');
+                    var contents = $(".about p");
+                    delete contents.length;
+                    delete contents.prevObject;
+                    // window.onload = function () {
+                    //     if (localStorage.getItem('content')) {
+                    //         document.querySelector('.content').innerHTML = localStorage.getItem('content');
+                    //     }
+                    // }
+                    editBtn.click(function (e) {
+                        e.preventDefault();
+                        for (const [key, value] of Object.entries(contents)) {
+                            content = value;
+                            content.contentEditable = !content.isContentEditable;
+                            if (content.contentEditable === 'false') {
+                                content.style.background = 'none';
+                                content.style.color = '#fff';
+                                // localStorage.setItem('content', content.innerHTML);
+                            } else {
+                                content.style.background = '#fff';
+                                content.style.color = '#0062cc';
+                                content.value = "Save";
+                            }
+                        }
+                    });
+                })(jQuery);
+                
+            </script>
 
 </body>
 

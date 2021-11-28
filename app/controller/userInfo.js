@@ -15,18 +15,22 @@ const getUserInfo = async (req, res) => {
     let diemsinhvien = null;
     let classId = null;
     let userInfo = '';
-    classId = await Lophoc.findAll({
-        where: { emailcovan: username },
-        attributes: ['malop'],
-        raw: true
-    });
-    let malop = classId[0].malop;
+    let malop = '';
+
     if (userRole == 'sinhvien') {
         userInfo = await Sinhvien.findByPk(username);
         userInfo.dataValues.role = 'sinhvien';
+        malop = userInfo.dataValues.malop;
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);
         userInfo.dataValues.role = 'covan';
+        classId = await Lophoc.findAll({
+            where: { emailcovan: username },
+            attributes: ['malop'],
+            raw: true
+        });
+        malop = classId[0].malop;
+
     }
     sinhviens = await Sinhvien.findAll({
         where: { malop: malop },

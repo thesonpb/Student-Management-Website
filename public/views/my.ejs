@@ -41,6 +41,7 @@
                 </h1>
                 <% } %>
 
+                <% if(role=='covan') { %>
                     <form class="adding-member" action="/add/student" method="post">
                         <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
                         <div class="adding-id-inf col-md-3">
@@ -58,7 +59,7 @@
                         </div>
                         <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
                     </form>
-
+                    <% } %>
                     <div class="member-list">
                         <div class="member">
                             <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
@@ -149,7 +150,7 @@
                         <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
                     </select>
                 </form>
-
+                <% if(role == 'covan') { %>
                 <form class="" action="/classify" method="get">
                     <label for="classify">Phân loại:</label>
                     <select name="classify" onchange='if(this.value != 0) { this.form.submit(); }'>
@@ -160,6 +161,7 @@
                         <option value="volvo">Sv thiếu tín chỉ</option>
                     </select>
                 </form>
+                <% } %>
             </div>
 
             <div class="">
@@ -286,6 +288,7 @@
         <!-- Công việc -->
         <div class="main">
             <h1 class="title-main">Công việc</h1>
+            <% if(role=='covan') { %>
             <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
             <form action="/upload/task" class="form js-todo-form" method="post">
                 <label for="">Tiêu đề</label>
@@ -306,7 +309,7 @@
                     <div class="btn js-close-todo-btn">Huỷ bỏ</div>
                 </div>
             </form>
-
+            <% } %>
             <div class="todo">
                 <h3 class="todo-title">
                     <!-- thêm biến tiêu đề -->

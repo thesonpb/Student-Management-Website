@@ -41,171 +41,187 @@
                 </h1>
                 <% } %>
 
-                <% if(role=='covan') { %>
-                    <form class="adding-member" action="/add/student" method="post">
-                        <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
-                        <div class="adding-id-inf col-md-3">
-                            <h2 class="name-inf">MSSV</h2>
-                            <input autocomplete="off" type="text" class="input-inf" name="mssv" placeholder="mã sv" />
-                        </div>
-                        <div class="adding-name-inf col-md-3">
-                            <h2 class="name-inf">Họ tên</h2>
-                            <input autocomplete="off" type="text" class="input-inf" placeholder="Tên" name="hoten" />
-                        </div>
+                    <% if(role=='covan' ) { %>
+                        <form class="adding-member" action="/add/student" method="post">
+                            <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
+                            <div class="adding-id-inf col-md-3">
+                                <h2 class="name-inf">MSSV</h2>
+                                <input autocomplete="off" type="text" class="input-inf" name="mssv"
+                                    placeholder="mã sv" />
+                            </div>
+                            <div class="adding-name-inf col-md-3">
+                                <h2 class="name-inf">Họ tên</h2>
+                                <input autocomplete="off" type="text" class="input-inf" placeholder="Tên"
+                                    name="hoten" />
+                            </div>
 
-                        <div class="adding-name-inf col-md-3">
-                            <h2 class="name-inf">Ngày sinh</h2>
-                            <input autocomplete="off" type="date" class="input-inf" />
-                        </div>
-                        <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
-                    </form>
-                    <% } %>
-                    <div class="member-list">
-                        <div class="member">
-                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                            <p class="member-name">Name</p>
-                            <p class="member-pos">position</p>
-                        </div>
+                            <div class="adding-name-inf col-md-3">
+                                <h2 class="name-inf">Ngày sinh</h2>
+                                <input autocomplete="off" type="date" class="input-inf" />
+                            </div>
+                            <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
+                        </form>
+                        <% } %>
+                            <div class="member-list">
+                                <div class="member">
+                                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                                    <p class="member-name">Name</p>
+                                    <p class="member-pos">position</p>
+                                </div>
 
-                        <div class="member">
-                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                            <p class="member-name">Name</p>
-                            <p class="member-pos">position</p>
-                        </div>
+                                <div class="member">
+                                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                                    <p class="member-name">Name</p>
+                                    <p class="member-pos">position</p>
+                                </div>
 
-                        <div class="member">
-                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                            <p class="member-name">Name</p>
-                            <p class="member-pos">position</p>
-                        </div>
+                                <div class="member">
+                                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                                    <p class="member-name">Name</p>
+                                    <p class="member-pos">position</p>
+                                </div>
 
-                        <div class="member">
-                            <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
-                            <p class="member-name">Name</p>
-                            <p class="member-pos">position</p>
-                        </div>
-                    </div>
+                                <div class="member">
+                                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                                    <p class="member-name">Name</p>
+                                    <p class="member-pos">position</p>
+                                </div>
+                            </div>
 
-                    <input class="form-control ml-3 mt-4 mb-4" id="myInput" type="text" placeholder="Search..">
+                            <input class="form-control ml-3 mt-4 mb-4" id="myInput" type="text" placeholder="Search..">
 
 
-                    <!--Bảng danh sách sinh viên-->
-                    <div class="table-responsive">
+                            <!--Bảng danh sách sinh viên-->
+                            <div class="table-responsive">
 
-                        <table id="student-table" class="ml-3 w-100 table">
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>MSSV</th>
-                                    <th>Họ và tên</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Lớp khoá học</th>
-                                    <th>Email</th>
-                                    <th>SĐT</th>
-                                </tr>
-                            </thead>
-                            <tbody class="stu-table-body">
-                                <% if(sinhvien) { %>
-                                    <% for (var i=0; i < sinhvien.length; i++) { %>
+                                <table id="student-table" class="ml-3 w-100 table">
+                                    <thead>
                                         <tr>
-                                            <td>
-                                                <%= i+1 %>
-                                            </td>
-                                            <td>
-                                                <%= sinhvien[i].mssv %>
-                                            </td>
-                                            <td>
-                                                <%= sinhvien[i].hoten %>
-                                            </td>
-                                            <td>
-                                                <%= sinhvien[i].ngaysinh %>
-                                            </td>
-                                            <td>
-                                                <%= sinhvien[i].malop %>
-                                            </td>
-                                            <td>
-                                                <%= sinhvien[i].email %>
-                                            </td>
-                                            <td>
-                                                <%= sinhvien[i].sdt %>
-                                            </td>
+                                            <th>STT</th>
+                                            <th>MSSV</th>
+                                            <th>Họ và tên</th>
+                                            <th>Ngày sinh</th>
+                                            <th>Lớp khoá học</th>
+                                            <th>Email</th>
+                                            <th>SĐT</th>
                                         </tr>
-                                        <% } %>
-                                            <% } %>
-                            </tbody>
-                        </table>
-                    </div>
+                                    </thead>
+                                    <tbody class="stu-table-body">
+                                        <% if(sinhvien) { %>
+                                            <% for (var i=0; i < sinhvien.length; i++) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%= i+1 %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].mssv %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].hoten %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].ngaysinh %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].malop %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].email %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].sdt %>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                                    <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
         </div>
 
         <!-- Học tập -->
         <div class="main">
             <h1 class="title-main">Học tập</h1>
             <div class="selections d-flex justify-content-between">
-                <form class="" action="/hoctap" method="get">
-                    <label for="hocky">Học kỳ:</label>
-                    <select name="hocky" onchange='if(this.value != 0) { this.form.submit(); }'>
-                        <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
-                        <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
-                        <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
-                        <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
+                <form>
+                    <label for="year">Năm học:</label>
+                    <select name="year" id="year_hoctap">
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                    </select>
+                    <label for="sem">Học kỳ:</label>
+                    <select name="sem" id="sem_hoctap">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
                     </select>
                 </form>
-                <% if(role == 'covan') { %>
-                <form class="" action="/classify" method="get">
-                    <label for="classify">Phân loại:</label>
-                    <select name="classify" onchange='if(this.value != 0) { this.form.submit(); }'>
-                        <option value="volvo">Tất cả sinh viên</option>
-                        <option value="volvo">Sv có thành tích học tập tốt</option>
-                        <option value="volvo">Sv nguy cơ nghỉ học</option>
-                        <option value="volvo">Sv bị nhắc nhở</option>
-                        <option value="volvo">Sv thiếu tín chỉ</option>
-                    </select>
-                </form>
-                <% } %>
+                <% if(role=='covan' ) { %>
+                    <form>
+                        <label for="classify">Phân loại:</label>
+                        <select name="classify" id="classify">
+                            <option value="0">Tất cả sinh viên</option>
+                            <option value="1">Sv có thành tích học tập tốt</option>
+                            <option value="2">Sv nguy cơ nghỉ học</option>
+                            <option value="3">Sv thiếu tín chỉ</option>
+                        </select>
+                    </form>
+                    <% } %>
             </div>
 
             <div class="">
-                <table class="mark">
-                    <tr>
-                        <th>STT</th>
-                        <th>Mã SV</th>
-                        <th>Họ Tên</th>
-                        <th>Ngày Sinh</th>
-                        <th>Mã lớp</th>
-                        <th>Tín chỉ</th>
-                        <th>GPA</th>
-                        <th>Cảnh báo học vụ</th>
-                    </tr>
+                <table class="mark" id="marktable">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã SV</th>
+                            <th>Họ Tên</th>
+                            <th>Ngày Sinh</th>
+                            <th>Mã lớp</th>
+                            <th>Năm học</th>
+                            <th>Học kỳ</th>
+                            <th>Tín chỉ</th>
+                            <th>GPA</th>
+                            <th>Cảnh báo học vụ</th>
+                        </tr>
+                    </thead>
                     <% if(diemSinhVien) { %>
-                        <% for (var i=0; i < diemSinhVien.length; i++) { %>
-                            <tr>
-                                <td>
-                                    <%= i+1 %>
-                                </td>
-                                <td>
-                                    <%= diemSinhVien[i].mssv %>
-                                </td>
-                                <td>
-                                    <%= diemSinhVien[i].hoten %>
-                                </td>
-                                <td>
-                                    <%= diemSinhVien[i].ngaysinh %>
-                                </td>
-                                <td>
-                                    <%= diemSinhVien[i].malop %>
-                                </td>
-                                <td>
-                                    <%= diemSinhVien[i].tinchi %>
-                                </td>
-                                <td>
-                                    <%= diemSinhVien[i].gpa %>
-                                </td>
-                                <td>
-                                    <%= diemSinhVien[i].canhbaohocvu %>
-                                </td>
-                            </tr>
-                            <% } %>
+                        <tbody>
+                            <% for (var i=0; i < diemSinhVien.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= i+1 %>
+                                    </td>
+                                    <td>
+                                        <%= diemSinhVien[i].mssv %>
+                                    </td>
+                                    <td>
+                                        <%= diemSinhVien[i].hoten %>
+                                    </td>
+                                    <td>
+                                        <%= diemSinhVien[i].ngaysinh %>
+                                    </td>
+                                    <td>
+                                        <%= diemSinhVien[i].malop %>
+                                    </td>
+                                    <td>
+                                        <%= diemSinhVien[i].namhoc %>
+                                    </td>
+                                    <td>
+                                        <%= diemSinhVien[i].hocky %>
+                                    </td>
+                                    <td>
+                                        <%= diemSinhVien[i].tinchi %>
+                                    </td>
+                                    <td>
+                                        <%= diemSinhVien[i].gpa %>
+                                    </td>
+                                    <td>
+                                        <%= diemSinhVien[i].canhbaohocvu %>
+                                    </td>
+                                </tr>
                                 <% } %>
+                        </tbody>
+                        <% } %>
 
                 </table>
             </div>
@@ -214,73 +230,89 @@
         <!-- Rèn luyện -->
         <div class="main">
             <h1 class="title-main">Rèn luyện</h1>
-            <form class="selections" method="get" action="/renluyen">
-                <label for="hockyrenluyen">Học kỳ:</label>
-                <select name="hockyrenluyen" onchange='if(this.value != 0) { this.form.submit(); }'>
-                    <option value="volvo">Học kỳ 2 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 1 năm học 2020-2021</option>
-                    <option value="volvo">Học kỳ 2 năm học 2019-2020</option>
-                    <option value="volvo">Học kỳ 1 năm học 2019-2020</option>
+            <form class="selections">
+                <label for="year">Năm học:</label>
+                <select name="year" id="year">
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                </select>
+                <label for="sem">Học kỳ:</label>
+                <select name="sem" id="sem">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
                 </select>
             </form>
 
             <div class="">
-                <table class="work">
-                    <tr>
-                        <th>STT</th>
-                        <th>Mã SV</th>
-                        <th>Họ Tên</th>
-                        <th>Ngày Sinh</th>
-                        <th>Mã lớp</th>
-                        <th>Ý thức học tập</th>
-                        <th>Chấp hành nội quy</th>
-                        <th>Tham gia hoạt động</th>
-                        <th>Phẩm chất</th>
-                        <th>Phụ trách lớp</th>
-                        <th>Tổng</th>
-                    </tr>
+                <table class="work" id="worktable">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã SV</th>
+                            <th>Họ Tên</th>
+                            <th>Ngày Sinh</th>
+                            <th>Mã lớp</th>
+                            <th>Năm học</th>
+                            <th>Học kỳ</th>
+                            <th>Ý thức học tập</th>
+                            <th>Chấp hành nội quy</th>
+                            <th>Tham gia hoạt động</th>
+                            <th>Phẩm chất</th>
+                            <th>Phụ trách lớp</th>
+                            <th>Tổng</th>
+                        </tr>
+                    </thead>
                     <% if(diemRenLuyen) { %>
-                        <% for (var i=0; i < diemRenLuyen.length; i++) { %>
-                            <tr>
-                                <td>
-                                    <%= i+1 %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].mssv %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].hoten %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].ngaysinh %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].malop %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].diemrenluyen['ythuc'] %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].diemrenluyen['noiquy'] %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].diemrenluyen['hoatdong'] %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].diemrenluyen['phamchat'] %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
-                                </td>
-                                <td>
-                                    <%= diemRenLuyen[i].diemrenluyen['ythuc'] + diemRenLuyen[i].diemrenluyen['noiquy'] +
-                                        diemRenLuyen[i].diemrenluyen['hoatdong'] +
-                                        diemRenLuyen[i].diemrenluyen['phamchat'] +
-                                        diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
-                                </td>
-                            </tr>
-                            <% } %>
+                        <tbody>
+                            <% for (var i=0; i < diemRenLuyen.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= i+1 %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].mssv %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].hoten %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].ngaysinh %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].malop %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].diemrenluyen['namhoc'] %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].diemrenluyen['hocky'] %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].diemrenluyen['ythuc'] %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].diemrenluyen['noiquy'] %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].diemrenluyen['hoatdong'] %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].diemrenluyen['phamchat'] %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
+                                    </td>
+                                    <td>
+                                        <%= diemRenLuyen[i].diemrenluyen['ythuc'] +
+                                            diemRenLuyen[i].diemrenluyen['noiquy'] +
+                                            diemRenLuyen[i].diemrenluyen['hoatdong'] +
+                                            diemRenLuyen[i].diemrenluyen['phamchat'] +
+                                            diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
+                                    </td>
+                                </tr>
                                 <% } %>
+                        </tbody>
+                        <% } %>
                 </table>
             </div>
         </div>
@@ -288,51 +320,51 @@
         <!-- Công việc -->
         <div class="main">
             <h1 class="title-main">Công việc</h1>
-            <% if(role=='covan') { %>
-            <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
-            <form action="/upload/task" class="form js-todo-form" method="post">
-                <label for="">Tiêu đề</label>
-                <input type="text" class="input-subject" name="subject">
-                <hr>
+            <% if(role=='covan' ) { %>
+                <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
+                <form action="/upload/task" class="form js-todo-form" method="post">
+                    <label for="">Tiêu đề</label>
+                    <input type="text" class="input-subject" name="subject">
+                    <hr>
 
-                <div class="todo-dur-input">
-                    <label for="birthdaytime">Opened:</label>
-                    <input type="datetime-local" name="opendate">
-                    <label for="birthdaytime">Due:</label>
-                    <input type="datetime-local" name="duedate">
-                </div>
-                <hr>
-                <label for="">Nội dung</label>
-                <input role="textbox" spellcheck="true" class="input-content" name="content">
-                <div>
-                    <input type="submit" value="Đăng lên" class="btn">
-                    <div class="btn js-close-todo-btn">Huỷ bỏ</div>
-                </div>
-            </form>
-            <% } %>
-            <div class="todo">
-                <h3 class="todo-title">
-                    <!-- thêm biến tiêu đề -->
-                </h3>
-                <div class="todo-intro">
-                    <p class="todo-content">
-                        <!-- Thêm biến nội dung -->
-                    </p>
-                    <div class="todo-duration">
-                        <p class="todo-opened">Opened:
-                            <!--Thêm biến tgian-->
-                        </p>
-                        <p class="todo-due">Due:
-                            <!--Thêm biến tgian-->
-                        </p>
+                    <div class="todo-dur-input">
+                        <label for="birthdaytime">Opened:</label>
+                        <input type="datetime-local" name="opendate">
+                        <label for="birthdaytime">Due:</label>
+                        <input type="datetime-local" name="duedate">
                     </div>
-                </div>
+                    <hr>
+                    <label for="">Nội dung</label>
+                    <input role="textbox" spellcheck="true" class="input-content" name="content">
+                    <div>
+                        <input type="submit" value="Đăng lên" class="btn">
+                        <div class="btn js-close-todo-btn">Huỷ bỏ</div>
+                    </div>
+                </form>
+                <% } %>
+                    <div class="todo">
+                        <h3 class="todo-title">
+                            <!-- thêm biến tiêu đề -->
+                        </h3>
+                        <div class="todo-intro">
+                            <p class="todo-content">
+                                <!-- Thêm biến nội dung -->
+                            </p>
+                            <div class="todo-duration">
+                                <p class="todo-opened">Opened:
+                                    <!--Thêm biến tgian-->
+                                </p>
+                                <p class="todo-due">Due:
+                                    <!--Thêm biến tgian-->
+                                </p>
+                            </div>
+                        </div>
 
-                <!-- <div class="todo-opinion">
+                        <!-- <div class="todo-opinion">
                     <span class="todo-yk">Gửi ý kiến</span>
                     <a href="#" class="todo-cmt-btn"><i class="ti-angle-right"></i> Bình luận</a>
                 </div> -->
-            </div>
+                    </div>
         </div>
 
         <!--diễn đàn -->
@@ -671,7 +703,102 @@
                         }
                     });
                 })(jQuery);
-                
+                $('document').ready(function ($) {
+                    var rows = $('#worktable tbody tr').each(function () {
+                        var row = $(this);
+                        var columns = row.children('td');
+
+                        row.data('year', columns.eq(5).html());
+                        row.data('sem', columns.eq(6).html());
+
+                    });
+                    var rows2 = $('#marktable tbody tr').each(function () {
+                        var row = $(this);
+                        var columns = row.children('td');
+
+                        row.data('year', columns.eq(5).html());
+                        row.data('sem', columns.eq(6).html());
+                        row.data('gpa', columns.eq(8).html());
+                        row.data('canhbaohocvu', columns.eq(9).html());
+                        row.data('tinchi', columns.eq(7).html());
+
+                    });
+                    $('#year, #sem').change(function () {
+                        var i = 1;
+                        var year = parseInt($('#year').val());
+                        var sem = parseInt($('#sem').val());
+                        rows.each(function () {
+                            var row = $(this);
+                            var year_to_match = row.data('year');
+                            var sem_to_match = row.data('sem');
+                            if (year_to_match == year && sem_to_match == sem) {
+                                row.children('td').eq(0).html(i);
+                                i++;
+                                row.show();
+                            }
+                            else {
+                                row.hide();
+                            }
+                        });
+                    });
+                    $('#year_hoctap, #sem_hoctap, #classify').change(function () {
+                        var i = 1;
+                        var year = parseInt($('#year_hoctap').val());
+                        var sem = parseInt($('#sem_hoctap').val());
+                        var classify = parseInt($('#classify').val());
+
+                        rows2.each(function () {
+                            var row = $(this);
+                            var year_to_match = row.data('year');
+                            var sem_to_match = row.data('sem');
+                            var gpa = row.data('gpa');
+                            var canhbaohocvu = row.data('canhbaohocvu');
+                            var tinchi = row.data('tinchi');
+                            if (classify == 1) {
+                                if (year_to_match == year && sem_to_match == sem && gpa >= 3.2) {
+                                    row.children('td').eq(0).html(i);
+                                    i++;
+                                    row.show();
+                                }
+                                else {
+                                    row.hide();
+                                }
+                            }
+                            else if (classify == 2) {
+                                if (year_to_match == year && sem_to_match == sem && canhbaohocvu == "có") {
+                                    row.children('td').eq(0).html(i);
+                                    i++;
+                                    row.show();
+                                }
+                                else {
+                                    row.hide();
+                                }
+                            }
+                            else if (classify == 3) {
+                                if (year_to_match == year && sem_to_match == sem && tinchi < 13) {
+                                    row.children('td').eq(0).html(i);
+                                    i++;
+                                    row.show();
+                                }
+                                else {
+                                    row.hide();
+                                }
+                            }
+                            else if (classify == 0) {
+                                if (year_to_match == year && sem_to_match == sem) {
+                                    row.children('td').eq(0).html(i);
+                                    i++;
+                                    row.show();
+                                }
+                                else {
+                                    row.hide();
+                                }
+                            }
+
+                        });
+                    });
+                });
+
             </script>
 
 </body>

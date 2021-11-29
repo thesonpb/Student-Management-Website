@@ -4,9 +4,12 @@ const Sinhvien = require("./sinhvien");
 
 module.exports = (sequelize, Sequelize) => {
     const Diemrenluyen = sequelize.define('diemrenluyen', {
-        mssv: {
+        id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
+        },
+        mssv: {
+            type: Sequelize.INTEGER
         },
         ythuc: {
             type: Sequelize.INTEGER
@@ -21,6 +24,12 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER
         },
         phutrachlop: {
+            type: Sequelize.INTEGER
+        },
+        namhoc: {
+            type: Sequelize.INTEGER
+        },
+        hocky: {
             type: Sequelize.INTEGER
         },
     }, {

@@ -27,7 +27,7 @@ const teacherInfo = async (req, res) => {
 
     const diemsinhvien = await Bangdiem.findAll({
         where: { malop: malop },
-        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'tinchi', 'gpa', 'canhbaohocvu'],
+        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'tinchi', 'gpa', 'canhbaohocvu', 'namhoc', 'hocky'],
         raw: true
     });
     const drl = await Sinhvien.findAll({

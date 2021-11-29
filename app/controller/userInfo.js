@@ -40,7 +40,7 @@ const getUserInfo = async (req, res) => {
 
     diemsinhvien = await Bangdiem.findAll({
         where: { malop: malop },
-        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'tinchi', 'gpa', 'canhbaohocvu'],
+        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'tinchi', 'gpa', 'canhbaohocvu', 'namhoc', 'hocky'],
         raw: true
     });
     drl = await Sinhvien.findAll({

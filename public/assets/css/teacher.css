@@ -27,6 +27,10 @@ html body {
     cursor: pointer;
 }
 
+.main .cancel-btn {
+    background-color: #ff3333;
+}
+
 .btn + .btn {
     margin-left: 16px;
 }
@@ -39,7 +43,7 @@ html body {
 .form {
     background-color: #3a3b3c;
     padding: 16px;
-    display: none;
+    display: block;
     flex-direction: column;
     border-radius: 12px;
     margin-top: 16px;
@@ -82,6 +86,7 @@ td, th {
     border: 1px solid #fff;
     padding: 8px;
     text-align: center;
+    margin: 0 4px;
 }
 
 tr {
@@ -606,11 +611,9 @@ body > .dropdown {
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
-    outline: none;
 }
 
-.dropdown-list {
-    display: none;
+#dropdown-list {
     flex-direction: column;
     position: absolute;
     background-color: #242526;
@@ -625,11 +628,7 @@ body > .dropdown {
     right: 4px;
 }
 
-.dropdown-list.open {
-    display: flex;
-}
-
-.dropdown-list a {
+#dropdown-list a {
     display: flex;
     color: #fff;
     text-decoration: none;
@@ -638,35 +637,31 @@ body > .dropdown {
     padding: 10px 8px;
 }
 
-.dropdown-list a:hover {
+#dropdown-list a:hover {
     background-image: linear-gradient(to right, #af92f2, #74c2ee);
     text-decoration: none;
     color: #fff;
 }
 
-.dropdown-list a > label {
+#dropdown-list a > label {
     font-size: 24px;
     align-self: center;
     padding-left: 8px;
     font-weight: 600;
 }
 
-.dropdown-list a > img {
-    margin: 0;
-}
-
-.dropdown-list a > label:hover {
+#dropdown-list a > label:hover {
     cursor: pointer;
 }
 
-.dropdown-list > hr {
+#dropdown-list > hr {
     border: 0;
     height: 1px;
     background-color: #dadde1;
     margin: 8px 0;
 }
 
-/* .dropdown:hover .dropdown-list {display: block;} */
+/* .dropdown:hover #dropdown-list {display: block;} */
 
 .dropdown:hover .dropbtn {
     opacity: 0.8;

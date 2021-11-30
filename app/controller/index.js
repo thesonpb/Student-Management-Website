@@ -7,6 +7,8 @@ const hoctap = require('./hoctap');
 const teacherInfo = require('./teacherInfo');
 const studentEditProfile = require('./studentEditProfile');
 const teacherEditProfile = require('./teacherEditProfile');
+const deleteStudent = require('./deleteStudent');
+const deleteTeacher = require('./deleteTeacher');
 module.exports = {
     login : auth.login,
     logout: auth.logout,
@@ -19,4 +21,6 @@ module.exports = {
     getTeacherInfo: teacherInfo.teacherInfo,
     studentEditProfile: studentEditProfile.studentEditProfile,
     teacherEditProfile: teacherEditProfile.teacherEditProfile,
+    deleteStudent: deleteStudent.deleteStudent,
+    deleteTeacher: deleteTeacher.deleteTeacher,
 }

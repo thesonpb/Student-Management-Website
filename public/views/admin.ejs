@@ -70,6 +70,7 @@
                             <th>Lớp khoá học</th>
                             <th>Email</th>
                             <th>SĐT</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="stu-table-body">
@@ -97,6 +98,12 @@
                                     <td>
                                         <%= sinhvien[i].sdt %>
                                     </td>
+                                    <td>
+                                        <form action="/student/delete/<%= sinhvien[i].mssv %>" method="post">
+                                            <button type="submit" class="delete-btn btn-danger"><i
+                                                    class="ti-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 <% } %>
                                     <% } %>
@@ -117,6 +124,7 @@
                         <th>Ngày sinh</th>
                         <th>SĐT</th>
                         <th>Khoa</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="stu-table-body">
@@ -140,6 +148,12 @@
                                 </td>
                                 <td>
                                     <%= covan[i].khoa %>
+                                </td>
+                                <td>
+                                    <form action="/teacher/delete/<%= covan[i].email %>" method="post">
+                                        <button type="submit" class="delete-btn btn-danger"><i
+                                                class="ti-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             <% } %>

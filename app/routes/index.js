@@ -82,6 +82,8 @@ function route(app) {
 
     app.post('/student/editprofile/:mssv', controller.studentEditProfile)
     app.post('/teacher/editprofile/:email', controller.teacherEditProfile)
+    app.post('/student/delete/:mssv', controller.deleteStudent)
+    app.post('/teacher/delete/:email', controller.deleteTeacher)
 }
 
 module.exports = route;

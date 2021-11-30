@@ -8,9 +8,10 @@
     <title>Student Management</title>
     <link rel="stylesheet" href="../assets/css/teacher.css">
     <link rel="stylesheet" href="../assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -46,20 +47,41 @@
                             <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
                             <div class="adding-id-inf col-md-3">
                                 <h2 class="name-inf">MSSV</h2>
-                                <input autocomplete="off" type="text" class="input-inf" name="mssv"
+                                <input id="stu-id" autocomplete="off" type="text" class="input-inf" name="mssv"
                                     placeholder="mã sv" />
                             </div>
                             <div class="adding-name-inf col-md-3">
                                 <h2 class="name-inf">Họ tên</h2>
-                                <input autocomplete="off" type="text" class="input-inf" placeholder="Tên"
+                                <input id="stu-name" autocomplete="off" type="text" class="input-inf" placeholder="Tên"
                                     name="hoten" />
                             </div>
 
                             <div class="adding-name-inf col-md-3">
                                 <h2 class="name-inf">Ngày sinh</h2>
-                                <input autocomplete="off" type="date" class="input-inf" />
+                                <input id="stu-dob" autocomplete="off" type="date" class="input-inf" />
+                            </div>
+
+                            <div class="adding-name-inf col-md-3">
+                                <h2 class="name-inf">Lớp khoá học</h2>
+                                <input id="stu-class-id" autocomplete="off" type="text" class="input-inf"
+                                    placeholder="Mã lớp" name="malop" />
+                            </div>
+
+                            <div class="adding-name-inf col-md-3">
+                                <h2 class="name-inf">Email</h2>
+                                <input id="stu-email" autocomplete="off" type="email" class="input-inf"
+                                    placeholder="email" name="email" />
+                            </div>
+
+                            <div class="adding-name-inf col-md-3">
+                                <h2 class="name-inf">Sđt</h2>
+                                <input id="stu-phone" autocomplete="off" type="text" class="input-inf"
+                                    placeholder="Số điện thoại" name="sđt" />
                             </div>
                             <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
+                        </form>
+                        <form action="download" method="get">
+                            <input type="submit" value="Xuất excel">
                         </form>
                         <% } %>
                             <div class="member-list">
@@ -88,13 +110,12 @@
                                 </div>
                             </div>
 
-                            <input class="form-control ml-3 mt-4 mb-4" id="myInput" type="text" placeholder="Search..">
 
 
                             <!--Bảng danh sách sinh viên-->
-                            <div class="table-responsive">
-
-                                <table id="student-table" class="ml-3 w-100 table">
+                            <div class="table-responsive ml-3">
+                                <input class="form-control mt-4 mb-4" id="myInput" type="text" placeholder="Search..">
+                                <table id="student-table" class=" w-100 table">
                                     <thead>
                                         <tr>
                                             <th>STT</th>
@@ -104,6 +125,7 @@
                                             <th>Lớp khoá học</th>
                                             <th>Email</th>
                                             <th>SĐT</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody class="stu-table-body">
@@ -131,6 +153,11 @@
                                                     <td>
                                                         <%= sinhvien[i].sdt %>
                                                     </td>
+                                                    <td>
+                                                        <button class="delete-btn btn-danger"><i
+                                                                class="ti-trash"></i></button>
+                                                        <button class="btn-info">Save</button>
+                                                    </td>v
                                                 </tr>
                                                 <% } %>
                                                     <% } %>
@@ -204,19 +231,19 @@
                                         <%= diemSinhVien[i].malop %>
                                     </td>
                                     <td>
-                                        <%= diemSinhVien[i].namhoc %>
+                                        <%= diemSinhVien[i].bangdiem['namhoc'] %>
                                     </td>
                                     <td>
-                                        <%= diemSinhVien[i].hocky %>
+                                        <%= diemSinhVien[i].bangdiem['hocky'] %>
                                     </td>
                                     <td>
-                                        <%= diemSinhVien[i].tinchi %>
+                                        <%= diemSinhVien[i].bangdiem['tinchi'] %>
                                     </td>
                                     <td>
-                                        <%= diemSinhVien[i].gpa %>
+                                        <%= diemSinhVien[i].bangdiem['gpa'] %>
                                     </td>
                                     <td>
-                                        <%= diemSinhVien[i].canhbaohocvu %>
+                                        <%= diemSinhVien[i].bangdiem['canhbaohocvu'] %>
                                     </td>
                                 </tr>
                                 <% } %>
@@ -321,8 +348,10 @@
         <div class="main">
             <h1 class="title-main">Công việc</h1>
             <% if(role=='covan' ) { %>
-                <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
-                <form action="/upload/task" class="form js-todo-form" method="post">
+                <button data-toggle="collapse" data-target="#todo-form" class="todo-add-btn js-add-todo btn">Thêm một
+                    công
+                    việc</button>
+                <form action="/upload/task" class="form js-todo-form collapse" id="todo-form" method="post">
                     <label for="">Tiêu đề</label>
                     <input type="text" class="input-subject" name="subject">
                     <hr>
@@ -338,7 +367,7 @@
                     <input role="textbox" spellcheck="true" class="input-content" name="content">
                     <div>
                         <input type="submit" value="Đăng lên" class="btn">
-                        <div class="btn js-close-todo-btn">Huỷ bỏ</div>
+                        <div class="btn cancel-btn">Huỷ bỏ</div>
                     </div>
                 </form>
                 <% } %>
@@ -370,8 +399,9 @@
         <!--diễn đàn -->
         <div class="main">
             <h1 class="title-main">Diễn đàn</h1>
-            <button class="question-btn btn js-add-question">Thêm một chủ đề thảo luận</button>
-            <form action="/upload/question" class="form js-question-form" method="post">
+            <button data-toggle="collapse" data-target="#question-form" class="question-btn btn">Thêm một chủ đề thảo
+                luận</button>
+            <form action="/upload/question" class="form js-question-form collapse" id="question-form" method="post">
                 <label for="">Tiêu đề</label>
                 <input type="text" class="input-subject" name="subject">
                 <hr>
@@ -379,7 +409,7 @@
                 <input contenteditable="true" role="textbox" spellcheck="true" class="input-content" name="content">
                 <div>
                     <input type="submit" value="Đăng lên" class="btn">
-                    <div class="btn js-close-btn">Huỷ bỏ</div>
+                    <div class="btn cancel-btn">Huỷ bỏ</div>
                 </div>
             </form>
 
@@ -423,43 +453,42 @@
 
         <!-- profile -->
         <div class="main emp-profile">
-            <form method="post">
-                <div class="row profile-header">
-                    <div class="profile-img col-md-4">
-                        <img src="../assets/img/IMG_8672.png" alt="" />
-                        <div class="file btn-lg btn-primary">
-                            <i class="ti-camera"></i>
-                            <input type="file" name="file" />
-                        </div>
-                    </div>
-                    <div class="profile-title col-md-6">
-                        <h5 class="profile-name">
-                            <%= hoten %>
-                        </h5>
-                        <h6>
-                            Sinh viên
-                        </h6>
-
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                    aria-controls="home" aria-selected="true">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                    aria-controls="profile" aria-selected="false">Timeline</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2">
-                        <!-- <div class="profile--btn btn">Edit</div>
-                        <br> -->
-                        <input type="submit" class="btn profile-edit-btn" name="btnAddMore" value="Edit" />
+            <div class="row profile-header">
+                <div class="profile-img col-md-4">
+                    <img src="../assets/img/IMG_8672.png" alt="" />
+                    <div class="file btn-lg btn-primary">
+                        <i class="ti-camera"></i>
+                        <input type="file" name="file" />
                     </div>
                 </div>
-                <div class="row profile-content">
-                    <div class="profile-work col-md-4">
-                        <!-- <p>Link 1</p>
+                <div class="profile-title col-md-6">
+                    <h5 class="profile-name">
+                        <%= hoten %>
+                    </h5>
+                    <h6>
+                        Sinh viên
+                    </h6>
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                aria-controls="profile" aria-selected="false">Timeline</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <!-- <div class="profile--btn btn">Edit</div>
+                        <br> -->
+                    <input type="submit" class="btn profile-edit-btn" name="btnAddMore" value="Edit" />
+                </div>
+            </div>
+            <div class="row profile-content">
+                <div class="profile-work col-md-4">
+                    <!-- <p>Link 1</p>
                         <a href="">1</a><br />
                         <a href="">2</a><br />
                         <a href="">3</a>
@@ -469,105 +498,98 @@
                         <a href="">3</a><br />
                         <a href="">4</a><br />
                         <a href="">5</a><br /> -->
-                    </div>
-                    <div class="tab-content profile-tab col-md-8" id="myTabContent">
-                        <div class="tab-pane fade  show active about" id="home" role="tabpanel"
-                            aria-labelledby="home-tab">
-                            <div class="row">
-                                <label class="col-md-6">Họ và tên:</label>
-                                <p class="col-md-6">
-                                    <%= hoten %>
-                                </p>
-                            </div>
-                            <% if(role=='sinhvien' ) { %>
-                                <div class="row">
-                                    <label class="col-md-6"> Mã số sinh viên:</label>
-                                    <p class="col-md-6">
-                                        <%= mssv %>
-                                    </p>
-                                </div>
+                </div>
+                <div class="tab-content profile-tab col-md-8" id="myTabContent">
+                    <div class="tab-pane fade  show active about" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <% if(role=='sinhvien' ) { %>
+                            <form id="editstudent" action="/student/editprofile/<%= mssv %>" method="post">
                                 <% } %>
-                                    <div class="row">
-                                        <label class="col-md-6">Khoa:</label>
-                                        <p class="col-md-6">
-                                            <%= khoa %>
-                                        </p>
-                                    </div>
-                                    <% if(role=='sinhvien' ) { %>
-                                        <div class="row">
-                                            <label class="col-md-6">Lớp:</label>
-                                            <p class="col-md-6">
-                                                <%= malop %>
-                                            </p>
-                                        </div>
-                                        <% } %>
-                                            <div class="row">
-                                                <label class="col-md-6">Email:</label>
-                                                <p class="col-md-6">
-                                                    <%= email %>
-                                                </p>
-                                            </div>
-                                            <div class="row">
-                                                <label class="col-md-6">Số điện thoại:</label>
-                                                <p class="col-md-6">
-                                                    <%= sdt %>
-                                                </p>
-                                            </div>
-                                            <% if(role=='sinhvien' ) { %>
+                                    <% if(role=='covan' ) { %>
+                                        <form id="editteacher" action="/teacher/editprofile" method="post">
+                                            <% } %>
                                                 <div class="row">
-                                                    <label class="col-md-6">Số tín chỉ:</label>
-                                                    <p class="col-md-6">
-                                                        <%= tinchi %>
-                                                    </p>
+                                                    <label class="col-md-6">Họ và tên:</label>
+                                                    <input name="hoten" class="col-md-6" value="<%= hoten %>">
                                                 </div>
-                                                <% } %>
-                                                    <% if(role=='sinhvien' ) { %>
+                                                <% if(role=='sinhvien' ) { %>
+                                                    <div class="row">
+                                                        <label class="col-md-6"> Mã số sinh viên:</label>
+                                                        <input name="mssv" class="col-md-6" value="<%= mssv %>">
+                                                    </div>
+                                                    <% } %>
                                                         <div class="row">
-                                                            <label class="col-md-6">GPA:</label>
-                                                            <p class="col-md-6">
-                                                                <%= gpa %>
-                                                            </p>
+                                                            <label class="col-md-6">Khoa:</label>
+                                                            <input class="col-md-6" value="<%= khoa %>">
                                                         </div>
-                                                        <% } %>
+                                                        <% if(role=='sinhvien' ) { %>
+                                                            <div class="row">
+                                                                <label class="col-md-6">Lớp:</label>
+                                                                <input class="col-md-6" value="<%= malop %>">
+                                                            </div>
+                                                            <% } %>
+                                                                <div class="row">
+                                                                    <label class="col-md-6">Email:</label>
+                                                                    <input name="email" class="col-md-6" value="<%= email %>">
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label class="col-md-6">Số điện thoại:</label>
+                                                                    <input name="sdt" class="col-md-6" value="<%= sdt %>">
+                                                                </div>
+                                                                <% if(role=='sinhvien' ) { %>
+                                                                    <div class="row">
+                                                                        <label class="col-md-6">Số tín chỉ:</label>
+                                                                        <input class="col-md-6" value="<%= tinchi %>">
+                                                                    </div>
+                                                                    <% } %>
+                                                                        <% if(role=='sinhvien' ) { %>
+                                                                            <div class="row">
+                                                                                <label class="col-md-6">GPA:</label>
+                                                                                <input class="col-md-6" value="<%= gpa %>"> 
+                                                                            </div>
+                                                                            <% } %>
+                                                                                <input type="submit" id="xacnhan"
+                                                                                    value="Xác nhận">
+
+                                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <label class="col-md-6">Experience</label>
+                            <p class="col-md-6">Expert</p>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row">
-                                <label class="col-md-6">Experience</label>
-                                <p class="col-md-6">Expert</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Hourly Rate</label>
-                                <p class="col-md-6">10$/hr</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Total Projects</label>
-                                <p class="col-md-6">230</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">English Level</label>
-                                <p class="col-md-6">Expert</p>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6">Availability</label>
-                                <p class="col-md-6">6 months</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br />
-                                    <p>Your detail description</p>
-                                </div>
+                        <div class="row">
+                            <label class="col-md-6">Hourly Rate</label>
+                            <p class="col-md-6">10$/hr</p>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-6">Total Projects</label>
+                            <p class="col-md-6">230</p>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-6">English Level</label>
+                            <p class="col-md-6">Expert</p>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-6">Availability</label>
+                            <p class="col-md-6">6 months</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Your Bio</label><br />
+                                <p>Your detail description</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
     <div class="dropdown">
-        <img id="dropbtn" class=" dropbtn js-dropbtn" src="../assets/img/IMG_8672.png" alt="">
+        <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="../assets/img/IMG_8672.png" alt=""
+            data-toggle="dropdown">
         <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
-        <ul class="dropdown-list js-drop-item">
+        <ul class="dropdown-menu" id="dropdown-list">
             <li><a class="profile" href="#">
                     <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->
                     <label for="">
@@ -618,47 +640,51 @@
                             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                         });
                     });
-                    // hiển thị dropdown 
-                    $('.js-dropbtn').click(function (e) {
-                        e.stopPropagation();
-                        var droplist = $('.js-drop-item');
-                        if (droplist.css('display') === 'none') {
-                            droplist.css({ "display": "block" });
-                        } else {
-                            $('.js-drop-item').fadeOut(200);
+                    //Theem 1 dong tron danh sach
+                    const stdBdTable = $('.stu-table-body');
+                    const stuForm = $('.adding-member')
+                    function onAddStu(e) {
+                        e.preventDefault();
+                        var rowCount = $('.stu-table-body >tr').length;
+                        const name = $('#stu-name').val()
+                        const id = $('#stu-id').val()
+                        const dob = $('#stu-dob').val()
+                        const classID = $('#stu-class-id').val()
+                        const email = $('#stu-emai').val()
+                        const phone = $('#stu-phone').val()
+                        stdBdTable.append(`
+                    <tr>
+                      <td>${rowCount + 1}</td>
+                      <td>${id}</td>
+                      <td>${name}</td>
+                      <td>${dob}</td>
+                      <td>${classID}</td>
+                      <td>${email}</td>
+                      <td>${phone}</td>
+                      <td><button class="delete-btn btn-danger"><i class="ti-trash"></i></button></td>
+                    </tr>
+                `);
+                    }
+                    stuForm.submit(onAddStu)
+                    console.log(stdBdTable)
+                    //Xoá 1 dong trong danh sách
+                    var stdTable = $('#student-table');
+                    function onDeleteRow(e) {
+                        if (!e.target.classList.contains('delete-btn')) {
+                            return;
                         }
-                    })
-                    $(document).click(function (e) {
-                        $('.js-drop-item').fadeOut(200);
-                    });
-                    // hiển thị đăng công việc
-                    $('.js-add-todo').click(function (e) {
-                        e.stopPropagation();
-                        var todoForm = $('.js-todo-form');
-                        console.log(todoForm.css('display'))
-                        if (todoForm.css('display') === 'none') {
-                            todoForm.css({ "display": "block" });
-                        } else {
-                            todoForm.fadeOut(100);
-                        }
-                    })
+                        const btn = e.target;
+                        console.log(btn)
+                        btn.closest("tr").remove();
+                    }
+                    stdTable.click(onDeleteRow);
+                    // Huỷ bỏ đăng công việc
                     $('.js-close-todo-btn').click(function (e) {
-                        $('.js-todo-form').fadeOut(100);
+                        $('#todo-form').collapse("hide");
                     })
-                    // hiển thị đăng câu hỏi diễn đàn
-                    $('.js-add-question').click(function (e) {
-                        e.stopPropagation();
-                        var quesForm = $('.js-question-form');
-                        console.log(quesForm.css('display'))
-                        if (quesForm.css('display') === 'none') {
-                            quesForm.css({ "display": "block" });
-                        } else {
-                            quesForm.fadeOut(100);
-                        }
-                    })
+                    //Huỷ bỏ đăng câu hỏi diễn đàn
                     $('.js-close-btn').click(function (e) {
-                        e.stopPropagation();
-                        $('.js-question-form').fadeOut(100);
+                        $('#question-form').collapse("hide");
                     })
                     // chọn lớp học
                     $('.class-list li').click(function () {
@@ -681,11 +707,14 @@
                     var contents = $(".about p");
                     delete contents.length;
                     delete contents.prevObject;
+                    // Sửa cái này để lưu profile 
+                    // Cái contents đang là mảng lần lượt là thông tin của các cái tên, mssv, trong profile
                     // window.onload = function () {
                     //     if (localStorage.getItem('content')) {
                     //         document.querySelector('.content').innerHTML = localStorage.getItem('content');
                     //     }
                     // }
+                    // chuyển profile về chế độ chỉnh sửa
                     editBtn.click(function (e) {
                         e.preventDefault();
                         for (const [key, value] of Object.entries(contents)) {
@@ -784,7 +813,7 @@
                                     row.hide();
                                 }
                             }
-                            else if (classify == 0) {
+                            else {
                                 if (year_to_match == year && sem_to_match == sem) {
                                     row.children('td').eq(0).html(i);
                                     i++;
@@ -798,6 +827,30 @@
                         });
                     });
                 });
+
+                // $("#editstudent").submit(function () {
+
+                //     var name = $("#nametoedit").html();
+                //     var email = $("#emailtoedit").html();
+                //     var sdt = $("#sdttoedit").html();
+
+                //     var input = $("<input />", {
+                //         name: "hoten",
+                //         value: name,
+                //         type: "hidden"
+                //     });
+                //     var input2 = $("<input />", {
+                //         name: "email",
+                //         value: email,
+                //         type: "hidden"
+                //     });
+                //     var input3 = $("<input />", {
+                //         name: "sdt",
+                //         value: sdt,
+                //         type: "hidden"
+                //     });
+                //     $(this).append(input);
+                // });
 
             </script>
 

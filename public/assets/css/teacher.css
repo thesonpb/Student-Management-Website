@@ -22,8 +22,13 @@ html body {
     background-color: #71be34;
     padding: 8px 24px;
     margin-top: 16px;
+    min-width: 86px;
     border-radius: 16px;
     cursor: pointer;
+}
+
+.main .cancel-btn {
+    background-color: #ff3333;
 }
 
 .btn + .btn {
@@ -38,7 +43,7 @@ html body {
 .form {
     background-color: #3a3b3c;
     padding: 16px;
-    display: none;
+    display: block;
     flex-direction: column;
     border-radius: 12px;
     margin-top: 16px;
@@ -74,6 +79,37 @@ html body {
     border-radius: 12px;
     padding: 8px;
     vertical-align:top;
+}
+
+
+td, th {
+    border: 1px solid #fff;
+    padding: 8px;
+    text-align: center;
+    margin: 0 4px;
+}
+
+tr {
+    background-color: #2a2b2c;
+    border-radius: 16px;
+    text-align: center;
+}
+
+tr:nth-child(odd){
+    background-color: #3a3b3c;
+}
+
+tr:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+    color: #000;
+}
+
+th { 
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
 }
 
 
@@ -258,35 +294,33 @@ html body {
     color: #999;
 }
 
-#student-table {
-    width: 100%;
-    margin-left: 15px;
-}
-
 #student-table th{
     border: 1px solid white;
     color: white;
     font-size: 20px;
-    padding: 10px 25px;
+    padding: 10px 0px;
+    text-align: center;
 }
 #student-table td {
     border: 1px solid white;
     color: white;
     font-size: 20px;
-    padding: 10px 25px;
+    padding: 10px 0px;
+    text-align: center;
 }
 
 /* hoc tap css */
-.quater-selection {
+.selections {
     margin: 0 auto 32px;
-    width: 350px;
+    width: 80%;
 }
 
-.quater-selection label{
+.selections label{
     font-size: 24px;
 }
 
-.quater-selection select {
+.selections select {
+    color: #0062cc;
     background-color: #FFF1A8;
     padding: 4px;
     border-radius: 12px;
@@ -299,54 +333,11 @@ html body {
     width: 100%;
 }
 
-td, th {
-    border: 1px solid #fff;
-    padding: 8px;
-    text-align: center;
-}
-
-.mark tr {
-    background-color: #2a2b2c;
-    border-radius: 16px;
-}
-
-.mark tr:nth-child(odd){
-    background-color: #3a3b3c;
-}
-
-.mark tr:hover {
-    background-image: linear-gradient(to right, #af92f2, #74c2ee);
-    color: #000;
-}
-
   /* Rèn luyện css */
 .work {
     border-collapse: collapse;
     width: 100%;
 }
-
-.work tr {
-    background-color: #2a2b2c;
-    border-radius: 16px;
-}
-
-.work tr:nth-child(odd){
-    background-color: #3a3b3c;
-}
-
-.work tr:hover {
-    background-image: linear-gradient(to right, #af92f2, #74c2ee);
-    color: #000;
-}
-
-th { 
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #04AA6D;
-    color: white;
-  }
-
 
 /* todo css */
 .todo-dur-input>input {
@@ -539,14 +530,8 @@ p.post-time {
     font-size: 20px;
 }
 
-.profile-edit-btn{
-    border: none;
-    border-radius: 1.5rem;
-    width: 70%;
-    padding: 2%;
-    font-weight: 600;
-    color: #6c757d;
-    cursor: pointer;
+.main .profile-save-btn{
+    display: none;
 }
 
 .profile-title .nav-tabs{
@@ -585,7 +570,7 @@ p.post-time {
 }
 .profile-tab p{
     font-weight: 600;
-    color: #0062cc;
+    color: #fff;
 }
 
 
@@ -626,11 +611,9 @@ body > .dropdown {
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
-    outline: none;
 }
 
-.dropdown-list {
-    display: none;
+#dropdown-list {
     flex-direction: column;
     position: absolute;
     background-color: #242526;
@@ -645,11 +628,7 @@ body > .dropdown {
     right: 4px;
 }
 
-.dropdown-list.open {
-    display: flex;
-}
-
-.dropdown-list a {
+#dropdown-list a {
     display: flex;
     color: #fff;
     text-decoration: none;
@@ -658,35 +637,31 @@ body > .dropdown {
     padding: 10px 8px;
 }
 
-.dropdown-list a:hover {
+#dropdown-list a:hover {
     background-image: linear-gradient(to right, #af92f2, #74c2ee);
     text-decoration: none;
     color: #fff;
 }
 
-.dropdown-list a > label {
+#dropdown-list a > label {
     font-size: 24px;
     align-self: center;
     padding-left: 8px;
     font-weight: 600;
 }
 
-.dropdown-list a > img {
-    margin: 0;
-}
-
-.dropdown-list a > label:hover {
+#dropdown-list a > label:hover {
     cursor: pointer;
 }
 
-.dropdown-list > hr {
+#dropdown-list > hr {
     border: 0;
     height: 1px;
     background-color: #dadde1;
     margin: 8px 0;
 }
 
-/* .dropdown:hover .dropdown-list {display: block;} */
+/* .dropdown:hover #dropdown-list {display: block;} */
 
 .dropdown:hover .dropbtn {
     opacity: 0.8;

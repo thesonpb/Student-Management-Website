@@ -14,12 +14,6 @@ module.exports = (sequelize, Sequelize) => {
         mssv: {
             type: Sequelize.INTEGER
         },
-        hoten: {
-            type: Sequelize.STRING
-        },
-        ngaysinh: {
-            type: Sequelize.DATE
-        },
         tinchi: {
             type: Sequelize.INTEGER
         },

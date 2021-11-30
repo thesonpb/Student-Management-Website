@@ -1,6 +1,12 @@
 const controller = require('../controller/index');
+const { uploadAvatar } = require('../controller/profile');
+const { checkUser } = require('../middleware/authJWT');
 const authJwt = require('../middleware/authJWT');
+const upload = require('../middleware/upload');
 const bodyParser = require('body-parser');
+// const chatBox = require('./chat');
+
+
 
 
 function route(app) {
@@ -13,8 +19,8 @@ function route(app) {
         next();
     });
 
-    app.use(bodyParser.json());       
-    app.use(bodyParser.urlencoded({   
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({
         extended: true
     }));
 
@@ -37,21 +43,24 @@ function route(app) {
     app.post('/myclass', authJwt.verifyToken, controller.getTeacherInfo);
     //**********************************************************************************************
     //GET: Lấy profile
-    app.get('/profile', controller.getProfile)
+    app.get('/profile', controller.getProfile);
+    // app.post('/uploadImage', checkUser, upload.uploadImg.single("img"), uploadAvatar);
+
 
     //**********************************************************************************************
     //testUploadxlsx
     app.get('/upload', (req, res) => {
         res.render('testUpload')
     })
-    app.post('/add/student', (req, res) => {
-        controller.addStudent
-    })
-    app.get('/hoctap', controller.hoctap)
+    
 
     //POST: Upload ảnh và lưu vào db
-    const upload = require('../middleware/upload');
-    app.post("/upload", upload.single("file"), controller.upload);
+    app.post('/upload', upload.uploadFile.single('file'), (req, res) => {
+        console.log("Info: " + req.body.info)
+        console.log("File: " + req.file.filename);
+        res.send("success")
+    })
+    app.get('/download', controller.exportExcel)
     //**********************************************************************************************
 
 
@@ -66,6 +75,12 @@ function route(app) {
         //res.render('home');
     })
     //**********************************************************************************************
+    app.post('/add/student', (req, res) => {
+        controller.addStudent
+    })
+    app.get('/hoctap', controller.hoctap)
+
+    app.post('/student/editprofile/:mssv', controller.studentEditProfile)
 }
 
 module.exports = route;

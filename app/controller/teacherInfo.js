@@ -25,10 +25,18 @@ const teacherInfo = async (req, res) => {
         raw: true
     });
 
-    const diemsinhvien = await Bangdiem.findAll({
+    diemsinhvien = await Sinhvien.findAll({
         where: { malop: malop },
-        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'tinchi', 'gpa', 'canhbaohocvu', 'namhoc', 'hocky'],
-        raw: true
+        include: [
+            {
+                model: Bangdiem, 
+                where: {
+                    mssv: Sequelize.col('sinhvien.mssv')
+                },
+                required: false
+            }
+        ], 
+        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
     });
     const drl = await Sinhvien.findAll({
         where: { malop: malop },

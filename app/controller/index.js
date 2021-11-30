@@ -6,6 +6,7 @@ const addStudent = require('./addStudent');
 const hoctap = require('./hoctap');
 const teacherInfo = require('./teacherInfo');
 const studentEditProfile = require('./studentEditProfile');
+const teacherEditProfile = require('./teacherEditProfile');
 module.exports = {
     login : auth.login,
     logout: auth.logout,
@@ -17,4 +18,5 @@ module.exports = {
     hoctap: hoctap.hoctap,
     getTeacherInfo: teacherInfo.teacherInfo,
     studentEditProfile: studentEditProfile.studentEditProfile,
+    teacherEditProfile: teacherEditProfile.teacherEditProfile,
 }

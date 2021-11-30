@@ -81,6 +81,7 @@ function route(app) {
     app.get('/hoctap', controller.hoctap)
 
     app.post('/student/editprofile/:mssv', controller.studentEditProfile)
+    app.post('/teacher/editprofile/:email', controller.teacherEditProfile)
 }
 
 module.exports = route;

@@ -505,46 +505,58 @@
                             <form id="editstudent" action="/student/editprofile/<%= mssv %>" method="post">
                                 <% } %>
                                     <% if(role=='covan' ) { %>
-                                        <form id="editteacher" action="/teacher/editprofile" method="post">
+                                        <form id="editteacher" action="/teacher/editprofile/<%= email %>" method="post">
                                             <% } %>
                                                 <div class="row">
                                                     <label class="col-md-6">Họ và tên:</label>
-                                                    <input name="hoten" class="col-md-6" value="<%= hoten %>">
+                                                    <p id="nametoedit" name="hoten" class="editp col-md-6"><%= hoten %></p>
                                                 </div>
                                                 <% if(role=='sinhvien' ) { %>
                                                     <div class="row">
                                                         <label class="col-md-6"> Mã số sinh viên:</label>
-                                                        <input name="mssv" class="col-md-6" value="<%= mssv %>">
+                                                        <p name="mssv" class="col-md-6" value=""><%= mssv %></p>
                                                     </div>
                                                     <% } %>
+                                                    <div class="row">
+                                                        <label class="col-md-6"> Ngày sinh:</label>
+                                                        <p name="mssv" class="col-md-6" value=""><%= ngaysinh %></p>
+                                                    </div>
                                                         <div class="row">
                                                             <label class="col-md-6">Khoa:</label>
-                                                            <input class="col-md-6" value="<%= khoa %>">
+                                                            <p class="col-md-6"><%= khoa %></p>
                                                         </div>
                                                         <% if(role=='sinhvien' ) { %>
                                                             <div class="row">
                                                                 <label class="col-md-6">Lớp:</label>
-                                                                <input class="col-md-6" value="<%= malop %>">
+                                                                <p class="col-md-6"><%= malop %></p>
+                                                            </div>
+                                                            <% } %>
+                                                        <% if(role=='sinhvien' ) { %>
+                                                                <div class="row">
+                                                                    <label class="col-md-6">Email:</label>
+                                                                    <p id="emailtoedit" name="email" class="editp col-md-6"><%= email %></p>
+                                                                </div>
+                                                                <% } %>
+                                                        <% if(role=='covan' ) { %>
+                                                            <div class="row">
+                                                                <label class="col-md-6">Email:</label>
+                                                                <p id="emailtoedit" name="email" class="col-md-6"><%= email %></p>
                                                             </div>
                                                             <% } %>
                                                                 <div class="row">
-                                                                    <label class="col-md-6">Email:</label>
-                                                                    <input name="email" class="col-md-6" value="<%= email %>">
-                                                                </div>
-                                                                <div class="row">
                                                                     <label class="col-md-6">Số điện thoại:</label>
-                                                                    <input name="sdt" class="col-md-6" value="<%= sdt %>">
+                                                                    <p id="sdttoedit" name="sdt" class="editp col-md-6"><%= sdt %></p>
                                                                 </div>
                                                                 <% if(role=='sinhvien' ) { %>
                                                                     <div class="row">
                                                                         <label class="col-md-6">Số tín chỉ:</label>
-                                                                        <input class="col-md-6" value="<%= tinchi %>">
+                                                                        <p class="col-md-6"><%= tinchi %></p>
                                                                     </div>
                                                                     <% } %>
                                                                         <% if(role=='sinhvien' ) { %>
                                                                             <div class="row">
                                                                                 <label class="col-md-6">GPA:</label>
-                                                                                <input class="col-md-6" value="<%= gpa %>"> 
+                                                                                <p class="col-md-6"><%= gpa %></p>
                                                                             </div>
                                                                             <% } %>
                                                                                 <input type="submit" id="xacnhan"
@@ -704,7 +716,7 @@
                     });
                     //edit prơfile
                     var editBtn = $('.profile-edit-btn');
-                    var contents = $(".about p");
+                    var contents = $(".editp");
                     delete contents.length;
                     delete contents.prevObject;
                     // Sửa cái này để lưu profile 
@@ -828,29 +840,46 @@
                     });
                 });
 
-                // $("#editstudent").submit(function () {
+                $("#editstudent").submit(function () {
 
-                //     var name = $("#nametoedit").html();
-                //     var email = $("#emailtoedit").html();
-                //     var sdt = $("#sdttoedit").html();
+                    var name = $("#nametoedit").html();
+                    var email = $("#emailtoedit").html();
+                    var sdt = $("#sdttoedit").html();
 
-                //     var input = $("<input />", {
-                //         name: "hoten",
-                //         value: name,
-                //         type: "hidden"
-                //     });
-                //     var input2 = $("<input />", {
-                //         name: "email",
-                //         value: email,
-                //         type: "hidden"
-                //     });
-                //     var input3 = $("<input />", {
-                //         name: "sdt",
-                //         value: sdt,
-                //         type: "hidden"
-                //     });
-                //     $(this).append(input);
-                // });
+                    var input = $("<input />", {
+                        name: "hoten",
+                        value: name,
+                        type: "hidden"
+                    });
+                    var input2 = $("<input />", {
+                        name: "email",
+                        value: email,
+                        type: "hidden"
+                    });
+                    var input3 = $("<input />", {
+                        name: "sdt",
+                        value: sdt,
+                        type: "hidden"
+                    });
+                    $(this).append(input, input2, input3);
+                });
+                $("#editteacher").submit(function () {
+
+                    var name = $("#nametoedit").html();
+                    var sdt = $("#sdttoedit").html();
+
+                    var input = $("<input />", {
+                        name: "hoten",
+                        value: name,
+                        type: "hidden"
+                    });
+                    var input3 = $("<input />", {
+                        name: "sdt",
+                        value: sdt,
+                        type: "hidden"
+                    });
+                    $(this).append(input, input3);
+                });
 
             </script>
 

@@ -1,7 +1,4 @@
-.ml-0{
-    margin-left: 0 !important;
-}
-
+/* css chung */
 html {
     scroll-behavior: smooth;
     font-family: Helvetica, Arial, sans-serif;
@@ -18,28 +15,38 @@ html body {
 }
 
 .main .btn {
-    color: #e8e8e8;
+    color: #fff;
     background-color: #71be34;
     padding: 8px 24px;
     margin-top: 16px;
     min-width: 86px;
+    max-height: 50px;
     border-radius: 16px;
     cursor: pointer;
 }
 
-.main .cancel-btn {
+.main .red-btn {
     background-color: #ff3333;
+}
+
+.main .blue-btn {
+    background-color: #0080ff;
+}
+
+.main .yellow-btn {
+    background-color: #ffff00;
 }
 
 .btn + .btn {
     margin-left: 16px;
 }
 
-.btn:hover {
+.main .btn:hover {
     opacity: 0.8;
     color: #fff;
 }
 
+/* css phần form nhập ở diễn đàn và thông báo */
 .form {
     background-color: #3a3b3c;
     padding: 16px;
@@ -50,8 +57,7 @@ html body {
     animation: modalFadeIn ease .3s;
 }
 
-.form.open {
-    display: flex;
+.form input {
 }
 
 .form label {
@@ -63,6 +69,7 @@ html body {
     padding: 8px;
     font-size: 16px;
     border-radius: 12px;
+    width: 90%;
 }
 
 .form hr {
@@ -78,10 +85,12 @@ html body {
     font-size: 20px;
     border-radius: 12px;
     padding: 8px;
-    vertical-align:top;
+    vertical-align:top;   
+    width: 90%;
+
 }
 
-
+/* css các cái bảng */
 td, th {
     border: 1px solid #fff;
     padding: 8px;
@@ -112,7 +121,7 @@ th {
     color: white;
 }
 
-
+/* css phần nav bên trái */
 .left-side, .rightsidebar, .main {
     display: inline-block;
 }
@@ -181,11 +190,10 @@ th {
     display: inline-block;
 }
 
+
+/* css phần content ở giữa */
 .main {
-    margin-left: 15%; /* Same as the width of the left-side */
-    /* margin-right: 20%; Same as the width of the rightsidebar */
-    /* Increased text to enable scrolling */
-    /* font-size: 28px;  */
+    margin-left: 15%;
     padding: 0px 32px;
     color: #e8e8e8;
     width: 80%;
@@ -201,11 +209,14 @@ th {
     font-size: 32px;
 }
 
+/* css mục sinh viên*/
 .main .adding-member {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    background-color: #3a3b3c;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 16px;
+    animation: modalFadeIn ease .3s;
 }
 
 .main .adding-avt {
@@ -252,14 +263,13 @@ th {
     margin-bottom: 10px;
 } */
 
-.member-list {
+/* .member-list {
     padding-top: 64px;
     display: flex;
     justify-content: space-around;
     align-content: space-between;
     flex-wrap: wrap; 
 }
-
 .member-list .member {
     background-color: #3a3b3c;
     width: 200px;
@@ -272,27 +282,23 @@ th {
     margin-bottom: 16px;
     cursor: pointer;
 }
-
 .member-list .member:hover {
     background-image: linear-gradient(to right, #af92f2, #74c2ee);
 }
-
 .member-list .member-ava {
     width: 80px;
     height: 80px;
     border-radius: 50%;
 }
-
 .member-list .member-name {
     margin: 16px 0 0;
     font-size: 30px;
 }
-
 .member-list .member-pos {
     margin-top: 4px;
     font-size: 16px;
     color: #999;
-}
+} */
 
 #student-table th{
     border: 1px solid white;
@@ -339,7 +345,7 @@ th {
     width: 100%;
 }
 
-/* todo css */
+/* thông báo css */
 .todo-dur-input>input {
     margin-bottom: 8px;
     padding: 8px;
@@ -391,7 +397,7 @@ th {
     color: #fff;
 }
 
-/* forum css */
+/* diễn đàn css */
 .main .question {
     color: #e8e8e8;
     background-color: #3a3b3c;
@@ -498,14 +504,14 @@ p.post-time {
     position: relative;
 }
 .profile-img img{
-    width: 70%;
-    height: 100%;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
 }
 .profile-img .file {
     position: absolute;
-    right: 54px;
-    bottom: 16px;
+    right: 46px;
+    bottom: -10px;
     overflow: hidden;
     border: none;
     border-radius: 50%;
@@ -575,7 +581,7 @@ p.post-time {
 
 
 
-.rightsidebar {
+/* .rightsidebar {
     height: 100%;
     width: 7%;
     z-index: 1;
@@ -589,13 +595,13 @@ p.post-time {
     transition: 0.3s;
     padding: 15px;
 }
-
 .rightsidebar:hover {
     position: absolute;
     right: 0;
     width: 22%;
-}
+} */
 
+/* phần dropdown chọn để vào trang cá nhân */
 body > .dropdown {
     position: fixed;
     top: 13px;
@@ -667,6 +673,7 @@ body > .dropdown {
     opacity: 0.8;
 }
 
+
 .right-nav {
     color: #ccc;
     position: fixed;
@@ -674,40 +681,29 @@ body > .dropdown {
     right: 92px;
 }
 
-.right-nav i {
+/* .right-nav i {
     padding-right: 4px;
     font-size: 24px;
     font-weight: 500;
 }
-
 .right-nav:hover .class-list{
     display: block;
-}
+} */
 
+/* phần chọn danh sách lớp */
 .right-nav .class-list {
+    color: #fff;
     list-style-type: none;
     background-color: #242526;
     box-shadow: 0 0 2px rgba(192, 192, 192, 0.8);
-    display: none;
     position: absolute;
-    width: 224px;
-    padding: 16px;
     border-radius: 12px;
-    top: 36px;
+    top: 2px;
     right: 1px;
     font-size: 15px;
 }
 
-.right-nav .class-list li {
-    padding: 8px;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-.class-list li.active{
-    background-image: linear-gradient(to right, #af92f2, #74c2ee);
-}
-
+/* css avatar chỗ chọn để dropdown */
 .avatar {
     width: 60px;
     height: 60px;

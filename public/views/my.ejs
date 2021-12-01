@@ -43,7 +43,10 @@
                 <% } %>
 
                     <% if(role=='covan' ) { %>
-                        <form class="adding-member d-flex flex-wrap" action="/add/student" method="post">
+                        <button data-toggle="collapse" data-target="#add-stu" class="btn">
+                            Thêm sinh viên
+                        </button>
+                        <form id="add-stu" class="adding-member flex-wrap collapse" action="/add/student" method="post">
                             <!-- <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
                             <div class="adding-id-inf col-md-4">
                                 <h2 class="name-inf">MSSV</h2>
@@ -108,7 +111,12 @@
 
                             <!--Bảng danh sách sinh viên-->
                             <div class="table-responsive ml-3">
-                                <input class="form-control mt-4 mb-4" id="myInput" type="text" placeholder="Search..">
+                                <form action="download" class=" row d-flex justify-content-between ml-3 mt-4 mb-3"
+                                    method="get">
+                                    <input class="form-control mt-4 col-md-9" id="myInput" type="text"
+                                        placeholder="Search..">
+                                    <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
+                                </form>
                                 <table id="student-table" class=" w-100 table">
                                     <thead>
                                         <tr>
@@ -119,6 +127,10 @@
                                             <th>Lớp khoá học</th>
                                             <th>Email</th>
                                             <th>SĐT</th>
+                                            <% if(role=='covan' ) { %>
+                                                <th>SĐT phụ huynh</th>
+                                                <th>Địa chỉ</th>
+                                                <% } %>
                                         </tr>
                                     </thead>
                                     <tbody class="stu-table-body">
@@ -146,6 +158,14 @@
                                                     <td>
                                                         <%= sinhvien[i].sdt %>
                                                     </td>
+                                                    <% if(role=='covan' ) { %>
+                                                        <td>
+                                                            <%= sinhvien[i].sdtphuhuynh %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].diachi %>
+                                                        </td>
+                                                        <% } %>
                                                 </tr>
                                                 <% } %>
                                                     <% } %>
@@ -161,6 +181,7 @@
                 <form>
                     <label for="sem">Học kỳ:</label>
                     <select name="sem" id="sem_hoctap">
+                        <option value="all">Tất cả</option>
                         <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
                         <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
                         <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
@@ -241,6 +262,7 @@
             <form class="selections">
                 <label for="sem">Học kỳ:</label>
                 <select name="sem" id="sem">
+                    <option value="all">Tất cả</option>
                     <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
                     <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
                     <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
@@ -380,7 +402,8 @@
                 <input type="text" class="input-subject" name="subject">
                 <hr>
                 <label for="">Nội dung</label>
-                <input contenteditable="true" role="textbox" spellcheck="true" class="input-content" name="content">
+                <input contenteditable="true" role="textbox" spellcheck="true" class="input-content ml-1"
+                    name="content">
                 <div>
                     <input type="submit" value="Đăng lên" class="btn">
                     <div class="btn cancel-btn">Huỷ bỏ</div>
@@ -626,8 +649,13 @@
                 <input name="emailcovan" type="hidden" value="<%= username %>">
                 <% } %>
                     <label for="class"><i class="ti-list"></i></label>
-                    <select name="class" class="class-list"
-                        onchange='if(this.value != 0) { var a = this.value;this.form.action=`/myclass/<%= username %>/${a}`;this.form.submit(); }'>
+                    <select name="class" class="selectpicker class-list" data-header="--Chọn mã lớp học--" onchange='
+                            if(this.value != 0) { 
+                                localStorage.setItem("myselect", this.value);
+                                var a = this.value;
+                                this.form.action=`/myclass/<%= username %>/${a}`;
+                                this.form.submit(); 
+                            }'>
                         <% if(classId) { %>
                             <% for (var i=0; i < classId.length; i++) { %>
                                 <option data-rel="1"><i class="ti-angle-right"></i>
@@ -878,17 +906,21 @@
                 function goToHomepage() {
                     window.location.href = "/my";
                 }
-                $(function () {
-                    $('.class-list').on('change', function () {
-                        $.cookie('class-list', this.value, { expires: 365, path: '/' });
-                    });
-                    // $('.class-list').val($.cookie('class-list'));
+                // $(function () {
+                //     $('.class-list').on('change', function () {
+                //         $.cookie('class-list', this.value, { expires: 365, path: '/' });
+                //     });
+                //     // $('.class-list').val($.cookie('class-list'));
 
-                    $(function () {
-                        var s = $.cookie('class-list');
-                        $(`.class-list option[value=${s}]`).prop('selected', true);
-                    });
-                });
+                //     $(function () {
+                //         var s = $.cookie('class-list');
+                //         $(`.class-list option[value=${s}]`).prop('selected', true);
+                //     });
+                // });
+                if (localStorage.getItem("myselect")) {
+                    console.log(localStorage.getItem("myselect"));
+                    $('.class-list').val(localStorage.getItem("myselect"))
+                }
 
             </script>
 

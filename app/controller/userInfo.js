@@ -39,7 +39,7 @@ const getUserInfo = async (req, res) => {
         malop = userInfo.dataValues.malop;
         sinhviens = await Sinhvien.findAll({
             where: { malop: malop },
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt'],
+            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
             raw: true
         });
 
@@ -88,7 +88,7 @@ const getUserInfo = async (req, res) => {
         malop = classId[0].malop;
         sinhviens = await Sinhvien.findAll({
             where: { malop: malop },
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt'],
+            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
             raw: true
         });
 

@@ -26,11 +26,8 @@ module.exports = (sequelize, Sequelize) => {
         phutrachlop: {
             type: Sequelize.INTEGER
         },
-        namhoc: {
-            type: Sequelize.INTEGER
-        },
         hocky: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
     }, {
         timestamps: false

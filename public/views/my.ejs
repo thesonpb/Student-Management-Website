@@ -633,8 +633,6 @@
 
                 <input name="emailcovan" type="hidden" value="<%= username %>">
                 <% } %>
-                    <select name="class" class="selectpicker class-list" data-header="--Chọn mã lớp học--" onchange='if(this.value != 0) { this.form.submit(); }'>
-                        <!-- <option value="" selected="selected">--Chọn mã lớp học--</option> -->
                     <label for="class"><i class="ti-list"></i></label>
                     <select name="class" class="class-list"
                         onchange='if(this.value != 0) { var a = this.value;this.form.action=`/myclass/<%= username %>/${a}`;this.form.submit(); }'>

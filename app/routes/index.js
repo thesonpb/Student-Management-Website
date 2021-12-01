@@ -40,7 +40,7 @@ function route(app) {
     //GET: Điều hướng đến trang cá nhân cua ban than
     app.get('/my', authJwt.verifyToken, controller.getUserInfo);
 
-    app.post('/myclass', authJwt.verifyToken, controller.getTeacherInfo);
+    app.post('/myclass/:email/:malop', authJwt.verifyToken, controller.getTeacherInfo);
     //**********************************************************************************************
     //GET: Lấy profile
     app.get('/profile', controller.getProfile);
@@ -84,6 +84,8 @@ function route(app) {
     app.post('/teacher/editprofile/:email', controller.teacherEditProfile)
     app.post('/student/delete/:mssv', controller.deleteStudent)
     app.post('/teacher/delete/:email', controller.deleteTeacher)
+
+    app.post('/upload/task', controller.uploadTask)
 }
 
 module.exports = route;

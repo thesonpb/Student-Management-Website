@@ -9,9 +9,9 @@ const { QueryTypes, Sequelize } = require('sequelize');
 //
 const teacherInfo = async (req, res) => {
     // const username = res.locals.user.tennguoidung;
-    const username = req.body.emailcovan;
+    const username = req.params.email;
     let userInfo = '';
-    let malop = req.body.class;
+    let malop = req.params.malop;
     const classId = await Lophoc.findAll({
         where: { emailcovan: username },
         attributes: ['malop'],

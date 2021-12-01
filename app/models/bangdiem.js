@@ -6,10 +6,7 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
         },
         hocky: {
-            type: Sequelize.INTEGER
-        },
-        namhoc: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
         mssv: {
             type: Sequelize.INTEGER

@@ -716,3 +716,7 @@ body > .dropdown {
     border-radius: 50%;
     margin-left: 8px;
 }
+
+#title:hover {
+    cursor: pointer;
+}

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="/assets/css/teacher.css">
     <link rel="stylesheet" href="/assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -45,7 +46,11 @@
                 <% } %>
 
                     <% if(role=='covan' ) { %>
-                        <form class="adding-member d-flex flex-wrap" action="/add/student" method="post">
+                        <button data-toggle="collapse" data-target="#add-stu" class="btn">
+                            Thêm sinh viên
+                        </button>
+
+                        <form id="add-stu" class="adding-member flex-wrap collapse" action="/add/student" method="post">
                             <!-- <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
                             <div class="adding-id-inf col-md-4">
                                 <h2 class="name-inf">MSSV</h2>
@@ -86,34 +91,20 @@
                                     <p class="member-name">Name</p>
                                     <p class="member-pos">position</p>
                                 </div>
-
-                                <div class="member">
-                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
-                                    <p class="member-name">Name</p>
-                                    <p class="member-pos">position</p>
-                                </div>
-
-                                <div class="member">
-                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
-                                    <p class="member-name">Name</p>
-                                    <p class="member-pos">position</p>
-                                </div>
-
-                                <div class="member">
-                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
-                                    <p class="member-name">Name</p>
-                                    <p class="member-pos">position</p>
-                                </div>
                             </div> -->
 
-                            <form action="download" class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
-                                <input class="form-control mt-4 col-md-9" id="myInput" type="text" placeholder="Search..">
+                            <!-- xuất excel -->
+                            <form action="download" class=" row d-flex justify-content-between ml-3 mt-4 mb-3"
+                                method="get">
+                                <input class="form-control mt-4 col-md-9" id="myInput" type="text"
+                                    placeholder="Search..">
                                 <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
                             </form>
 
 
                             <!--Bảng danh sách sinh viên-->
                             <div class="table-responsive ml-3">
+                                <form method="GET" id="edit-stu"></form>
                                 <table id="student-table" class=" w-100 table">
                                     <thead>
                                         <tr>
@@ -124,34 +115,40 @@
                                             <th>Lớp khoá học</th>
                                             <th>Email</th>
                                             <th>SĐT</th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody class="stu-table-body">
                                         <% if(sinhvien) { %>
                                             <% for (var i=0; i < sinhvien.length; i++) { %>
                                                 <tr>
-                                                    <td>
-                                                        <%= i+1 %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].mssv %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].hoten %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].ngaysinh %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].malop %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].email %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].sdt %>
-                                                    </td>
-                                                </tr>
+                                                        <td form="edit-stu">
+                                                            <%= i+1 %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].mssv %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].hoten %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].ngaysinh %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].malop %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].email %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].sdt %>
+                                                        </td>
+                                                        <td><button class="delete-btn btn red-btn mt-0">
+                                                            <i class="ti-trash"></i>
+                                                        </button></td>
+                                                        <td><div class="edit-btn btn yellow-btn mt-0">edit</div></td>
+                                                    </tr>
                                                 <% } %>
                                                     <% } %>
                                     </tbody>
@@ -385,7 +382,8 @@
                 <input type="text" class="input-subject ml-3" name="subject">
                 <hr>
                 <label for="">Nội dung</label>
-                <input contenteditable="true" role="textbox" spellcheck="true" class="input-content ml-1" name="content">
+                <input contenteditable="true" role="textbox" spellcheck="true" class="input-content ml-1"
+                    name="content">
                 <div>
                     <input type="submit" value="Đăng lên" class="btn">
                     <div class="btn red-btn">Huỷ bỏ</div>
@@ -605,6 +603,7 @@
         </div>
     </div>
 
+    <!-- drop down -->
     <div class="dropdown">
         <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="/assets/img/IMG_8672.png" alt=""
             data-toggle="dropdown">
@@ -627,6 +626,7 @@
         </ul>
     </div>
 
+    <!-- chọn lớp -->
     <% if(role=='covan' ) { %>
         <form class="right-nav" method="post" action="">
             <% if(username) { %>
@@ -634,8 +634,14 @@
                 <input name="emailcovan" type="hidden" value="<%= username %>">
                 <% } %>
                     <label for="class"><i class="ti-list"></i></label>
-                    <select name="class" class="class-list"
-                        onchange='if(this.value != 0) { var a = this.value;this.form.action=`/myclass/<%= username %>/${a}`;this.form.submit(); }'>
+                    <select name="class" class="selectpicker class-list" data-header="--Chọn mã lớp học--"
+                        onchange='
+                            if(this.value != 0) { 
+                                localStorage.setItem("myselect", this.value);
+                                var a = this.value;
+                                this.form.action=`/myclass/<%= username %>/${a}`;
+                                this.form.submit(); 
+                            }'>
                         <% if(classId) { %>
                             <% for (var i=0; i < classId.length; i++) { %>
                                 <option data-rel="1">
@@ -646,11 +652,6 @@
                     </select>
         </form>
         <% } %>
-            <!-- rightsidebar -->
-            <!-- <div class="rightsidebar">
-        
-    </div> -->
-
 
             <script>
                 (function ($) {
@@ -661,7 +662,8 @@
                             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                         });
                     });
-                    //Theem 1 dong tron danh sach
+
+                    //Theem 1 dong trong danh sach
                     const stdBdTable = $('.stu-table-body');
                     const stuForm = $('.adding-member')
                     function onAddStu(e) {
@@ -674,20 +676,22 @@
                         const email = $('#stu-emai').val()
                         const phone = $('#stu-phone').val()
                         stdBdTable.append(`
-                    <tr>
-                      <td>${rowCount + 1}</td>
-                      <td>${id}</td>
-                      <td>${name}</td>
-                      <td>${dob}</td>
-                      <td>${classID}</td>
-                      <td>${email}</td>
-                      <td>${phone}</td>
-                      <td><button class="delete-btn btn-danger"><i class="ti-trash"></i></button></td>
-                    </tr>
-                `);
+                        <tr>
+                            <form action="">
+                                <td>${rowCount + 1}</td>
+                                <td>${id}</td>
+                                <td>${name}</td>
+                                <td>${dob}</td>
+                                <td>${classID}</td>
+                                <td>${email}</td>
+                                <td>${phone}</td>
+                                <td><button class="delete-btn btn red-btn mt-0"><i class="ti-trash"></i></button></td>
+                                <td><button class="edit-btn btn yellow-btn mt-0">edit</button></td>
+                            </form>
+                        </tr>` );
                     }
                     stuForm.submit(onAddStu)
-                    console.log(stdBdTable)
+
                     //Xoá 1 dong trong danh sách
                     var stdTable = $('#student-table');
                     function onDeleteRow(e) {
@@ -695,34 +699,69 @@
                             return;
                         }
                         const btn = e.target;
-                        console.log(btn)
                         btn.closest("tr").remove();
                     }
                     stdTable.click(onDeleteRow);
+
+                    //Sửa 1 dong trong danh sách
+                    function onEditRow(e) {
+                        if (!e.target.classList.contains('edit-btn')) {
+                            return;
+                        }
+                        var btn = $(e.target);
+                        var tds = btn.closest("tr").find('td');
+                        delete tds['0'];
+                        delete tds['7'];
+                        delete tds['8'];
+                        delete tds['length'];
+                        delete tds['prevObject'];
+                        console.log(tds)
+                        for (const [key, value] of Object.entries(tds)) {
+                            td = value
+                            td.contentEditable = !td.isContentEditable;
+                            if (td.contentEditable === 'false') {
+                                td.style.opacity = '1';
+                                // localStorage.setItem('content', content.innerHTML);
+                            } else {
+                                td.style.opacity = '0.5';
+                                td.value = "Save";
+                            }
+                        }
+                    }
+                        console.log($('#add-stu'));
+                    stdTable.click(onEditRow);
+
                     // Huỷ bỏ đăng công việc
                     $('.js-close-todo-btn').click(function (e) {
                         $('#todo-form').collapse("hide");
                     })
+
                     //Huỷ bỏ đăng câu hỏi diễn đàn
                     $('.js-close-btn').click(function (e) {
                         $('#question-form').collapse("hide");
                     })
+
                     // chọn lớp học
                     $('.class-list li').click(function () {
                         $(this).addClass('active')
                         $('.class-list li').not($(this)).removeClass('active');
                     });
+
                     // chọn phần bên nav 
                     $('.nav li').click(function () {
                         $(this).addClass('active')
                         $('.nav li').not($(this)).removeClass('active');
                         $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
                     });
+
+
                     // hiển thị profile
                     $('li .profile').click(function () {
                         $('.nav li').removeClass('active');
                         $('.main:last-of-type').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
                     });
+
+
                     //edit prơfile
                     var editBtn = $('.profile-edit-btn');
                     var contents = $(".editp");
@@ -753,6 +792,7 @@
                         }
                     });
                 })(jQuery);
+
                 $('document').ready(function ($) {
                     var rows = $('#worktable tbody tr').each(function () {
                         var row = $(this);
@@ -886,18 +926,20 @@
                 function goToHomepage() {
                     window.location.href = "/my";
                 }
-                $(function () {
-                    $('.class-list').on('change', function () {
-                        $.cookie('class-list', this.value, { expires: 365, path: '/' });
-                    });
-                    // $('.class-list').val($.cookie('class-list'));
+                // $(function () {
+                //     $('.class-list').on('change', function () {
+                //         $.cookie('class-list', this.value, { expires: 365, path: '/' });
+                //     });
+                //     // $('.class-list').val($.cookie('class-list'));
 
-                    $(function () {
-                        var s = $.cookie('class-list');
-                        $(`.class-list option[value=${s}]`).prop('selected', true);
-                    });
-                });
-
+                //     $(function () {
+                //         var s = $.cookie('class-list');
+                //         $(`.class-list option[value=${s}]`).prop('selected', true);
+                //     });
+                // });
+                if(localStorage.getItem("myselect")) {
+                    $('.class-list').val(localStorage.getItem("myselect"))
+                }
             </script>
 
 </body>

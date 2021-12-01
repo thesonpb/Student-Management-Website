@@ -41,7 +41,7 @@ html body {
     margin-left: 16px;
 }
 
-.btn:hover {
+.main .btn:hover {
     opacity: 0.8;
     color: #fff;
 }
@@ -55,9 +55,6 @@ html body {
     border-radius: 12px;
     margin-top: 16px;
     animation: modalFadeIn ease .3s;
-}
-
-.form input {
 }
 
 .form label {
@@ -109,7 +106,7 @@ tr:nth-child(odd){
 }
 
 tr:hover {
-    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+    /* background-image: linear-gradient(to right, #af92f2, #74c2ee); */
     color: #000;
 }
 
@@ -211,6 +208,7 @@ th {
 
 /* css mục sinh viên*/
 .main .adding-member {
+    display: flex;
     background-color: #3a3b3c;
     padding: 16px;
     border-radius: 12px;

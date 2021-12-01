@@ -1,3 +1,6 @@
+const models = require('./index');
+const Diemrenluyen = require("./diemrenluyen");
+
 module.exports = (sequelize, Sequelize) => {
     const Sinhvien = sequelize.define('sinhvien', {
         mssv: {
@@ -28,14 +31,15 @@ module.exports = (sequelize, Sequelize) => {
         malop: {
             type: Sequelize.STRING
         }, 
-        // avatar: {
-        //     type: Sequelize.STRING
-        // }, 
-        // canhbaohocvu: {
-        //     type: Sequelize.STRING
-        // },
+        avatar: {
+            type: Sequelize.STRING
+        }, 
+        canhbaohocvu: {
+            type: Sequelize.STRING
+        },
     }, {
         timestamps: false
     });
+    
     return Sinhvien;
 }

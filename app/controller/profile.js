@@ -13,24 +13,30 @@ const getProfile = async (req, res) => {
     console.log(userRole);
     let profile = '';
     //Lấy profile rồi gán vào object profile
-    if(userRole == 'sinhvien'){
+    if (userRole == 'sinhvien') {
         profile = await Sinhvien.findByPk(username);
-    }else if(userRole == 'covan'){
+        console.log(profile.dataValues);
+        //Render giao diện profile kèm dữ liệu
+        res.render('profile', profile.dataValues);
+    } else if (userRole == 'covan') {
         profile = await Covan.findByPk(username);
+        console.log(profile.dataValues);
+        //Render giao diện profile kèm dữ liệu
+        res.render('profile', profile.dataValues);
+    } else {
+        res.render('admin')
     }
-    console.log(profile.dataValues);
-    //Render giao diện profile kèm dữ liệu
-    res.render('profile', profile.dataValues);
+
 }
 
-const changeUserInfo = async(req, res) => {
+const changeUserInfo = async (req, res) => {
 
 
 };
 
 
 
-const user ={
+const user = {
     getProfile: getProfile,
     changeUserInfo: changeUserInfo,
 }

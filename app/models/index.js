@@ -34,6 +34,16 @@ db.Taikhoan = require('./taikhoan')(sequelize, Sequelize);
 //db.userInfo = require('./userInfo')(sequelize, Sequelize);
 db.Sinhvien = require('./sinhvien')(sequelize, Sequelize);
 db.Covan = require('./covan')(sequelize, Sequelize);
+db.Bangdiem = require('./bangdiem')(sequelize, Sequelize);
+db.Diemrenluyen = require('./diemrenluyen')(sequelize, Sequelize);
+db.Lophoc = require('./lophoc')(sequelize, Sequelize);
+db.Admin = require('./admin')(sequelize, Sequelize);
+
+db.Diemrenluyen.belongsTo(db.Sinhvien, {foreignKey: 'mssv'});
+db.Sinhvien.hasOne(db.Diemrenluyen, {foreignKey: 'mssv'});
+db.Bangdiem.belongsTo(db.Sinhvien, {foreignKey: 'mssv'});
+db.Sinhvien.hasOne(db.Bangdiem, {foreignKey: 'mssv'});
+
 
 
 

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="../assets/css/teacher.css">
+    <link rel="stylesheet" href="../assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="left-side ">
+        <h1 class="title">Student Management</h1>
+        <label for="">Tools</label>
+        <ul class="nav">
+            <li data-rel="1" class="active"><i class="ti-user"></i> Sinh viên</li>
+            <li data-rel="2" class=""><i class="ti-book"></i> Cố vấn</li>
+            <li data-rel="3" class=""><i class="ti-book"></i> Tạo lớp</li>
+            <li data-rel="4" class=""><i class="ti-book"></i> Quản lý lớp</li>
+        </ul>
+    </div>
+
+    <div class="content">
+
+        <!-- phần giữa trang chủ -->
+        <div class="main">
+            <h1 class="title-main">Xin chào, Admin
+            </h1>
+
+            <form class="adding-member" action="/add/student" method="post">
+                <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
+                <div class="adding-id-inf col-md-3">
+                    <h2 class="name-inf">MSSV</h2>
+                    <input autocomplete="off" type="text" class="input-inf" name="mssv" placeholder="mã sv" />
+                </div>
+                <div class="adding-name-inf col-md-3">
+                    <h2 class="name-inf">Họ tên</h2>
+                    <input autocomplete="off" type="text" class="input-inf" placeholder="Tên" name="hoten" />
+                </div>
+
+                <div class="adding-name-inf col-md-3">
+                    <h2 class="name-inf">Ngày sinh</h2>
+                    <input autocomplete="off" type="date" class="input-inf" />
+                </div>
+                <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
+            </form>
+            <form action="download" method="get">
+                <input type="submit" value="Xuất excel">
+            </form>
+
+            <input class="form-control ml-3 mt-4 mb-4" id="myInput" type="text" placeholder="Search..">
+
+
+            <!--Bảng danh sách sinh viên-->
+            <div class="table-responsive">
+
+                <table id="student-table" class="ml-3 w-100 table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>MSSV</th>
+                            <th>Họ và tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Lớp khoá học</th>
+                            <th>Email</th>
+                            <th>SĐT</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="stu-table-body">
+                        <% if(sinhvien) { %>
+                            <% for (var i=0; i < sinhvien.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= i+1 %>
+                                    </td>
+                                    <td>
+                                        <%= sinhvien[i].mssv %>
+                                    </td>
+                                    <td>
+                                        <%= sinhvien[i].hoten %>
+                                    </td>
+                                    <td>
+                                        <%= sinhvien[i].ngaysinh %>
+                                    </td>
+                                    <td>
+                                        <%= sinhvien[i].malop %>
+                                    </td>
+                                    <td>
+                                        <%= sinhvien[i].email %>
+                                    </td>
+                                    <td>
+                                        <%= sinhvien[i].sdt %>
+                                    </td>
+                                    <td>
+                                        <form action="/student/delete/<%= sinhvien[i].mssv %>" method="post">
+                                            <button type="submit" class="delete-btn btn-danger"><i
+                                                    class="ti-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Cố vấn -->
+        <div class="main">
+            <h1>Danh sách cố vấn</h1>
+            <table id="student-table" class="ml-3 w-100 table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Email</th>
+                        <th>Họ và tên</th>
+                        <th>Ngày sinh</th>
+                        <th>SĐT</th>
+                        <th>Khoa</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="stu-table-body">
+                    <% if(covan) { %>
+                        <% for (var i=0; i < covan.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= i+1 %>
+                                </td>
+                                <td>
+                                    <%= covan[i].email %>
+                                </td>
+                                <td>
+                                    <%= covan[i].hoten %>
+                                </td>
+                                <td>
+                                    <%= covan[i].ngaysinh %>
+                                </td>
+                                <td>
+                                    <%= covan[i].sdt %>
+                                </td>
+                                <td>
+                                    <%= covan[i].khoa %>
+                                </td>
+                                <td>
+                                    <form action="/teacher/delete/<%= covan[i].email %>" method="post">
+                                        <button type="submit" class="delete-btn btn-danger"><i
+                                                class="ti-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% } %>
+                                <% } %>
+                </tbody>
+            </table>
+        </div>
+        <!-- Tạo lớp -->
+        <div class="main">
+            <form action="/createClass" method="post">
+                <h1>Tạo lớp khoá học: </h1>
+                <label for="classname">Mã lớp: </label>
+                <input type="text" name="classname" id="classname">
+                <label for="covanEmail">Email cố vấn: </label>
+                <input type="text" name="covanEmail" id="covanEmail">
+                <input type="file" name="danhsachsinhvien" value="Thêm danh sách lớp">
+            </form>
+        </div>
+
+        <!-- Quản lý lớp -->
+        <div class="main">
+            <ol>
+                <% if(lophoc) { %>
+                    <% for (var i=0; i < lophoc.length; i++) { %>
+                        <li>
+                            <%= lophoc[i].malop %>
+                                <%= lophoc[i].emailcovan %>
+                        </li>
+                        <% } %>
+                            <% } %>
+            </ol>
+        </div>
+
+
+    </div>
+
+    <div class="dropdown">
+        <img id="dropbtn" class=" dropbtn js-dropbtn" src="../assets/img/IMG_8672.png" alt="">
+        <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
+        <ul class="dropdown-list js-drop-item">
+            <li><a class="profile" href="#">
+                    <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->
+                    <label for="">
+                        <%= hoten %>
+                    </label>
+                </a></li>
+            <hr>
+            <li><a href="/logout">Đăng xuất</a></li>
+        </ul>
+    </div>
+
+
+
+    <script>
+        (function ($) {
+            // Tìm kiếm sinh viên
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $(".stu-table-body tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            // hiển thị dropdown 
+            $('.js-dropbtn').click(function (e) {
+                e.stopPropagation();
+                var droplist = $('.js-drop-item');
+                if (droplist.css('display') === 'none') {
+                    droplist.css({ "display": "block" });
+                } else {
+                    $('.js-drop-item').fadeOut(200);
+                }
+            })
+            $(document).click(function (e) {
+                $('.js-drop-item').fadeOut(200);
+            });
+            // chọn lớp học
+            $('.class-list li').click(function () {
+                $(this).addClass('active')
+                $('.class-list li').not($(this)).removeClass('active');
+            });
+            // chọn phần bên nav 
+            $('.nav li').click(function () {
+                $(this).addClass('active')
+                $('.nav li').not($(this)).removeClass('active');
+                $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>

@@ -16,7 +16,7 @@
 
 <body>
     <div class="left-side ">
-        <h1 class="title">Student Management</h1>
+        <h1 id="title" onclick="goToHomepage()" class="title">Student Management</h1>
         <label for="">Tools</label>
         <ul class="nav">
             <li data-rel="1" class="active"><i class="ti-user"></i> Sinh viên</li>
@@ -241,6 +241,10 @@
                 $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
             });
         })(jQuery);
+
+        function goToHomepage() {
+            window.location.href = "/my";
+        }
     </script>
 
 </body>

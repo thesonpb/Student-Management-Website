@@ -41,7 +41,7 @@ html body {
     margin-left: 16px;
 }
 
-.btn:hover {
+.main .btn:hover {
     opacity: 0.8;
     color: #fff;
 }
@@ -211,6 +211,7 @@ th {
 
 /* css mục sinh viên*/
 .main .adding-member {
+    display: flex;
     background-color: #3a3b3c;
     padding: 16px;
     border-radius: 12px;

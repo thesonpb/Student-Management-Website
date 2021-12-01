@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management</title>
-    <link rel="stylesheet" href="../assets/css/teacher.css">
-    <link rel="stylesheet" href="../assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/assets/css/teacher.css">
+    <link rel="stylesheet" href="/assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -17,7 +17,7 @@
 
 <body>
     <div class="left-side ">
-        <h1 class="title">Student Management</h1>
+        <h1 id="title" onclick="goToHomepage()" class="title">Student Management</h1>
         <label for="">Tools</label>
         <ul class="nav">
             <li data-rel="1" class="active"><i class="ti-user"></i> Sinh viên</li>
@@ -43,72 +43,66 @@
                 <% } %>
 
                     <% if(role=='covan' ) { %>
-                        <form class="adding-member" action="/add/student" method="post">
-                            <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
-                            <div class="adding-id-inf col-md-3">
+                        <form class="adding-member d-flex flex-wrap" action="/add/student" method="post">
+                            <!-- <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
+                            <div class="adding-id-inf col-md-4">
                                 <h2 class="name-inf">MSSV</h2>
                                 <input id="stu-id" autocomplete="off" type="text" class="input-inf" name="mssv"
                                     placeholder="mã sv" />
                             </div>
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Họ tên</h2>
                                 <input id="stu-name" autocomplete="off" type="text" class="input-inf" placeholder="Tên"
                                     name="hoten" />
                             </div>
-
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Ngày sinh</h2>
                                 <input id="stu-dob" autocomplete="off" type="date" class="input-inf" />
                             </div>
-
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Lớp khoá học</h2>
                                 <input id="stu-class-id" autocomplete="off" type="text" class="input-inf"
                                     placeholder="Mã lớp" name="malop" />
                             </div>
-
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Email</h2>
                                 <input id="stu-email" autocomplete="off" type="email" class="input-inf"
                                     placeholder="email" name="email" />
                             </div>
-
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Sđt</h2>
                                 <input id="stu-phone" autocomplete="off" type="text" class="input-inf"
                                     placeholder="Số điện thoại" name="sđt" />
                             </div>
-                            <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
-                        </form>
-                        <form action="download" method="get">
-                            <input type="submit" value="Xuất excel">
+                            <input type="submit" value="Thêm sv" id="" class="adding-btn btn ml-3 col-md-2">
                         </form>
                         <% } %>
-                            <div class="member-list">
+
+                            <!-- <div class="member-list">
                                 <div class="member">
-                                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
                                     <p class="member-name">Name</p>
                                     <p class="member-pos">position</p>
                                 </div>
 
                                 <div class="member">
-                                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
                                     <p class="member-name">Name</p>
                                     <p class="member-pos">position</p>
                                 </div>
 
                                 <div class="member">
-                                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
                                     <p class="member-name">Name</p>
                                     <p class="member-pos">position</p>
                                 </div>
 
                                 <div class="member">
-                                    <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
+                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
                                     <p class="member-name">Name</p>
                                     <p class="member-pos">position</p>
                                 </div>
-                            </div>
+                            </div> -->
 
 
 
@@ -165,15 +159,12 @@
             <h1 class="title-main">Học tập</h1>
             <div class="selections d-flex justify-content-between">
                 <form>
-                    <label for="year">Năm học:</label>
-                    <select name="year" id="year_hoctap">
-                        <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                    </select>
                     <label for="sem">Học kỳ:</label>
                     <select name="sem" id="sem_hoctap">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
+                        <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
+                        <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
+                        <option value="Học kỳ 2 năm 2020-2021">Học kỳ 2 năm 2020-2021</option>
                     </select>
                 </form>
                 <% if(role=='covan' ) { %>
@@ -198,7 +189,6 @@
                             <th>Họ Tên</th>
                             <th>Ngày Sinh</th>
                             <th>Mã lớp</th>
-                            <th>Năm học</th>
                             <th>Học kỳ</th>
                             <th>Tín chỉ</th>
                             <th>GPA</th>
@@ -225,9 +215,6 @@
                                         <%= diemSinhVien[i].malop %>
                                     </td>
                                     <td>
-                                        <%= diemSinhVien[i].bangdiem['namhoc'] %>
-                                    </td>
-                                    <td>
                                         <%= diemSinhVien[i].bangdiem['hocky'] %>
                                     </td>
                                     <td>
@@ -252,15 +239,12 @@
         <div class="main">
             <h1 class="title-main">Rèn luyện</h1>
             <form class="selections">
-                <label for="year">Năm học:</label>
-                <select name="year" id="year">
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                </select>
                 <label for="sem">Học kỳ:</label>
                 <select name="sem" id="sem">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                    <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
+                    <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
+                    <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
+                    <option value="Học kỳ 2 năm 2020-2021">Học kỳ 2 năm 2020-2021</option>
                 </select>
             </form>
 
@@ -273,7 +257,6 @@
                             <th>Họ Tên</th>
                             <th>Ngày Sinh</th>
                             <th>Mã lớp</th>
-                            <th>Năm học</th>
                             <th>Học kỳ</th>
                             <th>Ý thức học tập</th>
                             <th>Chấp hành nội quy</th>
@@ -301,9 +284,6 @@
                                     </td>
                                     <td>
                                         <%= diemRenLuyen[i].malop %>
-                                    </td>
-                                    <td>
-                                        <%= diemRenLuyen[i].diemrenluyen['namhoc'] %>
                                     </td>
                                     <td>
                                         <%= diemRenLuyen[i].diemrenluyen['hocky'] %>
@@ -449,7 +429,7 @@
         <div class="main emp-profile">
             <div class="row profile-header">
                 <div class="profile-img col-md-4">
-                    <img src="../assets/img/IMG_8672.png" alt="" />
+                    <img src="/assets/img/IMG_8672.png" alt="" />
                     <div class="file btn-lg btn-primary">
                         <i class="ti-camera"></i>
                         <input type="file" name="file" />
@@ -503,58 +483,85 @@
                                             <% } %>
                                                 <div class="row">
                                                     <label class="col-md-6">Họ và tên:</label>
-                                                    <p id="nametoedit" name="hoten" class="editp col-md-6"><%= hoten %></p>
+                                                    <p id="nametoedit" name="hoten" class="editp col-md-6">
+                                                        <%= hoten %>
+                                                    </p>
                                                 </div>
                                                 <% if(role=='sinhvien' ) { %>
                                                     <div class="row">
                                                         <label class="col-md-6"> Mã số sinh viên:</label>
-                                                        <p name="mssv" class="col-md-6" value=""><%= mssv %></p>
+                                                        <p name="mssv" class="col-md-6" value="">
+                                                            <%= mssv %>
+                                                        </p>
                                                     </div>
                                                     <% } %>
-                                                    <div class="row">
-                                                        <label class="col-md-6"> Ngày sinh:</label>
-                                                        <p name="mssv" class="col-md-6" value=""><%= ngaysinh %></p>
-                                                    </div>
+                                                        <div class="row">
+                                                            <label class="col-md-6"> Ngày sinh:</label>
+                                                            <p name="mssv" class="col-md-6" value="">
+                                                                <%= ngaysinh %>
+                                                            </p>
+                                                        </div>
                                                         <div class="row">
                                                             <label class="col-md-6">Khoa:</label>
-                                                            <p class="col-md-6"><%= khoa %></p>
+                                                            <p class="col-md-6">
+                                                                <%= khoa %>
+                                                            </p>
                                                         </div>
                                                         <% if(role=='sinhvien' ) { %>
                                                             <div class="row">
                                                                 <label class="col-md-6">Lớp:</label>
-                                                                <p class="col-md-6"><%= malop %></p>
+                                                                <p class="col-md-6">
+                                                                    <%= malop %>
+                                                                </p>
                                                             </div>
                                                             <% } %>
-                                                        <% if(role=='sinhvien' ) { %>
-                                                                <div class="row">
-                                                                    <label class="col-md-6">Email:</label>
-                                                                    <p id="emailtoedit" name="email" class="editp col-md-6"><%= email %></p>
-                                                                </div>
-                                                                <% } %>
-                                                        <% if(role=='covan' ) { %>
-                                                            <div class="row">
-                                                                <label class="col-md-6">Email:</label>
-                                                                <p id="emailtoedit" name="email" class="col-md-6"><%= email %></p>
-                                                            </div>
-                                                            <% } %>
-                                                                <div class="row">
-                                                                    <label class="col-md-6">Số điện thoại:</label>
-                                                                    <p id="sdttoedit" name="sdt" class="editp col-md-6"><%= sdt %></p>
-                                                                </div>
                                                                 <% if(role=='sinhvien' ) { %>
                                                                     <div class="row">
-                                                                        <label class="col-md-6">Số tín chỉ:</label>
-                                                                        <p class="col-md-6"><%= tinchi %></p>
+                                                                        <label class="col-md-6">Email:</label>
+                                                                        <p id="emailtoedit" name="email"
+                                                                            class="editp col-md-6">
+                                                                            <%= email %>
+                                                                        </p>
                                                                     </div>
                                                                     <% } %>
-                                                                        <% if(role=='sinhvien' ) { %>
+                                                                        <% if(role=='covan' ) { %>
                                                                             <div class="row">
-                                                                                <label class="col-md-6">GPA:</label>
-                                                                                <p class="col-md-6"><%= gpa %></p>
+                                                                                <label class="col-md-6">Email:</label>
+                                                                                <p id="emailtoedit" name="email"
+                                                                                    class="col-md-6">
+                                                                                    <%= email %>
+                                                                                </p>
                                                                             </div>
                                                                             <% } %>
-                                                                                <input type="submit" id="xacnhan"
-                                                                                    value="Xác nhận">
+                                                                                <div class="row">
+                                                                                    <label class="col-md-6">Số điện
+                                                                                        thoại:</label>
+                                                                                    <p id="sdttoedit" name="sdt"
+                                                                                        class="editp col-md-6">
+                                                                                        <%= sdt %>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <% if(role=='sinhvien' ) { %>
+                                                                                    <div class="row">
+                                                                                        <label class="col-md-6">Số tín
+                                                                                            chỉ:</label>
+                                                                                        <p class="col-md-6">
+                                                                                            <%= tinchi %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <% } %>
+                                                                                        <% if(role=='sinhvien' ) { %>
+                                                                                            <div class="row">
+                                                                                                <label
+                                                                                                    class="col-md-6">GPA:</label>
+                                                                                                <p class="col-md-6">
+                                                                                                    <%= gpa %>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <% } %>
+                                                                                                <input type="submit"
+                                                                                                    id="xacnhan"
+                                                                                                    value="Xác nhận">
 
                                         </form>
                     </div>
@@ -592,7 +599,7 @@
     </div>
 
     <div class="dropdown">
-        <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="../assets/img/IMG_8672.png" alt=""
+        <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="/assets/img/IMG_8672.png" alt=""
             data-toggle="dropdown">
         <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
         <ul class="dropdown-menu" id="dropdown-list">
@@ -613,14 +620,14 @@
         </ul>
     </div>
     <% if(role=='covan' ) { %>
-        <form class="right-nav" method="post" action="/myclass">
+        <form class="right-nav" method="post" action="">
             <% if(username) { %>
 
                 <input name="emailcovan" type="hidden" value="<%= username %>">
                 <% } %>
                     <label for="class"><i class="ti-list"></i></label>
-                    <select name="class" class="class-list" onchange='if(this.value != 0) { this.form.submit(); }'>
-                        <option value="" selected="selected">--Chọn mã lớp học--</option>
+                    <select name="class" class="class-list"
+                        onchange='if(this.value != 0) { var a = this.value;this.form.action=`/myclass/<%= username %>/${a}`;this.form.submit(); }'>
                         <% if(classId) { %>
                             <% for (var i=0; i < classId.length; i++) { %>
                                 <option data-rel="1"><i class="ti-angle-right"></i>
@@ -743,30 +750,26 @@
                         var row = $(this);
                         var columns = row.children('td');
 
-                        row.data('year', columns.eq(5).html());
-                        row.data('sem', columns.eq(6).html());
+                        row.data('sem', columns.eq(5).html());
 
                     });
                     var rows2 = $('#marktable tbody tr').each(function () {
                         var row = $(this);
                         var columns = row.children('td');
 
-                        row.data('year', columns.eq(5).html());
-                        row.data('sem', columns.eq(6).html());
-                        row.data('gpa', columns.eq(8).html());
-                        row.data('canhbaohocvu', columns.eq(9).html());
-                        row.data('tinchi', columns.eq(7).html());
+                        row.data('sem', columns.eq(5).html());
+                        row.data('gpa', columns.eq(7).html());
+                        row.data('canhbaohocvu', columns.eq(8).html());
+                        row.data('tinchi', columns.eq(6).html());
 
                     });
-                    $('#year, #sem').change(function () {
+                    $('#sem').change(function () {
                         var i = 1;
-                        var year = parseInt($('#year').val());
-                        var sem = parseInt($('#sem').val());
+                        var sem = $('#sem').val().toString();
                         rows.each(function () {
                             var row = $(this);
-                            var year_to_match = row.data('year');
                             var sem_to_match = row.data('sem');
-                            if (year_to_match == year && sem_to_match == sem) {
+                            if (sem_to_match.includes(sem)) {
                                 row.children('td').eq(0).html(i);
                                 i++;
                                 row.show();
@@ -776,21 +779,19 @@
                             }
                         });
                     });
-                    $('#year_hoctap, #sem_hoctap, #classify').change(function () {
+                    $('#sem_hoctap, #classify').change(function () {
                         var i = 1;
-                        var year = parseInt($('#year_hoctap').val());
-                        var sem = parseInt($('#sem_hoctap').val());
+                        var sem = $('#sem_hoctap').val().toString();
                         var classify = parseInt($('#classify').val());
 
                         rows2.each(function () {
                             var row = $(this);
-                            var year_to_match = row.data('year');
-                            var sem_to_match = row.data('sem');
+                            var sem_to_match = row.data('sem').toString();
                             var gpa = row.data('gpa');
                             var canhbaohocvu = row.data('canhbaohocvu');
                             var tinchi = row.data('tinchi');
                             if (classify == 1) {
-                                if (year_to_match == year && sem_to_match == sem && gpa >= 3.2) {
+                                if (sem_to_match.includes(sem) && gpa >= 3.2) {
                                     row.children('td').eq(0).html(i);
                                     i++;
                                     row.show();
@@ -800,7 +801,7 @@
                                 }
                             }
                             else if (classify == 2) {
-                                if (year_to_match == year && sem_to_match == sem && canhbaohocvu == "có") {
+                                if (sem_to_match.includes(sem) && canhbaohocvu == "có") {
                                     row.children('td').eq(0).html(i);
                                     i++;
                                     row.show();
@@ -810,7 +811,7 @@
                                 }
                             }
                             else if (classify == 3) {
-                                if (year_to_match == year && sem_to_match == sem && tinchi < 13) {
+                                if (sem_to_match.includes(sem) && tinchi < 13) {
                                     row.children('td').eq(0).html(i);
                                     i++;
                                     row.show();
@@ -820,7 +821,7 @@
                                 }
                             }
                             else {
-                                if (year_to_match == year && sem_to_match == sem) {
+                                if (sem_to_match.includes(sem)) {
                                     row.children('td').eq(0).html(i);
                                     i++;
                                     row.show();
@@ -873,6 +874,20 @@
                         type: "hidden"
                     });
                     $(this).append(input, input3);
+                });
+                function goToHomepage() {
+                    window.location.href = "/my";
+                }
+                $(function () {
+                    $('.class-list').on('change', function () {
+                        $.cookie('class-list', this.value, { expires: 365, path: '/' });
+                    });
+                    // $('.class-list').val($.cookie('class-list'));
+
+                    $(function () {
+                        var s = $.cookie('class-list');
+                        $(`.class-list option[value=${s}]`).prop('selected', true);
+                    });
                 });
 
             </script>

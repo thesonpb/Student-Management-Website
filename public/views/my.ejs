@@ -91,26 +91,9 @@
                                     <p class="member-name">Name</p>
                                     <p class="member-pos">position</p>
                                 </div>
-
-                                <div class="member">
-                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
-                                    <p class="member-name">Name</p>
-                                    <p class="member-pos">position</p>
-                                </div>
-
-                                <div class="member">
-                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
-                                    <p class="member-name">Name</p>
-                                    <p class="member-pos">position</p>
-                                </div>
-
-                                <div class="member">
-                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
-                                    <p class="member-name">Name</p>
-                                    <p class="member-pos">position</p>
-                                </div>
                             </div> -->
 
+                            <!-- xuất excel -->
                             <form action="download" class=" row d-flex justify-content-between ml-3 mt-4 mb-3"
                                 method="get">
                                 <input class="form-control mt-4 col-md-9" id="myInput" type="text"
@@ -121,6 +104,7 @@
 
                             <!--Bảng danh sách sinh viên-->
                             <div class="table-responsive ml-3">
+                                <form method="GET" id="edit-stu"></form>
                                 <table id="student-table" class=" w-100 table">
                                     <thead>
                                         <tr>
@@ -131,34 +115,40 @@
                                             <th>Lớp khoá học</th>
                                             <th>Email</th>
                                             <th>SĐT</th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody class="stu-table-body">
                                         <% if(sinhvien) { %>
                                             <% for (var i=0; i < sinhvien.length; i++) { %>
                                                 <tr>
-                                                    <td>
-                                                        <%= i+1 %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].mssv %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].hoten %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].ngaysinh %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].malop %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].email %>
-                                                    </td>
-                                                    <td>
-                                                        <%= sinhvien[i].sdt %>
-                                                    </td>
-                                                </tr>
+                                                        <td form="edit-stu">
+                                                            <%= i+1 %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].mssv %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].hoten %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].ngaysinh %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].malop %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].email %>
+                                                        </td>
+                                                        <td>
+                                                            <%= sinhvien[i].sdt %>
+                                                        </td>
+                                                        <td><button class="delete-btn btn red-btn mt-0">
+                                                            <i class="ti-trash"></i>
+                                                        </button></td>
+                                                        <td><div class="edit-btn btn yellow-btn mt-0">edit</div></td>
+                                                    </tr>
                                                 <% } %>
                                                     <% } %>
                                     </tbody>
@@ -613,6 +603,7 @@
         </div>
     </div>
 
+    <!-- drop down -->
     <div class="dropdown">
         <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="/assets/img/IMG_8672.png" alt=""
             data-toggle="dropdown">
@@ -635,6 +626,7 @@
         </ul>
     </div>
 
+    <!-- chọn lớp -->
     <% if(role=='covan' ) { %>
         <form class="right-nav" method="post" action="">
             <% if(username) { %>
@@ -660,11 +652,6 @@
                     </select>
         </form>
         <% } %>
-            <!-- rightsidebar -->
-            <!-- <div class="rightsidebar">
-        
-    </div> -->
-
 
             <script>
                 (function ($) {
@@ -675,7 +662,8 @@
                             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                         });
                     });
-                    //Theem 1 dong tron danh sach
+
+                    //Theem 1 dong trong danh sach
                     const stdBdTable = $('.stu-table-body');
                     const stuForm = $('.adding-member')
                     function onAddStu(e) {
@@ -688,20 +676,22 @@
                         const email = $('#stu-emai').val()
                         const phone = $('#stu-phone').val()
                         stdBdTable.append(`
-                    <tr>
-                      <td>${rowCount + 1}</td>
-                      <td>${id}</td>
-                      <td>${name}</td>
-                      <td>${dob}</td>
-                      <td>${classID}</td>
-                      <td>${email}</td>
-                      <td>${phone}</td>
-                      <td><button class="delete-btn btn-danger"><i class="ti-trash"></i></button></td>
-                    </tr>
-                `);
+                        <tr>
+                            <form action="">
+                                <td>${rowCount + 1}</td>
+                                <td>${id}</td>
+                                <td>${name}</td>
+                                <td>${dob}</td>
+                                <td>${classID}</td>
+                                <td>${email}</td>
+                                <td>${phone}</td>
+                                <td><button class="delete-btn btn red-btn mt-0"><i class="ti-trash"></i></button></td>
+                                <td><button class="edit-btn btn yellow-btn mt-0">edit</button></td>
+                            </form>
+                        </tr>` );
                     }
                     stuForm.submit(onAddStu)
-                    console.log(stdBdTable)
+
                     //Xoá 1 dong trong danh sách
                     var stdTable = $('#student-table');
                     function onDeleteRow(e) {
@@ -709,34 +699,69 @@
                             return;
                         }
                         const btn = e.target;
-                        console.log(btn)
                         btn.closest("tr").remove();
                     }
                     stdTable.click(onDeleteRow);
+
+                    //Sửa 1 dong trong danh sách
+                    function onEditRow(e) {
+                        if (!e.target.classList.contains('edit-btn')) {
+                            return;
+                        }
+                        var btn = $(e.target);
+                        var tds = btn.closest("tr").find('td');
+                        delete tds['0'];
+                        delete tds['7'];
+                        delete tds['8'];
+                        delete tds['length'];
+                        delete tds['prevObject'];
+                        console.log(tds)
+                        for (const [key, value] of Object.entries(tds)) {
+                            td = value
+                            td.contentEditable = !td.isContentEditable;
+                            if (td.contentEditable === 'false') {
+                                td.style.opacity = '1';
+                                // localStorage.setItem('content', content.innerHTML);
+                            } else {
+                                td.style.opacity = '0.5';
+                                td.value = "Save";
+                            }
+                        }
+                    }
+                        console.log($('#add-stu'));
+                    stdTable.click(onEditRow);
+
                     // Huỷ bỏ đăng công việc
                     $('.js-close-todo-btn').click(function (e) {
                         $('#todo-form').collapse("hide");
                     })
+
                     //Huỷ bỏ đăng câu hỏi diễn đàn
                     $('.js-close-btn').click(function (e) {
                         $('#question-form').collapse("hide");
                     })
+
                     // chọn lớp học
                     $('.class-list li').click(function () {
                         $(this).addClass('active')
                         $('.class-list li').not($(this)).removeClass('active');
                     });
+
                     // chọn phần bên nav 
                     $('.nav li').click(function () {
                         $(this).addClass('active')
                         $('.nav li').not($(this)).removeClass('active');
                         $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
                     });
+
+
                     // hiển thị profile
                     $('li .profile').click(function () {
                         $('.nav li').removeClass('active');
                         $('.main:last-of-type').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
                     });
+
+
                     //edit prơfile
                     var editBtn = $('.profile-edit-btn');
                     var contents = $(".editp");
@@ -767,6 +792,7 @@
                         }
                     });
                 })(jQuery);
+
                 $('document').ready(function ($) {
                     var rows = $('#worktable tbody tr').each(function () {
                         var row = $(this);
@@ -912,7 +938,6 @@
                 //     });
                 // });
                 if(localStorage.getItem("myselect")) {
-                    console.log(localStorage.getItem("myselect"));
                     $('.class-list').val(localStorage.getItem("myselect"))
                 }
             </script>

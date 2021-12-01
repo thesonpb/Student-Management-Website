@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="../assets/css/teacher.css">
     <link rel="stylesheet" href="../assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 </head>
 
@@ -43,48 +45,46 @@
                 <% } %>
 
                     <% if(role=='covan' ) { %>
-                        <form class="adding-member" action="/add/student" method="post">
-                            <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt">
-                            <div class="adding-id-inf col-md-3">
+                        <form class="adding-member d-flex flex-wrap" action="/add/student" method="post">
+                            <!-- <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
+                            <div class="adding-id-inf col-md-4">
                                 <h2 class="name-inf">MSSV</h2>
                                 <input id="stu-id" autocomplete="off" type="text" class="input-inf" name="mssv"
                                     placeholder="mã sv" />
                             </div>
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Họ tên</h2>
                                 <input id="stu-name" autocomplete="off" type="text" class="input-inf" placeholder="Tên"
                                     name="hoten" />
                             </div>
 
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Ngày sinh</h2>
                                 <input id="stu-dob" autocomplete="off" type="date" class="input-inf" />
                             </div>
 
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Lớp khoá học</h2>
                                 <input id="stu-class-id" autocomplete="off" type="text" class="input-inf"
                                     placeholder="Mã lớp" name="malop" />
                             </div>
 
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Email</h2>
                                 <input id="stu-email" autocomplete="off" type="email" class="input-inf"
                                     placeholder="email" name="email" />
                             </div>
 
-                            <div class="adding-name-inf col-md-3">
+                            <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Sđt</h2>
                                 <input id="stu-phone" autocomplete="off" type="text" class="input-inf"
                                     placeholder="Số điện thoại" name="sđt" />
                             </div>
-                            <input type="submit" value="Thêm sv" id="" class="adding-btn btn col-md-2">
+                            <input type="submit" value="Thêm sv" id="" class="adding-btn btn ml-3 col-md-2">
                         </form>
-                        <form action="download" method="get">
-                            <input type="submit" value="Xuất excel">
-                        </form>
+
                         <% } %>
-                            <div class="member-list">
+                            <!-- <div class="member-list">
                                 <div class="member">
                                     <img src="../assets/img/IMG_8672.png" alt="" class="member-ava">
                                     <p class="member-name">Name</p>
@@ -108,13 +108,17 @@
                                     <p class="member-name">Name</p>
                                     <p class="member-pos">position</p>
                                 </div>
-                            </div>
+                            </div> -->
 
+
+                            <form action="download" class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
+                                <input class="form-control mt-4 col-md-9" id="myInput" type="text" placeholder="Search..">
+                                <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
+                            </form>
 
 
                             <!--Bảng danh sách sinh viên-->
                             <div class="table-responsive ml-3">
-                                <input class="form-control mt-4 mb-4" id="myInput" type="text" placeholder="Search..">
                                 <table id="student-table" class=" w-100 table">
                                     <thead>
                                         <tr>
@@ -361,7 +365,7 @@
                     <input role="textbox" spellcheck="true" class="input-content" name="content">
                     <div>
                         <input type="submit" value="Đăng lên" class="btn">
-                        <div class="btn cancel-btn">Huỷ bỏ</div>
+                        <div class="btn red-btn">Huỷ bỏ</div>
                     </div>
                 </form>
                 <% } %>
@@ -395,15 +399,15 @@
             <h1 class="title-main">Diễn đàn</h1>
             <button data-toggle="collapse" data-target="#question-form" class="question-btn btn">Thêm một chủ đề thảo
                 luận</button>
-            <form action="/upload/question" class="form js-question-form collapse" id="question-form" method="post">
+            <form action="/upload/question" class="form collapse" id="question-form" method="post">
                 <label for="">Tiêu đề</label>
-                <input type="text" class="input-subject" name="subject">
+                <input type="text" class="input-subject ml-3" name="subject">
                 <hr>
                 <label for="">Nội dung</label>
-                <input contenteditable="true" role="textbox" spellcheck="true" class="input-content" name="content">
+                <input contenteditable="true" role="textbox" spellcheck="true" class="input-content ml-1" name="content">
                 <div>
                     <input type="submit" value="Đăng lên" class="btn">
-                    <div class="btn cancel-btn">Huỷ bỏ</div>
+                    <div class="btn red-btn">Huỷ bỏ</div>
                 </div>
             </form>
 
@@ -449,10 +453,12 @@
         <div class="main emp-profile">
             <div class="row profile-header">
                 <div class="profile-img col-md-4">
-                    <img src="../assets/img/IMG_8672.png" alt="" />
+                    <img src="../assets/img/cat.jpg" alt="" />
                     <div class="file btn-lg btn-primary">
                         <i class="ti-camera"></i>
-                        <input type="file" name="file" />
+                        <form action="">
+                            <input type="file" name="file" />
+                        </form>
                     </div>
                 </div>
                 <div class="profile-title col-md-6">
@@ -477,7 +483,7 @@
                 <div class="col-md-2">
                     <!-- <div class="profile--btn btn">Edit</div>
                         <br> -->
-                    <input type="submit" class="btn profile-edit-btn" name="btnAddMore" value="Edit" />
+                    <input type="submit" class="btn-warning profile-edit-btn" name="btnAddMore" value="Edit" />
                 </div>
             </div>
             <div class="row profile-content">
@@ -503,58 +509,86 @@
                                             <% } %>
                                                 <div class="row">
                                                     <label class="col-md-6">Họ và tên:</label>
-                                                    <p id="nametoedit" name="hoten" class="editp col-md-6"><%= hoten %></p>
+                                                    <p id="nametoedit" name="hoten" class="editp col-md-6">
+                                                        <%= hoten %>
+                                                    </p>
                                                 </div>
                                                 <% if(role=='sinhvien' ) { %>
                                                     <div class="row">
                                                         <label class="col-md-6"> Mã số sinh viên:</label>
-                                                        <p name="mssv" class="col-md-6" value=""><%= mssv %></p>
+                                                        <p name="mssv" class="col-md-6" value="">
+                                                            <%= mssv %>
+                                                        </p>
                                                     </div>
                                                     <% } %>
-                                                    <div class="row">
-                                                        <label class="col-md-6"> Ngày sinh:</label>
-                                                        <p name="mssv" class="col-md-6" value=""><%= ngaysinh %></p>
-                                                    </div>
+                                                        <div class="row">
+                                                            <label class="col-md-6"> Ngày sinh:</label>
+                                                            <p name="mssv" class="col-md-6" value="">
+                                                                <%= ngaysinh %>
+                                                            </p>
+                                                        </div>
                                                         <div class="row">
                                                             <label class="col-md-6">Khoa:</label>
-                                                            <p class="col-md-6"><%= khoa %></p>
+                                                            <p class="col-md-6">
+                                                                <%= khoa %>
+                                                            </p>
                                                         </div>
                                                         <% if(role=='sinhvien' ) { %>
                                                             <div class="row">
                                                                 <label class="col-md-6">Lớp:</label>
-                                                                <p class="col-md-6"><%= malop %></p>
+                                                                <p class="col-md-6">
+                                                                    <%= malop %>
+                                                                </p>
                                                             </div>
                                                             <% } %>
-                                                        <% if(role=='sinhvien' ) { %>
-                                                                <div class="row">
-                                                                    <label class="col-md-6">Email:</label>
-                                                                    <p id="emailtoedit" name="email" class="editp col-md-6"><%= email %></p>
-                                                                </div>
-                                                                <% } %>
-                                                        <% if(role=='covan' ) { %>
-                                                            <div class="row">
-                                                                <label class="col-md-6">Email:</label>
-                                                                <p id="emailtoedit" name="email" class="col-md-6"><%= email %></p>
-                                                            </div>
-                                                            <% } %>
-                                                                <div class="row">
-                                                                    <label class="col-md-6">Số điện thoại:</label>
-                                                                    <p id="sdttoedit" name="sdt" class="editp col-md-6"><%= sdt %></p>
-                                                                </div>
                                                                 <% if(role=='sinhvien' ) { %>
                                                                     <div class="row">
-                                                                        <label class="col-md-6">Số tín chỉ:</label>
-                                                                        <p class="col-md-6"><%= tinchi %></p>
+                                                                        <label class="col-md-6">Email:</label>
+                                                                        <p id="emailtoedit" name="email"
+                                                                            class="editp col-md-6">
+                                                                            <%= email %>
+                                                                        </p>
                                                                     </div>
                                                                     <% } %>
-                                                                        <% if(role=='sinhvien' ) { %>
+                                                                        <% if(role=='covan' ) { %>
                                                                             <div class="row">
-                                                                                <label class="col-md-6">GPA:</label>
-                                                                                <p class="col-md-6"><%= gpa %></p>
+                                                                                <label class="col-md-6">Email:</label>
+                                                                                <p id="emailtoedit" name="email"
+                                                                                    class="col-md-6">
+                                                                                    <%= email %>
+                                                                                </p>
                                                                             </div>
                                                                             <% } %>
-                                                                                <input type="submit" id="xacnhan"
-                                                                                    value="Xác nhận">
+                                                                                <div class="row">
+                                                                                    <label class="col-md-6">Số điện
+                                                                                        thoại:</label>
+                                                                                    <p id="sdttoedit" name="sdt"
+                                                                                        class="editp col-md-6">
+                                                                                        <%= sdt %>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <% if(role=='sinhvien' ) { %>
+                                                                                    <div class="row">
+                                                                                        <label class="col-md-6">Số tín
+                                                                                            chỉ:</label>
+                                                                                        <p class="col-md-6">
+                                                                                            <%= tinchi %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <% } %>
+                                                                                        <% if(role=='sinhvien' ) { %>
+                                                                                            <div class="row">
+                                                                                                <label
+                                                                                                    class="col-md-6">GPA:</label>
+                                                                                                <p class="col-md-6">
+                                                                                                    <%= gpa %>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <% } %>
+                                                                                                <input type="submit"
+                                                                                                    id="xacnhan"
+                                                                                                    value="Xác nhận"
+                                                                                                    class="btn-success">
 
                                         </form>
                     </div>
@@ -612,18 +646,18 @@
                     <li><a href="/logout">Đăng xuất</a></li>
         </ul>
     </div>
+
     <% if(role=='covan' ) { %>
         <form class="right-nav" method="post" action="/myclass">
             <% if(username) { %>
 
                 <input name="emailcovan" type="hidden" value="<%= username %>">
                 <% } %>
-                    <label for="class"><i class="ti-list"></i></label>
-                    <select name="class" class="class-list" onchange='if(this.value != 0) { this.form.submit(); }'>
-                        <option value="" selected="selected">--Chọn mã lớp học--</option>
+                    <select name="class" class="selectpicker class-list" data-header="--Chọn mã lớp học--" onchange='if(this.value != 0) { this.form.submit(); }'>
+                        <!-- <option value="" selected="selected">--Chọn mã lớp học--</option> -->
                         <% if(classId) { %>
                             <% for (var i=0; i < classId.length; i++) { %>
-                                <option data-rel="1"><i class="ti-angle-right"></i>
+                                <option data-rel="1">
                                     <%= classId[i].malop %>
                                 </option>
                                 <% } %>
@@ -874,7 +908,6 @@
                     });
                     $(this).append(input, input3);
                 });
-
             </script>
 
 </body>

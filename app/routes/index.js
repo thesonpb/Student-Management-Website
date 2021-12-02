@@ -94,6 +94,8 @@ function route(app) {
     app.post('/teacher/delete/:email', controller.deleteTeacher)
 
     app.post('/upload/task', controller.uploadTask)
+
+    app.post('/editstudentinfo/:mssv/:email/:malop', controller.editStudentInfo)
 }
 
 module.exports = route;

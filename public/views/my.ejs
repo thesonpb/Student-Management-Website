@@ -156,13 +156,25 @@
                                                         </td>
 
                                                         <td>
-                                                            <form action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>" method="post">
-                                                                <input type="submit" class="delete-btn btn red-btn mt-0" value="Xoá"/>
+                                                            <form
+                                                                action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
+                                                                method="post">
+                                                                <input type="submit" class="delete-btn btn red-btn mt-0"
+                                                                    value="Xoá" />
                                                             </form>
                                                         </td>
                                                         <td>
-                                                            <div class="edit-btn btn yellow-btn mt-0">edit</div>
+                                                            <!-- Form để chỉnh sửa thông tin sinh viên trong bảng, sau khi
+                                                            submit form này thì tạo các input hidden có value = các ô
+                                                            trong bảng là được -->
+                                                            <form id="editstudentinfo"
+                                                                action="/editstudentinfo/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
+                                                                method="post">
+                                                                <div class="edit-btn btn yellow-btn mt-0">edit</div>
+                                                                <input type="submit" value="Lưu lại">
+                                                            </form>
                                                         </td>
+
                                                         <% } %>
                                                 </tr>
                                                 <% } %>
@@ -724,7 +736,7 @@
                     // }
                     // stuForm.submit(onAddStu)
                     //Xoá 1 dong trong danh sách
-                    // var stdTable = $('#student-table');
+                    var stdTable = $('#student-table');
                     // function onDeleteRow(e) {
                     //     if (!e.target.classList.contains('delete-btn')) {
                     //         return;
@@ -734,32 +746,33 @@
                     // }
                     // stdTable.click(onDeleteRow);
                     //Sửa 1 dong trong danh sách
-                    // function onEditRow(e) {
-                    //     if (!e.target.classList.contains('edit-btn')) {
-                    //         return;
-                    //     }
-                    //     var btn = $(e.target);
-                    //     var tds = btn.closest("tr").find('td');
-                    //     delete tds['0'];
-                    //     delete tds['7'];
-                    //     delete tds['8'];
-                    //     delete tds['length'];
-                    //     delete tds['prevObject'];
-                    //     console.log(tds)
-                    //     for (const [key, value] of Object.entries(tds)) {
-                    //         td = value
-                    //         td.contentEditable = !td.isContentEditable;
-                    //         if (td.contentEditable === 'false') {
-                    //             td.style.opacity = '1';
-                    //             // localStorage.setItem('content', content.innerHTML);
-                    //         } else {
-                    //             td.style.opacity = '0.5';
-                    //             td.value = "Save";
-                    //         }
-                    //     }
-                    // }
-                    // console.log($('#add-stu'));
-                    // stdTable.click(onEditRow);
+                    function onEditRow(e) {
+                        if (!e.target.classList.contains('edit-btn')) {
+                            return;
+                        }
+                        var btn = $(e.target);
+                        var tds = btn.closest("tr").find('td');
+                        delete tds['0'];
+                        delete tds['1'];
+                        delete tds['7'];
+                        delete tds['8'];
+                        delete tds['length'];
+                        delete tds['prevObject'];
+                        console.log(tds)
+                        for (const [key, value] of Object.entries(tds)) {
+                            td = value
+                            td.contentEditable = !td.isContentEditable;
+                            if (td.contentEditable === 'false') {
+                                td.style.opacity = '1';
+                                // localStorage.setItem('content', content.innerHTML);
+                            } else {
+                                td.style.opacity = '0.5';
+                                td.value = "Save";
+                            }
+                        }
+                    }
+                    console.log($('#add-stu'));
+                    stdTable.click(onEditRow);
                     // Huỷ bỏ đăng công việc
                     $('.js-close-todo-btn').click(function (e) {
                         $('#todo-form').collapse("hide");
@@ -1005,6 +1018,10 @@
                     // }
                     $('.class-list').val(localStorage.getItem("myselect"));
                 }
+                //TODO: Hàm để nhận các giá trị các ô trong bảng để đưa vào input trong form #editstudentinfo
+                $("#editstudentinfo").submit(function () {
+                    
+                });
             </script>
 
 </body>

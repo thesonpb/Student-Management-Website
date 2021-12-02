@@ -107,7 +107,7 @@ tr:nth-child(odd){
 
 tr:hover {
     /* background-image: linear-gradient(to right, #af92f2, #74c2ee); */
-    color: #000;
+    /* color: #000; */
 }
 
 th { 
@@ -216,19 +216,19 @@ th {
     animation: modalFadeIn ease .3s;
 }
 
-.main .adding-avt {
+/* .main .adding-avt {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin-left: 16px;
-}
+} */
 
 .input-inf {
   padding: 8px;
   width: 100%;
   display: block;
   border: 1px solid #b5bfc9;
-  border-radius: 18px;
+  border-radius: 15px;
   color: #0d1f36;
   font-size: 20px;
   outline: none;
@@ -308,7 +308,9 @@ th {
     font-size: 20px;
     padding: 10px 0px;
     text-align: center;
+    vertical-align: inherit;
 }
+
 #student-table td {
     border: 1px solid white;
     color: white;

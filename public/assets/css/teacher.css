@@ -27,6 +27,7 @@ html body {
 
 .main .red-btn {
     background-color: #ff3333;
+    min-width: 40px;
 }
 
 .main .blue-btn {
@@ -34,11 +35,13 @@ html body {
 }
 
 .main .yellow-btn {
-    background-color: #ffff00;
+    background-color: #ffa31a;
+    min-width: 40px;
 }
 
-.btn + .btn {
-    margin-left: 16px;
+.main .green-btn {
+    background-color: #71be34;
+    min-width: 40px;
 }
 
 .main .btn:hover {
@@ -250,6 +253,8 @@ th {
   box-shadow: 0 0 0 4px #ffe2df;
 }
 
+
+
 .main .name-inf {
     font-size: 18px;
     padding-left: 8px;
@@ -317,6 +322,13 @@ th {
     font-size: 20px;
     padding: 10px 0px;
     text-align: center;
+    vertical-align: inherit;
+    
+}
+
+.stu-table-body .save-btn {
+    display: none;
+    max-width: 66.22px;
 }
 
 /* hoc tap css */
@@ -494,39 +506,44 @@ p.post-time {
 /* profile css */
 .emp-profile{
     padding: 3%;
-    margin-top: 3%;
-    margin-bottom: 3%;
+    margin-top: 10%;
     border: 1px solid #ccc;
     border-radius: 12px;
     padding: 64px;
     margin-left: 18%;
-    width: 70%;
+    width: 80%;
+}
+
+#xacnhan {
+    display: none;
 }
 
 .profile-img{
     text-align: center;
-    position: relative;
+    position: absolute;
 }
 .profile-img img{
+    position: relative;
+    left: 0px;
+    bottom: 0px;
     width: 140px;
     height: 140px;
     border-radius: 50%;
 }
 .profile-img .file {
-    position: absolute;
-    right: 46px;
-    bottom: -10px;
+    position: relative;
+    left: 56%;
+    bottom: 16%;
     overflow: hidden;
     border: none;
     border-radius: 50%;
-    padding: 9px 14px;
+    padding: 12px 0px;
     background: #555;
+    width: 50px;
+    height: 50px;
 }
 .profile-img .file input {
-    position: absolute;
     opacity: 0;
-    right: 0;
-    top: 0;
 }
 
 .profile-title .profile-name{
@@ -538,10 +555,6 @@ p.post-time {
 .profile-title h6{
     color: #0062cc;
     font-size: 20px;
-}
-
-.main .profile-save-btn{
-    display: none;
 }
 
 .profile-title .nav-tabs{
@@ -655,7 +668,7 @@ body > .dropdown {
 }
 
 #dropdown-list a > label {
-    font-size: 24px;
+    font-size: 22px;
     align-self: center;
     padding-left: 8px;
     font-weight: 600;

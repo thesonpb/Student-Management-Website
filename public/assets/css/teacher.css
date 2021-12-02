@@ -108,11 +108,6 @@ tr:nth-child(odd){
     background-color: #3a3b3c;
 }
 
-tr:hover {
-    /* background-image: linear-gradient(to right, #af92f2, #74c2ee); */
-    /* color: #000; */
-}
-
 th { 
     padding-top: 12px;
     padding-bottom: 12px;

@@ -170,8 +170,12 @@
                                                             <form id="editstudentinfo"
                                                                 action="/editstudentinfo/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
                                                                 method="post">
-                                                                <div class="edit-btn btn yellow-btn mt-0">edit</div>
-                                                                <input type="submit" value="Lưu lại">
+                                                                <div class="stu-btn edit-btn btn yellow-btn mt-0">
+                                                                    <i class="ti-pencil"></i>
+                                                                </div>
+                                                                <div value="Lưu lại" class="stu-btn save-btn btn green-btn mt-0">
+                                                                    <i class="ti-save"></i>
+                                                                </div>
                                                             </form>
                                                         </td>
 
@@ -705,72 +709,26 @@
                             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                         });
                     });
-                    //Theem 1 dong trong danh sach
-                    // const stdBdTable = $('.stu-table-body');
-                    // const stuForm = $('.adding-member')
-                    // function onAddStu(e) {
-                    //     e.preventDefault();
-                    //     var rowCount = $('.stu-table-body >tr').length;
-                    //     const name = $('#stu-name').val()
-                    //     const id = $('#stu-id').val()
-                    //     const dob = $('#stu-dob').val()
-                    //     const classID = $('#stu-class-id').val()
-                    //     const email = $('#stu-emai').val()
-                    //     const phone = $('#stu-phone').val()
-                    //     stdBdTable.append(`
-                    //     <tr>
-                    //         <form action="">
-                    //             <td>${rowCount + 1}</td>
-                    //             <td>${id}</td>
-                    //             <td>${name}</td>
-                    //             <td>${dob}</td>
-                    //             <td>${classID}</td>
-                    //             <td>${email}</td>
-                    //             <td>${phone}</td>
-                    //             <td><button class="delete-btn btn red-btn mt-0"><i class="ti-trash"></i></button></td>
-                    //             <td><button class="edit-btn btn yellow-btn mt-0">edit</button></td>
-                    //         </form>
-                    //     </tr>` );
-                    // }
-                    // stuForm.submit(onAddStu)
-                    //Xoá 1 dong trong danh sách
                     var stdTable = $('#student-table');
-                    // function onDeleteRow(e) {
-                    //     if (!e.target.classList.contains('delete-btn')) {
-                    //         return;
-                    //     }
-                    //     const btn = e.target;
-                    //     btn.closest("tr").remove();
-                    // }
-                    // stdTable.click(onDeleteRow);
-                    //Sửa 1 dong trong danh sách
-                    function onEditRow(e) {
-                        if (!e.target.classList.contains('edit-btn')) {
-                            return;
-                        }
-                        const btn = e.target;
-                        btn.closest("tr").remove();
-                    }
-                    stdTable.click(onDeleteRow);
 
                     //Sửa 1 dong trong danh sách
-                    const tableBtn = $('.stu-table-body .stu-btn')
-                    const editTableBtn = $('.stu-table-body .edit-btn')
-                    const saveTableBtn = $('.stu-table-body .save-btn')
+                    const tableBtn = $('.stu-btn')
+                    const editTableBtn = $('.edit-btn')
+                    const saveTableBtn = $(' .save-btn')
 
-                    console.log(saveTableBtn)
                     function onEditRow(e) {
                         if (saveTableBtn.css('display') == 'none') {
                             saveTableBtn.show('fast').css("display", "inline-block");
                             editTableBtn.hide('fast')
                         } else {
                             saveTableBtn.hide('fast');
-                            editTableBtn.show('fast')
+                            editTableBtn.show('fast');
+                            editStuInfor();
                         }
                         var tds = tableBtn.closest("tr").find('td');
                         delete tds['0'];
-                        delete tds['7'];
-                        delete tds['8'];
+                        delete tds['9'];
+                        delete tds['10'];
                         delete tds['length'];
                         delete tds['prevObject'];
                         for (const [key, value] of Object.entries(tds)) {
@@ -783,9 +741,47 @@
                                 td.value = "Save";
                             }
                         }
-                        
                     }
                     tableBtn.click(onEditRow);
+
+                    var editForm = $("#editstudentinfo")
+                    function editStuInfor() {
+                        var tds = tableBtn.closest("tr").find('td');
+
+                        var input1 = $("<input />", {
+                            name: "hoten",
+                            value: tds['2'].innerHTML.trim(),
+                            type: "hidden"
+                        });
+
+                        var input2 = $("<input />", {
+                            name: "ngaysinh",
+                            value: tds['3'].innerHTML.trim(),
+                            type: "hidden"
+                        });
+
+                        var input3 = $("<input />", {
+                            name: "malop",
+                            value: tds['4'].innerHTML.trim(),
+                            type: "hidden"
+                        });
+
+                        var input4 = $("<input />", {
+                            name: "email",
+                            value: tds['5'].innerHTML.trim(),
+                            type: "hidden"
+                        });
+
+                        var input5 = $("<input />", {
+                            name: "sdt",
+                            value: tds['6'].innerHTML.trim(),
+                            type: "hidden"
+                        });
+
+                        editForm.append(input1, input2, input3, input4, input5);
+                        console.log(editForm.html())
+                        // editForm.submit();
+                    };
 
                     // Huỷ bỏ đăng công việc
                     $('.js-close-todo-btn').click(function (e) {
@@ -1003,8 +999,7 @@
                     $(this).append(input, input2, input3);
                 });
 
-                $("#editteacher").submit(function () {
-
+                $("#editteacher").submit(function() {
                     var name = $("#nametoedit").html().trim();
                     var sdt = $("#sdttoedit").html().trim();
 

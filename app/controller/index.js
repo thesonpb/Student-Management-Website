@@ -10,6 +10,7 @@ const teacherEditProfile = require('./teacherEditProfile');
 const deleteStudent = require('./deleteStudent');
 const deleteTeacher = require('./deleteTeacher');
 const uploadTask = require('./uploadTask');
+const editStudentInfo = require('./editStudentInfo');
 module.exports = {
     login : auth.login,
     logout: auth.logout,
@@ -17,7 +18,9 @@ module.exports = {
     getProfile: profile.getProfile,
     upload : excel.upload,
     exportExcel: excel.exportExcel,
-    addStudent: addStudent,
+    exportHoctap: excel.exportHoctap,
+    exportRenluyen: excel.exportRenluyen,
+    addStudent: addStudent.addStudent,
     hoctap: hoctap.hoctap,
     getTeacherInfo: teacherInfo.teacherInfo,
     studentEditProfile: studentEditProfile.studentEditProfile,
@@ -25,4 +28,5 @@ module.exports = {
     deleteStudent: deleteStudent.deleteStudent,
     deleteTeacher: deleteTeacher.deleteTeacher,
     uploadTask: uploadTask.uploadTask,
+    editStudentInfo: editStudentInfo.editStudentInfo,
 }

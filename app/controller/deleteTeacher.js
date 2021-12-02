@@ -1,3 +1,5 @@
+//PHẦN NÀY DÀNH CHO ADMIN
+
 const db = require("../models/index");
 const Covan = db.Covan;
 const Taikhoan = db.Taikhoan;

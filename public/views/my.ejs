@@ -49,7 +49,8 @@
                         <button data-toggle="collapse" data-target="#add-stu" class="btn">
                             Thêm sinh viên
                         </button>
-                        <form id="add-stu" class="adding-member flex-wrap collapse" action="/add/student/<%= email %>/<%= sinhvien[0].malop %>" method="post">
+                        <form id="add-stu" class="adding-member flex-wrap collapse"
+                            action="/add/student/<%= email %>/<%= sinhvien[0].malop %>" method="post">
                             <!-- <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
                             <div class="adding-id-inf col-md-4">
                                 <h2 class="name-inf">MSSV</h2>
@@ -154,9 +155,11 @@
                                                             <%= sinhvien[i].diachi %>
                                                         </td>
 
-                                                        <td><button class="delete-btn btn red-btn mt-0">
-                                                                <i class="ti-trash"></i>
-                                                            </button></td>
+                                                        <td>
+                                                            <form action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>" method="post">
+                                                                <input type="submit" class="delete-btn btn red-btn mt-0" value="Xoá"/>
+                                                            </form>
+                                                        </td>
                                                         <td>
                                                             <div class="edit-btn btn yellow-btn mt-0">edit</div>
                                                         </td>
@@ -721,42 +724,42 @@
                     // }
                     // stuForm.submit(onAddStu)
                     //Xoá 1 dong trong danh sách
-                    var stdTable = $('#student-table');
-                    function onDeleteRow(e) {
-                        if (!e.target.classList.contains('delete-btn')) {
-                            return;
-                        }
-                        const btn = e.target;
-                        btn.closest("tr").remove();
-                    }
-                    stdTable.click(onDeleteRow);
+                    // var stdTable = $('#student-table');
+                    // function onDeleteRow(e) {
+                    //     if (!e.target.classList.contains('delete-btn')) {
+                    //         return;
+                    //     }
+                    //     const btn = e.target;
+                    //     btn.closest("tr").remove();
+                    // }
+                    // stdTable.click(onDeleteRow);
                     //Sửa 1 dong trong danh sách
-                    function onEditRow(e) {
-                        if (!e.target.classList.contains('edit-btn')) {
-                            return;
-                        }
-                        var btn = $(e.target);
-                        var tds = btn.closest("tr").find('td');
-                        delete tds['0'];
-                        delete tds['7'];
-                        delete tds['8'];
-                        delete tds['length'];
-                        delete tds['prevObject'];
-                        console.log(tds)
-                        for (const [key, value] of Object.entries(tds)) {
-                            td = value
-                            td.contentEditable = !td.isContentEditable;
-                            if (td.contentEditable === 'false') {
-                                td.style.opacity = '1';
-                                // localStorage.setItem('content', content.innerHTML);
-                            } else {
-                                td.style.opacity = '0.5';
-                                td.value = "Save";
-                            }
-                        }
-                    }
-                    console.log($('#add-stu'));
-                    stdTable.click(onEditRow);
+                    // function onEditRow(e) {
+                    //     if (!e.target.classList.contains('edit-btn')) {
+                    //         return;
+                    //     }
+                    //     var btn = $(e.target);
+                    //     var tds = btn.closest("tr").find('td');
+                    //     delete tds['0'];
+                    //     delete tds['7'];
+                    //     delete tds['8'];
+                    //     delete tds['length'];
+                    //     delete tds['prevObject'];
+                    //     console.log(tds)
+                    //     for (const [key, value] of Object.entries(tds)) {
+                    //         td = value
+                    //         td.contentEditable = !td.isContentEditable;
+                    //         if (td.contentEditable === 'false') {
+                    //             td.style.opacity = '1';
+                    //             // localStorage.setItem('content', content.innerHTML);
+                    //         } else {
+                    //             td.style.opacity = '0.5';
+                    //             td.value = "Save";
+                    //         }
+                    //     }
+                    // }
+                    // console.log($('#add-stu'));
+                    // stdTable.click(onEditRow);
                     // Huỷ bỏ đăng công việc
                     $('.js-close-todo-btn').click(function (e) {
                         $('#todo-form').collapse("hide");

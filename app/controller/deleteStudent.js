@@ -12,7 +12,9 @@ const deleteStudent = async (req, res) => {
     const acc = await Taikhoan.findByPk(req.params.mssv);
     await acc.destroy();
 
-    res.redirect('/my');
+    var email = req.params.email;
+    var malop = req.params.malop;
+    res.redirect(`/myclass/${email}/${malop}`);
 }
 
 const user = {

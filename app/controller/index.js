@@ -19,7 +19,7 @@ module.exports = {
     exportExcel: excel.exportExcel,
     exportHoctap: excel.exportHoctap,
     exportRenluyen: excel.exportRenluyen,
-    addStudent: addStudent,
+    addStudent: addStudent.addStudent,
     hoctap: hoctap.hoctap,
     getTeacherInfo: teacherInfo.teacherInfo,
     studentEditProfile: studentEditProfile.studentEditProfile,

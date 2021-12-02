@@ -52,7 +52,7 @@ function route(app) {
     app.get('/upload', (req, res) => {
         res.render('testUpload')
     })
-    
+
 
     //POST: Upload ảnh và lưu vào db
     app.post('/upload', upload.uploadFile.single('file'), (req, res) => {
@@ -84,13 +84,12 @@ function route(app) {
         //res.render('home');
     })
     //**********************************************************************************************
-    app.post('/add/student', (req, res) => {
-        controller.addStudent
-    })
+    app.post('/add/student/:email/:malop', controller.addStudent)
     app.get('/hoctap', controller.hoctap)
 
     app.post('/student/editprofile/:mssv', controller.studentEditProfile)
     app.post('/teacher/editprofile/:email', controller.teacherEditProfile)
+
     app.post('/student/delete/:mssv', controller.deleteStudent)
     app.post('/teacher/delete/:email', controller.deleteTeacher)
 

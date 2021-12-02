@@ -196,8 +196,8 @@
             </div>
 
             <!-- xuất excel -->
-            <form id="download_hoctap" action="/download/<%= diemSinhVien[0].malop %>/all/0" class=" row d-flex justify-content-between ml-3 mt-4 mb-3"
-                method="get">
+            <form id="download_hoctap" action="/download/<%= diemSinhVien[0].malop %>/all/0"
+                class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
                 <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
             </form>
 
@@ -268,6 +268,12 @@
                     <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
                     <option value="Học kỳ 2 năm 2020-2021">Học kỳ 2 năm 2020-2021</option>
                 </select>
+            </form>
+
+            <!-- xuất excel -->
+            <form id="download_renluyen" action="/download/<%= diemRenLuyen[0].malop %>/all"
+                class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
+                <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
             </form>
 
             <div class="">
@@ -821,6 +827,9 @@
                     $('#sem').change(function () {
                         var i = 1;
                         var sem = $('#sem').val().toString();
+
+                        document.getElementById('download_renluyen').action = `/download/<%= diemRenLuyen[0].malop %>/${sem}`;
+
                         rows.each(function () {
                             var row = $(this);
                             var sem_to_match = row.data('sem');

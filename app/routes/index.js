@@ -66,6 +66,10 @@ function route(app) {
 
     //GET: Download bảng điểm theo lớp, học kỳ, phân loại
     app.get('/download/:malop/:sem/:classify', controller.exportHoctap)
+
+    //GET: Download bảng điểm rèn luyện theo lớp, học kỳ
+    app.get('/download/:malop/:sem', controller.exportRenluyen)
+
     //**********************************************************************************************
 
 

@@ -194,7 +194,7 @@ const exportHoctap = async (req, res) => {
                 else {
                     studentPush(students, row.mssv, row.hoten, row.ngaysinh, malop, row.bangdiem.hocky, row.bangdiem.tinchi, row.bangdiem.gpa, row.bangdiem.canhbaohocvu);
                 }
-            
+
             }
 
         });
@@ -237,6 +237,81 @@ const exportHoctap = async (req, res) => {
 
 
 };
+const exportRenluyen = async (req, res) => {
+    const malop = req.params.malop;
+    const sem = JSON.stringify(req.params.sem);
+
+    await Sinhvien.findAll({
+        where: { malop: malop },
+        include: [
+            {
+                model: Diemrenluyen,
+                where: {
+                    mssv: Sequelize.col('sinhvien.mssv')
+                },
+
+                required: false
+            }
+        ],
+        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
+    }).then(rows => {
+        let students = [];
+
+        //Get all students information and push them to an array 
+        rows.forEach((row) => {
+            let tmp = JSON.stringify(row.diemrenluyen.hocky);
+            var tong = row.diemrenluyen.ythuc + row.diemrenluyen.noiquy + row.diemrenluyen.hoatdong + row.diemrenluyen.phamchat + row.diemrenluyen.phutrachlop;
+            if (!sem.includes("all")) {
+                if (sem == tmp) {
+                    studentPushRenluyen(students, row.mssv, row.hoten, row.ngaysinh, malop, row.diemrenluyen.hocky, row.diemrenluyen.ythuc, row.diemrenluyen.noiquy, row.diemrenluyen.hoatdong, row.diemrenluyen.phamchat, row.diemrenluyen.phutrachlop, tong);
+                }
+            }
+            else {
+                studentPushRenluyen(students, row.mssv, row.hoten, row.ngaysinh, malop, row.diemrenluyen.hocky, row.diemrenluyen.ythuc, row.diemrenluyen.noiquy, row.diemrenluyen.hoatdong, row.diemrenluyen.phamchat, row.diemrenluyen.phutrachlop, tong);
+            }
+        });
+
+        //Create a excel worksheet
+        let excelFileName = malop;
+        const workbook = new excel.Workbook();
+        const worksheet = workbook.addWorksheet(excelFileName);
+
+        //Create excel first row
+        worksheet.columns = [
+            { header: "Mssv", key: "mssv", width: 10 },
+            { header: "Họ tên", key: "hoten", width: 30 },
+            { header: "Ngày sinh", key: "ngaysinh", width: 15 },
+            { header: "Mã lớp", key: "malop", width: 15 },
+            { header: "Học kỳ", key: "hocky", width: 20 },
+            { header: "Ý thức học tập", key: "ythuc", width: 20 },
+            { header: "Chấp hành nội quy", key: "noiquy", width: 20 },
+            { header: "Tham gia hoạt động", key: "hoatdong", width: 20 },
+            { header: "Phẩm chất", key: "phamchat", width: 20 },
+            { header: "Phụ trách lớp", key: "phutrachlop", width: 20 },
+            { header: "Tổng", key: "tong", width: 20 },
+        ];
+
+        //Add array students to excel sheet
+        worksheet.addRows(students);
+
+        res.setHeader(
+            "Content-Type",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        );
+        res.setHeader(
+            "Content-Disposition",
+            "attachment; filename=" + excelFileName + ".xlsx"
+        );
+
+
+        //Use Workbook.xlsx.write() to write out Stream as response
+        return workbook.xlsx.write(res).then(function () {
+            res.status(200).end();
+        });
+    })
+
+
+};
 
 function studentPush(students, mssv, hoten, ngaysinh, malop, hocky, tinchi, gpa, canhbaohocvu) {
     students.push({
@@ -250,8 +325,25 @@ function studentPush(students, mssv, hoten, ngaysinh, malop, hocky, tinchi, gpa,
         canhbaohocvu: canhbaohocvu,
     })
 }
+function studentPushRenluyen(students, mssv, hoten, ngaysinh, malop, hocky, ythuc, noiquy, hoatdong, phamchat, phutrachlop) {
+    var tong = ythuc + noiquy + hoatdong + phamchat + phutrachlop;
+    students.push({
+        mssv: mssv,
+        hoten: hoten,
+        ngaysinh: ngaysinh,
+        malop: malop,
+        hocky: hocky,
+        ythuc: ythuc,
+        noiquy: noiquy,
+        hoatdong: hoatdong,
+        phamchat: phamchat,
+        phutrachlop: phutrachlop,
+        tong: tong,
+    })
+}
 module.exports = {
     upload: upload,
     exportExcel: exportExcel,
     exportHoctap: exportHoctap,
+    exportRenluyen: exportRenluyen,
 };

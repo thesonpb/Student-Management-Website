@@ -40,7 +40,7 @@ function route(app) {
     //GET: Điều hướng đến trang cá nhân cua ban than
     app.get('/my', authJwt.verifyToken, controller.getUserInfo);
 
-    app.post('/myclass/:email/:malop', authJwt.verifyToken, controller.getTeacherInfo);
+    app.get('/myclass/:email/:malop', authJwt.verifyToken, controller.getTeacherInfo);
     //**********************************************************************************************
     //GET: Lấy profile
     app.get('/profile', controller.getProfile);
@@ -60,7 +60,12 @@ function route(app) {
         console.log("File: " + req.file.filename);
         res.send("success")
     })
-    app.get('/download', controller.exportExcel)
+
+    //GET: Download danh sách lớp
+    app.get('/download/:malop', controller.exportExcel)
+
+    //GET: Download bảng điểm theo lớp, học kỳ, phân loại
+    app.get('/download/:malop/:sem/:classify', controller.exportHoctap)
     //**********************************************************************************************
 
 

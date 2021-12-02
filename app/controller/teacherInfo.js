@@ -15,14 +15,12 @@ const teacherInfo = async (req, res) => {
     const classId = await Lophoc.findAll({
         where: { emailcovan: username },
         attributes: ['malop'],
-        raw: true
     });
     userInfo = await Covan.findByPk(username);
     userInfo.dataValues.role = 'covan';
     const sinhviens = await Sinhvien.findAll({
         where: { malop: malop },
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
-        raw: true
     });
 
     diemsinhvien = await Sinhvien.findAll({

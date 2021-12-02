@@ -40,7 +40,6 @@ const getUserInfo = async (req, res) => {
         sinhviens = await Sinhvien.findAll({
             where: { malop: malop },
             attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
-            raw: true
         });
 
         diemsinhvien = await Sinhvien.findAll({
@@ -83,50 +82,9 @@ const getUserInfo = async (req, res) => {
         classId = await Lophoc.findAll({
             where: { emailcovan: username },
             attributes: ['malop'],
-            raw: true
         });
         malop = classId[0].malop;
-        sinhviens = await Sinhvien.findAll({
-            where: { malop: malop },
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
-            raw: true
-        });
-
-        diemsinhvien = await Sinhvien.findAll({
-            where: { malop: malop },
-            include: [
-                {
-                    model: Bangdiem,
-                    where: {
-                        mssv: Sequelize.col('sinhvien.mssv')
-                    },
-
-                    required: false
-                }
-            ],
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
-        });
-        drl = await Sinhvien.findAll({
-            where: { malop: malop },
-            include: [
-                {
-                    model: Diemrenluyen,
-                    where: {
-                        mssv: Sequelize.col('sinhvien.mssv')
-                    },
-
-                    required: false
-                }
-            ],
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
-        });
-        userInfo.dataValues.sinhvien = sinhviens;
-        userInfo.dataValues.diemSinhVien = diemsinhvien;
-        userInfo.dataValues.diemRenLuyen = drl;
-        userInfo.dataValues.classId = classId;
-        userInfo.dataValues.username = username;
-        res.render('my', userInfo.dataValues);
-
+        res.redirect(`/myclass/${username}/${malop}`);
     }
 
 }

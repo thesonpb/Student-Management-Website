@@ -40,7 +40,7 @@ function route(app) {
     //GET: Điều hướng đến trang cá nhân cua ban than
     app.get('/my', authJwt.verifyToken, controller.getUserInfo);
 
-    app.post('/myclass/:email/:malop', authJwt.verifyToken, controller.getTeacherInfo);
+    app.get('/myclass/:email/:malop', authJwt.verifyToken, controller.getTeacherInfo);
     //**********************************************************************************************
     //GET: Lấy profile
     app.get('/profile', controller.getProfile);
@@ -52,7 +52,7 @@ function route(app) {
     app.get('/upload', (req, res) => {
         res.render('testUpload')
     })
-    
+
 
     //POST: Upload ảnh và lưu vào db
     app.post('/upload', upload.uploadFile.single('file'), (req, res) => {
@@ -60,7 +60,16 @@ function route(app) {
         console.log("File: " + req.file.filename);
         res.send("success")
     })
-    app.get('/download', controller.exportExcel)
+
+    //GET: Download danh sách lớp
+    app.get('/download/:malop', controller.exportExcel)
+
+    //GET: Download bảng điểm theo lớp, học kỳ, phân loại
+    app.get('/download/:malop/:sem/:classify', controller.exportHoctap)
+
+    //GET: Download bảng điểm rèn luyện theo lớp, học kỳ
+    app.get('/download/:malop/:sem', controller.exportRenluyen)
+
     //**********************************************************************************************
 
 
@@ -75,17 +84,18 @@ function route(app) {
         //res.render('home');
     })
     //**********************************************************************************************
-    app.post('/add/student', (req, res) => {
-        controller.addStudent
-    })
+    app.post('/add/student/:email/:malop', controller.addStudent)
     app.get('/hoctap', controller.hoctap)
 
     app.post('/student/editprofile/:mssv', controller.studentEditProfile)
     app.post('/teacher/editprofile/:email', controller.teacherEditProfile)
-    app.post('/student/delete/:mssv', controller.deleteStudent)
+
+    app.post('/student/delete/:mssv/:email/:malop', controller.deleteStudent)
     app.post('/teacher/delete/:email', controller.deleteTeacher)
 
     app.post('/upload/task', controller.uploadTask)
+
+    app.post('/editstudentinfo/:mssv/:email/:malop', controller.editStudentInfo)
 }
 
 module.exports = route;

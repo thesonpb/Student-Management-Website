@@ -49,8 +49,8 @@
                         <button data-toggle="collapse" data-target="#add-stu" class="btn">
                             Thêm sinh viên
                         </button>
-
-                        <form id="add-stu" class="adding-member flex-wrap collapse" action="/add/student" method="post">
+                        <form id="add-stu" class="adding-member flex-wrap collapse"
+                            action="/add/student/<%= email %>/<%= sinhvien[0].malop %>" method="post">
                             <!-- <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
                             <div class="adding-id-inf col-md-4">
                                 <h2 class="name-inf">MSSV</h2>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Ngày sinh</h2>
-                                <input id="stu-dob" autocomplete="off" type="date" class="input-inf" />
+                                <input id="stu-dob" autocomplete="off" type="date" class="input-inf" name="ngaysinh" />
                             </div>
                             <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Lớp khoá học</h2>
@@ -79,11 +79,10 @@
                             <div class="adding-name-inf col-md-4">
                                 <h2 class="name-inf">Sđt</h2>
                                 <input id="stu-phone" autocomplete="off" type="text" class="input-inf"
-                                    placeholder="Số điện thoại" name="sđt" />
+                                    placeholder="Số điện thoại" name="sdt" />
                             </div>
                             <input type="submit" value="Thêm sv" id="" class="adding-btn btn ml-3 col-md-2">
                         </form>
-
                         <% } %>
                             <!-- <div class="member-list">
                                 <div class="member">
@@ -94,8 +93,8 @@
                             </div> -->
 
                             <!-- xuất excel -->
-                            <form action="download" class=" row d-flex justify-content-between ml-3 mt-4 mb-3"
-                                method="get">
+                            <form action="/download/<%= sinhvien[0].malop %>"
+                                class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
                                 <input class="form-control mt-4 col-md-9" id="myInput" type="text"
                                     placeholder="Search..">
                                 <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
@@ -115,47 +114,69 @@
                                             <th>Lớp khoá học</th>
                                             <th>Email</th>
                                             <th>SĐT</th>
-                                            <th></th>
-                                            <th></th>
+                                            <% if (role=='covan' ){%>
+                                                <th>SĐT phụ huynh</th>
+                                                <th>Địa chỉ</th>
+                                                <th></th>
+                                                <th></th>
+                                            <% } %>
                                         </tr>
                                     </thead>
                                     <tbody class="stu-table-body">
                                         <% if(sinhvien) { %>
                                             <% for (var i=0; i < sinhvien.length; i++) { %>
                                                 <tr>
-                                                        <td form="edit-stu">
-                                                            <%= i+1 %>
+                                                    <td form="edit-stu">
+                                                        <%= i+1 %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].mssv %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].hoten %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].ngaysinh %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].malop %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].email %>
+                                                    </td>
+                                                    <td>
+                                                        <%= sinhvien[i].sdt %>
+                                                    </td>
+                                                    <% if(role=='covan' ) { %>
+                                                        <td>
+                                                            <%= sinhvien[i].sdtphuhuynh %>
                                                         </td>
                                                         <td>
-                                                            <%= sinhvien[i].mssv %>
+                                                            <%= sinhvien[i].diachi %>
+                                                        </td>
+
+                                                        <td>
+                                                            <form
+                                                                action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
+                                                                method="post">
+                                                                <input type="submit" class="delete-btn btn red-btn mt-0"
+                                                                    value="Xoá" />
+                                                            </form>
                                                         </td>
                                                         <td>
-                                                            <%= sinhvien[i].hoten %>
+                                                            <!-- Form để chỉnh sửa thông tin sinh viên trong bảng, sau khi
+                                                            submit form này thì tạo các input hidden có value = các ô
+                                                            trong bảng là được -->
+                                                            <form id="editstudentinfo"
+                                                                action="/editstudentinfo/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
+                                                                method="post">
+                                                                <div class="edit-btn btn yellow-btn mt-0">edit</div>
+                                                                <input type="submit" value="Lưu lại">
+                                                            </form>
                                                         </td>
-                                                        <td>
-                                                            <%= sinhvien[i].ngaysinh%>
-                                                        </td>
-                                                        <td>
-                                                            <%= sinhvien[i].malop %>
-                                                        </td>
-                                                        <td>
-                                                            <%= sinhvien[i].email %>
-                                                        </td>
-                                                        <td>
-                                                            <%= sinhvien[i].sdt %>
-                                                        </td>
-                                                        <td><button class="delete-btn btn red-btn mt-0">
-                                                            <i class="ti-trash"></i>
-                                                        </button></td>
-                                                        <td>
-                                                            <div class="stu-btn edit-btn btn yellow-btn mt-0">
-                                                            <i class="ti-pencil"></i>
-                                                            </div>
-                                                            <div class="stu-btn save-btn btn green-btn mt-0">
-                                                            <i class="ti-save"></i>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+
+                                                        <% } %>
+                                                </tr>
                                                 <% } %>
                                                     <% } %>
                                     </tbody>
@@ -170,6 +191,7 @@
                 <form>
                     <label for="sem">Học kỳ:</label>
                     <select name="sem" id="sem_hoctap">
+                        <option value="all">Tất cả sinh viên</option>
                         <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
                         <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
                         <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
@@ -188,6 +210,12 @@
                     </form>
                     <% } %>
             </div>
+
+            <!-- xuất excel -->
+            <form id="download_hoctap" action="/download/<%= diemSinhVien[0].malop %>/all/0"
+                class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
+                <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
+            </form>
 
             <div class="">
                 <table class="mark" id="marktable">
@@ -250,11 +278,18 @@
             <form class="selections">
                 <label for="sem">Học kỳ:</label>
                 <select name="sem" id="sem">
+                    <option value="all">Tất cả sinh viên</option>
                     <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
                     <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
                     <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
                     <option value="Học kỳ 2 năm 2020-2021">Học kỳ 2 năm 2020-2021</option>
                 </select>
+            </form>
+
+            <!-- xuất excel -->
+            <form id="download_renluyen" action="/download/<%= diemRenLuyen[0].malop %>/all"
+                class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
+                <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
             </form>
 
             <div class="">
@@ -338,7 +373,6 @@
                     <label for="">Tiêu đề</label>
                     <input type="text" class="input-subject" name="subject">
                     <hr>
-
                     <div class="todo-dur-input">
                         <label for="birthdaytime">Opened:</label>
                         <input type="datetime-local" name="opendate">
@@ -638,9 +672,8 @@
 
     <!-- chọn lớp -->
     <% if(role=='covan' ) { %>
-        <form class="right-nav" method="post" action="">
+        <form class="right-nav" method="get" action="">
             <% if(username) { %>
-
                 <input name="emailcovan" type="hidden" value="<%= username %>">
                 <% } %>
                     <label for="class"><i class="ti-list"></i></label>
@@ -672,45 +705,47 @@
                             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                         });
                     });
-
                     //Theem 1 dong trong danh sach
-                    const stdBdTable = $('.stu-table-body');
-                    const stuForm = $('.adding-member')
-                    function onAddStu(e) {
-                        e.preventDefault();
-                        var rowCount = $('.stu-table-body >tr').length;
-                        const name = $('#stu-name').val()
-                        const id = $('#stu-id').val()
-                        const dob = $('#stu-dob').val()
-                        const classID = $('#stu-class-id').val()
-                        const email = $('#stu-emai').val()
-                        const phone = $('#stu-phone').val()
-                        stdBdTable.append(`
-                        <tr>
-                            <form action="">
-                                <td>${rowCount + 1}</td>
-                                <td>${id}</td>
-                                <td>${name}</td>
-                                <td>${dob}</td>
-                                <td>${classID}</td>
-                                <td>${email}</td>
-                                <td>${phone}</td>
-                                <td><button class="delete-btn btn red-btn mt-0"><i class="ti-trash"></i></button></td>
-                                <td><div class="edit-btn btn yellow-btn mt-0">
-                                                            <i class="ti-pencil"></i>
-                                                            </div>
-                                                            <div class="save-btn btn yellow-btn mt-0">
-                                                                <i class="ti-pencil"></i>
-                                                            </div></td>
-                            </form>
-                        </tr>` );
-                    }
-                    stuForm.submit(onAddStu)
-
+                    // const stdBdTable = $('.stu-table-body');
+                    // const stuForm = $('.adding-member')
+                    // function onAddStu(e) {
+                    //     e.preventDefault();
+                    //     var rowCount = $('.stu-table-body >tr').length;
+                    //     const name = $('#stu-name').val()
+                    //     const id = $('#stu-id').val()
+                    //     const dob = $('#stu-dob').val()
+                    //     const classID = $('#stu-class-id').val()
+                    //     const email = $('#stu-emai').val()
+                    //     const phone = $('#stu-phone').val()
+                    //     stdBdTable.append(`
+                    //     <tr>
+                    //         <form action="">
+                    //             <td>${rowCount + 1}</td>
+                    //             <td>${id}</td>
+                    //             <td>${name}</td>
+                    //             <td>${dob}</td>
+                    //             <td>${classID}</td>
+                    //             <td>${email}</td>
+                    //             <td>${phone}</td>
+                    //             <td><button class="delete-btn btn red-btn mt-0"><i class="ti-trash"></i></button></td>
+                    //             <td><button class="edit-btn btn yellow-btn mt-0">edit</button></td>
+                    //         </form>
+                    //     </tr>` );
+                    // }
+                    // stuForm.submit(onAddStu)
                     //Xoá 1 dong trong danh sách
                     var stdTable = $('#student-table');
-                    function onDeleteRow(e) {
-                        if (!e.target.classList.contains('delete-btn')) {
+                    // function onDeleteRow(e) {
+                    //     if (!e.target.classList.contains('delete-btn')) {
+                    //         return;
+                    //     }
+                    //     const btn = e.target;
+                    //     btn.closest("tr").remove();
+                    // }
+                    // stdTable.click(onDeleteRow);
+                    //Sửa 1 dong trong danh sách
+                    function onEditRow(e) {
+                        if (!e.target.classList.contains('edit-btn')) {
                             return;
                         }
                         const btn = e.target;
@@ -816,78 +851,26 @@
                     var rows = $('#worktable tbody tr').each(function () {
                         var row = $(this);
                         var columns = row.children('td');
-
                         row.data('sem', columns.eq(5).html());
-
                     });
                     var rows2 = $('#marktable tbody tr').each(function () {
                         var row = $(this);
                         var columns = row.children('td');
-
                         row.data('sem', columns.eq(5).html());
                         row.data('gpa', columns.eq(7).html());
                         row.data('canhbaohocvu', columns.eq(8).html());
                         row.data('tinchi', columns.eq(6).html());
-
                     });
                     $('#sem').change(function () {
                         var i = 1;
                         var sem = $('#sem').val().toString();
+
+                        document.getElementById('download_renluyen').action = `/download/<%= diemRenLuyen[0].malop %>/${sem}`;
+
                         rows.each(function () {
                             var row = $(this);
                             var sem_to_match = row.data('sem');
-                            if (sem_to_match.includes(sem)) {
-                                row.children('td').eq(0).html(i);
-                                i++;
-                                row.show();
-                            }
-                            else {
-                                row.hide();
-                            }
-                        });
-                    });
-                    $('#sem_hoctap, #classify').change(function () {
-                        var i = 1;
-                        var sem = $('#sem_hoctap').val().toString();
-                        var classify = parseInt($('#classify').val());
-
-                        rows2.each(function () {
-                            var row = $(this);
-                            var sem_to_match = row.data('sem').toString();
-                            var gpa = row.data('gpa');
-                            var canhbaohocvu = row.data('canhbaohocvu');
-                            var tinchi = row.data('tinchi');
-                            if (classify == 1) {
-                                if (sem_to_match.includes(sem) && gpa >= 3.2) {
-                                    row.children('td').eq(0).html(i);
-                                    i++;
-                                    row.show();
-                                }
-                                else {
-                                    row.hide();
-                                }
-                            }
-                            else if (classify == 2) {
-                                if (sem_to_match.includes(sem) && canhbaohocvu == "có") {
-                                    row.children('td').eq(0).html(i);
-                                    i++;
-                                    row.show();
-                                }
-                                else {
-                                    row.hide();
-                                }
-                            }
-                            else if (classify == 3) {
-                                if (sem_to_match.includes(sem) && tinchi < 13) {
-                                    row.children('td').eq(0).html(i);
-                                    i++;
-                                    row.show();
-                                }
-                                else {
-                                    row.hide();
-                                }
-                            }
-                            else {
+                            if (sem != 'all') {
                                 if (sem_to_match.includes(sem)) {
                                     row.children('td').eq(0).html(i);
                                     i++;
@@ -897,11 +880,105 @@
                                     row.hide();
                                 }
                             }
+                            else {
+                                row.show();
+                            }
 
                         });
                     });
-                });
+                    $('#sem_hoctap, #classify').change(function () {
+                        var i = 1;
+                        var sem = $('#sem_hoctap').val().toString();
+                        var classify = parseInt($('#classify').val());
 
+                        document.getElementById('download_hoctap').action = `/download/<%= diemSinhVien[0].malop %>/${sem}/${classify}`;
+
+                        rows2.each(function () {
+                            var row = $(this);
+                            var sem_to_match = row.data('sem').toString();
+                            var gpa = row.data('gpa');
+                            var canhbaohocvu = row.data('canhbaohocvu');
+                            var tinchi = row.data('tinchi');
+                            if (sem != 'all') {
+                                if (classify == 1) {
+                                    if (sem_to_match.includes(sem) && gpa >= 3.2) {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else if (classify == 2) {
+                                    if (sem_to_match.includes(sem) && canhbaohocvu == "có") {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else if (classify == 3) {
+                                    if (sem_to_match.includes(sem) && tinchi < 13) {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else {
+                                    if (sem_to_match.includes(sem)) {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                            }
+                            else {
+                                if (classify == 1) {
+                                    if (gpa >= 3.2) {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else if (classify == 2) {
+                                    if (canhbaohocvu == "có") {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else if (classify == 3) {
+                                    if (tinchi < 13) {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else {
+                                    row.show();
+                                }
+                            }
+                        });
+                    });
+                });
                 $("#editstudent").submit(function () {
 
                     var name = $("#nametoedit").html().trim();
@@ -952,7 +1029,6 @@
                 //         $.cookie('class-list', this.value, { expires: 365, path: '/' });
                 //     });
                 //     // $('.class-list').val($.cookie('class-list'));
-
                 //     $(function () {
                 //         var s = $.cookie('class-list');
                 //         $(`.class-list option[value=${s}]`).prop('selected', true);

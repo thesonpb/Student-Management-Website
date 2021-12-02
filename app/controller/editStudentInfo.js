@@ -5,7 +5,6 @@ const Bangdiem = db.Bangdiem;
 const editStudentInfo = async (req, res) => {
     const stu = await Sinhvien.findByPk(req.params.mssv);
     stu.hoten = req.body.hoten;
-    stu.ngaysinh = req.body.ngaysinh;
     stu.malop = req.body.malop;
     stu.email = req.body.email;
     stu.sdt = req.body.sdt;

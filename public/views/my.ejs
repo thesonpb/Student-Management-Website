@@ -102,9 +102,8 @@
 
 
                             <!--Bảng danh sách sinh viên-->
-                            <div class="table-responsive ml-3">
-                                <form method="GET" id="edit-stu"></form>
-                                <table id="student-table" class=" w-100 table">
+                            <div class="table-responsive ml-3">                              
+                            <table id="student-table" class=" w-100 table">
                                     <thead>
                                         <tr>
                                             <th>STT</th>
@@ -125,8 +124,12 @@
                                     <tbody class="stu-table-body">
                                         <% if(sinhvien) { %>
                                             <% for (var i=0; i < sinhvien.length; i++) { %>
+                                                <form id="editstudentinfo"
+                                                    action="/editstudentinfo/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
+                                                    method="post">
+                                                </form>  
                                                 <tr>
-                                                    <td form="edit-stu">
+                                                    <td>
                                                         <%= i+1 %>
                                                     </td>
                                                     <td>
@@ -167,16 +170,12 @@
                                                             <!-- Form để chỉnh sửa thông tin sinh viên trong bảng, sau khi
                                                             submit form này thì tạo các input hidden có value = các ô
                                                             trong bảng là được -->
-                                                            <form id="editstudentinfo"
-                                                                action="/editstudentinfo/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
-                                                                method="post">
-                                                                <div class="stu-btn edit-btn btn yellow-btn mt-0">
-                                                                    <i class="ti-pencil"></i>
-                                                                </div>
-                                                                <div value="Lưu lại" class="stu-btn save-btn btn green-btn mt-0">
-                                                                    <i class="ti-save"></i>
-                                                                </div>
-                                                            </form>
+                                                            <div class="stu-btn edit-btn btn yellow-btn mt-0">
+                                                                <i class="ti-pencil"></i>
+                                                            </div>
+                                                            <div value="Lưu lại" class="stu-btn save-btn btn green-btn mt-0">
+                                                                <i class="ti-save"></i>
+                                                            </div>
                                                         </td>
 
                                                         <% } %>
@@ -680,7 +679,6 @@
             <% if(username) { %>
                 <input name="emailcovan" type="hidden" value="<%= username %>">
                 <% } %>
-                    <label for="class"><i class="ti-list"></i></label>
                     <select name="class" class="selectpicker class-list" data-header="--Chọn mã lớp học--"
                         onchange='
                             if(this.value != 0) { 
@@ -712,25 +710,33 @@
                     var stdTable = $('#student-table');
 
                     //Sửa 1 dong trong danh sách
-                    const tableBtn = $('.stu-btn')
+                    // const tableBtn = $('.stu-btn')
                     const editTableBtn = $('.edit-btn')
                     const saveTableBtn = $(' .save-btn')
 
                     function onEditRow(e) {
+                        console.log(e.target)
+                        if (!e.target.classList.contains('stu-btn')) {
+                            return;
+                        }
                         if (saveTableBtn.css('display') == 'none') {
                             saveTableBtn.show('fast').css("display", "inline-block");
                             editTableBtn.hide('fast')
                         } else {
                             saveTableBtn.hide('fast');
                             editTableBtn.show('fast');
-                            editStuInfor();
+                            editStuInfor(e);
                         }
-                        var tds = tableBtn.closest("tr").find('td');
+                        
+                        var tableBtn = e.target;
+
+                        var tds = $(tableBtn).closest("tr").find('td');
                         delete tds['0'];
                         delete tds['9'];
                         delete tds['10'];
                         delete tds['length'];
                         delete tds['prevObject'];
+
                         for (const [key, value] of Object.entries(tds)) {
                             td = value
                             td.contentEditable = !td.isContentEditable;
@@ -742,23 +748,28 @@
                             }
                         }
                     }
-                    tableBtn.click(onEditRow);
+                    stdTable.click(onEditRow);
 
                     var editForm = $("#editstudentinfo")
-                    function editStuInfor() {
-                        var tds = tableBtn.closest("tr").find('td');
+                    function editStuInfor(e) {
+                        if (!e.target.classList.contains('stu-btn')) {
+                            return;
+                        }
 
+                        var tableBtn = e.target;
+
+                        var tds = $(tableBtn).closest("tr").find('td');
                         var input1 = $("<input />", {
                             name: "hoten",
                             value: tds['2'].innerHTML.trim(),
                             type: "hidden"
                         });
 
-                        var input2 = $("<input />", {
-                            name: "ngaysinh",
-                            value: tds['3'].innerHTML.trim(),
-                            type: "hidden"
-                        });
+                        // var input2 = $("<input />", {
+                        //     name: "ngaysinh",
+                        //     value: tds['3'].innerHTML.trim(),
+                        //     type: "hidden"
+                        // });
 
                         var input3 = $("<input />", {
                             name: "malop",
@@ -778,9 +789,8 @@
                             type: "hidden"
                         });
 
-                        editForm.append(input1, input2, input3, input4, input5);
-                        console.log(editForm.html())
-                        // editForm.submit();
+                        editForm.append(input1, input3, input4, input5);
+                        editForm.submit();
                     };
 
                     // Huỷ bỏ đăng công việc

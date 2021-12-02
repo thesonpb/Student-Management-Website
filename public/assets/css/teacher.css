@@ -57,9 +57,6 @@ html body {
     animation: modalFadeIn ease .3s;
 }
 
-.form input {
-}
-
 .form label {
     margin-bottom: 8px;
 }
@@ -109,7 +106,7 @@ tr:nth-child(odd){
 }
 
 tr:hover {
-    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+    /* background-image: linear-gradient(to right, #af92f2, #74c2ee); */
     color: #000;
 }
 
@@ -270,7 +267,6 @@ th {
     align-content: space-between;
     flex-wrap: wrap; 
 }
-
 .member-list .member {
     background-color: #3a3b3c;
     width: 200px;
@@ -283,22 +279,18 @@ th {
     margin-bottom: 16px;
     cursor: pointer;
 }
-
 .member-list .member:hover {
     background-image: linear-gradient(to right, #af92f2, #74c2ee);
 }
-
 .member-list .member-ava {
     width: 80px;
     height: 80px;
     border-radius: 50%;
 }
-
 .member-list .member-name {
     margin: 16px 0 0;
     font-size: 30px;
 }
-
 .member-list .member-pos {
     margin-top: 4px;
     font-size: 16px;
@@ -600,7 +592,6 @@ p.post-time {
     transition: 0.3s;
     padding: 15px;
 }
-
 .rightsidebar:hover {
     position: absolute;
     right: 0;
@@ -692,7 +683,6 @@ body > .dropdown {
     font-size: 24px;
     font-weight: 500;
 }
-
 .right-nav:hover .class-list{
     display: block;
 } */

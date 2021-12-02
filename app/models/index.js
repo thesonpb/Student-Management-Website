@@ -2,6 +2,7 @@ const config = require('../config/db');
 
 const Sequelize = require('sequelize');
 
+
 //Config database
 const sequelize = new Sequelize(
     config.DB,

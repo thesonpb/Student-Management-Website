@@ -127,7 +127,7 @@
                                                     <% } %>
                                             </tr>
                                         </thead>
-                                        <tbody class="stu-table-body">
+                                        <tbody class="stu-table-body" data-rel="<%= sinhvien.length%>">
                                             <% if(sinhvien) { %>
                                                 <% for (var i=0; i < sinhvien.length; i++) { %>
                                                     <form id="editstudentinfo"
@@ -168,9 +168,10 @@
                                                                 <form
                                                                     action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
                                                                     method="post">
-                                                                    <input type="submit"
-                                                                        class="delete-btn btn red-btn mt-0"
-                                                                        value="Xoá" />
+                                                                    <button type="submit"
+                                                                        class="delete-btn btn red-btn mt-0" value="Xoá">
+                                                                        <i class="ti-trash"></i>
+                                                                    </button>
                                                                 </form>
                                                             </td>
                                                             <td>
@@ -191,7 +192,6 @@
                                                     </tr>
                                                     <% } %>
                                                         <% } %>
-                                                            <% } %>
                                         </tbody>
                                     </table>
                                 </div>
@@ -310,7 +310,7 @@
                             <% if(role=='covan' ) { %>
                                 <!-- xuất excel -->
                                 <form id="download_renluyen" action="/download/<%= diemRenLuyen[0].malop %>/all"
-                                    class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
+                                    class=" row d-flex justify-content-between ml-0 mt-4 mb-3" method="get">
                                     <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
                                 </form>
                                 <% } %>
@@ -764,11 +764,11 @@
                             });
                         });
                         var stdTable = $('#student-table');
-                        var tbody = $('.stu-table-body')
-
+                        var tbody = $('.stu-table-body');
                         //Sửa 1 dong trong danh sách
                         // const tableBtn = $('.stu-btn')
                         var stuLength = tbody.data('rel');
+
                         function onEditRow(e) {
                             console.log(e.target)
                             if (!e.target.classList.contains('stu-btn')) {
@@ -776,24 +776,13 @@
                             }
 
                             var tableBtn = e.target;
+
                             var tds = $(tableBtn).closest("tr").find('td');
                             delete tds['0'];
                             delete tds['9'];
                             delete tds['10'];
                             delete tds['length'];
                             delete tds['prevObject'];
-                            for (var i = 0; i < stuLength; i++) {
-                                const editTableBtn = $(`.edit-btn-${i + 1}`)
-                                const saveTableBtn = $(`.save-btn-${i + 1}`)
-                                if (saveTableBtn.css('display') == 'none') {
-                                    saveTableBtn.show('fast').css("display", "inline-block");
-                                    editTableBtn.hide('fast')
-                                } else {
-                                    saveTableBtn.hide('fast');
-                                    editTableBtn.show('fast');
-                                    editStuInfor(e);
-                                }
-                            }
 
                             for (const [key, value] of Object.entries(tds)) {
                                 td = value
@@ -807,71 +796,100 @@
                             }
                         }
                         stdTable.click(onEditRow);
+
                         var editForm = $("#editstudentinfo")
                         function editStuInfor(e) {
                             if (!e.target.classList.contains('stu-btn')) {
                                 return;
                             }
+
                             var tableBtn = e.target;
+
                             var tds = $(tableBtn).closest("tr").find('td');
                             var input1 = $("<input />", {
                                 name: "hoten",
                                 value: tds['2'].innerHTML.trim(),
                                 type: "hidden"
                             });
-                            // var input2 = $("<input />", {
-                            //     name: "ngaysinh",
-                            //     value: tds['3'].innerHTML.trim(),
-                            //     type: "hidden"
-                            // });
+
+                            var input2 = $("<input />", {
+                                name: "ngaysinh",
+                                value: tds['3'].innerHTML.trim(),
+                                type: "hidden"
+                            });
+
                             var input3 = $("<input />", {
                                 name: "malop",
                                 value: tds['4'].innerHTML.trim(),
                                 type: "hidden"
                             });
+
                             var input4 = $("<input />", {
                                 name: "email",
                                 value: tds['5'].innerHTML.trim(),
                                 type: "hidden"
                             });
+
                             var input5 = $("<input />", {
                                 name: "sdt",
                                 value: tds['6'].innerHTML.trim(),
                                 type: "hidden"
                             });
-                            editForm.append(input1, input3, input4, input5);
+
+                            editForm.append(input1, input2, input3, input4, input5);
                             editForm.submit();
                         };
+
                         // Huỷ bỏ đăng công việc
                         $('.js-close-todo-btn').click(function (e) {
                             $('#todo-form').collapse("hide");
                         })
+
                         //Huỷ bỏ đăng câu hỏi diễn đàn
                         $('.js-close-btn').click(function (e) {
                             $('#question-form').collapse("hide");
                         })
+
                         // chọn lớp học
                         $('.class-list li').click(function () {
                             $(this).addClass('active')
                             $('.class-list li').not($(this)).removeClass('active');
                         });
+
                         // chọn phần bên nav 
                         $('.nav li').click(function () {
                             $(this).addClass('active')
                             $('.nav li').not($(this)).removeClass('active');
                             $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
                         });
+
+
                         // hiển thị profile
                         $('li .profile').click(function () {
                             $('.nav li').removeClass('active');
                             $('.main:last-of-type').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
                         });
+
+
                         //edit prơfile
                         var editBtn = $('.profile-edit-btn');
                         var contents = $(".editp");
                         var submit = $('#xacnhan');
                         delete contents.length;
                         delete contents.prevObject;
+
+                        for (var i = 0; i < stuLength; i++) {
+                            const editTableBtn = $(`.edit-btn-${i + 1}`)
+                            const saveTableBtn = $(`.save-btn-${i + 1}`)
+                            if (saveTableBtn.css('display') == 'none') {
+                                saveTableBtn.show('fast').css("display", "inline-block");
+                                editTableBtn.hide('fast')
+                            } else {
+                                saveTableBtn.hide('fast');
+                                editTableBtn.show('fast');
+                                editStuInfor(e);
+                            }
+                        }
                         editBtn.click(function (e) {
                             e.preventDefault();
                             for (const [key, value] of Object.entries(contents)) {
@@ -886,6 +904,7 @@
                                     content.value = "Save";
                                 }
                             }
+
                             if (submit.css('display') == 'none') {
                                 submit.show('fast');
                             } else {
@@ -893,6 +912,7 @@
                             }
                         });
                     })(jQuery);
+
                     $('document').ready(function ($) {
                         var rows = $('#worktable tbody tr').each(function () {
                             var row = $(this);
@@ -910,7 +930,9 @@
                         $('#sem').change(function () {
                             var i = 1;
                             var sem = $('#sem').val().toString();
+
                             document.getElementById('download_renluyen').action = `/download/<%= diemRenLuyen[0].malop %>/${sem}`;
+
                             rows.each(function () {
                                 var row = $(this);
                                 var sem_to_match = row.data('sem');
@@ -927,13 +949,16 @@
                                 else {
                                     row.show();
                                 }
+
                             });
                         });
                         $('#sem_hoctap, #classify').change(function () {
                             var i = 1;
                             var sem = $('#sem_hoctap').val().toString();
                             var classify = parseInt($('#classify').val());
+
                             document.getElementById('download_hoctap').action = `/download/<%= diemSinhVien[0].malop %>/${sem}/${classify}`;
+
                             rows2.each(function () {
                                 var row = $(this);
                                 var sem_to_match = row.data('sem').toString();
@@ -1021,9 +1046,11 @@
                         });
                     });
                     $("#editstudent").submit(function () {
+
                         var name = $("#nametoedit").html().trim();
                         var email = $("#emailtoedit").html().trim();
                         var sdt = $("#sdttoedit").html().trim();
+
                         var input = $("<input />", {
                             name: "hoten",
                             value: name,
@@ -1041,9 +1068,11 @@
                         });
                         $(this).append(input, input2, input3);
                     });
+
                     $("#editteacher").submit(function () {
                         var name = $("#nametoedit").html().trim();
                         var sdt = $("#sdttoedit").html().trim();
+
                         var input = $("<input />", {
                             name: "hoten",
                             value: name,
@@ -1056,6 +1085,7 @@
                         });
                         $(this).append(input, input3);
                     });
+
                     function goToHomepage() {
                         window.location.href = "/my";
                     }
@@ -1072,6 +1102,7 @@
                     if (localStorage.getItem("myselect")) {
                         $('.class-list').val(localStorage.getItem("myselect"))
                     }
+
                     $('#logout').click(function () {
                         $(".class-list").val($(".class-list option:first"));
                     })

@@ -75,7 +75,7 @@ const getUserInfo = async (req, res) => {
             attributes: ['ngaysinh']
         })
         userInfo.dataValues.ngaysinhchuan = ngaysinhchuan;
-        userInfo.dataValues.tonggpa = Math.round(tonggpa[0].dataValues.result/tongtinchi * 100)/100;
+        userInfo.dataValues.tonggpa = (Math.round(tonggpa[0].dataValues.result/tongtinchi * 100)/100).toFixed(2);
         userInfo.dataValues.tongtinchi = tongtinchi;
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.diemRenLuyen = drl;

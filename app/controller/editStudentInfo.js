@@ -5,15 +5,10 @@ const Bangdiem = db.Bangdiem;
 const editStudentInfo = async (req, res) => {
     const stu = await Sinhvien.findByPk(req.params.mssv);
     stu.hoten = req.body.hoten;
-    var d = new Date(req.body.ngaysinh),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    stu.ngaysinh = [year, month, day].join('/');
-    console.log([year, month, day].join('/'));
+    var from = (req.body.ngaysinh).split("/");
+    var dd = (parseInt(from[0]) + 1).toString();
+    var f = new Date(from[2], from[1] - 1, dd);
+    stu.ngaysinh = f;
     stu.malop = req.body.malop;
     stu.email = req.body.email;
     stu.sdt = req.body.sdt;

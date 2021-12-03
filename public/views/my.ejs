@@ -803,11 +803,11 @@
                                 type: "hidden"
                             });
 
-                            // var input2 = $("<input />", {
-                            //     name: "ngaysinh",
-                            //     value: tds['3'].innerHTML.trim(),
-                            //     type: "hidden"
-                            // });
+                            var input2 = $("<input />", {
+                                name: "ngaysinh",
+                                value: tds['3'].innerHTML.trim(),
+                                type: "hidden"
+                            });
 
                             var input3 = $("<input />", {
                                 name: "malop",
@@ -827,7 +827,7 @@
                                 type: "hidden"
                             });
 
-                            editForm.append(input1, input3, input4, input5);
+                            editForm.append(input1, input2, input3, input4, input5);
                             editForm.submit();
                         };
 

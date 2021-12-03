@@ -55,4 +55,3 @@ db.connectDb();
 app.listen(port, () => {
   console.log(`The web app is listening at http://localhost:${port}`)
 })
-

@@ -1,12 +1,21 @@
 const db = require("../models/index");
 const Thongbao = db.Thongbao;
-
+const { QueryTypes, Sequelize } = require('sequelize');
 
 exports.uploadTask = async (req, res) => {
     var subject = JSON.stringify(req.body.subject);
-    var opendate = JSON.stringify(req.body.opendate);
-    var duedate = JSON.stringify(req.body.duedate);
+    var opendate = req.body.opendate;
+    var duedate = req.body.duedate;
     var content = JSON.stringify(req.body.content);
+
+    const thongbao = await Thongbao.findAll({
+        raw: true,
+    })
+    // console.log("All users:", typeof(thongbao));
+    // console.log("All users:", thongbao.dataValues);
+    // res.render('my', thongbao.dataValues);
+
+
     await Thongbao.create({
         malop: 'k64caclc2' ,
         tieude: subject,

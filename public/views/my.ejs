@@ -39,6 +39,7 @@
 
         <!-- phần giữa trang chủ -->
         <div class="main">
+            
             <% if(hoten) { %>
                 <h1 class="title-main">Xin chào, <%= hoten %>
                 </h1>
@@ -350,23 +351,12 @@
                     </div>
                 </form>
                 <% } %>
-                    <div class="todo">
-                        <h3 class="todo-title">
-                            <!-- thêm biến tiêu đề -->
-                        </h3>
-                        <div class="todo-intro">
-                            <p class="todo-content">
-                                <!-- Thêm biến nội dung -->
-                            </p>
-                            <div class="todo-duration">
-                                <p class="todo-opened">Opened:
-                                    <!--Thêm biến tgian-->
-                                </p>
-                                <p class="todo-due">Due:
-                                    <!--Thêm biến tgian-->
-                                </p>
-                            </div>
-                        </div>
+
+
+                
+                    <% console.log('------------------------', typeof(thongbao)) %>
+                
+                
 
                         <!-- <div class="todo-opinion">
                     <span class="todo-yk">Gửi ý kiến</span>

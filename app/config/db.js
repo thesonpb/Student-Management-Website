@@ -2,8 +2,8 @@ module.exports = {
     //For mySql connection
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "12345678",
-    DB: "student_management",
+    PASSWORD: "vinh180201",
+    DB: "uet_database",
     dialect: "mysql",
     //Optional
     pool: {

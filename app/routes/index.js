@@ -85,7 +85,11 @@ function route(app) {
     app.post('/student/delete/:mssv', controller.deleteStudent)
     app.post('/teacher/delete/:email', controller.deleteTeacher)
 
-    app.post('/upload/task', controller.uploadTask)
+    app.post('/upload/task', controller.uploadTask) 
+    app.get('/my', (req, res) => {
+        var thongbao = 1;
+        res.render('my', thongbao);
+    })
 }
 
 module.exports = route;

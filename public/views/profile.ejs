@@ -58,23 +58,14 @@
         </div>
         <div class="row profile-content">
             <div class="profile-work col-md-4">
-                <!-- <p>Link 1</p>
-                    <a href="">1</a><br />
-                    <a href="">2</a><br />
-                    <a href="">3</a>
-                    <p>Link 2</p>
-                    <a href="">1</a><br />
-                    <a href="">2</a><br />
-                    <a href="">3</a><br />
-                    <a href="">4</a><br />
-                    <a href="">5</a><br /> -->
+               
             </div>
             <div class="tab-content profile-tab col-md-8" id="myTabContent">
                 <div class="tab-pane fade  show active about" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <% if(role=='sinhvien' ) { %>
+                    <% if(user.vaitro=='sinhvien' ) { %>
                         <form id="editstudent" action="/student/editprofile/<%= mssv %>" method="post">
                         <% } %>
-                    <% if(role=='covan' ) { %>
+                    <% if(user.vaitro=='covan' ) { %>
                         <form id="editteacher" action="/teacher/editprofile/<%= email %>" method="post">
                         <% } %>
 
@@ -85,7 +76,7 @@
                             </p>
                         </div>
 
-                        <% if(role=='sinhvien' ) { %>
+                        <% if(user.vaitro=='sinhvien' ) { %>
                             <div class="row">
                                 <label class="col-md-6"> Mã số sinh viên:</label>
                                 <p name="mssv" class="col-md-6" value="">
@@ -108,7 +99,7 @@
                             </p>
                         </div>
 
-                        <% if(role=='sinhvien' ) { %>
+                        <% if(user.vaitro=='sinhvien' ) { %>
                             <div class="row">
                                 <label class="col-md-6">Lớp:</label>
                                 <p class="col-md-6">
@@ -117,7 +108,7 @@
                             </div>
                         <% } %>
 
-                        <% if(role=='sinhvien' ) { %>
+                        <% if(user.vaitro=='sinhvien' ) { %>
                             <div class="row">
                                 <label class="col-md-6">Email:</label>
                                 <p id="emailtoedit" name="email" class="editp col-md-6">
@@ -126,7 +117,7 @@
                             </div>
                         <% } %>
 
-                        <% if(role=='covan' ) { %>
+                        <% if(user.vaitro=='covan' ) { %>
                             <div class="row">
                                 <label class="col-md-6">Email:</label>
                                 <p id="emailtoedit" name="email"
@@ -144,7 +135,7 @@
                             </p>
                         </div>
 
-                        <% if(role=='sinhvien' ) { %>
+                        <% if(user.vaitro=='sinhvien' ) { %>
                             <div class="row">
                                 <label class="col-md-6">Số tín chỉ:</label>
                                 <p class="col-md-6">
@@ -152,7 +143,7 @@
                                 </p>
                             </div>
                         <% } %>
-                        <% if(role=='sinhvien' ) { %>
+                        <% if(user.vaitro=='sinhvien' ) { %>
                             <div class="row">
                                 <label
                                     class="col-md-6">GPA:</label>
@@ -165,7 +156,7 @@
                     <input type="submit" id="xacnhan" class="btn" value="Xác nhận">
                 </form>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="row">
                         <label class="col-md-6">Experience</label>
                         <p class="col-md-6">Expert</p>
@@ -192,11 +183,12 @@
                             <p>Your detail description</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </div>
+<script src="../assets/js/profile.js"></script>
 
 </body>
 </html>

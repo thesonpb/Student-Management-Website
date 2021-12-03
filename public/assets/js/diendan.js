@@ -1,3 +1,10 @@
-        var relValue = "5";
-        console.log($(`.nav li[data-rel="${relValue}"]`))
-        $(`.nav li[data-rel="${relValue}"]`).addClass('active');
+     function clickNav(e) {
+         console.log(e.target)
+     }
+
+     $('.nav').click(clickNav)
+
+     //Huỷ bỏ đăng câu hỏi diễn đàn
+     $('.js-close-btn').click(function (e) {
+        $('#question-form').collapse("hide");
+    })

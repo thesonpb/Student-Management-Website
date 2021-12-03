@@ -6,7 +6,6 @@ const Covan = db.Covan;
 const Lophoc = db.Lophoc;
 const Admin = db.Admin;
 const { QueryTypes, Sequelize } = require('sequelize');
-const lophoc = require("../models/lophoc");
 
 //
 const getUserInfo = async (req, res) => {
@@ -37,13 +36,9 @@ const getUserInfo = async (req, res) => {
         userInfo = await Sinhvien.findByPk(username);
         userInfo.dataValues.role = 'sinhvien';
         malop = userInfo.dataValues.malop;
-        sinhviens = await Sinhvien.findAll({
-            where: { malop: malop },
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
-        });
 
         diemsinhvien = await Sinhvien.findAll({
-            where: { malop: malop },
+            where: { mssv: username },
             include: [
                 {
                     model: Bangdiem,
@@ -57,7 +52,7 @@ const getUserInfo = async (req, res) => {
             attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
         });
         drl = await Sinhvien.findAll({
-            where: { malop: malop },
+            where: { mssv: username },
             include: [
                 {
                     model: Diemrenluyen,
@@ -70,7 +65,18 @@ const getUserInfo = async (req, res) => {
             ],
             attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
         });
-        userInfo.dataValues.sinhvien = sinhviens;
+        const tongtinchi = await Bangdiem.sum('tinchi', { where: { mssv: username } });
+        const tonggpa = await Bangdiem.findAll({
+            where: { mssv: username },
+            attributes: [[Sequelize.literal('SUM(gpa * tinchi)'), 'result']]
+        });
+        const ngaysinhchuan = await Sinhvien.findOne({
+            where: { mssv: username },
+            attributes: ['ngaysinh']
+        })
+        userInfo.dataValues.ngaysinhchuan = ngaysinhchuan;
+        userInfo.dataValues.tonggpa = (Math.round(tonggpa[0].dataValues.result/tongtinchi * 100)/100).toFixed(2);
+        userInfo.dataValues.tongtinchi = tongtinchi;
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.diemRenLuyen = drl;
         userInfo.dataValues.classId = classId;

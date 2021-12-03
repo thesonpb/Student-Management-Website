@@ -24,19 +24,10 @@ module.exports = (sequelize, Sequelize) => {
         khoa: {
             type: Sequelize.STRING
         },
-        gpa: {
-            type: Sequelize.FLOAT
-        },
-        tinchi: {
-            type: Sequelize.INTEGER
-        },
         malop: {
             type: Sequelize.STRING
         },
         avatar: {
-            type: Sequelize.STRING
-        },
-        canhbaohocvu: {
             type: Sequelize.STRING
         },
         sdtphuhuynh: {

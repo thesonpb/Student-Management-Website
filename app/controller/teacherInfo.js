@@ -50,7 +50,11 @@ const teacherInfo = async (req, res) => {
         ],
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
     });
-    
+    const ngaysinhchuan = await Covan.findOne({
+        where: { email: username }, 
+        attributes: ['ngaysinh']
+    })
+    userInfo.dataValues.ngaysinhchuan = ngaysinhchuan;
     userInfo.dataValues.sinhvien = sinhviens;
     userInfo.dataValues.diemSinhVien = diemsinhvien;
     userInfo.dataValues.diemRenLuyen = drl;

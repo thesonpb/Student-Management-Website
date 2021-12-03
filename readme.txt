@@ -4,7 +4,7 @@
 - Cố vấn vào chọn lớp để quản lý
 - Cố vấn xem danh sách sinh viên, bảng điểm (có sđt phụ huynh, địa chỉ), điểm rèn luyện (lọc, xem danh sách sinh 
 viên thiếu tín chỉ, được khen thưởng)
-- Cố vấn xem profile của bản thân, sửa thông tin cá nhân (sửa thông tin cá nhân đang hơi lỗi)
+- Cố vấn xem profile của bản thân, sửa thông tin cá nhân
 - Cố vấn xuất các danh sách ra excel
 - Cố vấn thêm sinh viên bằng cách nhập thông tin của sinh viên đó
 - Sinh viên đăng nhập xem danh sách sinh viên, bảng điểm, điểm rèn luyện và lọc theo tiêu chí, học kỳ

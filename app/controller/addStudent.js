@@ -21,11 +21,8 @@ const addStudent = async (req, res) => {
         ngaysinh: ngaysinh,
         sdt: sdt,
         khoa: "",
-        gpa: 0.0,
-        tinchi: 0,
         malop: malop,
         avatar: "",
-        canhbaohocvu: "", 
         sdtphuhuynh: "", 
         diachi: ""
     });

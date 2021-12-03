@@ -1,3 +1,5 @@
+$(`li[data-rel="${2}"]`).addClass('active')
+ 
  // lọc
  $('document').ready(function ($) {
     var rows = $('#worktable tbody tr').each(function () {

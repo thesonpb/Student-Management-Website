@@ -102,8 +102,8 @@
 
 
                             <!--Bảng danh sách sinh viên-->
-                            <div class="table-responsive ml-3">                              
-                            <table id="student-table" class=" w-100 table">
+                            <div class="table-responsive ml-3">
+                                <table id="student-table" class=" w-100 table">
                                     <thead>
                                         <tr>
                                             <th>STT</th>
@@ -118,7 +118,7 @@
                                                 <th>Địa chỉ</th>
                                                 <th></th>
                                                 <th></th>
-                                            <% } %>
+                                                <% } %>
                                         </tr>
                                     </thead>
                                     <tbody class="stu-table-body" data-rel="<%= sinhvien.length%>">
@@ -127,7 +127,7 @@
                                                 <form id="editstudentinfo"
                                                     action="/editstudentinfo/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
                                                     method="post">
-                                                </form>  
+                                                </form>
                                                 <tr>
                                                     <td>
                                                         <%= i+1 %>
@@ -162,25 +162,25 @@
                                                             <form
                                                                 action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
                                                                 method="post">
-                                                                <button type="submit" class="delete-btn btn red-btn mt-0" value="Xoá">
+                                                                <button type="submit"
+                                                                    class="delete-btn btn red-btn mt-0" value="Xoá">
                                                                     <i class="ti-trash"></i>
-                                                                </button>   
+                                                                </button>
                                                             </form>
                                                         </td>
                                                         <td>
-                                                            <!-- Form để chỉnh sửa thông tin sinh viên trong bảng, sau khi
-                                                            submit form này thì tạo các input hidden có value = các ô
-                                                            trong bảng là được -->
-                                                            <div class="stu-btn edit-btn-<%=i+1%> btn yellow-btn mt-0">
-                                                                <i class="ti-pencil"></i>
+                                                            <div class="stu-btn btn yellow-btn mt-0">
+                                                                <i class="ti-pencil stu-btn"></i>
                                                             </div>
-                                                            <div value="Lưu lại" class="stu-btn save-btn-<%=i+1%> save-btn btn green-btn mt-0">
-                                                                <i class="ti-save"></i>
+                                                            <div value="Lưu lại"
+                                                                class="stu-btn save-btn btn green-btn mt-0">
+                                                                <i class="ti-save stu-btn"></i>
                                                             </div>
                                                         </td>
 
                                                         <% } %>
                                                 </tr>
+                                                
                                                 <% } %>
                                                     <% } %>
                                     </tbody>
@@ -526,97 +526,103 @@
                     <div class="tab-pane fade  show active about" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <% if(role=='sinhvien' ) { %>
                             <form id="editstudent" action="/student/editprofile/<%= mssv %>" method="post">
-                            <% } %>
-                        <% if(role=='covan' ) { %>
-                            <form id="editteacher" action="/teacher/editprofile/<%= email %>" method="post">
-                            <% } %>
+                                <% } %>
+                                    <% if(role=='covan' ) { %>
+                                        <form id="editteacher" action="/teacher/editprofile/<%= email %>" method="post">
+                                            <% } %>
 
-                            <div class="row">
-                                <label class="col-md-6">Họ và tên:</label>
-                                <p id="nametoedit" name="hoten" class="editp col-md-6">
-                                    <%= hoten %>
-                                </p>
-                            </div>
+                                                <div class="row">
+                                                    <label class="col-md-6">Họ và tên:</label>
+                                                    <p id="nametoedit" name="hoten" class="editp col-md-6">
+                                                        <%= hoten %>
+                                                    </p>
+                                                </div>
 
-                            <% if(role=='sinhvien' ) { %>
-                                <div class="row">
-                                    <label class="col-md-6"> Mã số sinh viên:</label>
-                                    <p name="mssv" class="col-md-6" value="">
-                                        <%= mssv %>
-                                    </p>
-                                </div>
-                            <% } %>
+                                                <% if(role=='sinhvien' ) { %>
+                                                    <div class="row">
+                                                        <label class="col-md-6"> Mã số sinh viên:</label>
+                                                        <p name="mssv" class="col-md-6" value="">
+                                                            <%= mssv %>
+                                                        </p>
+                                                    </div>
+                                                    <% } %>
 
-                            <div class="row">
-                                <label class="col-md-6"> Ngày sinh:</label>
-                                <p name="mssv" class="col-md-6" value="">
-                                    <%= ngaysinh %>
-                                </p>
-                            </div>
+                                                        <div class="row">
+                                                            <label class="col-md-6"> Ngày sinh:</label>
+                                                            <p name="mssv" class="col-md-6" value="">
+                                                                <%= ngaysinh %>
+                                                            </p>
+                                                        </div>
 
-                            <div class="row">
-                                <label class="col-md-6">Khoa:</label>
-                                <p class="col-md-6">
-                                    <%= khoa %>
-                                </p>
-                            </div>
+                                                        <div class="row">
+                                                            <label class="col-md-6">Khoa:</label>
+                                                            <p class="col-md-6">
+                                                                <%= khoa %>
+                                                            </p>
+                                                        </div>
 
-                            <% if(role=='sinhvien' ) { %>
-                                <div class="row">
-                                    <label class="col-md-6">Lớp:</label>
-                                    <p class="col-md-6">
-                                        <%= malop %>
-                                    </p>
-                                </div>
-                            <% } %>
+                                                        <% if(role=='sinhvien' ) { %>
+                                                            <div class="row">
+                                                                <label class="col-md-6">Lớp:</label>
+                                                                <p class="col-md-6">
+                                                                    <%= malop %>
+                                                                </p>
+                                                            </div>
+                                                            <% } %>
 
-                            <% if(role=='sinhvien' ) { %>
-                                <div class="row">
-                                    <label class="col-md-6">Email:</label>
-                                    <p id="emailtoedit" name="email" class="editp col-md-6">
-                                        <%= email %>
-                                    </p>
-                                </div>
-                            <% } %>
+                                                                <% if(role=='sinhvien' ) { %>
+                                                                    <div class="row">
+                                                                        <label class="col-md-6">Email:</label>
+                                                                        <p id="emailtoedit" name="email"
+                                                                            class="editp col-md-6">
+                                                                            <%= email %>
+                                                                        </p>
+                                                                    </div>
+                                                                    <% } %>
 
-                            <% if(role=='covan' ) { %>
-                                <div class="row">
-                                    <label class="col-md-6">Email:</label>
-                                    <p id="emailtoedit" name="email"
-                                        class="col-md-6">
-                                        <%= email %>
-                                    </p>
-                                </div>
-                            <% } %>
+                                                                        <% if(role=='covan' ) { %>
+                                                                            <div class="row">
+                                                                                <label class="col-md-6">Email:</label>
+                                                                                <p id="emailtoedit" name="email"
+                                                                                    class="col-md-6">
+                                                                                    <%= email %>
+                                                                                </p>
+                                                                            </div>
+                                                                            <% } %>
 
-                            <div class="row">
-                                <label class="col-md-6">Số điện thoại:</label>
-                                <p id="sdttoedit" name="sdt"
-                                    class="editp col-md-6">
-                                    <%= sdt %>
-                                </p>
-                            </div>
+                                                                                <div class="row">
+                                                                                    <label class="col-md-6">Số điện
+                                                                                        thoại:</label>
+                                                                                    <p id="sdttoedit" name="sdt"
+                                                                                        class="editp col-md-6">
+                                                                                        <%= sdt %>
+                                                                                    </p>
+                                                                                </div>
 
-                            <% if(role=='sinhvien' ) { %>
-                                <div class="row">
-                                    <label class="col-md-6">Số tín chỉ:</label>
-                                    <p class="col-md-6">
-                                        <%= tinchi %>
-                                    </p>
-                                </div>
-                            <% } %>
-                            <% if(role=='sinhvien' ) { %>
-                                <div class="row">
-                                    <label
-                                        class="col-md-6">GPA:</label>
-                                    <p class="col-md-6">
-                                        <%= gpa %>
-                                    </p>
-                                </div>
-                            <% } %>
+                                                                                <% if(role=='sinhvien' ) { %>
+                                                                                    <div class="row">
+                                                                                        <label class="col-md-6">Số tín
+                                                                                            chỉ:</label>
+                                                                                        <p class="col-md-6">
+                                                                                            <%= tinchi %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <% } %>
+                                                                                        <% if(role=='sinhvien' ) { %>
+                                                                                            <div class="row">
+                                                                                                <label
+                                                                                                    class="col-md-6">GPA:</label>
+                                                                                                <p class="col-md-6">
+                                                                                                    <%= gpa %>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <% } %>
 
-                        <input type="submit" id="xacnhan" class="btn" value="Xác nhận">
-                    </form>
+                                                                                                <input type="submit"
+                                                                                                    id="xacnhan"
+                                                                                                    class="btn"
+                                                                                                    value="Xác nhận">
+                                        </form>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
@@ -680,8 +686,7 @@
             <% if(username) { %>
                 <input name="emailcovan" type="hidden" value="<%= username %>">
                 <% } %>
-                    <select name="class" class="selectpicker class-list" data-header="--Chọn mã lớp học--"
-                        onchange='
+                    <select name="class" class="selectpicker class-list" data-header="--Chọn mã lớp học--" onchange='
                             if(this.value != 0) { 
                                 localStorage.setItem("myselect", this.value);
                                 var a = this.value;
@@ -708,40 +713,39 @@
                             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                         });
                     });
+
+
                     var stdTable = $('#student-table');
                     var tbody = $('.stu-table-body')
-                    
+
+
                     //Sửa 1 dong trong danh sách
+                    
                     // const tableBtn = $('.stu-btn')
-                    var stuLength = tbody.data('rel');
-                    function onEditRow(e) {
-                        console.log(e.target)
+                    function onEditRow(e) {               
                         if (!e.target.classList.contains('stu-btn')) {
                             return;
-                        }
-                        
+                        }         
                         var tableBtn = e.target;
-
                         var tds = $(tableBtn).closest("tr").find('td');
+                        const editTableBtn = $(tds['10'].firstChild.nextSibling);
+                        const saveTableBtn = $(tds['10'].lastChild.previousSibling);
+
+                        if (saveTableBtn.css('display') == 'none') {
+                            saveTableBtn.show('fast').css("display", "inline-block");
+                            editTableBtn.hide('fast')
+                        } else {
+                            saveTableBtn.hide('fast');
+                            editTableBtn.show('fast');
+                            editStuInfor(e);
+                        }
+
                         delete tds['0'];
+                        delete tds['1'];
                         delete tds['9'];
                         delete tds['10'];
                         delete tds['length'];
                         delete tds['prevObject'];
-
-                        for(var i=0; i<stuLength; i++) {
-                            const editTableBtn = $(`.edit-btn-${i+1}`)
-                            const saveTableBtn = $(`.save-btn-${i+1}`)
-                            if (saveTableBtn.css('display') == 'none') {
-                                saveTableBtn.show('fast').css("display", "inline-block");
-                                editTableBtn.hide('fast')
-                            } else {
-                                saveTableBtn.hide('fast');
-                                editTableBtn.show('fast');
-                                editStuInfor(e);
-                            }
-                        }
-                        
 
                         for (const [key, value] of Object.entries(tds)) {
                             td = value
@@ -852,10 +856,10 @@
                             }
                         }
 
-                        if(submit.css('display') == 'none'){ 
-                            submit.show('fast'); 
-                        } else { 
-                            submit.hide('fast'); 
+                        if (submit.css('display') == 'none') {
+                            submit.show('fast');
+                        } else {
+                            submit.hide('fast');
                         }
                     });
                 })(jQuery);
@@ -1016,7 +1020,7 @@
                     $(this).append(input, input2, input3);
                 });
 
-                $("#editteacher").submit(function() {
+                $("#editteacher").submit(function () {
                     var name = $("#nametoedit").html().trim();
                     var sdt = $("#sdttoedit").html().trim();
 
@@ -1046,13 +1050,13 @@
                 //         $(`.class-list option[value=${s}]`).prop('selected', true);
                 //     });
                 // });
-                if(localStorage.getItem("myselect")) {
+                if (localStorage.getItem("myselect")) {
                     $('.class-list').val(localStorage.getItem("myselect"))
                 }
 
-                $('#logout').click( function(){
+                $('#logout').click(function () {
                     $(".class-list").val($(".class-list option:first"));
-                }) 
+                })
             </script>
 
 </body>

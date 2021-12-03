@@ -1,21 +1,25 @@
 
 
+<!-- drop down -->
 <div class="dropdown">
-    <label for=""><%= hoten %></label>
-    <img id="dropbtn" class=" dropbtn js-dropbtn" src="../assets/img/IMG_8672.png" alt="">
+    <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="/assets/img/IMG_8672.png" alt=""
+        data-toggle="dropdown">
     <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
-    <ul class="dropdown-list js-drop-item">
+    <ul class="dropdown-menu" id="dropdown-list">
         <li><a class="profile" href="/profile">
                 <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->
-                <label for="">Hồ sơ</label>
+                <label for="">
+                    <%= hoten %>
+                </label>
             </a></li>
-        <hr>
-        <li><a href="#">Kết quả học tập</a></li>
-        <li><a href="#">Điểm rèn luyện</a></li>
-
-        <hr>
-        <li><a href="#">Cài đặt</a></li>
-        <li><a href="/logout">Đăng xuất</a></li>
+        <% if(role=='sinhvien' ) { %>
+            <hr>
+            <li><a href="#">Kết quả học tập</a></li>
+            <li><a href="#">Điểm rèn luyện</a></li>
+            <% } %>
+                <hr>
+                <li><a href="#">Cài đặt</a></li>
+                <li id="logout"><a href="/logout">Đăng xuất</a></li>
     </ul>
 </div>
 

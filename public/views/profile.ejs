@@ -4,58 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hồ sơ</title>
-    <link rel="stylesheet" href="/assets/css/teacher.css">
-    <script src="/assets/js/profile.js"></script>
+    <title>Học tập</title>
+    <link rel="stylesheet" href="../assets/css/teacher.css">
+    <link rel="stylesheet" href="../assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+   
 </head>
 <body>
-    <!-- profile -->
-    <div class="main emp-profile">
-        <form>
-            <div class="row profile-header">
-                <div class="profile-img col-md-4">
-                    <% if(avatar) {%>
-                        <img src=<%= avatar %> alt=""/>
-                    <% }else{ %>
-                        <img src="/assets/img/avatar/default.png" alt=""/>
-                    <% } %>
-                    <div class="file btn-lg btn-primary"> 
-                        <input type="file" name="img" accept="image/*" />
-                        <input type="submit" value="Đăng tải">
-                    </div>
-                </div>
-                <div class="profile-title col-md-6">
-                    <h5 class="profile-name">
-                        <%= hoten %>
-                    </h5>
-                    <h6>
-                        Sinh viên
-                    </h6>
+    <%- include ("partial/leftsidebar") %>
 
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">Timeline</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <!-- <div class="profile--btn btn">Edit</div>
-                    <br> -->
-                    <input type="submit" class="btn profile-edit-btn" name="btnAddMore" value="Edit" />
+      <!-- profile -->
+      <div class="main emp-profile">
+        <div class="row profile-header">
+            <div class="profile-img col-md-4">
+                <img src="/assets/img/IMG_8672.png" alt="" />
+                <div class="file btn-lg btn-primary">
+                    <i class="ti-camera">
+                        <form action="">
+                            <input type="file" name="file" />
+                        </form>
+                    </i>
                 </div>
             </div>
-            <div class="row profile-content">
-                <div class="profile-work col-md-4">
-                    <!-- <p>Link 1</p>
+            <div class="profile-title col-md-6">
+                <h5 class="profile-name">
+                    <%= hoten %>
+                </h5>
+                <h6>
+                    Sinh viên
+                </h6>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">About</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                            aria-controls="profile" aria-selected="false">Timeline</a>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="col-md-2 text-center">
+                <button class="btn yellow-btn profile-edit-btn" name="btnAddMore">Sửa</button>
+            </div>
+        </div>
+        <div class="row profile-content">
+            <div class="profile-work col-md-4">
+                <!-- <p>Link 1</p>
                     <a href="">1</a><br />
                     <a href="">2</a><br />
                     <a href="">3</a>
@@ -65,91 +68,136 @@
                     <a href="">3</a><br />
                     <a href="">4</a><br />
                     <a href="">5</a><br /> -->
-                </div>
-                <div class="tab-content profile-tab col-md-8" id="myTabContent">
-                    <div class="tab-pane fade  show active about" id="home" role="tabpanel"
-                        aria-labelledby="home-tab">
+            </div>
+            <div class="tab-content profile-tab col-md-8" id="myTabContent">
+                <div class="tab-pane fade  show active about" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <% if(role=='sinhvien' ) { %>
+                        <form id="editstudent" action="/student/editprofile/<%= mssv %>" method="post">
+                        <% } %>
+                    <% if(role=='covan' ) { %>
+                        <form id="editteacher" action="/teacher/editprofile/<%= email %>" method="post">
+                        <% } %>
+
                         <div class="row">
                             <label class="col-md-6">Họ và tên:</label>
-                            <p class="col-md-6">
+                            <p id="nametoedit" name="hoten" class="editp col-md-6">
                                 <%= hoten %>
                             </p>
                         </div>
+
+                        <% if(role=='sinhvien' ) { %>
+                            <div class="row">
+                                <label class="col-md-6"> Mã số sinh viên:</label>
+                                <p name="mssv" class="col-md-6" value="">
+                                    <%= mssv %>
+                                </p>
+                            </div>
+                        <% } %>
+
                         <div class="row">
-                            <label class="col-md-6"> Mã số sinh viên:</label>
-                            <p class="col-md-6">
-                                <%= mssv %>
+                            <label class="col-md-6"> Ngày sinh:</label>
+                            <p name="mssv" class="col-md-6" value="">
+                                <%= ngaysinh %>
                             </p>
                         </div>
+
                         <div class="row">
                             <label class="col-md-6">Khoa:</label>
                             <p class="col-md-6">
                                 <%= khoa %>
                             </p>
                         </div>
-                        <div class="row">
-                            <label class="col-md-6">Lớp:</label>
-                            <p class="col-md-6">
-                                <%= malop %>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Email:</label>
-                            <p class="col-md-6">
-                                <%= email %>
-                            </p>
-                        </div>
+
+                        <% if(role=='sinhvien' ) { %>
+                            <div class="row">
+                                <label class="col-md-6">Lớp:</label>
+                                <p class="col-md-6">
+                                    <%= malop %>
+                                </p>
+                            </div>
+                        <% } %>
+
+                        <% if(role=='sinhvien' ) { %>
+                            <div class="row">
+                                <label class="col-md-6">Email:</label>
+                                <p id="emailtoedit" name="email" class="editp col-md-6">
+                                    <%= email %>
+                                </p>
+                            </div>
+                        <% } %>
+
+                        <% if(role=='covan' ) { %>
+                            <div class="row">
+                                <label class="col-md-6">Email:</label>
+                                <p id="emailtoedit" name="email"
+                                    class="col-md-6">
+                                    <%= email %>
+                                </p>
+                            </div>
+                        <% } %>
+
                         <div class="row">
                             <label class="col-md-6">Số điện thoại:</label>
-                            <p class="col-md-6">
+                            <p id="sdttoedit" name="sdt"
+                                class="editp col-md-6">
                                 <%= sdt %>
                             </p>
                         </div>
-                        <div class="row">
-                            <label class="col-md-6">Số tín chỉ:</label>
-                            <p class="col-md-6">
-                                <%= tinchi %>
-                            </p>
-                        </div>
 
-                        <div class="row">
-                            <label class="col-md-6">GPA:</label>
-                            <p class="col-md-6">
-                                <%= gpa %>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                            <label class="col-md-6">Experience</label>
-                            <p class="col-md-6">Expert</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Hourly Rate</label>
-                            <p class="col-md-6">10$/hr</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Total Projects</label>
-                            <p class="col-md-6">230</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">English Level</label>
-                            <p class="col-md-6">Expert</p>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-6">Availability</label>
-                            <p class="col-md-6">6 months</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Your Bio</label><br />
-                                <p>Your detail description</p>
+                        <% if(role=='sinhvien' ) { %>
+                            <div class="row">
+                                <label class="col-md-6">Số tín chỉ:</label>
+                                <p class="col-md-6">
+                                    <%= tinchi %>
+                                </p>
                             </div>
+                        <% } %>
+                        <% if(role=='sinhvien' ) { %>
+                            <div class="row">
+                                <label
+                                    class="col-md-6">GPA:</label>
+                                <p class="col-md-6">
+                                    <%= gpa %>
+                                </p>
+                            </div>
+                        <% } %>
+
+                    <input type="submit" id="xacnhan" class="btn" value="Xác nhận">
+                </form>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row">
+                        <label class="col-md-6">Experience</label>
+                        <p class="col-md-6">Expert</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-6">Hourly Rate</label>
+                        <p class="col-md-6">10$/hr</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-6">Total Projects</label>
+                        <p class="col-md-6">230</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-6">English Level</label>
+                        <p class="col-md-6">Expert</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-6">Availability</label>
+                        <p class="col-md-6">6 months</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Your Bio</label><br />
+                            <p>Your detail description</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
+</div>
+
 </body>
 </html>
+

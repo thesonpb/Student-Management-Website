@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/auth');
 const db = require('../models/index');
 const Taikhoan = db.Taikhoan;
+let role= '';
 
 //************************************************************************************************************************
 //Kiểm tra xem người dùng còn phiên đăng nhập không
@@ -28,14 +29,16 @@ const verifyToken = (req, res, next) => {
 //Kiểm tra người dùng rồi gán thông tin cơ bản gồm username và role vào 1 biến local tồn tại đến khi đăng xuất
 const checkUser = (req, res, next) => {
     const token = req.cookies.jwt;
+    console.log('------------------------------Check-----------------------------------------')
     if(token){
         jwt.verify(token, config.secretKey, async (err, decoded) => {
             if (err) {
                 console.log(err.message);
                 res.locals.user = null;
+                //res.locals.profile = null;
                 next();
             }else{
-                console.log(decoded);
+                console.log(decoded)
                 const user = await Taikhoan.findOne({
                     where: {
                       tennguoidung: decoded.id
@@ -43,20 +46,47 @@ const checkUser = (req, res, next) => {
                 });
                 //Gán đối tượng user truy vấn được vào biến local tên là user
                 res.locals.user = user.dataValues;
-                console.log(user);
+                role = user.dataValues.vaitro;
                 next();
             }
         });
     }else{
         res.locals.user = null;
+        //res.locals.profile = null;
         next();
     }
 };
 
+const isStudent = (req, res, next) => {
+    if(role == 'sinhvien'){
+        next();
+    }else{
+        res.status(403).send('Unauthorized');
+    }
+}
+
+const isAdvisor = (req, res, next) => {
+    if(role == 'covan'){
+        next();
+    }else{
+        res.status(403).send('Unauthorized');
+    }
+}
+
+const isAdmin = (req, res, next) => {
+    if(role == 'admin'){
+        next();
+    }else{
+        res.status(403).send('Unauthorized');
+    }
+}
 
 const authJWT = {
     verifyToken: verifyToken,
     checkUser: checkUser,
+    isStudent: isStudent,
+    isAdvisor: isAdvisor,
+    isAdmin: isAdmin,
 };
 
 module.exports = authJWT;

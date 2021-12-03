@@ -31,7 +31,30 @@ function route(app){
     //**********************************************************************************************
     //GET: Điều hướng đến trang cá nhân cua ban than
     app.get('/my',authJwt.verifyToken, controller.getUserInfo);
+    
+    app.get('/hoc-tap', (req, res) => {
+        res.render('hoctap');
+    })
 
+    app.get('/dien-dan', (req, res) => {
+        res.render('diendan');
+    })
+
+    app.get('/cong-viec', (req, res) => {
+        res.render('congviec');
+    })
+
+    app.get('/ren-luyen', (req, res) => {
+        res.render('renluyen');
+    })
+
+    app.get('/test1', (req, res) => {
+        res.render('test1');
+    })
+
+    app.get('/test2', (req, res) => {
+        res.render('test2');
+    })
 
     //**********************************************************************************************
     //GET: Lấy profile

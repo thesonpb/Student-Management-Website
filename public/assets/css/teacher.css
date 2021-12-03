@@ -300,8 +300,7 @@ th {
 #student-table th{
     border: 1px solid white;
     color: white;
-    font-size: 20px;
-    padding: 10px 0px;
+    padding: 10px 2px;
     text-align: center;
     vertical-align: inherit;
 }
@@ -309,8 +308,7 @@ th {
 #student-table td {
     border: 1px solid white;
     color: white;
-    font-size: 20px;
-    padding: 10px 0px;
+    padding: 10px 2px;
     text-align: center;
     vertical-align: inherit;
     

@@ -175,11 +175,7 @@
                                                                 </form>
                                                             </td>
                                                             <td>
-                                                                <!-- Form để chỉnh sửa thông tin sinh viên trong bảng, sau khi
-                                                            submit form này thì tạo các input hidden có value = các ô
-                                                            trong bảng là được -->
-                                                                <div
-                                                                    class="stu-btn edit-btn btn yellow-btn mt-0">
+                                                                <div class="stu-btn btn yellow-btn mt-0">
                                                                     <i class="ti-pencil stu-btn"></i>
                                                                 </div>
                                                                 <div value="Lưu lại"
@@ -707,28 +703,30 @@
                         </div>
         </div>
 
-        <!-- drop down -->
-        <div class="dropdown">
-            <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="/assets/img/IMG_8672.png" alt=""
-                data-toggle="dropdown">
-            <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
-            <ul class="dropdown-menu" id="dropdown-list">
-                <li><a class="profile" href="#">
-                        <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->
-                        <label for="">
-                            <%= hoten %>
-                        </label>
-                    </a></li>
-                <% if(role=='sinhvien' ) { %>
+    </div>
+
+    <!-- drop down -->
+    <div class="dropdown">
+        <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="/assets/img/IMG_8672.png" alt=""
+            data-toggle="dropdown">
+        <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
+        <ul class="dropdown-menu" id="dropdown-list">
+            <li><a class="profile" href="#">
+                    <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->
+                    <label for="">
+                        <%= hoten %>
+                    </label>
+                </a></li>
+            <% if(role=='sinhvien' ) { %>
+                <hr>
+                <li><a href="#">Kết quả học tập</a></li>
+                <li><a href="#">Điểm rèn luyện</a></li>
+                <% } %>
                     <hr>
-                    <li><a href="#">Kết quả học tập</a></li>
-                    <li><a href="#">Điểm rèn luyện</a></li>
-                    <% } %>
-                        <hr>
-                        <li><a href="#">Cài đặt</a></li>
-                        <li id="logout"><a href="/logout">Đăng xuất</a></li>
-            </ul>
-        </div>
+                    <li><a href="#">Cài đặt</a></li>
+                    <li id="logout"><a href="/logout">Đăng xuất</a></li>
+        </ul>
+    </div>
 
     <!-- chọn lớp -->
     <% if(role=='covan' ) { %>
@@ -743,40 +741,38 @@
                                 this.form.action=`/myclass/<%= username %>/${a}`;
                                 this.form.submit(); 
                             }'>
-                            <% if(classId) { %>
-                                <% for (var i=0; i < classId.length; i++) { %>
-                                    <option data-rel="1">
-                                        <%= classId[i].malop %>
-                                    </option>
+                        <% if(classId) { %>
+                            <% for (var i=0; i < classId.length; i++) { %>
+                                <option data-rel="1">
+                                    <%= classId[i].malop %>
+                                </option>
+                                <% } %>
                                     <% } %>
-                                        <% } %>
-                        </select>
-            </form>
-            <% } %>
+                    </select>
+        </form>
+        <% } %>
 
-                <script>
-                    (function ($) {
-                        // Tìm kiếm sinh viên
-                        $("#myInput").on("keyup", function () {
-                            var value = $(this).val().toLowerCase();
-                            $(".stu-table-body tr").filter(function () {
-                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                            });
+            <script>
+                (function ($) {
+                    // Tìm kiếm sinh viên
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $(".stu-table-body tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                         });
                     });
-
 
                     var stdTable = $('#student-table');
                     var tbody = $('.stu-table-body')
 
 
                     //Sửa 1 dong trong danh sách
-                    
+
                     // const tableBtn = $('.stu-btn')
-                    function onEditRow(e) {               
+                    function onEditRow(e) {
                         if (!e.target.classList.contains('stu-btn')) {
                             return;
-                        }         
+                        }
                         var tableBtn = e.target;
                         var tds = $(tableBtn).closest("tr").find('td');
                         const editTableBtn = $(tds['10'].firstChild.nextSibling);
@@ -808,99 +804,101 @@
                                 td.value = "Save";
                             }
                         }
-                        stdTable.click(onEditRow);
+                    }
+                    stdTable.click(onEditRow);
 
-                        var editForm = $("#editstudentinfo")
-                        function editStuInfor(e) {
-                            if (!e.target.classList.contains('stu-btn')) {
-                                return;
-                            }
+                    var editForm = $("#editstudentinfo")
+                    function editStuInfor(e) {
+                        if (!e.target.classList.contains('stu-btn')) {
+                            return;
+                        }
 
-                            var tableBtn = e.target;
+                        var tableBtn = e.target;
 
-                            var tds = $(tableBtn).closest("tr").find('td');
-                            var input1 = $("<input />", {
-                                name: "hoten",
-                                value: tds['2'].innerHTML.trim(),
-                                type: "hidden"
-                            });
-
-                            var input2 = $("<input />", {
-                                name: "ngaysinh",
-                                value: tds['3'].innerHTML.trim(),
-                                type: "hidden"
-                            });
-
-                            var input3 = $("<input />", {
-                                name: "malop",
-                                value: tds['4'].innerHTML.trim(),
-                                type: "hidden"
-                            });
-
-                            var input4 = $("<input />", {
-                                name: "email",
-                                value: tds['5'].innerHTML.trim(),
-                                type: "hidden"
-                            });
-
-                            var input5 = $("<input />", {
-                                name: "sdt",
-                                value: tds['6'].innerHTML.trim(),
-                                type: "hidden"
-                            });
-
-                            editForm.append(input1, input2, input3, input4, input5);
-                            editForm.submit();
-                        };
-
-                        // Huỷ bỏ đăng công việc
-                        $('.js-close-todo-btn').click(function (e) {
-                            $('#todo-form').collapse("hide");
-                        })
-
-                        //Huỷ bỏ đăng câu hỏi diễn đàn
-                        $('.js-close-btn').click(function (e) {
-                            $('#question-form').collapse("hide");
-                        })
-
-                        // chọn lớp học
-                        $('.class-list li').click(function () {
-                            $(this).addClass('active')
-                            $('.class-list li').not($(this)).removeClass('active');
+                        var tds = $(tableBtn).closest("tr").find('td');
+                        var input1 = $("<input />", {
+                            name: "hoten",
+                            value: tds['2'].innerHTML.trim(),
+                            type: "hidden"
                         });
 
-                        // chọn phần bên nav 
-                        $('.nav li').click(function () {
-                            $(this).addClass('active')
-                            $('.nav li').not($(this)).removeClass('active');
-                            $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
+                        var input2 = $("<input />", {
+                            name: "ngaysinh",
+                            value: tds['3'].innerHTML.trim(),
+                            type: "hidden"
                         });
 
-
-                        // hiển thị profile
-                        $('li .profile').click(function () {
-                            $('.nav li').removeClass('active');
-                            $('.main:last-of-type').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
+                        var input3 = $("<input />", {
+                            name: "malop",
+                            value: tds['4'].innerHTML.trim(),
+                            type: "hidden"
                         });
 
+                        var input4 = $("<input />", {
+                            name: "email",
+                            value: tds['5'].innerHTML.trim(),
+                            type: "hidden"
+                        });
 
-                        //edit prơfile
-                        var editBtn = $('.profile-edit-btn');
-                        var contents = $(".editp");
-                        var submit = $('#xacnhan');
-                        delete contents.length;
-                        delete contents.prevObject;
+                        var input5 = $("<input />", {
+                            name: "sdt",
+                            value: tds['6'].innerHTML.trim(),
+                            type: "hidden"
+                        });
 
-                        for (var i = 0; i < stuLength; i++) {
-                            const editTableBtn = $(`.edit-btn-${i + 1}`)
-                            const saveTableBtn = $(`.save-btn-${i + 1}`)
-                            if (saveTableBtn.css('display') == 'none') {
-                                saveTableBtn.show('fast').css("display", "inline-block");
-                                editTableBtn.hide('fast')
+                        editForm.append(input1, input2, input3, input4, input5);
+                        editForm.submit();
+                    };
+
+                    // Huỷ bỏ đăng công việc
+                    $('.js-close-todo-btn').click(function (e) {
+                        $('#todo-form').collapse("hide");
+                    })
+
+                    //Huỷ bỏ đăng câu hỏi diễn đàn
+                    $('.js-close-btn').click(function (e) {
+                        $('#question-form').collapse("hide");
+                    })
+
+                    // chọn lớp học
+                    $('.class-list li').click(function () {
+                        $(this).addClass('active')
+                        $('.class-list li').not($(this)).removeClass('active');
+                    });
+
+                    // chọn phần bên nav 
+                    $('.nav li').click(function () {
+                        $(this).addClass('active')
+                        $('.nav li').not($(this)).removeClass('active');
+                        $('.main:nth-of-type(' + $(this).data('rel') + '').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
+                    });
+
+
+                    // hiển thị profile
+                    $('li .profile').click(function () {
+                        $('.nav li').removeClass('active');
+                        $('.main:last-of-type').stop().fadeIn(400, 'linear').siblings('.main').stop().fadeOut(0, 'linear');
+                    });
+
+
+                    //edit prơfile
+                    var editBtn = $('.profile-edit-btn');
+                    var contents = $(".editp");
+                    var submit = $('#xacnhan');
+                    delete contents.length;
+                    delete contents.prevObject;
+                    editBtn.click(function (e) {
+                        e.preventDefault();
+                        for (const [key, value] of Object.entries(contents)) {
+                            content = value;
+                            content.contentEditable = !content.isContentEditable;
+                            if (content.contentEditable === 'false') {
+                                content.style.background = 'none';
+                                content.style.color = '#fff';
                             } else {
-                                saveTableBtn.hide('fast');
-                                editTableBtn.show('fast');
-                                editStuInfor(e);
+                                content.style.background = '#fff';
+                                content.style.color = '#0062cc';
+                                content.value = "Save";
                             }
                         }
 
@@ -909,6 +907,7 @@
                         } else {
                             submit.hide('fast');
                         }
+
                     });
                 })(jQuery);
 
@@ -945,40 +944,90 @@
                                     row.hide();
                                 }
                             }
-
-                            if (submit.css('display') == 'none') {
-                                submit.show('fast');
-                            } else {
-                                submit.hide('fast');
+                            else {
+                                row.show();
                             }
-                        });
-                    })(jQuery);
 
-                    $('document').ready(function ($) {
-                        var rows = $('#worktable tbody tr').each(function () {
+                        });
+                    });
+                    $('#sem_hoctap, #classify').change(function () {
+                        var i = 1;
+                        var sem = $('#sem_hoctap').val().toString();
+                        var classify = parseInt($('#classify').val());
+
+                        document.getElementById('download_hoctap').action = `/download/<%= diemSinhVien[0].malop %>/${sem}/${classify}`;
+
+                        rows2.each(function () {
                             var row = $(this);
-                            var columns = row.children('td');
-                            row.data('sem', columns.eq(5).html());
-                        });
-                        var rows2 = $('#marktable tbody tr').each(function () {
-                            var row = $(this);
-                            var columns = row.children('td');
-                            row.data('sem', columns.eq(5).html());
-                            row.data('gpa', columns.eq(7).html());
-                            row.data('canhbaohocvu', columns.eq(8).html());
-                            row.data('tinchi', columns.eq(6).html());
-                        });
-                        $('#sem').change(function () {
-                            var i = 1;
-                            var sem = $('#sem').val().toString();
-
-                            document.getElementById('download_renluyen').action = `/download/<%= diemRenLuyen[0].malop %>/${sem}`;
-
-                            rows.each(function () {
-                                var row = $(this);
-                                var sem_to_match = row.data('sem');
-                                if (sem != 'all') {
+                            var sem_to_match = row.data('sem').toString();
+                            var gpa = row.data('gpa');
+                            var canhbaohocvu = row.data('canhbaohocvu');
+                            var tinchi = row.data('tinchi');
+                            if (sem != 'all') {
+                                if (classify == 1) {
+                                    if (sem_to_match.includes(sem) && gpa >= 3.2) {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else if (classify == 2) {
+                                    if (sem_to_match.includes(sem) && canhbaohocvu == "có") {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else if (classify == 3) {
+                                    if (sem_to_match.includes(sem) && tinchi < 13) {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else {
                                     if (sem_to_match.includes(sem)) {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                            }
+                            else {
+                                if (classify == 1) {
+                                    if (gpa >= 3.2) {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else if (classify == 2) {
+                                    if (canhbaohocvu == "có") {
+                                        row.children('td').eq(0).html(i);
+                                        i++;
+                                        row.show();
+                                    }
+                                    else {
+                                        row.hide();
+                                    }
+                                }
+                                else if (classify == 3) {
+                                    if (tinchi < 13) {
                                         row.children('td').eq(0).html(i);
                                         i++;
                                         row.show();
@@ -990,164 +1039,72 @@
                                 else {
                                     row.show();
                                 }
-
-                            });
-                        });
-                        $('#sem_hoctap, #classify').change(function () {
-                            var i = 1;
-                            var sem = $('#sem_hoctap').val().toString();
-                            var classify = parseInt($('#classify').val());
-
-                            document.getElementById('download_hoctap').action = `/download/<%= diemSinhVien[0].malop %>/${sem}/${classify}`;
-
-                            rows2.each(function () {
-                                var row = $(this);
-                                var sem_to_match = row.data('sem').toString();
-                                var gpa = row.data('gpa');
-                                var canhbaohocvu = row.data('canhbaohocvu');
-                                var tinchi = row.data('tinchi');
-                                if (sem != 'all') {
-                                    if (classify == 1) {
-                                        if (sem_to_match.includes(sem) && gpa >= 3.2) {
-                                            row.children('td').eq(0).html(i);
-                                            i++;
-                                            row.show();
-                                        }
-                                        else {
-                                            row.hide();
-                                        }
-                                    }
-                                    else if (classify == 2) {
-                                        if (sem_to_match.includes(sem) && canhbaohocvu == "có") {
-                                            row.children('td').eq(0).html(i);
-                                            i++;
-                                            row.show();
-                                        }
-                                        else {
-                                            row.hide();
-                                        }
-                                    }
-                                    else if (classify == 3) {
-                                        if (sem_to_match.includes(sem) && tinchi < 13) {
-                                            row.children('td').eq(0).html(i);
-                                            i++;
-                                            row.show();
-                                        }
-                                        else {
-                                            row.hide();
-                                        }
-                                    }
-                                    else {
-                                        if (sem_to_match.includes(sem)) {
-                                            row.children('td').eq(0).html(i);
-                                            i++;
-                                            row.show();
-                                        }
-                                        else {
-                                            row.hide();
-                                        }
-                                    }
-                                }
-                                else {
-                                    if (classify == 1) {
-                                        if (gpa >= 3.2) {
-                                            row.children('td').eq(0).html(i);
-                                            i++;
-                                            row.show();
-                                        }
-                                        else {
-                                            row.hide();
-                                        }
-                                    }
-                                    else if (classify == 2) {
-                                        if (canhbaohocvu == "có") {
-                                            row.children('td').eq(0).html(i);
-                                            i++;
-                                            row.show();
-                                        }
-                                        else {
-                                            row.hide();
-                                        }
-                                    }
-                                    else if (classify == 3) {
-                                        if (tinchi < 13) {
-                                            row.children('td').eq(0).html(i);
-                                            i++;
-                                            row.show();
-                                        }
-                                        else {
-                                            row.hide();
-                                        }
-                                    }
-                                    else {
-                                        row.show();
-                                    }
-                                }
-                            });
+                            }
                         });
                     });
-                    $("#editstudent").submit(function () {
+                });
+                $("#editstudent").submit(function () {
 
-                        var name = $("#nametoedit").html().trim();
-                        var email = $("#emailtoedit").html().trim();
-                        var sdt = $("#sdttoedit").html().trim();
+                    var name = $("#nametoedit").html().trim();
+                    var email = $("#emailtoedit").html().trim();
+                    var sdt = $("#sdttoedit").html().trim();
 
-                        var input = $("<input />", {
-                            name: "hoten",
-                            value: name,
-                            type: "hidden"
-                        });
-                        var input2 = $("<input />", {
-                            name: "email",
-                            value: email,
-                            type: "hidden"
-                        });
-                        var input3 = $("<input />", {
-                            name: "sdt",
-                            value: sdt,
-                            type: "hidden"
-                        });
-                        $(this).append(input, input2, input3);
+                    var input = $("<input />", {
+                        name: "hoten",
+                        value: name,
+                        type: "hidden"
                     });
+                    var input2 = $("<input />", {
+                        name: "email",
+                        value: email,
+                        type: "hidden"
+                    });
+                    var input3 = $("<input />", {
+                        name: "sdt",
+                        value: sdt,
+                        type: "hidden"
+                    });
+                    $(this).append(input, input2, input3);
+                });
 
                 $("#editteacher").submit(function () {
                     var name = $("#nametoedit").html().trim();
                     var sdt = $("#sdttoedit").html().trim();
 
-                        var input = $("<input />", {
-                            name: "hoten",
-                            value: name,
-                            type: "hidden"
-                        });
-                        var input3 = $("<input />", {
-                            name: "sdt",
-                            value: sdt,
-                            type: "hidden"
-                        });
-                        $(this).append(input, input3);
+                    var input = $("<input />", {
+                        name: "hoten",
+                        value: name,
+                        type: "hidden"
                     });
+                    var input3 = $("<input />", {
+                        name: "sdt",
+                        value: sdt,
+                        type: "hidden"
+                    });
+                    $(this).append(input, input3);
+                });
 
-                    function goToHomepage() {
-                        window.location.href = "/my";
-                    }
-                    // $(function () {
-                    //     $('.class-list').on('change', function () {
-                    //         $.cookie('class-list', this.value, { expires: 365, path: '/' });
-                    //     });
-                    //     // $('.class-list').val($.cookie('class-list'));
-                    //     $(function () {
-                    //         var s = $.cookie('class-list');
-                    //         $(`.class-list option[value=${s}]`).prop('selected', true);
-                    //     });
-                    // });
-                    if (localStorage.getItem("myselect")) {
-                        $('.class-list').val(localStorage.getItem("myselect"))
-                    }
+                function goToHomepage() {
+                    window.location.href = "/my";
+                }
+                // $(function () {
+                //     $('.class-list').on('change', function () {
+                //         $.cookie('class-list', this.value, { expires: 365, path: '/' });
+                //     });
+                //     // $('.class-list').val($.cookie('class-list'));
+                //     $(function () {
+                //         var s = $.cookie('class-list');
+                //         $(`.class-list option[value=${s}]`).prop('selected', true);
+                //     });
+                // });
+                if (localStorage.getItem("myselect")) {
+                    $('.class-list').val(localStorage.getItem("myselect"))
+                }
 
-                    $('#logout').click(function () {
-                        $(".class-list").val($(".class-list option:first"));
-                    })
-                </script>
+                $('#logout').click(function () {
+                    $(".class-list").val($(".class-list option:first"));
+                })
+            </script>
 
 </body>
 

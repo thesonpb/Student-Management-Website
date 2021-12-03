@@ -607,7 +607,7 @@ p.post-time {
 } */
 
 /* phần dropdown chọn để vào trang cá nhân */
-body > .dropdown {
+body  .dropdown {
     position: fixed;
     top: 13px;
     right: 16px;
@@ -681,7 +681,7 @@ body > .dropdown {
 
 .right-nav {
     color: #ccc;
-    position: fixed;
+    position: absolute;
     top: 24px;
     right: 92px;
 }

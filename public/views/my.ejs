@@ -46,7 +46,7 @@
                 <% } %>
 
                     <% if(role=='covan' ) { %>
-                        <button data-toggle="collapse" data-target="#add-stu" class="btn">
+                        <button data-toggle="collapse" data-target="#add-stu" class="btn ml-3">
                             Thêm sinh viên
                         </button>
                         <form id="add-stu" class="adding-member flex-wrap collapse"
@@ -121,7 +121,7 @@
                                             <% } %>
                                         </tr>
                                     </thead>
-                                    <tbody class="stu-table-body">
+                                    <tbody class="stu-table-body" data-rel="<%= sinhvien.length%>">
                                         <% if(sinhvien) { %>
                                             <% for (var i=0; i < sinhvien.length; i++) { %>
                                                 <form id="editstudentinfo"
@@ -162,18 +162,19 @@
                                                             <form
                                                                 action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
                                                                 method="post">
-                                                                <input type="submit" class="delete-btn btn red-btn mt-0"
-                                                                    value="Xoá" />
+                                                                <button type="submit" class="delete-btn btn red-btn mt-0" value="Xoá">
+                                                                    <i class="ti-trash"></i>
+                                                                </button>   
                                                             </form>
                                                         </td>
                                                         <td>
                                                             <!-- Form để chỉnh sửa thông tin sinh viên trong bảng, sau khi
                                                             submit form này thì tạo các input hidden có value = các ô
                                                             trong bảng là được -->
-                                                            <div class="stu-btn edit-btn btn yellow-btn mt-0">
+                                                            <div class="stu-btn edit-btn-<%=i+1%> btn yellow-btn mt-0">
                                                                 <i class="ti-pencil"></i>
                                                             </div>
-                                                            <div value="Lưu lại" class="stu-btn save-btn btn green-btn mt-0">
+                                                            <div value="Lưu lại" class="stu-btn save-btn-<%=i+1%> save-btn btn green-btn mt-0">
                                                                 <i class="ti-save"></i>
                                                             </div>
                                                         </td>
@@ -194,7 +195,7 @@
                 <form>
                     <label for="sem">Học kỳ:</label>
                     <select name="sem" id="sem_hoctap">
-                        <option value="all">Tất cả sinh viên</option>
+                        <option value="all">Tất cả năm học</option>
                         <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
                         <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
                         <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
@@ -216,7 +217,7 @@
 
             <!-- xuất excel -->
             <form id="download_hoctap" action="/download/<%= diemSinhVien[0].malop %>/all/0"
-                class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
+                class=" row d-flex justify-content-between ml-0 mt-4 mb-3" method="get">
                 <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
             </form>
 
@@ -281,7 +282,7 @@
             <form class="selections">
                 <label for="sem">Học kỳ:</label>
                 <select name="sem" id="sem">
-                    <option value="all">Tất cả sinh viên</option>
+                    <option value="all">Tất cả năm học</option>
                     <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
                     <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
                     <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
@@ -291,7 +292,7 @@
 
             <!-- xuất excel -->
             <form id="download_renluyen" action="/download/<%= diemRenLuyen[0].malop %>/all"
-                class=" row d-flex justify-content-between ml-3 mt-4 mb-3" method="get">
+                class=" row d-flex justify-content-between ml-0 mt-4 mb-3" method="get">
                 <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
             </form>
 
@@ -708,24 +709,15 @@
                         });
                     });
                     var stdTable = $('#student-table');
-
+                    var tbody = $('.stu-table-body')
+                    
                     //Sửa 1 dong trong danh sách
                     // const tableBtn = $('.stu-btn')
-                    const editTableBtn = $('.edit-btn')
-                    const saveTableBtn = $(' .save-btn')
-
+                    var stuLength = tbody.data('rel');
                     function onEditRow(e) {
                         console.log(e.target)
                         if (!e.target.classList.contains('stu-btn')) {
                             return;
-                        }
-                        if (saveTableBtn.css('display') == 'none') {
-                            saveTableBtn.show('fast').css("display", "inline-block");
-                            editTableBtn.hide('fast')
-                        } else {
-                            saveTableBtn.hide('fast');
-                            editTableBtn.show('fast');
-                            editStuInfor(e);
                         }
                         
                         var tableBtn = e.target;
@@ -736,6 +728,20 @@
                         delete tds['10'];
                         delete tds['length'];
                         delete tds['prevObject'];
+
+                        for(var i=0; i<stuLength; i++) {
+                            const editTableBtn = $(`.edit-btn-${i+1}`)
+                            const saveTableBtn = $(`.save-btn-${i+1}`)
+                            if (saveTableBtn.css('display') == 'none') {
+                                saveTableBtn.show('fast').css("display", "inline-block");
+                                editTableBtn.hide('fast')
+                            } else {
+                                saveTableBtn.hide('fast');
+                                editTableBtn.show('fast');
+                                editStuInfor(e);
+                            }
+                        }
+                        
 
                         for (const [key, value] of Object.entries(tds)) {
                             td = value
@@ -751,6 +757,7 @@
                     stdTable.click(onEditRow);
 
                     var editForm = $("#editstudentinfo")
+
                     function editStuInfor(e) {
                         if (!e.target.classList.contains('stu-btn')) {
                             return;

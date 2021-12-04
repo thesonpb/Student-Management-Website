@@ -28,13 +28,13 @@ const teacherInfo = async (req, res) => {
         where: { malop: malop },
         include: [
             {
-                model: Bangdiem, 
+                model: Bangdiem,
                 where: {
                     mssv: Sequelize.col('sinhvien.mssv')
                 },
                 required: false
             }
-        ], 
+        ],
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
     });
     const drl = await Sinhvien.findAll({
@@ -52,68 +52,61 @@ const teacherInfo = async (req, res) => {
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
     });
     const ngaysinhchuan = await Covan.findOne({
-        where: { email: username }, 
+        where: { email: username },
         attributes: ['ngaysinh']
     })
     const xuatsac = await Bangdiem.count({
-        where: { 
-            [Op.and]: {
-                malop: classId
-            }, 
-            [Op.and]: {
-                gpa: { [Op.gte]: 3.6 }
+        where: {
+            malop: malop,
+            gpa: {
+                [Op.gte]: 3.6
             }
         }
     });
+    console.log(malop)
     const gioi = await Bangdiem.count({
-        where: { 
-            [Op.and]: {
-                malop: classId
-            }, 
-            [Op.and]: {
-                gpa: { [Op.gte]: 3.2 }
-            },
-            [Op.and]: {
-                gpa: { [Op.lt]: 3.6 }
+        where: {
+            malop: malop,
+            gpa: {
+                [Op.and]: {
+                    [Op.gte]: 3.2,
+                    [Op.lt]: 3.6
+                }
             }
         }
     });
     const kha = await Bangdiem.count({
-        where: { 
-            [Op.and]: {
-                malop: classId
-            }, 
-            [Op.and]: {
-                gpa: { [Op.gte]: 2.5 }
-            },
-            [Op.and]: {
-                gpa: { [Op.lt]: 3.2 }
+        where: {
+            malop: malop,
+            gpa: {
+                [Op.and]: {
+                    [Op.gte]: 2.5,
+                    [Op.lt]: 3.2
+                }
             }
         }
     });
     const trungbinh = await Bangdiem.count({
-        where: { 
-            [Op.and]: {
-                malop: classId
-            }, 
-            [Op.and]: {
-                gpa: { [Op.gte]: 2.0 }
-            },
-            [Op.and]: {
-                gpa: { [Op.lt]: 2.5 }
+        where: {
+            malop: malop,
+            gpa: {
+                [Op.and]: {
+                    [Op.gte]: 2.0,
+                    [Op.lt]: 2.5
+                }
             }
         }
     });
     const yeu = await Bangdiem.count({
-        where: { 
-            [Op.and]: {
-                malop: classId
-            }, 
-            [Op.and]: {
-                gpa: { [Op.lt]: 2.0 }
+        where: {
+            malop: malop,
+            gpa: {
+                [Op.lt]: 2.0
             }
         }
     });
+    console.log(malop)
+    console.log(xuatsac, gioi, kha, trungbinh, yeu)
     userInfo.dataValues.xuatsac = xuatsac;
     userInfo.dataValues.gioi = gioi;
     userInfo.dataValues.kha = kha;

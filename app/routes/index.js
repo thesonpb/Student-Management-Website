@@ -6,6 +6,7 @@ const upload = require('../middleware/upload');
 const bodyParser = require('body-parser');
 const chatBox = require('./chat');
 const auth = require('../config/auth');
+const authJWT = require('../middleware/authJWT');
 
 function route(app){
     
@@ -38,33 +39,29 @@ function route(app){
     //GET: Điều hướng đến trang cá nhân cua ban than
     app.get('/my',authJwt.verifyToken, controller.getUserInfo);
 
-    app.get('/myclass/:email/:malop', authJwt.verifyToken, controller.getTeacherInfo);
+    app.get('/myclass/:email/:malop', authJwt.isAdvisor, controller.getTeacherInfo);
 
     
     app.get('/hoc-tap/:malop', authJwt.verifyToken, controller.hoctap);
 
     app.get('/dien-dan/:malop', authJwt.verifyToken, controller.diendan);
 
-    app.get('/cong-viec', (req, res) => {
-        res.render('congviec');
-    })
-
     app.get('/ren-luyen/:malop', authJwt.verifyToken, controller.renluyen);
 
-    app.get('/test1', (req, res) => {
-        res.render('test1');
-    })
+    // app.get('/test1', (req, res) => {
+    //     res.render('test1');
+    // })
 
-    app.get('/test2', (req, res) => {
-        res.render('test2');
-    })
+    // app.get('/test2', (req, res) => {
+    //     res.render('test2');
+    // })
 
     //**********************************************************************************************
     //GET: Lấy profile
     // app.get('/profileTeacher/:email', authJwt.verifyToken, controller.profileTeacher)
     // app.get('/profileStudent/:mssv', authJwt.verifyToken, controller.profileStudent)
-    app.get('/profile', controller.getProfile);
-    app.get('/profile/:malop', controller.getProfileCovan);
+    app.get('/profile', authJWT.isStudent, controller.getProfile);
+    app.get('/profile/:malop',authJWT.isAdvisor, controller.getProfileCovan);
     app.post('/uploadImage',checkUser, upload.uploadImg.single("img"), uploadAvatar)
 
     //**********************************************************************************************
@@ -77,13 +74,13 @@ function route(app){
         console.log("File: " + req.file.filename);
         res.send("success")
     })
-    app.get('/download', controller.exportExcel)
+    app.get('/download', authJWT.isAdvisor, controller.exportExcel)
 
     //GET: Download bảng điểm theo lớp, học kỳ, phân loại
-    app.get('/download/:malop/:sem/:classify', controller.exportHoctap)
+    app.get('/download/:malop/:sem/:classify', authJWT.isAdvisor, controller.exportHoctap)
 
     //GET: Download bảng điểm rèn luyện theo lớp, học kỳ
-    app.get('/download/:malop/:sem', controller.exportRenluyen)
+    app.get('/download/:malop/:sem', authJWT.isAdvisor, controller.exportRenluyen)
 
     //********************************************************************************************* */
     //Route: Chức năng chat giữ giảng viên và sv

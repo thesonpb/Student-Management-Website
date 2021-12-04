@@ -45,6 +45,8 @@ const getUserInfo = async (req, res) => {
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.classId = classId;
         userInfo.dataValues.username = username;
+        
+        
         res.render('my', userInfo.dataValues);
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);

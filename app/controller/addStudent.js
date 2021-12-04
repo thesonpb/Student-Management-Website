@@ -11,6 +11,8 @@ const addStudent = async (req, res) => {
     var malop = (req.body.malop);
     var email = (req.body.email);
     var sdt = (req.body.sdt);
+    var sdtphuhuynh = (req.body.sdt);
+    var diachi = (req.body.sdt);
     await Sinhvien.create({
         mssv: mssv, 
         hoten: hoten,
@@ -20,8 +22,8 @@ const addStudent = async (req, res) => {
         khoa: "",
         malop: malop,
         avatar: "",
-        sdtphuhuynh: "", 
-        diachi: ""
+        sdtphuhuynh: sdtphuhuynh, 
+        diachi: diachi
     }).then(function (Sinhvien) {
         if (Sinhvien) {
             res.redirect(`/myclass/${emailcovan}/${malopcu}`);

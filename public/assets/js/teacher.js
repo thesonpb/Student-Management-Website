@@ -58,13 +58,12 @@ function editStuInfor(e) {
         value: tds['2'].innerHTML.trim(),
         type: "hidden"
     });
-    
 
-    // var input2 = $("<input />", {
-    //     name: "ngaysinh",
-    //     value: tds['3'].innerHTML.trim(),
-    //     type: "hidden"
-    // });
+    var input2 = $("<input />", {
+        name: "ngaysinh",
+        value: tds['3'].innerHTML.trim(),
+        type: "hidden"
+    });
 
     var input3 = $("<input />", {
         name: "malop",
@@ -84,9 +83,21 @@ function editStuInfor(e) {
         type: "hidden"
     });
 
+    var input6 = $("<input />", {
+        name: "sdtphuhuynh",
+        value: tds['7'].innerHTML.trim(),
+        type: "hidden"
+    });
+
+    var input7 = $("<input />", {
+        name: "diachi",
+        value: tds['8'].innerHTML.trim(),
+        type: "hidden"
+    });
+
     editForm.empty()
 
-    editForm.append(input1, input3, input4, input5);
+    editForm.append(input1, input2, input3, input4, input5, input6, input7);
     console.log(editForm.html())
     editForm.submit();
 };

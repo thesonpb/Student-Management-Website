@@ -64,6 +64,7 @@ function route(app){
     // app.get('/profileTeacher/:email', authJwt.verifyToken, controller.profileTeacher)
     // app.get('/profileStudent/:mssv', authJwt.verifyToken, controller.profileStudent)
     app.get('/profile', controller.getProfile);
+    app.get('/profile/:malop', controller.getProfileCovan);
     app.post('/uploadImage',checkUser, upload.uploadImg.single("img"), uploadAvatar)
 
     //**********************************************************************************************

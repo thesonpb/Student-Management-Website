@@ -9,6 +9,7 @@ const Op = Sequelize.Op;
 
 //
 const teacherInfo = async (req, res) => {
+    if (res.locals.user.vaitro == 'sinhvien') res.redirect('/my');
     // const username = res.locals.user.tennguoidung;
     const username = req.params.email;
     let userInfo = '';

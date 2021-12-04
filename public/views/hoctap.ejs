@@ -49,12 +49,13 @@
             <% } %>
     </div>
 
+    <% if (vaitro == 'covan') { %>
     <!-- xuất excel -->
     <form id="download_hoctap" action="/download/<%= diemSinhVien[0].malop %>/all/0"
         class=" row d-flex justify-content-between ml-0 mt-4 mb-3" method="get">
         <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
     </form>
-
+    <% } %>
     <div class="">
         <table class="mark" id="marktable">
             <thead>

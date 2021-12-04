@@ -15,6 +15,7 @@ const renluyen = async (req, res) => {
     if (userRole == 'sinhvien') {
         userInfo = await Sinhvien.findByPk(username);
         userInfo.dataValues.vaitro = 'sinhvien';
+        if (req.params.malop != userInfo.dataValues.malop) res.redirect(`/ren-luyen/${userInfo.dataValues.malop}`);
         const diemsinhvien = await Sinhvien.findAll({
             where: { mssv: username },
             include: [

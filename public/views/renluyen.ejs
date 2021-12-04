@@ -36,12 +36,14 @@
                 </select>
             </form>
 
+            <% if (vaitro == 'covan') { %>
             <!-- xuất excel -->
             <form id="download_renluyen" action="/download/<%= diemRenLuyen[0].malop %>/all"
                 class=" row d-flex justify-content-between ml-0 mt-4 mb-3" method="get">
                 <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
             </form>
-
+            <% } %>
+            
             <div class="">
                 <table class="work" id="worktable">
                     <thead>

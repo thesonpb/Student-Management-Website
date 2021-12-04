@@ -7,66 +7,52 @@ const { QueryTypes, Sequelize } = require('sequelize');
 
 
 //************************************************************************************************************************
-//Lấy profile người dùng của sinh viên hoặc cố vấn
 const getProfile = async (req, res) => {
-    //Lấy tên đăng nhập và vai trò từ biến local tạo ra khi đăng nhập
     const username = res.locals.user.tennguoidung;
     const userRole = res.locals.user.vaitro;
 
-
-    console.log(userRole);
     let profile = '';
-    //Lấy profile rồi gán vào object profile
-    if (userRole == 'sinhvien') {
-        profile = await Sinhvien.findByPk(username);
-        const sinhviens = await Sinhvien.findAll({
-            where: { malop: profile.malop },
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
-        });
-        const tongtinchi = await Bangdiem.sum('tinchi', { where: { mssv: username } });
-        const tonggpa = await Bangdiem.findAll({
-            where: { mssv: username },
-            attributes: [[Sequelize.literal('SUM(gpa * tinchi)'), 'result']]
-        });
-        const ngaysinhchuan = await Sinhvien.findOne({
-            where: { mssv: username },
-            attributes: ['ngaysinh']
-        });
 
-        profile.dataValues.ngaysinh = ngaysinhchuan.ngaysinh;
-        profile.dataValues.gpa = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
-        profile.dataValues.tinchi = tongtinchi;
-        profile.dataValues.vaitro = userRole;
-        profile.dataValues.sinhvien = sinhviens;
-        res.render('profile', profile.dataValues);
-    } else if (userRole == 'covan') {
-        profile = await Covan.findByPk(username);
-        //TODO: chỗ này cần sửa truy vấn sinh viên, để lắp thông tin về mã lớp vào các nút bấm ở leftsidebar
-        //Chưa có mã của lớp đang xem hiện tại truyền cùng yêu cầu
-        const sinhviens = await Sinhvien.findAll({
-            where: { malop: 'K64CACLC2' },
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
-        });
-        //Render giao diện profile kèm dữ liệu
-        const ngaysinhchuan = await Covan.findOne({
-            where: { email: username },
-            attributes: ['ngaysinh']
-        });
-
-        profile.dataValues.ngaysinh = ngaysinhchuan.ngaysinh;
-        profile.dataValues.vaitro = userRole;
-        profile.dataValues.sinhvien = sinhviens;
-        res.render('profile', profile.dataValues);
-    }
-
-    //TODO: chỗ này cần sửa truy vấn sinh viên, để lắp thông tin về mã lớp vào các nút bấm ở leftsidebar
-    //Chưa có mã của lớp đang xem hiện tại truyền cùng yêu cầu
+    profile = await Sinhvien.findByPk(username);
     const sinhviens = await Sinhvien.findAll({
-        where: { malop: 'K64CACLC2' },
+        where: { malop: profile.malop },
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
     });
-    //Render giao diện profile kèm dữ liệu
+    const tongtinchi = await Bangdiem.sum('tinchi', { where: { mssv: username } });
+    const tonggpa = await Bangdiem.findAll({
+        where: { mssv: username },
+        attributes: [[Sequelize.literal('SUM(gpa * tinchi)'), 'result']]
+    });
+    const ngaysinhchuan = await Sinhvien.findOne({
+        where: { mssv: username },
+        attributes: ['ngaysinh']
+    });
 
+    profile.dataValues.ngaysinh = ngaysinhchuan.ngaysinh;
+    profile.dataValues.gpa = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
+    profile.dataValues.tinchi = tongtinchi;
+    profile.dataValues.vaitro = userRole;
+    profile.dataValues.sinhvien = sinhviens;
+    res.render('profile', profile.dataValues);
+}
+const getProfileCovan = async (req, res) => {
+    const username = res.locals.user.tennguoidung;
+    const userRole = res.locals.user.vaitro;
+    const malop = req.params.malop;
+
+    let profile = '';
+
+    profile = await Covan.findByPk(username);
+    const sinhviens = await Sinhvien.findAll({
+        where: { malop: malop },
+        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
+    });
+    const ngaysinhchuan = await Covan.findOne({
+        where: { email: username },
+        attributes: ['ngaysinh']
+    });
+
+    profile.dataValues.ngaysinh = ngaysinhchuan.ngaysinh;
     profile.dataValues.vaitro = userRole;
     profile.dataValues.sinhvien = sinhviens;
     res.render('profile', profile.dataValues);
@@ -126,6 +112,7 @@ const user = {
     getProfile: getProfile,
     updateUserInfo: updateUserInfo,
     uploadAvatar: uploadAvatar,
+    getProfileCovan: getProfileCovan,
 }
 
 module.exports = user;

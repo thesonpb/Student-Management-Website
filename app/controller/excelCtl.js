@@ -15,6 +15,7 @@ const Diemrenluyen = db.Diemrenluyen;
 
 
 const upload = async (req, res) => {
+    if (res.locals.user.vaitro == 'sinhvien') res.redirect('/my');
     try {
         //Get and check file upload from req.file
         if (req.file == undefined) {
@@ -70,6 +71,7 @@ const upload = async (req, res) => {
 };
 
 const exportExcel = async (req, res) => {
+    if (res.locals.user.vaitro == 'sinhvien') res.redirect('/my');
     await Sinhvien.findAll({
         where: { malop: req.params.malop }
     }).then(rows => {
@@ -127,6 +129,7 @@ const exportExcel = async (req, res) => {
 }
 
 const exportHoctap = async (req, res) => {
+    if (res.locals.user.vaitro == 'sinhvien') res.redirect('/my');
     const malop = req.params.malop;
     const sem = JSON.stringify(req.params.sem);
     const classify = req.params.classify;
@@ -238,6 +241,7 @@ const exportHoctap = async (req, res) => {
 
 };
 const exportRenluyen = async (req, res) => {
+    if (res.locals.user.vaitro == 'sinhvien') res.redirect('/my');
     const malop = req.params.malop;
     const sem = JSON.stringify(req.params.sem);
 

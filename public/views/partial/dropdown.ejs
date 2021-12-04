@@ -7,8 +7,13 @@
     <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
     <ul class="dropdown-menu" id="dropdown-list">
         
-        <li><a class="profile" href="/profile">
-
+        <li>
+            <% if (vaitro == 'sinhvien') { %>
+            <a class="profile" href="/profile">
+            <% } %>
+            <% if (vaitro == 'covan') { %>
+            <a class="profile" href="/profile/<%= sinhvien[0].malop %>">
+            <% } %>
                 <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->
                 <label for="">
                     <%= hoten %>

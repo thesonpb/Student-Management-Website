@@ -110,10 +110,6 @@
                                     <tbody class="stu-table-body" data-rel="<%= sinhvien.length%>">
                                         <% if(sinhvien) { %>
                                             <% for (var i=0; i < sinhvien.length; i++) { %>
-                                                <form id="editstudentinfo"
-                                                    action="/editstudentinfo/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
-                                                    method="post">
-                                                </form>  
                                                 <tr>
                                                     <td>
                                                         <%= i+1 %>
@@ -145,23 +141,43 @@
                                                         </td>
 
                                                         <td>
-                                                            <form
-                                                                action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
-                                                                method="post">
-                                                                <button type="submit" class="delete-btn btn red-btn mt-0" value="Xoá">
+                                                            <div data-toggle="modal" data-target="#del-stu"
+                                                                    class="delete-btn btn red-btn mt-0" value="Xoá">
                                                                     <i class="ti-trash"></i>
-                                                                </button>   
-                                                            </form>
+                                                                </div>
+                                                                <div id="del-stu" class="modal fade delete-confirmation">
+                                                                    <!-- delete-confirmation -->
+                                                                    <form class=" modal-dialog modal-dialog-centered"
+                                                                        action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
+                                                                        method="post">
+                                                                        <div class="container modal-content">
+                                                                            <span class="close-del" data-dismiss="modal"
+                                                                                title="Close Modal">×</span>
+
+                                                                            <h1>Xoá sinh viên</h1>
+                                                                            <p>Bạn có muốn xoá sinh viên này khỏi danh
+                                                                                sách và toàn bộ thông tin liên quan đến
+                                                                                sinh viên?</p>
+
+                                                                            <div class="clearfix">
+                                                                                <button type="button" data-dismiss="modal"class="cancelbtn">Cancel</button>
+                                                                                <button type="submit" class="del-confirm-btn deletebtn">Delete</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
                                                         </td>
                                                         <td>
-                                                            <!-- Form để chỉnh sửa thông tin sinh viên trong bảng, sau khi
-                                                            submit form này thì tạo các input hidden có value = các ô
-                                                            trong bảng là được -->
-                                                            <div class="stu-btn edit-btn-<%=i+1%> btn yellow-btn mt-0">
-                                                                <i class="ti-pencil"></i>
+                                                            <form id="editstudentinfo"
+                                                                action="/editstudentinfo/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
+                                                                method="post">
+                                                            </form>  
+                                                            <div class="stu-btn btn yellow-btn mt-0">
+                                                                <i class="ti-pencil stu-btn"></i>
                                                             </div>
-                                                            <div value="Lưu lại" class="stu-btn save-btn-<%=i+1%> save-btn btn green-btn mt-0">
-                                                                <i class="ti-save"></i>
+                                                            <div value="Lưu lại"
+                                                                class="stu-btn save-btn btn green-btn mt-0">
+                                                                <i class="ti-save stu-btn"></i>
                                                             </div>
                                                         </td>
 

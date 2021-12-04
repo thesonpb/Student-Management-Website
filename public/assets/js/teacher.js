@@ -4,35 +4,30 @@ var stdTable = $('#student-table');
 var tbody = $('.stu-table-body')
 
 //Sửa 1 dong trong danh sách
-// const tableBtn = $('.stu-btn')
-var stuLength = tbody.data('rel');
 function onEditRow(e) {
     if (!e.target.classList.contains('stu-btn')) {
         return;
     }
-
     var tableBtn = e.target;
-
     var tds = $(tableBtn).closest("tr").find('td');
+    const editTableBtn = $(tds['10'].firstChild.nextSibling.nextSibling.nextSibling);
+    const saveTableBtn = $(tds['10'].lastChild.previousSibling);
+
+    if (saveTableBtn.css('display') == 'none') {
+        saveTableBtn.show('fast').css("display", "inline-block");
+        editTableBtn.hide('fast')
+    } else {
+        saveTableBtn.hide('fast');
+        editTableBtn.show('fast');
+        editStuInfor(e);
+    }
+
     delete tds['0'];
+    delete tds['1'];
     delete tds['9'];
     delete tds['10'];
     delete tds['length'];
     delete tds['prevObject'];
-
-    for (var i = 0; i < stuLength; i++) {
-        const editTableBtn = $(`.edit-btn-${i + 1}`)
-        const saveTableBtn = $(`.save-btn-${i + 1}`)
-        if (saveTableBtn.css('display') == 'none') {
-            saveTableBtn.show('fast').css("display", "inline-block");
-            editTableBtn.hide('fast')
-        } else {
-            saveTableBtn.hide('fast');
-            editTableBtn.show('fast');
-            editStuInfor(e);
-        }
-    }
-
 
     for (const [key, value] of Object.entries(tds)) {
         td = value
@@ -47,8 +42,6 @@ function onEditRow(e) {
 }
 stdTable.click(onEditRow);
 
-var editForm = $("#editstudentinfo")
-
 function editStuInfor(e) {
     if (!e.target.classList.contains('stu-btn')) {
         return;
@@ -57,11 +50,15 @@ function editStuInfor(e) {
     var tableBtn = e.target;
 
     var tds = $(tableBtn).closest("tr").find('td');
+
+    var editForm = $(tds['10'].firstChild.nextSibling);
+
     var input1 = $("<input />", {
         name: "hoten",
         value: tds['2'].innerHTML.trim(),
         type: "hidden"
     });
+    
 
     // var input2 = $("<input />", {
     //     name: "ngaysinh",
@@ -87,7 +84,10 @@ function editStuInfor(e) {
         type: "hidden"
     });
 
+    editForm.empty()
+
     editForm.append(input1, input3, input4, input5);
+    console.log(editForm.html())
     editForm.submit();
 };
 
@@ -107,4 +107,3 @@ if (localStorage.getItem("myselect")) {
 $('#logout').click(function () {
     $(".class-list").val($(".class-list option:first"));
 })
-

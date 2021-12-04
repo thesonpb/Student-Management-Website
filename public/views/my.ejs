@@ -94,39 +94,47 @@
 
                                         <% if (vaitro == 'covan') { %>
                                         <!--CHART-->
-                                        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
-                                        <script>
-                                            var xValues = ["Xuất sắc", "Giỏi", "Khá", "Trung bình", "Yếu"];
-                                            var yValues = [<%= xuatsac %>, <%= gioi %>, <%= kha %>, <%= trungbinh %>, <%= yeu %>];
-                                            var barColors = ["red", "green", "blue", "orange", "brown"];
+                                    <div class="row d-flex justify-content-center mt-5">
 
-                                            new Chart("myChart", {
-                                                type: "bar",
-                                                data: {
-                                                    labels: xValues,
-                                                    datasets: [{
-                                                        backgroundColor: barColors,
-                                                        data: yValues
-                                                    }]
-                                                },
-                                                options: {
-                                                    legend: { display: false },
-                                                    title: {
-                                                        display: true,
-                                                        text: "Điểm GPA <%= sinhvien[0].malop %>"
-                                                    },
-                                                    scales: {
-                                                        yAxes: [{
-                                                            ticks: {
-                                                                beginAtZero: true,
-                                                                callback: function (value) { if (value % 1 === 0) { return value; } }
-                                                            }
+                                        <div class="col-md-8">
+                                            <canvas id="myChart" style=""></canvas>
+    
+                                            <script>
+                                                var xValues = ["Xuất sắc", "Giỏi", "Khá", "Trung bình", "Yếu"];
+                                                var yValues = [<%= xuatsac %>, <%= gioi %>, <%= kha %>, <%= trungbinh %>, <%= yeu %>];
+                                                var barColors = ["red", "green", "blue", "orange", "brown"];
+    
+                                                new Chart("myChart", {
+                                                    type: "bar",
+                                                    data: {
+                                                        labels: xValues,
+                                                        datasets: [{
+                                                            backgroundColor: barColors,
+                                                            data: yValues
                                                         }]
-                                                    }
-                                                }
-                                            });
-                                        </script>
+                                                    },
+                                                    options: {
+                                                        legend: { display: false },
+                                                        title: {
+                                                            display: true,
+                                                            text: "Điểm GPA <%= sinhvien[0].malop %>"
+                                                        },
+                                                        scales: {
+                                                            yAxes: [{
+                                                                ticks: {
+                                                                    beginAtZero: true,
+                                                                    callback: function (value) { if (value % 1 === 0) { return value; } }
+                                                                }
+                                                            }]
+                                                        },
+                                                        responesive: true
+                                                    }                                                        
+
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>    
                                         <% } %>
 
                                         <% if (vaitro == 'covan') { %>

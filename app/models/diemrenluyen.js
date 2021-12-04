@@ -1,7 +1,3 @@
-const models = require('./index');
-const Sinhvien = require("./sinhvien");
-
-
 module.exports = (sequelize, Sequelize) => {
     const Diemrenluyen = sequelize.define('diemrenluyen', {
         id: {

@@ -165,14 +165,31 @@
                                                             </td>
 
                                                             <td>
-                                                                <form
-                                                                    action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
-                                                                    method="post">
-                                                                    <button type="submit"
-                                                                        class="delete-btn btn red-btn mt-0" value="Xoá">
-                                                                        <i class="ti-trash"></i>
-                                                                    </button>
-                                                                </form>
+                                                                <div data-toggle="modal" data-target="#del-stu"
+                                                                    class="delete-btn btn red-btn mt-0" value="Xoá">
+                                                                    <i class="ti-trash"></i>
+                                                                </div>
+                                                                <div id="del-stu" class="modal fade delete-confirmation">
+                                                                    <!-- delete-confirmation -->
+                                                                    <form class=" modal-dialog modal-dialog-centered"
+                                                                        action="/student/delete/<%= sinhvien[i].mssv %>/<%= email %>/<%= sinhvien[i].malop %>"
+                                                                        method="post">
+                                                                        <div class="container modal-content">
+                                                                            <span class="close-del" data-dismiss="modal"
+                                                                                title="Close Modal">×</span>
+
+                                                                            <h1>Xoá sinh viên</h1>
+                                                                            <p>Bạn có muốn xoá sinh viên này khỏi danh
+                                                                                sách và toàn bộ thông tin liên quan đến
+                                                                                sinh viên?</p>
+
+                                                                            <div class="clearfix">
+                                                                                <button type="button" data-dismiss="modal"class="cancelbtn">Cancel</button>
+                                                                                <button type="submit" class="del-confirm-btn deletebtn">Delete</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
                                                             </td>
                                                             <td>
                                                                 <div class="stu-btn btn yellow-btn mt-0">
@@ -288,254 +305,253 @@
                                             </table>
                                     </div>
                         </div>
+        </div>
 
-                        <!-- Rèn luyện -->
-                        <div class="main">
-                            <h1 class="title-main">Rèn luyện</h1>
-                            <form class="selections">
-                                <label for="sem">Học kỳ:</label>
-                                <select name="sem" id="sem">
-                                    <option value="all">Tất cả</option>
-                                    <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
-                                    <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
-                                    <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
-                                    <option value="Học kỳ 2 năm 2020-2021">Học kỳ 2 năm 2020-2021</option>
-                                </select>
-                            </form>
+        <!-- Rèn luyện -->
+        <div class="main">
+            <h1 class="title-main">Rèn luyện</h1>
+            <form class="selections">
+                <label for="sem">Học kỳ:</label>
+                <select name="sem" id="sem">
+                    <option value="all">Tất cả</option>
+                    <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
+                    <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
+                    <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
+                    <option value="Học kỳ 2 năm 2020-2021">Học kỳ 2 năm 2020-2021</option>
+                </select>
+            </form>
 
-                            <% if(role=='covan' ) { %>
-                                <!-- xuất excel -->
-                                <form id="download_renluyen" action="/download/<%= diemRenLuyen[0].malop %>/all"
-                                    class=" row d-flex justify-content-between ml-0 mt-4 mb-3" method="get">
-                                    <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
-                                </form>
+            <% if(role=='covan' ) { %>
+                <!-- xuất excel -->
+                <form id="download_renluyen" action="/download/<%= diemRenLuyen[0].malop %>/all"
+                    class=" row d-flex justify-content-between ml-0 mt-4 mb-3" method="get">
+                    <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
+                </form>
+                <% } %>
+
+                    <div class="">
+                        <table class="work" id="worktable">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã SV</th>
+                                    <th>Họ Tên</th>
+                                    <th>Ngày Sinh</th>
+                                    <th>Mã lớp</th>
+                                    <th>Học kỳ</th>
+                                    <th>Ý thức học tập</th>
+                                    <th>Chấp hành nội quy</th>
+                                    <th>Tham gia hoạt động</th>
+                                    <th>Phẩm chất</th>
+                                    <th>Phụ trách lớp</th>
+                                    <th>Tổng</th>
+                                </tr>
+                            </thead>
+                            <% if(diemRenLuyen) { %>
+                                <tbody>
+                                    <% for (var i=0; i < diemRenLuyen.length; i++) { %>
+                                        <tr>
+                                            <td>
+                                                <%= i+1 %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].mssv %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].hoten %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].ngaysinh %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].malop %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].diemrenluyen['hocky'] %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].diemrenluyen['ythuc'] %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].diemrenluyen['noiquy'] %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].diemrenluyen['hoatdong'] %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].diemrenluyen['phamchat'] %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
+                                            </td>
+                                            <td>
+                                                <%= diemRenLuyen[i].diemrenluyen['ythuc'] +
+                                                    diemRenLuyen[i].diemrenluyen['noiquy'] +
+                                                    diemRenLuyen[i].diemrenluyen['hoatdong'] +
+                                                    diemRenLuyen[i].diemrenluyen['phamchat'] +
+                                                    diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                </tbody>
                                 <% } %>
+                        </table>
+                    </div>
+        </div>
 
-                                    <div class="">
-                                        <table class="work" id="worktable">
-                                            <thead>
-                                                <tr>
-                                                    <th>STT</th>
-                                                    <th>Mã SV</th>
-                                                    <th>Họ Tên</th>
-                                                    <th>Ngày Sinh</th>
-                                                    <th>Mã lớp</th>
-                                                    <th>Học kỳ</th>
-                                                    <th>Ý thức học tập</th>
-                                                    <th>Chấp hành nội quy</th>
-                                                    <th>Tham gia hoạt động</th>
-                                                    <th>Phẩm chất</th>
-                                                    <th>Phụ trách lớp</th>
-                                                    <th>Tổng</th>
-                                                </tr>
-                                            </thead>
-                                            <% if(diemRenLuyen) { %>
-                                                <tbody>
-                                                    <% for (var i=0; i < diemRenLuyen.length; i++) { %>
-                                                        <tr>
-                                                            <td>
-                                                                <%= i+1 %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].mssv %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].hoten %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].ngaysinh %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].malop %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].diemrenluyen['hocky'] %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].diemrenluyen['ythuc'] %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].diemrenluyen['noiquy'] %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].diemrenluyen['hoatdong'] %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].diemrenluyen['phamchat'] %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
-                                                            </td>
-                                                            <td>
-                                                                <%= diemRenLuyen[i].diemrenluyen['ythuc'] +
-                                                                    diemRenLuyen[i].diemrenluyen['noiquy'] +
-                                                                    diemRenLuyen[i].diemrenluyen['hoatdong'] +
-                                                                    diemRenLuyen[i].diemrenluyen['phamchat'] +
-                                                                    diemRenLuyen[i].diemrenluyen['phutrachlop'] %>
-                                                            </td>
-                                                        </tr>
-                                                        <% } %>
-                                                </tbody>
-                                                <% } %>
-                                        </table>
-                                    </div>
+        <!-- Công việc -->
+        <div class="main">
+            <h1 class="title-main">Công việc</h1>
+            <% if(role=='covan' ) { %>
+                <button data-toggle="collapse" data-target="#todo-form" class="todo-add-btn js-add-todo btn">Thêm một
+                    công
+                    việc</button>
+                <form action="/upload/task" class="form js-todo-form collapse" id="todo-form" method="post">
+                    <label for="">Tiêu đề</label>
+                    <input type="text" class="input-subject" name="subject">
+                    <hr>
+                    <div class="todo-dur-input">
+                        <label for="birthdaytime">Opened:</label>
+                        <input type="datetime-local" name="opendate">
+                        <label for="birthdaytime">Due:</label>
+                        <input type="datetime-local" name="duedate">
+                    </div>
+                    <hr>
+                    <label for="">Nội dung</label>
+                    <input role="textbox" spellcheck="true" class="input-content" name="content">
+                    <div>
+                        <input type="submit" value="Đăng lên" class="btn">
+                        <div class="btn red-btn">Huỷ bỏ</div>
+                    </div>
+                </form>
+                <% } %>
+                    <div class="todo">
+                        <h3 class="todo-title">
+                            <!-- thêm biến tiêu đề -->
+                        </h3>
+                        <div class="todo-intro">
+                            <p class="todo-content">
+                                <!-- Thêm biến nội dung -->
+                            </p>
+                            <div class="todo-duration">
+                                <p class="todo-opened">Opened:
+                                    <!--Thêm biến tgian-->
+                                </p>
+                                <p class="todo-due">Due:
+                                    <!--Thêm biến tgian-->
+                                </p>
+                            </div>
                         </div>
 
-                        <!-- Công việc -->
-                        <div class="main">
-                            <h1 class="title-main">Công việc</h1>
-                            <% if(role=='covan' ) { %>
-                                <button data-toggle="collapse" data-target="#todo-form"
-                                    class="todo-add-btn js-add-todo btn">Thêm một
-                                    công
-                                    việc</button>
-                                <form action="/upload/task" class="form js-todo-form collapse" id="todo-form"
-                                    method="post">
-                                    <label for="">Tiêu đề</label>
-                                    <input type="text" class="input-subject" name="subject">
-                                    <hr>
-                                    <div class="todo-dur-input">
-                                        <label for="birthdaytime">Opened:</label>
-                                        <input type="datetime-local" name="opendate">
-                                        <label for="birthdaytime">Due:</label>
-                                        <input type="datetime-local" name="duedate">
-                                    </div>
-                                    <hr>
-                                    <label for="">Nội dung</label>
-                                    <input role="textbox" spellcheck="true" class="input-content" name="content">
-                                    <div>
-                                        <input type="submit" value="Đăng lên" class="btn">
-                                        <div class="btn red-btn">Huỷ bỏ</div>
-                                    </div>
-                                </form>
-                                <% } %>
-                                    <div class="todo">
-                                        <h3 class="todo-title">
-                                            <!-- thêm biến tiêu đề -->
-                                        </h3>
-                                        <div class="todo-intro">
-                                            <p class="todo-content">
-                                                <!-- Thêm biến nội dung -->
-                                            </p>
-                                            <div class="todo-duration">
-                                                <p class="todo-opened">Opened:
-                                                    <!--Thêm biến tgian-->
-                                                </p>
-                                                <p class="todo-due">Due:
-                                                    <!--Thêm biến tgian-->
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- <div class="todo-opinion">
+                        <!-- <div class="todo-opinion">
                     <span class="todo-yk">Gửi ý kiến</span>
                     <a href="#" class="todo-cmt-btn"><i class="ti-angle-right"></i> Bình luận</a>
                 </div> -->
-                                    </div>
-                        </div>
+                    </div>
+        </div>
 
-                        <!--Diễn đàn -->
-                        <div class="main">
-                            <h1 class="title-main">Diễn đàn</h1>
-                            <button data-toggle="collapse" data-target="#question-form" class="question-btn btn">Thêm
-                                một chủ đề
-                                thảo
-                                luận</button>
-                            <form action="/upload/question" class="form collapse" id="question-form" method="post">
-                                <label for="">Tiêu đề</label>
-                                <input type="text" class="input-subject ml-3" name="subject">
-                                <hr>
-                                <label for="">Nội dung</label>
-                                <input contenteditable="true" role="textbox" spellcheck="true"
-                                    class="input-content ml-1" name="content">
-                                <div>
-                                    <input type="submit" value="Đăng lên" class="btn">
-                                    <div class="btn red-btn">Huỷ bỏ</div>
-                                </div>
+        <!--Diễn đàn -->
+        <div class="main">
+            <h1 class="title-main">Diễn đàn</h1>
+            <button data-toggle="collapse" data-target="#question-form" class="question-btn btn">Thêm
+                một chủ đề
+                thảo
+                luận</button>
+            <form action="/upload/question" class="form collapse" id="question-form" method="post">
+                <label for="">Tiêu đề</label>
+                <input type="text" class="input-subject ml-3" name="subject">
+                <hr>
+                <label for="">Nội dung</label>
+                <input contenteditable="true" role="textbox" spellcheck="true" class="input-content ml-1"
+                    name="content">
+                <div>
+                    <input type="submit" value="Đăng lên" class="btn">
+                    <div class="btn red-btn">Huỷ bỏ</div>
+                </div>
+            </form>
+
+            <div class="question">
+                <div class="ques-inf">
+                    <div class="inf-item author-ava">
+                        <img src="" alt="" class="">
+                    </div>
+                    <div class="inf-item">
+                        <p class="author-name">
+                            <!--Thêm biến tên-->
+                        </p>
+                        <p class="post-time">
+                            <!--Thêm biến tgian-->
+                        </p>
+                    </div>
+                    <div class="inf-item favourite">
+                        <i class="ti-star"></i>
+                    </div>
+                </div>
+
+                <div class="question-body">
+                    <h3 class="question-subject">
+                        <!--Thêm biến tiêu đề câu hỏi diễn đàn-->
+                    </h3>
+                    <p class="question-content">
+                        <!--Thêm biến nội dung diễn đàn-->
+                    </p>
+                </div>
+
+                <div class="question-respone">
+                    <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>
+                    <p class="question-cmt"><i class="ti-comment"></i>Bình luận</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <h1 class="title-main">Hỗ trợ</h1>
+        </div>
+
+        <!-- profile -->
+        <div class="main emp-profile">
+            <div class="row profile-header">
+                <div class="profile-img col-md-4">
+                    <img src="/assets/img/IMG_8672.png" alt="" />
+                    <div class="file btn-lg btn-primary">
+                        <i class="ti-camera">
+                            <form action="">
+                                <input type="file" name="file" />
                             </form>
+                        </i>
+                    </div>
+                </div>
+                <div class="profile-title col-md-6">
+                    <h5 class="profile-name">
+                        <%= hoten %>
+                    </h5>
+                    <h6>
+                        <% if (role=='sinhvien' ) {%>
+                            Sinh viên
+                            <% } %>
+                                <% if (role=='covan' ) {%>
+                                    Cố vấn
+                                    <% } %>
+                    </h6>
 
-                            <div class="question">
-                                <div class="ques-inf">
-                                    <div class="inf-item author-ava">
-                                        <img src="" alt="" class="">
-                                    </div>
-                                    <div class="inf-item">
-                                        <p class="author-name">
-                                            <!--Thêm biến tên-->
-                                        </p>
-                                        <p class="post-time">
-                                            <!--Thêm biến tgian-->
-                                        </p>
-                                    </div>
-                                    <div class="inf-item favourite">
-                                        <i class="ti-star"></i>
-                                    </div>
-                                </div>
-
-                                <div class="question-body">
-                                    <h3 class="question-subject">
-                                        <!--Thêm biến tiêu đề câu hỏi diễn đàn-->
-                                    </h3>
-                                    <p class="question-content">
-                                        <!--Thêm biến nội dung diễn đàn-->
-                                    </p>
-                                </div>
-
-                                <div class="question-respone">
-                                    <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>
-                                    <p class="question-cmt"><i class="ti-comment"></i>Bình luận</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="main">
-                            <h1 class="title-main">Hỗ trợ</h1>
-                        </div>
-
-                        <!-- profile -->
-                        <div class="main emp-profile">
-                            <div class="row profile-header">
-                                <div class="profile-img col-md-4">
-                                    <img src="/assets/img/IMG_8672.png" alt="" />
-                                    <div class="file btn-lg btn-primary">
-                                        <i class="ti-camera">
-                                            <form action="">
-                                                <input type="file" name="file" />
-                                            </form>
-                                        </i>
-                                    </div>
-                                </div>
-                                <div class="profile-title col-md-6">
-                                    <h5 class="profile-name">
-                                        <%= hoten %>
-                                    </h5>
-                                    <h6>
-                                        <% if (role=='sinhvien' ) {%>
-                                            Sinh viên
-                                            <% } %>
-                                                <% if (role=='covan' ) {%>
-                                                    Cố vấn
-                                                    <% } %>
-                                    </h6>
-
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
-                                                role="tab" aria-controls="home" aria-selected="true">About</a>
-                                        </li>
-                                        <!-- <li class="nav-item">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <!-- <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                 aria-controls="profile" aria-selected="false">Timeline</a>
                         </li> -->
-                                    </ul>
-                                </div>
-                                <div class="col-md-2 text-center">
-                                    <button class="btn yellow-btn profile-edit-btn" name="btnAddMore">Sửa</button>
-                                </div>
-                            </div>
-                            <div class="row profile-content">
-                                <div class="profile-work col-md-4">
-                                    <!-- <p>Link 1</p>
+                    </ul>
+                </div>
+                <div class="col-md-2 text-center">
+                    <button class="btn yellow-btn profile-edit-btn" name="btnAddMore">Sửa</button>
+                </div>
+            </div>
+            <div class="row profile-content">
+                <div class="profile-work col-md-4">
+                    <!-- <p>Link 1</p>
                         <a href="">1</a><br />
                         <a href="">2</a><br />
                         <a href="">3</a>
@@ -545,163 +561,144 @@
                         <a href="">3</a><br />
                         <a href="">4</a><br />
                         <a href="">5</a><br /> -->
-                                </div>
-                                <div class="tab-content profile-tab col-md-8" id="myTabContent">
-                                    <div class="tab-pane fade  show active about" id="home" role="tabpanel"
-                                        aria-labelledby="home-tab">
-                                        <% if(role=='sinhvien' ) { %>
-                                            <form id="editstudent" action="/student/editprofile/<%= mssv %>"
-                                                method="post">
-                                                <% } %>
-                                                    <% if(role=='covan' ) { %>
-                                                        <form id="editteacher"
-                                                            action="/teacher/editprofile/<%= email %>" method="post">
-                                                            <% } %>
+                </div>
+                <div class="tab-content profile-tab col-md-8" id="myTabContent">
+                    <div class="tab-pane fade  show active about" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <% if(role=='sinhvien' ) { %>
+                            <form id="editstudent" action="/student/editprofile/<%= mssv %>" method="post">
+                                <% } %>
+                                    <% if(role=='covan' ) { %>
+                                        <form id="editteacher" action="/teacher/editprofile/<%= email %>" method="post">
+                                            <% } %>
 
-                                                                <div class="row">
-                                                                    <label class="col-md-6">Họ và tên:</label>
-                                                                    <p id="nametoedit" name="hoten"
-                                                                        class="editp col-md-6">
-                                                                        <%= hoten %>
-                                                                    </p>
-                                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-6">Họ và tên:</label>
+                                                    <p id="nametoedit" name="hoten" class="editp col-md-6">
+                                                        <%= hoten %>
+                                                    </p>
+                                                </div>
+
+                                                <% if(role=='sinhvien' ) { %>
+                                                    <div class="row">
+                                                        <label class="col-md-6"> Mã số sinh
+                                                            viên:</label>
+                                                        <p name="mssv" class="col-md-6" value="">
+                                                            <%= mssv %>
+                                                        </p>
+                                                    </div>
+                                                    <% } %>
+
+                                                        <div class="row">
+                                                            <label class="col-md-6"> Ngày sinh:</label>
+                                                            <p name="mssv" class="col-md-6" value="">
+                                                                <%= ngaysinhchuan.ngaysinh %>
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <label class="col-md-6">Khoa:</label>
+                                                            <p class="col-md-6">
+                                                                <%= khoa %>
+                                                            </p>
+                                                        </div>
+
+                                                        <% if(role=='sinhvien' ) { %>
+                                                            <div class="row">
+                                                                <label class="col-md-6">Lớp:</label>
+                                                                <p class="col-md-6">
+                                                                    <%= malop %>
+                                                                </p>
+                                                            </div>
+                                                            <% } %>
 
                                                                 <% if(role=='sinhvien' ) { %>
                                                                     <div class="row">
-                                                                        <label class="col-md-6"> Mã số sinh
-                                                                            viên:</label>
-                                                                        <p name="mssv" class="col-md-6" value="">
-                                                                            <%= mssv %>
+                                                                        <label class="col-md-6">Email:</label>
+                                                                        <p id="emailtoedit" name="email"
+                                                                            class="editp col-md-6">
+                                                                            <%= email %>
                                                                         </p>
                                                                     </div>
                                                                     <% } %>
 
-                                                                        <div class="row">
-                                                                            <label class="col-md-6"> Ngày sinh:</label>
-                                                                            <p name="mssv" class="col-md-6" value="">
-                                                                                <%= ngaysinhchuan.ngaysinh %>
-                                                                            </p>
-                                                                        </div>
-
-                                                                        <div class="row">
-                                                                            <label class="col-md-6">Khoa:</label>
-                                                                            <p class="col-md-6">
-                                                                                <%= khoa %>
-                                                                            </p>
-                                                                        </div>
-
-                                                                        <% if(role=='sinhvien' ) { %>
+                                                                        <% if(role=='covan' ) { %>
                                                                             <div class="row">
-                                                                                <label class="col-md-6">Lớp:</label>
-                                                                                <p class="col-md-6">
-                                                                                    <%= malop %>
+                                                                                <label class="col-md-6">Email:</label>
+                                                                                <p id="emailtoedit" name="email"
+                                                                                    class="col-md-6">
+                                                                                    <%= email %>
                                                                                 </p>
                                                                             </div>
                                                                             <% } %>
 
+                                                                                <div class="row">
+                                                                                    <label class="col-md-6">Số
+                                                                                        điện
+                                                                                        thoại:</label>
+                                                                                    <p id="sdttoedit" name="sdt"
+                                                                                        class="editp col-md-6">
+                                                                                        <%= sdt %>
+                                                                                    </p>
+                                                                                </div>
+
                                                                                 <% if(role=='sinhvien' ) { %>
                                                                                     <div class="row">
-                                                                                        <label
-                                                                                            class="col-md-6">Email:</label>
-                                                                                        <p id="emailtoedit" name="email"
-                                                                                            class="editp col-md-6">
-                                                                                            <%= email %>
+                                                                                        <label class="col-md-6">Số
+                                                                                            tín
+                                                                                            chỉ:</label>
+                                                                                        <p class="col-md-6">
+                                                                                            <%= tongtinchi %>
                                                                                         </p>
                                                                                     </div>
                                                                                     <% } %>
-
-                                                                                        <% if(role=='covan' ) { %>
+                                                                                        <% if(role=='sinhvien' ) { %>
                                                                                             <div class="row">
                                                                                                 <label
-                                                                                                    class="col-md-6">Email:</label>
-                                                                                                <p id="emailtoedit"
-                                                                                                    name="email"
-                                                                                                    class="col-md-6">
-                                                                                                    <%= email %>
+                                                                                                    class="col-md-6">GPA:</label>
+                                                                                                <p class="col-md-6">
+                                                                                                    <%= tonggpa %>
                                                                                                 </p>
                                                                                             </div>
                                                                                             <% } %>
 
-                                                                                                <div class="row">
-                                                                                                    <label
-                                                                                                        class="col-md-6">Số
-                                                                                                        điện
-                                                                                                        thoại:</label>
-                                                                                                    <p id="sdttoedit"
-                                                                                                        name="sdt"
-                                                                                                        class="editp col-md-6">
-                                                                                                        <%= sdt %>
-                                                                                                    </p>
-                                                                                                </div>
-
-                                                                                                <% if(role=='sinhvien' )
-                                                                                                    { %>
-                                                                                                    <div class="row">
-                                                                                                        <label
-                                                                                                            class="col-md-6">Số
-                                                                                                            tín
-                                                                                                            chỉ:</label>
-                                                                                                        <p
-                                                                                                            class="col-md-6">
-                                                                                                            <%= tongtinchi
-                                                                                                                %>
-                                                                                                        </p>
-                                                                                                    </div>
-                                                                                                    <% } %>
-                                                                                                        <% if(role=='sinhvien'
-                                                                                                            ) { %>
-                                                                                                            <div
-                                                                                                                class="row">
-                                                                                                                <label
-                                                                                                                    class="col-md-6">GPA:</label>
-                                                                                                                <p
-                                                                                                                    class="col-md-6">
-                                                                                                                    <%= tonggpa
-                                                                                                                        %>
-                                                                                                                </p>
-                                                                                                            </div>
-                                                                                                            <% } %>
-
-                                                                                                                <input
-                                                                                                                    type="submit"
-                                                                                                                    id="xacnhan"
-                                                                                                                    class="btn"
-                                                                                                                    value="Xác nhận">
-                                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade" id="profile" role="tabpanel"
-                                        aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <label class="col-md-6">Experience</label>
-                                            <p class="col-md-6">Expert</p>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-md-6">Hourly Rate</label>
-                                            <p class="col-md-6">10$/hr</p>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-md-6">Total Projects</label>
-                                            <p class="col-md-6">230</p>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-md-6">English Level</label>
-                                            <p class="col-md-6">Expert</p>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-md-6">Availability</label>
-                                            <p class="col-md-6">6 months</p>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <label>Your Bio</label><br />
-                                                <p>Your detail description</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                                                                                <input type="submit"
+                                                                                                    id="xacnhan"
+                                                                                                    class="btn"
+                                                                                                    value="Xác nhận">
+                                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <label class="col-md-6">Experience</label>
+                            <p class="col-md-6">Expert</p>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-6">Hourly Rate</label>
+                            <p class="col-md-6">10$/hr</p>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-6">Total Projects</label>
+                            <p class="col-md-6">230</p>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-6">English Level</label>
+                            <p class="col-md-6">Expert</p>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-6">Availability</label>
+                            <p class="col-md-6">6 months</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Your Bio</label><br />
+                                <p>Your detail description</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
     </div>
 
@@ -762,13 +759,19 @@
                         });
                     });
 
+                    //Xoá sinh viên
+                    var delStu = $('.del-confirm-btn');
+                    delStu.click(onDelRow);
+
+                    function onDelRow() {
+
+                    }
+
                     var stdTable = $('#student-table');
                     var tbody = $('.stu-table-body')
 
 
                     //Sửa 1 dong trong danh sách
-
-                    // const tableBtn = $('.stu-btn')
                     function onEditRow(e) {
                         if (!e.target.classList.contains('stu-btn')) {
                             return;

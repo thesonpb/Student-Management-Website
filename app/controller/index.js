@@ -4,6 +4,8 @@ const profile = require('./profile');
 const excel = require('./excelCtl');
 const addStudent = require('./addStudent');
 const hoctap = require('./hoctap');
+const renluyen = require('./renluyen');
+const diendan = require('./diendan');
 const teacherInfo = require('./teacherInfo');
 const studentEditProfile = require('./studentEditProfile');
 const teacherEditProfile = require('./teacherEditProfile');
@@ -11,10 +13,13 @@ const deleteStudent = require('./deleteStudent');
 const deleteTeacher = require('./deleteTeacher');
 const uploadTask = require('./uploadTask');
 const editStudentInfo = require('./editStudentInfo');
+
 module.exports = {
     login : auth.login,
     logout: auth.logout,
     getUserInfo: user.getUserInfo,
+    // profileTeacher: profile.profileTeacher,
+    // profileStudent: profile.profileStudent,
     getProfile: profile.getProfile,
     upload : excel.upload,
     exportExcel: excel.exportExcel,
@@ -22,6 +27,8 @@ module.exports = {
     exportRenluyen: excel.exportRenluyen,
     addStudent: addStudent.addStudent,
     hoctap: hoctap.hoctap,
+    renluyen: renluyen.renluyen,
+    diendan: diendan.diendan,
     getTeacherInfo: teacherInfo.teacherInfo,
     studentEditProfile: studentEditProfile.studentEditProfile,
     teacherEditProfile: teacherEditProfile.teacherEditProfile,

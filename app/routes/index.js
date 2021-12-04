@@ -5,6 +5,7 @@ const authJwt = require('../middleware/authJWT');
 const upload = require('../middleware/upload');
 const bodyParser = require('body-parser');
 const chatBox = require('./chat');
+const auth = require('../config/auth');
 
 function route(app){
     
@@ -40,21 +41,15 @@ function route(app){
     app.get('/myclass/:email/:malop', authJwt.verifyToken, controller.getTeacherInfo);
 
     
-    app.get('/hoc-tap', (req, res) => {
-        res.render('hoctap');
-    })
+    app.get('/hoc-tap/:malop', authJwt.verifyToken, controller.hoctap);
 
-    app.get('/dien-dan', (req, res) => {
-        res.render('diendan');
-    })
+    app.get('/dien-dan/:malop', authJwt.verifyToken, controller.diendan);
 
     app.get('/cong-viec', (req, res) => {
         res.render('congviec');
     })
 
-    app.get('/ren-luyen', (req, res) => {
-        res.render('renluyen');
-    })
+    app.get('/ren-luyen/:malop', authJwt.verifyToken, controller.renluyen);
 
     app.get('/test1', (req, res) => {
         res.render('test1');
@@ -66,7 +61,9 @@ function route(app){
 
     //**********************************************************************************************
     //GET: Lấy profile
-    app.get('/profile', controller.getProfile)
+    // app.get('/profileTeacher/:email', authJwt.verifyToken, controller.profileTeacher)
+    // app.get('/profileStudent/:mssv', authJwt.verifyToken, controller.profileStudent)
+    app.get('/profile', controller.getProfile);
     app.post('/uploadImage',checkUser, upload.uploadImg.single("img"), uploadAvatar)
 
     //**********************************************************************************************

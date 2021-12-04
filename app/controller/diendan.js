@@ -7,14 +7,14 @@ const Lophoc = db.Lophoc;
 const { QueryTypes, Sequelize } = require('sequelize');
 
 
-const hoctap = async (req, res) => {
+const diendan = async (req, res) => {
     const username = res.locals.user.tennguoidung;
     const userRole = res.locals.user.vaitro;
     console.log(userRole);
     let userInfo = '';
     if (userRole == 'sinhvien') {
         userInfo = await Sinhvien.findByPk(username);
-        userInfo.dataValues.vaitro = 'sinhvien';
+        userInfo.dataValues.role = 'sinhvien';
         const diemsinhvien = await Sinhvien.findAll({
             where: { mssv: username },
             include: [
@@ -50,11 +50,11 @@ const hoctap = async (req, res) => {
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
-        res.render('hoctap', userInfo.dataValues);
+        res.render('diendan', userInfo.dataValues);
 
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);
-        userInfo.dataValues.vaitro = 'covan';
+        userInfo.dataValues.role = 'covan';
         const diemsinhvien = await Sinhvien.findAll({
             where: { malop: req.params.malop },
             include: [
@@ -95,13 +95,13 @@ const hoctap = async (req, res) => {
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
         userInfo.dataValues.classId = classId;
-        res.render('hoctap', userInfo.dataValues);
+        res.render('diendan', userInfo.dataValues);
     }
 }
 
 
 const user = {
-    hoctap: hoctap,
+    diendan: diendan,
 }
 
 module.exports = user;

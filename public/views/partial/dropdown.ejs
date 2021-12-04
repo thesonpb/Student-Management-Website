@@ -6,17 +6,14 @@
         data-toggle="dropdown">
     <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
     <ul class="dropdown-menu" id="dropdown-list">
+        
         <li><a class="profile" href="/profile">
+
                 <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->
                 <label for="">
                     <%= hoten %>
                 </label>
             </a></li>
-        <% if(role=='sinhvien' ) { %>
-            <hr>
-            <li><a href="#">Kết quả học tập</a></li>
-            <li><a href="#">Điểm rèn luyện</a></li>
-            <% } %>
                 <hr>
                 <li><a href="#">Cài đặt</a></li>
                 <li id="logout"><a href="/logout">Đăng xuất</a></li>

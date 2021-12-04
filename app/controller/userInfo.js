@@ -22,7 +22,7 @@ const getUserInfo = async (req, res) => {
     let malop = '';
     if (userRole == 'admin') {
         userInfo = await Admin.findByPk(username);
-        userInfo.dataValues.role = 'admin';
+        userInfo.dataValues.vaitro = 'admin';
         sinhviens = await Sinhvien.findAll({
             attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt']
         });
@@ -35,50 +35,20 @@ const getUserInfo = async (req, res) => {
     }
     else if (userRole == 'sinhvien') {
         userInfo = await Sinhvien.findByPk(username);
-        userInfo.dataValues.role = 'sinhvien';
+        userInfo.dataValues.vaitro = 'sinhvien';
         malop = userInfo.dataValues.malop;
         sinhviens = await Sinhvien.findAll({
             where: { malop: malop },
             attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
         });
 
-        diemsinhvien = await Sinhvien.findAll({
-            where: { malop: malop },
-            include: [
-                {
-                    model: Bangdiem,
-                    where: {
-                        mssv: Sequelize.col('sinhvien.mssv')
-                    },
-
-                    required: false
-                }
-            ],
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
-        });
-        drl = await Sinhvien.findAll({
-            where: { malop: malop },
-            include: [
-                {
-                    model: Diemrenluyen,
-                    where: {
-                        mssv: Sequelize.col('sinhvien.mssv')
-                    },
-
-                    required: false
-                }
-            ],
-            attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
-        });
         userInfo.dataValues.sinhvien = sinhviens;
-        userInfo.dataValues.diemSinhVien = diemsinhvien;
-        userInfo.dataValues.diemRenLuyen = drl;
         userInfo.dataValues.classId = classId;
         userInfo.dataValues.username = username;
         res.render('my', userInfo.dataValues);
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);
-        userInfo.dataValues.role = 'covan';
+        userInfo.dataValues.vaitro = 'covan';
         classId = await Lophoc.findAll({
             where: { emailcovan: username },
             attributes: ['malop'],

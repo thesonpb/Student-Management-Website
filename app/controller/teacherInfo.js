@@ -17,7 +17,7 @@ const teacherInfo = async (req, res) => {
         attributes: ['malop'],
     });
     userInfo = await Covan.findByPk(username);
-    userInfo.dataValues.role = 'covan';
+    userInfo.dataValues.vaitro = 'covan';
     const sinhviens = await Sinhvien.findAll({
         where: { malop: malop },
         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],

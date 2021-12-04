@@ -7,7 +7,7 @@ const Lophoc = db.Lophoc;
 const { QueryTypes, Sequelize } = require('sequelize');
 
 
-const hoctap = async (req, res) => {
+const renluyen = async (req, res) => {
     const username = res.locals.user.tennguoidung;
     const userRole = res.locals.user.vaitro;
     console.log(userRole);
@@ -50,7 +50,7 @@ const hoctap = async (req, res) => {
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
-        res.render('hoctap', userInfo.dataValues);
+        res.render('renluyen', userInfo.dataValues);
 
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);
@@ -95,13 +95,13 @@ const hoctap = async (req, res) => {
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
         userInfo.dataValues.classId = classId;
-        res.render('hoctap', userInfo.dataValues);
+        res.render('renluyen', userInfo.dataValues);
     }
 }
 
 
 const user = {
-    hoctap: hoctap,
+    renluyen: renluyen,
 }
 
 module.exports = user;

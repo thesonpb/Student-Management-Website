@@ -20,6 +20,7 @@
 <body>
     <%- include ("partial/leftsidebar") %>
     <%- include ("partial/dropdown") %>
+    <%- include ("partial/chonlop") %>
 
     <div class="content">
 
@@ -30,7 +31,7 @@
                 </h1>
                 <% } %>
 
-                    <% if(role=='covan' ) { %>
+                    <% if(vaitro=='covan' ) { %>
                         <button data-toggle="collapse" data-target="#add-stu" class="btn ml-3">
                             Thêm sinh viên
                         </button>
@@ -98,7 +99,7 @@
                                             <th>Lớp khoá học</th>
                                             <th>Email</th>
                                             <th>SĐT</th>
-                                            <% if (role=='covan' ){%>
+                                            <% if (vaitro=='covan' ){%>
                                                 <th>SĐT phụ huynh</th>
                                                 <th>Địa chỉ</th>
                                                 <th></th>
@@ -135,7 +136,7 @@
                                                     <td>
                                                         <%= sinhvien[i].sdt %>
                                                     </td>
-                                                    <% if(role=='covan' ) { %>
+                                                    <% if(vaitro=='covan' ) { %>
                                                         <td>
                                                             <%= sinhvien[i].sdtphuhuynh %>
                                                         </td>

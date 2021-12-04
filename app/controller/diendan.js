@@ -14,7 +14,7 @@ const diendan = async (req, res) => {
     let userInfo = '';
     if (userRole == 'sinhvien') {
         userInfo = await Sinhvien.findByPk(username);
-        userInfo.dataValues.role = 'sinhvien';
+        userInfo.dataValues.vaitro = 'sinhvien';
         const diemsinhvien = await Sinhvien.findAll({
             where: { mssv: username },
             include: [
@@ -54,7 +54,7 @@ const diendan = async (req, res) => {
 
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);
-        userInfo.dataValues.role = 'covan';
+        userInfo.dataValues.vaitro = 'covan';
         const diemsinhvien = await Sinhvien.findAll({
             where: { malop: req.params.malop },
             include: [

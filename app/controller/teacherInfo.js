@@ -5,6 +5,7 @@ const Diemrenluyen = db.Diemrenluyen;
 const Covan = db.Covan;
 const Lophoc = db.Lophoc;
 const { QueryTypes, Sequelize } = require('sequelize');
+const Op = Sequelize.Op;
 
 //
 const teacherInfo = async (req, res) => {
@@ -54,6 +55,70 @@ const teacherInfo = async (req, res) => {
         where: { email: username }, 
         attributes: ['ngaysinh']
     })
+    const xuatsac = await Bangdiem.count({
+        where: { 
+            [Op.and]: {
+                malop: classId
+            }, 
+            [Op.and]: {
+                gpa: { [Op.gte]: 3.6 }
+            }
+        }
+    });
+    const gioi = await Bangdiem.count({
+        where: { 
+            [Op.and]: {
+                malop: classId
+            }, 
+            [Op.and]: {
+                gpa: { [Op.gte]: 3.2 }
+            },
+            [Op.and]: {
+                gpa: { [Op.lt]: 3.6 }
+            }
+        }
+    });
+    const kha = await Bangdiem.count({
+        where: { 
+            [Op.and]: {
+                malop: classId
+            }, 
+            [Op.and]: {
+                gpa: { [Op.gte]: 2.5 }
+            },
+            [Op.and]: {
+                gpa: { [Op.lt]: 3.2 }
+            }
+        }
+    });
+    const trungbinh = await Bangdiem.count({
+        where: { 
+            [Op.and]: {
+                malop: classId
+            }, 
+            [Op.and]: {
+                gpa: { [Op.gte]: 2.0 }
+            },
+            [Op.and]: {
+                gpa: { [Op.lt]: 2.5 }
+            }
+        }
+    });
+    const yeu = await Bangdiem.count({
+        where: { 
+            [Op.and]: {
+                malop: classId
+            }, 
+            [Op.and]: {
+                gpa: { [Op.lt]: 2.0 }
+            }
+        }
+    });
+    userInfo.dataValues.xuatsac = xuatsac;
+    userInfo.dataValues.gioi = gioi;
+    userInfo.dataValues.kha = kha;
+    userInfo.dataValues.trungbinh = trungbinh;
+    userInfo.dataValues.yeu = yeu;
     userInfo.dataValues.ngaysinhchuan = ngaysinhchuan;
     userInfo.dataValues.sinhvien = sinhviens;
     userInfo.dataValues.diemSinhVien = diemsinhvien;

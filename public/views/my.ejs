@@ -31,8 +31,7 @@
                         <li data-rel="2" class="active"><i class="ti-book"></i> Học tập</li>
                         <% } %>
                             <li data-rel="3" class=""><i class="ti-clipboard"></i> Rèn luyện</li>
-                            <li data-rel="4" class=""><i class="ti-arrow-circle-down"></i> Công việc</li>
-                            <li data-rel="5" class=""><i class="ti-help-alt"></i> Diễn đàn</li>
+                            <li data-rel="4" class=""><i class="ti-help-alt"></i> Diễn đàn</li>
         </ul>
 
         <label for="">Others</label>
@@ -106,8 +105,35 @@
                                 </form>
 
 
-                                <!--Bảng danh sách sinh viên-->
+                                <!--CHART-->
+                                <div id="piechart"></div>
+                                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                <script type="text/javascript">
+                                    // Load google charts
+                                    google.charts.load('current', { 'packages': ['corechart'] });
+                                    google.charts.setOnLoadCallback(drawChart);
+                                    
+                                    // Draw the chart and set the chart values
+                                    function drawChart() {
+                                        var data = google.visualization.arrayToDataTable([
+                                            ['Task', 'Hours per Day'],
+                                            ['Xuất sắc', <%= xuatsac %>],
+                                            ['Giỏi', <%= gioi %>],
+                                            ['Khá', <%= kha %>],
+                                            ['Trung bình', <%= trungbinh %>],
+                                            ['Yếu', <%= yeu %>]
+                                        ]);
 
+                                        // Optional; add a title and set the width and height of the chart
+                                        var options = { 'title': 'Biểu đồ điểm gpa', 'width': 550, 'height': 400 };
+
+                                        // Display the chart inside the <div> element with id="piechart"
+                                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                                        chart.draw(data, options);
+                                    }
+                                </script>
+
+                                <!--Bảng danh sách sinh viên-->
                                 <div class="table-responsive ml-3">
                                     <table id="student-table" class=" w-100 table">
                                         <thead>
@@ -385,58 +411,7 @@
                                     </div>
                         </div>
 
-                        <!-- Công việc -->
-                        <div class="main">
-                            <h1 class="title-main">Công việc</h1>
-                            <% if(role=='covan' ) { %>
-                                <button data-toggle="collapse" data-target="#todo-form"
-                                    class="todo-add-btn js-add-todo btn">Thêm một
-                                    công
-                                    việc</button>
-                                <form action="/upload/task" class="form js-todo-form collapse" id="todo-form"
-                                    method="post">
-                                    <label for="">Tiêu đề</label>
-                                    <input type="text" class="input-subject" name="subject">
-                                    <hr>
-                                    <div class="todo-dur-input">
-                                        <label for="birthdaytime">Opened:</label>
-                                        <input type="datetime-local" name="opendate">
-                                        <label for="birthdaytime">Due:</label>
-                                        <input type="datetime-local" name="duedate">
-                                    </div>
-                                    <hr>
-                                    <label for="">Nội dung</label>
-                                    <input role="textbox" spellcheck="true" class="input-content" name="content">
-                                    <div>
-                                        <input type="submit" value="Đăng lên" class="btn">
-                                        <div class="btn red-btn">Huỷ bỏ</div>
-                                    </div>
-                                </form>
-                                <% } %>
-                                    <div class="todo">
-                                        <h3 class="todo-title">
-                                            <!-- thêm biến tiêu đề -->
-                                        </h3>
-                                        <div class="todo-intro">
-                                            <p class="todo-content">
-                                                <!-- Thêm biến nội dung -->
-                                            </p>
-                                            <div class="todo-duration">
-                                                <p class="todo-opened">Opened:
-                                                    <!--Thêm biến tgian-->
-                                                </p>
-                                                <p class="todo-due">Due:
-                                                    <!--Thêm biến tgian-->
-                                                </p>
-                                            </div>
-                                        </div>
 
-                                        <!-- <div class="todo-opinion">
-                    <span class="todo-yk">Gửi ý kiến</span>
-                    <a href="#" class="todo-cmt-btn"><i class="ti-angle-right"></i> Bình luận</a>
-                </div> -->
-                                    </div>
-                        </div>
 
                         <!--Diễn đàn -->
                         <div class="main">
@@ -719,14 +694,8 @@
                             <%= hoten %>
                         </label>
                     </a></li>
-                <% if(role=='sinhvien' ) { %>
-                    <hr>
-                    <li><a href="#">Kết quả học tập</a></li>
-                    <li><a href="#">Điểm rèn luyện</a></li>
-                    <% } %>
-                        <hr>
-                        <li><a href="#">Cài đặt</a></li>
-                        <li id="logout"><a href="/logout">Đăng xuất</a></li>
+                <hr>
+                <li id="logout"><a href="/logout">Đăng xuất</a></li>
             </ul>
         </div>
 
@@ -841,9 +810,9 @@
                         };
 
                         // Huỷ bỏ đăng công việc
-                        $('.js-close-todo-btn').click(function (e) {
-                            $('#todo-form').collapse("hide");
-                        })
+                        // $('.js-close-todo-btn').click(function (e) {
+                        //     $('#todo-form').collapse("hide");
+                        // })
 
                         //Huỷ bỏ đăng câu hỏi diễn đàn
                         $('.js-close-btn').click(function (e) {
@@ -1100,11 +1069,12 @@
                     //     });
                     // });
                     if (localStorage.getItem("myselect")) {
-                        $('.class-list').val(localStorage.getItem("myselect"))
+                        $('.class-list').val(localStorage.getItem("myselect"));
                     }
 
                     $('#logout').click(function () {
                         $(".class-list").val($(".class-list option:first"));
+                        localStorage.removeItem("myselect");
                     })
                 </script>
 

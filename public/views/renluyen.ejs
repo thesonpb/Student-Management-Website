@@ -39,13 +39,14 @@
             <% if (vaitro == 'covan') { %>
             <!-- xuất excel -->
             <form id="download_renluyen" action="/download/<%= diemRenLuyen[0].malop %>/all"
-                class=" row d-flex justify-content-between ml-0 mt-4 mb-3" method="get">
+                class="d-flex justify-content-between ml-0 mt-4 mb-3" method="get">
+                <input class="form-control mt-4 col-md-9" id="myInput" type="text" placeholder="Search..">
                 <input type="submit" class="mt-4 blue-btn btn col-md-2" value="Xuất excel">
             </form>
             <% } %>
             
             <div class="">
-                <table class="work" id="worktable">
+                <table class="table work" id="worktable">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -63,7 +64,7 @@
                         </tr>
                     </thead>
                     <% if(diemRenLuyen) { %>
-                        <tbody>
+                        <tbody class="worktable-body">
                             <% for (var i=0; i < diemRenLuyen.length; i++) { %>
                                 <tr>
                                     <td>

@@ -91,11 +91,24 @@ html body {
 }
 
 /* css các cái bảng */
-td, th {
+#worktable td, 
+#worktable th {
     border: 1px solid #fff;
     padding: 8px;
     text-align: center;
+    vertical-align: inherit;
     margin: 0 4px;
+    color: #fff;
+}
+
+#marktable td, 
+#marktable th {
+    border: 1px solid #fff;
+    padding: 8px;
+    text-align: center;
+    vertical-align: inherit;
+    margin: 0 4px;
+    color: #fff;
 }
 
 tr {
@@ -202,7 +215,14 @@ th {
     margin: 32px 0;
     font-size: 32px;
 }
+/* css chart */
+.gpa-chart {
+    /* background-color: #fff; */
+    /* border: 1px solid #fff; */
+}
 
+#myChart {
+}
 /* css mục sinh viên*/
 .main .adding-member {
     display: flex;
@@ -296,21 +316,13 @@ th {
     color: #999;
 } */
 
-#student-table th{
+#student-table th, 
+#student-table td{
     border: 1px solid white;
     color: white;
     padding: 10px 2px;
     text-align: center;
     vertical-align: inherit;
-}
-
-#student-table td {
-    border: 1px solid white;
-    color: white;
-    padding: 10px 2px;
-    text-align: center;
-    vertical-align: inherit;
-    
 }
 
 .stu-table-body .save-btn {

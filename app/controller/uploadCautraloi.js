@@ -3,15 +3,14 @@ const Cautraloi = db.Cautraloi;
 const { QueryTypes, Sequelize } = require('sequelize');
 
 const uploadCautraloi = async (req, res) => {
-    var subject = JSON.stringify(req.body.subject);
-    var content = JSON.stringify(req.body.content);
+    var content = JSON.stringify(req.body.answer);
     var hoten = req.params.hoten;
     let time = Date.now();
 
     await Cautraloi.create({
-        malop: 'k64caclc2',
-        nguoihoi: hoten,
-        tieude: subject,
+        macauhoi: 1,
+        mssv: 1000,
+        emailcovan: 'subject',
         noidung: content,
         thoigian: time
     }).then(function (Cautraloi) {

@@ -465,8 +465,26 @@
                                         <div class="question-respone">
                                             <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>
                                             <p class="question-cmt" ><i class="ti-comment"></i>Bình luận</p>
-                                        </div>   
+                                        </div>  
+                                        <div>
+                                            <form action="/upload/answer/<%= hoten %>" id="answer" method="post">
+                                                <div>
+                                                    <input type="text" name="answer">
+                                                    <input type="submit" value="Gửi" class="btn">
+                                                </div>
+                                            </form>    
+                                        </div> 
                                 <% } %>
+                            
+                                <div>
+                                    <form action="/upload/answer/<%= hoten %>" id="answer" method="post">
+                                        <div>
+                                            <input type="text" name="answer">
+                                            <input type="submit" value="Gửi" class="btn">
+                                        </div>
+                                    </form>    
+                                </div>
+                            
                         </div>    
                                                
                         <div class="main">
@@ -1074,6 +1092,17 @@
                         });
                         $(this).append(input);
                     });
+                    $("#answer").submit(function () {
+                        var name = $("#nametoedit").html().trim();
+                        
+                        var input = $("<input />", {
+                            name: "hoten",
+                            value: name,
+                            type: "hidden"
+                        });
+                        $(this).append(input);
+                    });
+
                     $("#editteacher").submit(function () {
                         var name = $("#nametoedit").html().trim();
                         var sdt = $("#sdttoedit").html().trim();

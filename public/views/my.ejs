@@ -434,6 +434,7 @@
                                 </div>
                             </form>
 
+                        <% for(var i=0; i<cauhoi.length; i++) {%>    
                             <div class="question">
                                 <div class="ques-inf">
                                     <div class="inf-item author-ava">
@@ -441,25 +442,27 @@
                                     </div>
                                     <div class="inf-item">
                                         <p class="author-name">
-                                            Thêm biến tên
+                                            <%= cauhoi[i].nguoihoi %>
                                         </p>
                                         <p class="post-time">
-                                            Thêm biến tgian
+                                            <%= cauhoi[i].thoigian %>
                                         </p>
                                     </div>
                                     <div class="inf-item favourite">
                                         <i class="ti-star"></i>
                                     </div>
                                 </div>
-
-                                <div class="question-body">
-                                    <h3 class="question-subject">
-                                        <!--Thêm biến tiêu đề câu hỏi diễn đàn-->
-                                    </h3>
-                                    <p class="question-content">
-                                        <!--Thêm biến nội dung diễn đàn-->
-                                    </p>
-                                </div>
+                                    <div class="question-body">
+                                        <h3 class="question-subject">
+                                            <!--Thêm biến tiêu đề câu hỏi diễn đàn-->
+                                            <%= cauhoi[i].tieude %>
+                                        </h3>
+                                        <p class="question-content">
+                                            <!--Thêm biến nội dung diễn đàn-->
+                                            <%= cauhoi[i].noidung %>
+                                        </p>
+                                    </div>    
+                                <% } %>
 
                                 <div class="question-respone">
                                     <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>

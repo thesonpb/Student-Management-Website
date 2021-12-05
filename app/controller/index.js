@@ -31,5 +31,5 @@ module.exports = {
     deleteTeacher: deleteTeacher.deleteTeacher,
     uploadTask: uploadTask.uploadTask,
     editStudentInfo: editStudentInfo.editStudentInfo,
-    uploadCauhoi: uploadCauhoi.uploadCauhoi,
+    uploadCauhoi: uploadCauhoi,
 }

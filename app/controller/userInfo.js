@@ -5,6 +5,8 @@ const Diemrenluyen = db.Diemrenluyen;
 const Covan = db.Covan;
 const Lophoc = db.Lophoc;
 const Admin = db.Admin;
+const Thongbao = db.Thongbao;
+const Cauhoi = db.Cauhoi;
 const { QueryTypes, Sequelize } = require('sequelize');
 
 
@@ -27,6 +29,14 @@ const getUserInfo = async (req, res) => {
         });
         lophoc = await Lophoc.findAll();
         covan = await Covan.findAll();
+        
+        //------------------------vinh
+        const cauhoi = await Cauhoi.findAll({
+            raw: true
+        });
+        userInfo.dataValues.cauhoi = cauhoi;
+        //------------------------vinh
+
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.lophoc = lophoc;
         userInfo.dataValues.covan = covan;
@@ -74,6 +84,13 @@ const getUserInfo = async (req, res) => {
             where: { mssv: username },
             attributes: ['ngaysinh']
         })
+        //------------------------vinh
+        const cauhoi = await Cauhoi.findAll({
+            raw: true
+        });
+        userInfo.dataValues.cauhoi = cauhoi;
+        //------------------------vinh
+
         userInfo.dataValues.ngaysinhchuan = ngaysinhchuan;
         userInfo.dataValues.tonggpa = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
         userInfo.dataValues.tongtinchi = tongtinchi;
@@ -90,6 +107,13 @@ const getUserInfo = async (req, res) => {
             attributes: ['malop'],
         });
         malop = classId[0].malop;
+        //-------------------------------------vinh
+        // const cauhoi = await Cauhoi.findAll({
+        //     raw: true
+        // });
+        // res.render('/myclass/${username}/${malop}', {cauhoi: cauhoi});
+        //-------------------------------------vinh
+
         res.redirect(`/myclass/${username}/${malop}`);
     }
 }

@@ -50,6 +50,7 @@
             <% } %>
     </div>
 
+    <input type="hidden" value="<%= vaitro%>" id="vaitro">
     <% if (vaitro == 'covan') { %>
     <!-- xuất excel -->
     <form id="download_hoctap" action="/download/<%= diemSinhVien[0].malop %>/all/0"

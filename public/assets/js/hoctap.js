@@ -16,7 +16,12 @@ $('document').ready(function ($) {
         var sem = $('#sem_hoctap').val().toString();
         var classify = parseInt($('#classify').val());
         var malop = document.getElementById('malop').value;
-        document.getElementById('download_hoctap').action = `/download/${malop}/${sem}/${classify}`;
+        var vaitro = document.getElementById('vaitro').value;
+         if ( vaitro == 'covan') { 
+            console.log(vaitro)
+            document.getElementById('download_hoctap').action = `/download/${malop}/${sem}/${classify}`;
+         } 
+
 
         rows2.each(function () {
             var row = $(this);

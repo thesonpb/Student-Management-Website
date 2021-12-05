@@ -1,18 +1,21 @@
-$(`li[data-rel="${3}"]`).addClass('active');
+$(`li[data-rel="${3}"]`).addClass('active')
 
 $('document').ready(function ($) {
-
     var rows = $('#worktable tbody tr').each(function () {
         var row = $(this);
         var columns = row.children('td');
         row.data('sem', columns.eq(5).html());
     });
-
+   
     $('#sem').change(function () {
         var i = 1;
         var sem = $('#sem').val().toString();
-        var malop = document.getElementById('malop').value;
-        document.getElementById('download_renluyen').action = `/download/${malop}/${sem}`;
+        var vaitro = document.getElementById('vaitro').value;
+
+         if ( vaitro == 'covan') { 
+            console.log(vaitro)
+            document.getElementById('download_renluyen').action = `/download/<%= diemRenLuyen[0].malop %>/${sem}`;
+         }
 
         rows.each(function () {
             var row = $(this);
@@ -34,7 +37,6 @@ $('document').ready(function ($) {
         });
     });
 });
-
 // Tìm kiếm sinh viên
 $("#myInput").on("keyup", function () {
     var value = $(this).val().toLowerCase();

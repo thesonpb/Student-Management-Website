@@ -37,6 +37,7 @@
                 </select>
             </form>
 
+            <input type="hidden" value="<%= vaitro%>" id="vaitro">
             <% if (vaitro == 'covan') { %>
             <!-- xuất excel -->
             <form id="download_renluyen" action="/download/<%= diemRenLuyen[0].malop %>/all"

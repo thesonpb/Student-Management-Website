@@ -74,7 +74,7 @@ function route(app){
         console.log("File: " + req.file.filename);
         res.send("success")
     })
-    app.get('/download', authJWT.isAdvisor, controller.exportExcel)
+    app.get('/download/:malop', authJWT.isAdvisor, controller.exportExcel)
 
     //GET: Download bảng điểm theo lớp, học kỳ, phân loại
     app.get('/download/:malop/:sem/:classify', authJWT.isAdvisor, controller.exportHoctap)

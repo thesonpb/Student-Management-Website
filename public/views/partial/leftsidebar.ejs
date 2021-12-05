@@ -1,13 +1,15 @@
 
 <div class="left-side ">
-    <h1 class="title">Quản lý sinh viên</h1>
+    <% if(vaitro == 'covan') { %>
+    <h1 id="title" class="title" onclick="goToHomepage()">Quản lý sinh viên</h1>
+    <% } %>
+    <% if(vaitro == 'sinhvien') { %>
+    <h1 id="title" class="title" onclick="goToHocTap()">Quản lý sinh viên</h1>
+    <% } %>
     <label for="">Công cụ</label>
     <ul class="nav">
         <% if(vaitro == 'covan') { %>
         <a href="/myclass/<%= email %>/<%= sinhvien[0].malop %>"><li data-rel="1" class="">Sinh viên</li></a>
-        <% } %>
-        <% if(vaitro == 'sinhvien') { %>
-        <a href="/my"><li data-rel="1" class="">Sinh viên</li></a>
         <% } %>
         <a href="/hoc-tap/<%= sinhvien[0].malop %>"><li data-rel="2" class="">Học tập</li></a>
         <a href="/ren-luyen/<%= sinhvien[0].malop %>"><li data-rel="3" class="">Rèn luyện</li></a>
@@ -19,5 +21,12 @@
     <ul class="nav">
         <li data-rel="6"> Hỗ trợ</li>
     </ul>
-
+    <script>
+        function goToHomepage() {
+            window.location.href = "/myclass/<%= email %>/<%= sinhvien[0].malop %>";
+        }
+        function goToHocTap() {
+            window.location.href = "/hoc-tap/<%= sinhvien[0].malop %>";
+        }
+    </script>
 </div>

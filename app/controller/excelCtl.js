@@ -71,7 +71,6 @@ const upload = async (req, res) => {
 };
 
 const exportExcel = async (req, res) => {
-    if (res.locals.user.vaitro == 'sinhvien') res.redirect('/my');
     await Sinhvien.findAll({
         where: { malop: req.params.malop }
     }).then(rows => {
@@ -99,12 +98,12 @@ const exportExcel = async (req, res) => {
         //Create excel first row
         worksheet.columns = [
             { header: "Mssv", key: "mssv", width: 10 },
-            { header: "Ho ten", key: "hoten", width: 30 },
+            { header: "Họ tên", key: "hoten", width: 30 },
             { header: "Email", key: "email", width: 40 },
-            { header: "Ngay sinh", key: "ngaysinh", width: 15 },
-            { header: "Sdt", key: "sdt", width: 15 },
+            { header: "Ngày sinh", key: "ngaysinh", width: 15 },
+            { header: "Sđt", key: "sdt", width: 15 },
             { header: "Khoa", key: "khoa", width: 10 },
-            { header: "Ma lop", key: "malop", width: 10 },
+            { header: "Mã lớp", key: "malop", width: 10 },
         ];
 
         //Add array students to excel sheet
@@ -129,7 +128,6 @@ const exportExcel = async (req, res) => {
 }
 
 const exportHoctap = async (req, res) => {
-    if (res.locals.user.vaitro == 'sinhvien') res.redirect('/my');
     const malop = req.params.malop;
     const sem = JSON.stringify(req.params.sem);
     const classify = req.params.classify;
@@ -241,7 +239,6 @@ const exportHoctap = async (req, res) => {
 
 };
 const exportRenluyen = async (req, res) => {
-    if (res.locals.user.vaitro == 'sinhvien') res.redirect('/my');
     const malop = req.params.malop;
     const sem = JSON.stringify(req.params.sem);
 

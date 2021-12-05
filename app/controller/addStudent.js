@@ -1,5 +1,8 @@
 const db = require("../models/index");
 const Sinhvien = db.Sinhvien;
+const Bangdiem = db.Bangdiem;
+const Diemrenluyen = db.Diemrenluyen;
+const Taikhoan = db.Taikhoan;
 
 
 const addStudent = async (req, res) => {
@@ -11,8 +14,8 @@ const addStudent = async (req, res) => {
     var malop = (req.body.malop);
     var email = (req.body.email);
     var sdt = (req.body.sdt);
-    var sdtphuhuynh = (req.body.sdt);
-    var diachi = (req.body.sdt);
+    var sdtphuhuynh = (req.body.sdtphuhuynh);
+    var diachi = (req.body.diachi);
     await Sinhvien.create({
         mssv: mssv, 
         hoten: hoten,
@@ -24,13 +27,30 @@ const addStudent = async (req, res) => {
         avatar: "",
         sdtphuhuynh: sdtphuhuynh, 
         diachi: diachi
-    }).then(function (Sinhvien) {
-        if (Sinhvien) {
-            res.redirect(`/myclass/${emailcovan}/${malopcu}`);
-        } else {
-            res.status(400).send('Error in insert new record');
-        }
     });
+    await Bangdiem.create({
+        malop: malop,
+        hocky: "", 
+        mssv: mssv, 
+        tinchi: 0, 
+        gpa: 0.0, 
+        canhbaohocvu: ""
+    });
+    await Diemrenluyen.create({
+        mssv: mssv, 
+        ythuc: 0, 
+        noiquy: 0, 
+        hoatdong: 0, 
+        phamchat: 0, 
+        phutrachlop: 0, 
+        hocky: ""
+    });
+    await Taikhoan.create({
+        tennguoidung: mssv, 
+        matkhau: "1", 
+        vaitro: "sinhvien"
+    });
+    res.redirect(`/myclass/${emailcovan}/${malopcu}`);
 };
 
 const user ={

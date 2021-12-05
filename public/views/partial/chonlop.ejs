@@ -8,7 +8,7 @@
                     onchange='
                         if(this.value != 0) { 
                             localStorage.setItem("myselect", this.value);
-                            var a = this.value;
+                            var a = localStorage.getItem("myselect");
                             this.form.action=`/myclass/<%= user.tennguoidung %>/${a}`;
                             this.form.submit(); 
                         }'>

@@ -433,25 +433,24 @@
                                     <div class="btn red-btn">Huỷ bỏ</div>
                                 </div>
                             </form>
-
-                        <% for(var i=0; i<cauhoi.length; i++) {%>    
-                            <div class="question">
-                                <div class="ques-inf">
-                                    <div class="inf-item author-ava">
-                                        <img src="" alt="" class="">
+                            <% for(var i=0; i<cauhoi.length; i++) {%>    
+                                <div class="question">
+                                    <div class="ques-inf">
+                                        <div class="inf-item author-ava">
+                                            <img src="" alt="" class="">
+                                        </div>
+                                        <div class="inf-item">
+                                            <p class="author-name">
+                                                <%= cauhoi[i].nguoihoi %>
+                                            </p>
+                                            <p class="post-time">
+                                                <%= cauhoi[i].thoigian %>
+                                            </p>
+                                        </div>
+                                        <div class="inf-item favourite">
+                                            <i class="ti-star"></i>
+                                        </div>
                                     </div>
-                                    <div class="inf-item">
-                                        <p class="author-name">
-                                            <%= cauhoi[i].nguoihoi %>
-                                        </p>
-                                        <p class="post-time">
-                                            <%= cauhoi[i].thoigian %>
-                                        </p>
-                                    </div>
-                                    <div class="inf-item favourite">
-                                        <i class="ti-star"></i>
-                                    </div>
-                                </div>
                                     <div class="question-body">
                                         <h3 class="question-subject">
                                             <!--Thêm biến tiêu đề câu hỏi diễn đàn-->
@@ -461,16 +460,15 @@
                                             <!--Thêm biến nội dung diễn đàn-->
                                             <%= cauhoi[i].noidung %>
                                         </p>
-                                    </div>    
+                                    </div> 
+                                    </div>
+                                        <div class="question-respone">
+                                            <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>
+                                            <p class="question-cmt"><i class="ti-comment"></i>Bình luận</p>
+                                        </div>   
                                 <% } %>
-
-                                <div class="question-respone">
-                                    <p class="question-like"><i class="ti-heart"></i>Yêu thích</p>
-                                    <p class="question-cmt"><i class="ti-comment"></i>Bình luận</p>
-                                </div>
-                            </div>
-                        </div>
-
+                        </div>    
+                                               
                         <div class="main">
                             <h1 class="title-main">Hỗ trợ</h1>
                         </div>

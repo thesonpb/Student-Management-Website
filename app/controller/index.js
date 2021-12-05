@@ -12,6 +12,7 @@ const deleteTeacher = require('./deleteTeacher');
 const uploadTask = require('./uploadTask');
 const editStudentInfo = require('./editStudentInfo');
 const uploadCauhoi = require('./uploadCauhoi');
+const uploadCautraloi = require('./uploadCautraloi');
 
 module.exports = {
     login : auth.login,
@@ -32,4 +33,5 @@ module.exports = {
     uploadTask: uploadTask.uploadTask,
     editStudentInfo: editStudentInfo.editStudentInfo,
     uploadCauhoi: uploadCauhoi,
+    uploadCautraloi: uploadCautraloi,
 }

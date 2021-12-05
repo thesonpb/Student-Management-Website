@@ -9,10 +9,10 @@ const uploadCauhoi = async (req, res) => {
     let time = Date.now();
 
     await Cauhoi.create({
-        malop: 'k64caclc2',
-        nguoihoi: hoten,
-        tieude: subject,
-        noidung: content,
+        macauhoi: null,
+        mssv: null,
+        emailcovan: null,
+        noidung: null,
         thoigian: time
     }).then(function (Cauhoi) {
         if (Cauhoi) {

@@ -134,6 +134,9 @@ function route(app){
 
     app.post('/upload/task', controller.uploadTask)
 
+    app.post('/upload/question/:malop/:hoten', controller.uploadQuestion)
+    app.post('/upload/answer/:malop/:hoten/:macauhoi', controller.uploadAnswer)
+
     app.post('/editstudentinfo/:mssv/:email/:malop', controller.editStudentInfo)
 }
 

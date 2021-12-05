@@ -4,13 +4,14 @@ const Bangdiem = db.Bangdiem;
 const Diemrenluyen = db.Diemrenluyen;
 const Covan = db.Covan;
 const Lophoc = db.Lophoc;
+const Cauhoi = db.Cauhoi;
+const Cautraloi = db.Cautraloi;
 const { QueryTypes, Sequelize } = require('sequelize');
 
 
 const diendan = async (req, res) => {
     const username = res.locals.user.tennguoidung;
     const userRole = res.locals.user.vaitro;
-    console.log(userRole);
     let userInfo = '';
     if (userRole == 'sinhvien') {
         userInfo = await Sinhvien.findByPk(username);
@@ -92,10 +93,20 @@ const diendan = async (req, res) => {
             where: { emailcovan: username },
             attributes: ['malop'],
         });
+        const cauhoi = await Cauhoi.findAll({
+            where: { malop: req.params.malop },
+            attributes: ['macauhoi', 'nguoihoi', 'tieude', 'noidung', 'thoigian']
+        });
+        const cautraloi = await Cautraloi.findAll({
+            attributes: ['macauhoi', 'nguoitraloi', 'noidung', 'thoigian']
+        });
+        
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
         userInfo.dataValues.classId = classId;
+        userInfo.dataValues.cauhoi = cauhoi;
+        userInfo.dataValues.cautraloi = cautraloi;
         res.render('diendan', userInfo.dataValues);
     }
 }

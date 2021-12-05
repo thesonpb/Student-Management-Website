@@ -46,7 +46,6 @@ const getUserInfo = async (req, res) => {
         userInfo.dataValues.classId = classId;
         userInfo.dataValues.username = username;
         
-        
         res.redirect(`hoc-tap/${malop}`);
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);

@@ -39,7 +39,7 @@
                                     </button>
                                     <form id="add-stu" class="adding-member flex-wrap collapse"
                                         action="/add/student/<%= email %>/<%= sinhvien[0].malop %>" method="post">
-                                        <!-- <img src="../assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
+                                        <!-- <img src="/assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
                                         <div class="adding-id-inf col-md-4">
                                             <h2 class="name-inf">MSSV</h2>
                                             <input id="stu-id" autocomplete="off" type="text" class="input-inf"
@@ -104,7 +104,7 @@
                                             <script>
                                                 var xValues = ["Xuất sắc", "Giỏi", "Khá", "Trung bình", "Yếu"];
                                                 var yValues = [<%= xuatsac %>, <%= gioi %>, <%= kha %>, <%= trungbinh %>, <%= yeu %>];
-                                                var barColors = ["red", "green", "blue", "orange", "brown"];
+                                                var barColors = ["rgba(88, 162, 209)", "rgba(42, 157, 143)", "rgba(233, 196, 106)", "rgba(244, 162, 97)", "rgba(231, 111, 81)"];
     
                                                 new Chart("myChart", {
                                                     type: "bar",
@@ -179,6 +179,7 @@
                                                         <% if (vaitro=='covan' ){%>
                                                             <th>SĐT phụ huynh</th>
                                                             <th>Địa chỉ</th>
+                                                            <th></th>
                                                             <th></th>
                                                             <th></th>
                                                             <% } %>
@@ -265,6 +266,11 @@
                                                                             class="stu-btn save-btn btn green-btn mt-0">
                                                                             <i class="ti-save stu-btn"></i>
                                                                         </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <form action="/view/profile/<%= email %>/<%= sinhvien[i].mssv %>">
+                                                                            <input type="submit" value="Xem hồ sơ">
+                                                                        </form>
                                                                     </td>
 
                                                                     <% } %>

@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Học tập</title>
-    <link rel="stylesheet" href="../assets/css/teacher.css">
-    <link rel="stylesheet" href="../assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/assets/css/teacher.css">
+    <link rel="stylesheet" href="/assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet"
@@ -36,16 +36,22 @@
             </div>
             <div class="profile-title col-md-6">
                 <h5 class="profile-name">
-                    <%= hoten %>
+                    <%= hotenProfile %>
                 </h5>
+                <% if (vaitroProfile == 'sinhvien') { %> 
                 <h6>
                     Sinh viên
                 </h6>
-
+                <% } %>
+                <% if (vaitroProfile == 'covan') { %> 
+                <h6>
+                    Cố vấn
+                </h6>
+                <% } %>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                            aria-controls="home" aria-selected="true">About</a>
+                            aria-controls="home" aria-selected="true">Tổng quan</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
@@ -54,7 +60,9 @@
                 </ul>
             </div>
             <div class="col-md-2 text-center">
+                <% if (user.vaitro == vaitroProfile) { %>
                 <button class="btn yellow-btn profile-edit-btn" name="btnAddMore">Sửa</button>
+                <% } %>
             </div>
         </div>
         <div class="row profile-content">
@@ -63,25 +71,25 @@
             </div>
             <div class="tab-content profile-tab col-md-8" id="myTabContent">
                 <div class="tab-pane fade  show active about" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <% if(user.vaitro=='sinhvien' ) { %>
+                    <% if(user.vaitro=='sinhvien') { %>
                         <form id="editstudent" action="/student/editprofile/<%= mssv %>" method="post">
                         <% } %>
-                    <% if(user.vaitro=='covan' ) { %>
-                        <form id="editteacher" action="/teacher/editprofile/<%= email %>" method="post">
+                    <% if(user.vaitro=='covan' && vaitroProfile != 'sinhvien') { %>
+                        <form id="editteacher" action="/teacher/editprofile/<%= email %>/<%= sinhvien[0].malop %>" method="post">
                         <% } %>
 
                         <div class="row">
                             <label class="col-md-6">Họ và tên:</label>
                             <p id="nametoedit" name="hoten" class="editp col-md-6">
-                                <%= hoten %>
+                                <%= hotenProfile %>
                             </p>
                         </div>
 
-                        <% if(user.vaitro=='sinhvien' ) { %>
+                        <% if(vaitroProfile=='sinhvien' ) { %>
                             <div class="row">
                                 <label class="col-md-6"> Mã số sinh viên:</label>
                                 <p name="mssv" class="col-md-6" value="">
-                                    <%= mssv %>
+                                    <%= mssvProfile %>
                                 </p>
                             </div>
                         <% } %>
@@ -89,41 +97,41 @@
                         <div class="row">
                             <label class="col-md-6"> Ngày sinh:</label>
                             <p name="mssv" class="col-md-6" value="">
-                                <%= ngaysinh %>
+                                <%= ngaysinhProfile %>
                             </p>
                         </div>
 
                         <div class="row">
                             <label class="col-md-6">Khoa:</label>
                             <p class="col-md-6">
-                                <%= khoa %>
+                                <%= khoaProfile %>
                             </p>
                         </div>
 
-                        <% if(user.vaitro=='sinhvien' ) { %>
+                        <% if(vaitroProfile=='sinhvien' ) { %>
                             <div class="row">
                                 <label class="col-md-6">Lớp:</label>
                                 <p class="col-md-6">
-                                    <%= malop %>
+                                    <%= malopProfile %>
                                 </p>
                             </div>
                         <% } %>
 
-                        <% if(user.vaitro=='sinhvien' ) { %>
+                        <% if(vaitroProfile=='sinhvien' ) { %>
                             <div class="row">
                                 <label class="col-md-6">Email:</label>
                                 <p id="emailtoedit" name="email" class="editp col-md-6">
-                                    <%= email %>
+                                    <%= emailProfile %>
                                 </p>
                             </div>
                         <% } %>
 
-                        <% if(user.vaitro=='covan' ) { %>
+                        <% if(vaitroProfile=='covan' ) { %>
                             <div class="row">
                                 <label class="col-md-6">Email:</label>
                                 <p id="emailtoedit" name="email"
                                     class="col-md-6">
-                                    <%= email %>
+                                    <%= emailProfile %>
                                 </p>
                             </div>
                         <% } %>
@@ -132,24 +140,24 @@
                             <label class="col-md-6">Số điện thoại:</label>
                             <p id="sdttoedit" name="sdt"
                                 class="editp col-md-6">
-                                <%= sdt %>
+                                <%= sdtProfile %>
                             </p>
                         </div>
 
-                        <% if(user.vaitro=='sinhvien' ) { %>
+                        <% if(vaitroProfile=='sinhvien' ) { %>
                             <div class="row">
                                 <label class="col-md-6">Số tín chỉ:</label>
                                 <p class="col-md-6">
-                                    <%= tinchi %>
+                                    <%= tinchiProfile %>
                                 </p>
                             </div>
                         <% } %>
-                        <% if(user.vaitro=='sinhvien' ) { %>
+                        <% if(vaitroProfile=='sinhvien' ) { %>
                             <div class="row">
                                 <label
                                     class="col-md-6">GPA:</label>
                                 <p class="col-md-6">
-                                    <%= gpa %>
+                                    <%= gpaProfile %>
                                 </p>
                             </div>
                         <% } %>
@@ -189,7 +197,7 @@
         </div>
     </div>
 </div>
-<script src="../assets/js/profile.js"></script>
+<script src="/assets/js/profile.js"></script>
 
 </body>
 </html>

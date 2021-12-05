@@ -62,6 +62,9 @@ function route(app){
     // app.get('/profileStudent/:mssv', authJwt.verifyToken, controller.profileStudent)
     app.get('/profile', authJWT.isStudent, controller.getProfile);
     app.get('/profile/:malop',authJWT.isAdvisor, controller.getProfileCovan);
+
+    app.get('/view/profile/:email/:mssv', authJWT.isAdvisor, controller.viewStudentProfile);
+
     app.post('/uploadImage',checkUser, upload.uploadImg.single("img"), uploadAvatar)
 
     //**********************************************************************************************
@@ -124,12 +127,15 @@ function route(app){
     app.get('/hoctap', controller.hoctap)
 
     app.post('/student/editprofile/:mssv', controller.studentEditProfile)
-    app.post('/teacher/editprofile/:email', controller.teacherEditProfile)
+    app.post('/teacher/editprofile/:email/:malop', controller.teacherEditProfile)
 
     app.post('/student/delete/:mssv/:email/:malop', controller.deleteStudent)
     app.post('/teacher/delete/:email', controller.deleteTeacher)
 
     app.post('/upload/task', controller.uploadTask)
+
+    app.post('/upload/question/:malop/:hoten', controller.uploadQuestion)
+    app.post('/upload/answer/:malop/:hoten/:macauhoi', controller.uploadAnswer)
 
     app.post('/editstudentinfo/:mssv/:email/:malop', controller.editStudentInfo)
 }

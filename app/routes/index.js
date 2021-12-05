@@ -96,6 +96,7 @@ function route(app) {
     app.post('/upload/task', controller.uploadTask)
 
     app.post('/editstudentinfo/:mssv/:email/:malop', controller.editStudentInfo)
+    app.post('/upload/question/:hoten', controller.uploadCauhoi)
 }
 
 module.exports = route;

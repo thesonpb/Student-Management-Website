@@ -11,6 +11,8 @@ const deleteStudent = require('./deleteStudent');
 const deleteTeacher = require('./deleteTeacher');
 const uploadTask = require('./uploadTask');
 const editStudentInfo = require('./editStudentInfo');
+const uploadCauhoi = require('./uploadCauhoi');
+
 module.exports = {
     login : auth.login,
     logout: auth.logout,
@@ -29,4 +31,5 @@ module.exports = {
     deleteTeacher: deleteTeacher.deleteTeacher,
     uploadTask: uploadTask.uploadTask,
     editStudentInfo: editStudentInfo.editStudentInfo,
+    uploadCauhoi: uploadCauhoi.uploadCauhoi,
 }

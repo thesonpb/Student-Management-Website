@@ -421,7 +421,7 @@
                                 một chủ đề
                                 thảo
                                 luận</button>
-                            <form action="/upload/question" class="form collapse" id="question-form" method="post">
+                            <form action="/upload/question/<%= hoten %>" class="form collapse" id="question-form" method="post">
                                 <label for="">Tiêu đề</label>
                                 <input type="text" class="input-subject ml-3" name="subject">
                                 <hr>
@@ -441,10 +441,10 @@
                                     </div>
                                     <div class="inf-item">
                                         <p class="author-name">
-                                            <!--Thêm biến tên-->
+                                            Thêm biến tên
                                         </p>
                                         <p class="post-time">
-                                            <!--Thêm biến tgian-->
+                                            Thêm biến tgian
                                         </p>
                                     </div>
                                     <div class="inf-item favourite">
@@ -1039,6 +1039,40 @@
                         $(this).append(input, input2, input3);
                     });
 
+                    $("#editstudent").submit(function () {
+
+                        var name = $("#nametoedit").html().trim();
+                        var email = $("#emailtoedit").html().trim();
+                        var sdt = $("#sdttoedit").html().trim();
+
+                        var input = $("<input />", {
+                            name: "hoten",
+                            value: name,
+                            type: "hidden"
+                        });
+                        var input2 = $("<input />", {
+                            name: "email",
+                            value: email,
+                            type: "hidden"
+                        });
+                        var input3 = $("<input />", {
+                            name: "sdt",
+                            value: sdt,
+                            type: "hidden"
+                        });
+                        $(this).append(input, input2, input3);
+                    });
+
+                    $("#question-form").submit(function () {
+                        var name = $("#nametoedit").html().trim();
+                        
+                        var input = $("<input />", {
+                            name: "hoten",
+                            value: name,
+                            type: "hidden"
+                        });
+                        $(this).append(input);
+                    });
                     $("#editteacher").submit(function () {
                         var name = $("#nametoedit").html().trim();
                         var sdt = $("#sdttoedit").html().trim();
@@ -1055,6 +1089,7 @@
                         });
                         $(this).append(input, input3);
                     });
+                    
 
                     function goToHomepage() {
                         window.location.href = "/my";

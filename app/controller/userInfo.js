@@ -7,7 +7,7 @@ const Lophoc = db.Lophoc;
 const Admin = db.Admin;
 const { QueryTypes, Sequelize } = require('sequelize');
 
-//
+
 const getUserInfo = async (req, res) => {
     const username = res.locals.user.tennguoidung;
     const userRole = res.locals.user.vaitro;
@@ -92,7 +92,6 @@ const getUserInfo = async (req, res) => {
         malop = classId[0].malop;
         res.redirect(`/myclass/${username}/${malop}`);
     }
-
 }
 
 const changeUserInfo = '';

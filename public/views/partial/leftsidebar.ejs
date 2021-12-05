@@ -1,14 +1,14 @@
 
 <div class="left-side ">
-    <% if(vaitro == 'covan') { %>
+    <% if(user.vaitro == 'covan') { %>
     <h1 id="title" class="title" onclick="goToHomepage()">Quản lý sinh viên</h1>
     <% } %>
-    <% if(vaitro == 'sinhvien') { %>
+    <% if(user.vaitro == 'sinhvien') { %>
     <h1 id="title" class="title" onclick="goToHocTap()">Quản lý sinh viên</h1>
     <% } %>
     <label for="">Công cụ</label>
     <ul class="nav">
-        <% if(vaitro == 'covan') { %>
+        <% if(user.vaitro == 'covan') { %>
         <a href="/myclass/<%= email %>/<%= sinhvien[0].malop %>"><li data-rel="1" class="">Sinh viên</li></a>
         <% } %>
         <a href="/hoc-tap/<%= sinhvien[0].malop %>"><li data-rel="2" class="">Học tập</li></a>

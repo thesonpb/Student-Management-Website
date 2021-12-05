@@ -7,7 +7,7 @@ const studentEditProfile = async (req, res) => {
     stu.email = req.body.email;
     stu.sdt = req.body.sdt;
     await stu.save();
-    res.redirect('/my');
+    res.redirect('/profile');
 }
 
 const user = {

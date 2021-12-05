@@ -28,11 +28,17 @@ const getProfile = async (req, res) => {
         attributes: ['ngaysinh']
     });
 
-    profile.dataValues.ngaysinh = ngaysinhchuan.ngaysinh;
-    profile.dataValues.gpa = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
-    profile.dataValues.tinchi = tongtinchi;
-    profile.dataValues.vaitro = userRole;
+    profile.dataValues.ngaysinhProfile = ngaysinhchuan.ngaysinh;
+    profile.dataValues.gpaProfile = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
+    profile.dataValues.tinchiProfile = tongtinchi;
+    profile.dataValues.vaitroProfile = 'sinhvien';
     profile.dataValues.sinhvien = sinhviens;
+    profile.dataValues.hotenProfile = profile.dataValues.hoten;
+    profile.dataValues.mssvProfile = username;
+    profile.dataValues.khoaProfile = profile.dataValues.khoa;
+    profile.dataValues.malopProfile = profile.dataValues.malop;
+    profile.dataValues.emailProfile = profile.dataValues.email;
+    profile.dataValues.sdtProfile = profile.dataValues.sdt;
     res.render('profile', profile.dataValues);
 }
 const getProfileCovan = async (req, res) => {
@@ -52,9 +58,14 @@ const getProfileCovan = async (req, res) => {
         attributes: ['ngaysinh']
     });
 
-    profile.dataValues.ngaysinh = ngaysinhchuan.ngaysinh;
-    profile.dataValues.vaitro = userRole;
+    profile.dataValues.ngaysinhProfile = ngaysinhchuan.ngaysinh;
+    profile.dataValues.vaitroProfile = 'covan';
     profile.dataValues.sinhvien = sinhviens;
+    profile.dataValues.hotenProfile = profile.dataValues.hoten;
+    profile.dataValues.khoaProfile = profile.dataValues.khoa;
+    profile.dataValues.emailProfile = username;
+    profile.dataValues.sdtProfile = profile.dataValues.sdt;
+
     res.render('profile', profile.dataValues);
 }
 
@@ -108,6 +119,7 @@ const uploadAvatar = async (req, res) => {
 
 const viewStudentProfile = async (req, res) => {
     let profile = '';
+    const emailcovan = req.params.email;
     profile = await Sinhvien.findByPk(req.params.mssv);
     const sinhviens = await Sinhvien.findAll({
         where: { mssv: req.params.mssv },
@@ -118,9 +130,24 @@ const viewStudentProfile = async (req, res) => {
         attributes: ['ngaysinh']
     });
 
-    profile.dataValues.ngaysinh = ngaysinhchuan.ngaysinh;
-    profile.dataValues.vaitro = 'sinhvien';
+    const tonggpa = await Bangdiem.findAll({
+        where: { mssv: req.params.mssv },
+        attributes: [[Sequelize.literal('SUM(gpa * tinchi)'), 'result']]
+    });
+    const tongtinchi = await Bangdiem.sum('tinchi', { where: { mssv: req.params.mssv } });
+    profile.dataValues.ngaysinhProfile = ngaysinhchuan.ngaysinh;
+    profile.dataValues.vaitroProfile = 'sinhvien';
     profile.dataValues.sinhvien = sinhviens;
+    profile.dataValues.hotenProfile = profile.dataValues.hoten;
+    profile.dataValues.mssvProfile = profile.dataValues.mssv;
+    profile.dataValues.khoaProfile = profile.dataValues.khoa;
+    profile.dataValues.malopProfile = profile.dataValues.malop;
+    profile.dataValues.emailProfile = profile.dataValues.email;
+    profile.dataValues.sdtProfile = profile.dataValues.sdt;
+    profile.dataValues.tinchiProfile = tongtinchi;
+    profile.dataValues.email = emailcovan;
+    profile.dataValues.gpaProfile = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
+
     res.render('profile', profile.dataValues);
 }
 

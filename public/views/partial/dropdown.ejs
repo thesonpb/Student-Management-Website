@@ -8,10 +8,10 @@
     <ul class="dropdown-menu" id="dropdown-list">
         
         <li>
-            <% if (vaitro == 'sinhvien') { %>
+            <% if (user.vaitro == 'sinhvien') { %>
             <a class="profile" href="/profile">
             <% } %>
-            <% if (vaitro == 'covan') { %>
+            <% if (user.vaitro == 'covan') { %>
             <a class="profile" href="/profile/<%= sinhvien[0].malop %>">
             <% } %>
                 <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->

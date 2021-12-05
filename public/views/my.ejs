@@ -37,70 +37,62 @@
                                     <button data-toggle="collapse" data-target="#add-stu" class="btn ml-3">
                                         Thêm sinh viên
                                     </button>
+                                    <button data-toggle="collapse" data-target="#chart-static" class="btn ml-3">
+                                        Biểu đồ thống kê
+                                    </button>
                                     <form id="add-stu" class="adding-member flex-wrap collapse"
                                         action="/add/student/<%= email %>/<%= sinhvien[0].malop %>" method="post">
                                         <!-- <img src="/assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
                                         <div class="adding-id-inf col-md-4">
                                             <h2 class="name-inf">MSSV</h2>
-                                            <input id="stu-id" autocomplete="off" type="text" class="input-inf"
+                                            <input id="stu-id" autocomplete="off" type="text" class="input-inf" required
                                                 name="mssv" placeholder="mã sv" />
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Họ tên</h2>
-                                            <input id="stu-name" autocomplete="off" type="text" class="input-inf"
+                                            <input id="stu-name" autocomplete="off" type="text" class="input-inf" required
                                                 placeholder="Tên" name="hoten" />
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Ngày sinh</h2>
-                                            <input id="stu-dob" autocomplete="off" type="date" class="input-inf"
+                                            <input id="stu-dob" autocomplete="off" type="date" class="input-inf" required
                                                 name="ngaysinh" />
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Lớp khoá học</h2>
-                                            <input id="stu-class-id" autocomplete="off" type="text" class="input-inf"
+                                            <input id="stu-class-id" autocomplete="off" type="text" class="input-inf" required
                                                 placeholder="Mã lớp" name="malop" />
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Email</h2>
-                                            <input id="stu-email" autocomplete="off" type="email" class="input-inf"
+                                            <input id="stu-email" autocomplete="off" type="email" class="input-inf" 
                                                 placeholder="email" name="email" />
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Sđt</h2>
-                                            <input id="stu-phone" autocomplete="off" type="text" class="input-inf"
+                                            <input id="stu-phone" autocomplete="off" type="text" class="input-inf" 
                                                 placeholder="Số điện thoại" name="sdt" />
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Sđt phụ huynh</h2>
                                             <input id="stu-parent-phone" autocomplete="off" type="text"
-                                                class="input-inf" placeholder="Số điện thoại phụ huynh"
+                                                class="input-inf"  placeholder="Số điện thoại phụ huynh"
                                                 name="sdtphuhuynh" />
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Địa chỉ</h2>
-                                            <input id="stu-add" autocomplete="off" type="text" class="input-inf"
+                                            <input id="stu-add" autocomplete="off" type="text" class="input-inf" 
                                                 placeholder="Địa chỉ" name="diachi" />
                                         </div>
                                         <input type="submit" value="Thêm sv" id=""
                                             class="adding-btn btn align-self-center ml-auto mr-auto col-md-2">
                                     </form>
-                                    <% } %>
-                                        <!-- <div class="member-list">
-                                <div class="member">
-                                    <img src="/assets/img/IMG_8672.png" alt="" class="member-ava">
-                                    <p class="member-name">Name</p>
-                                    <p class="member-pos">position</p>
-                                </div>
-                            </div> -->
-
-                                        <% if (vaitro == 'covan') { %>
                                         <!--CHART-->
 
-                                    <div class="row d-flex justify-content-center mt-5">
+                                    <div id="chart-static" class="collapse row justify-content-center mt-5">
 
                                         <div class="col-md-10">
-                                            <canvas id="myChart" style=""></canvas>
-    
+                                            <canvas id="myChart"></canvas>
                                             <script>
                                                 var xValues = ["Xuất sắc", "Giỏi", "Khá", "Trung bình", "Yếu"];
                                                 var yValues = [<%= xuatsac %>, <%= gioi %>, <%= kha %>, <%= trungbinh %>, <%= yeu %>];
@@ -181,7 +173,7 @@
                                                             <th>Địa chỉ</th>
                                                             <th></th>
                                                             <th></th>
-                                                            <th></th>
+                                                            <!-- <th></th> -->
                                                             <% } %>
                                                     </tr>
                                                 </thead>
@@ -190,6 +182,8 @@
                                                         <% for (var i=0; i < sinhvien.length; i++) { %>
                                                             <tr>
                                                                 <td>
+                                                                    <form action="/view/profile/<%= email %>/<%= sinhvien[i].mssv %>">
+                                                                    </form>
                                                                     <%= i+1 %>
                                                                 </td>
                                                                 <td>
@@ -267,11 +261,11 @@
                                                                             <i class="ti-save stu-btn"></i>
                                                                         </div>
                                                                     </td>
-                                                                    <td>
+                                                                    <!-- <td>
                                                                         <form action="/view/profile/<%= email %>/<%= sinhvien[i].mssv %>">
                                                                             <input type="submit" value="Xem hồ sơ">
                                                                         </form>
-                                                                    </td>
+                                                                    </td> -->
 
                                                                     <% } %>
                                                             </tr>

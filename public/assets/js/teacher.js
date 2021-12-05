@@ -101,6 +101,17 @@ function editStuInfor(e) {
     console.log(editForm.html())
     editForm.submit();
 };
+stdTable.click(openProfile);
+function openProfile(e) {
+    var tableBtn = e.target;
+    var tds = $(tableBtn).closest("tr").find('td');
+    const profileForm = tds[0].firstChild.nextSibling;
+    for(var i = 0; i < 9; i++) {
+        if(e.target === tds[i]) {
+            profileForm.submit();
+        }
+    }
+}
 
 // Tìm kiếm sinh viên
 $("#myInput").on("keyup", function () {

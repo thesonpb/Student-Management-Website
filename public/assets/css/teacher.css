@@ -324,6 +324,11 @@ th {
     vertical-align: inherit;
 }
 
+#student-table td:nth-child(-n+9):hover{
+    cursor: pointer;
+}
+
+
 .stu-table-body .save-btn {
     display: none;
     max-width: 66.22px;
@@ -407,8 +412,8 @@ th {
 
 /* diễn đàn css */
 .main .question {
-    color: #e8e8e8;
-    background-color: #3a3b3c;
+    color: #fff;
+    background-color: #242526;
     border-radius: 12px;
     padding: 16px;
     margin-top: 64px;
@@ -453,33 +458,51 @@ th {
 
 p.post-time {
     font-size: 14px;
-    color: #999;
+    color: rgb(170, 166, 166);
 }
 
-.ques-inf .favourite {
+.ques-inf .more {
     flex: 1;
     cursor: pointer;
 }
 
+.ques-inf #more-drop {
+    position: relative;
+    min-width: 0;
+    width: 80px;
+    border-radius: 12px;
+    background-color: #3a3b3c;
+    left: -70px !important;
+}
+
+.ques-inf .del-ques {
+    width: 80px;
+    background-color: #3a3b3c;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    padding: 4px;
+}
+
+.ques-inf .del-ques:hover {
+    opacity: 0.8;
+}
+
 .question .question-subject {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 400;
     margin: 16px 16px 8px;
 }
 
 .question .question-content {
-    font-size: 20px; 
-    color: #888;
-    margin: 4px 16px;
+    font-size: 16px; 
+    color: #ddd;
+    font-weight: 200;
 }
 
 .question .question-respone {
     display: flex;
     font-size: 18px;
-}
-
-.question-respone p {
-    margin-left: 16px;
 }
 
 .question-respone i {
@@ -490,15 +513,48 @@ p.post-time {
     cursor: pointer;
 }
 
-.question .question-cmt {
+.question hr {
+    margin: 12px 0px 12px 16px;
+    background-color: #5a5b5c;
+    height: 0.7px;
+    border: none;
+}
+
+.question .question-cmt-btn {
     cursor: pointer;
-    margin-left: 24px;
+    color: #fff;
+    background-color: #242526;
+    border: 1px solid white ;
+    display: inline-block;
+    border-radius: 12px;
+    width: 180px;
+}
+
+.question .question-cmt-btn:hover {
+    background-color: #3a3b3c;
+}
+
+.question-respone .input-ans{
+    width: 90%;
+    border-radius: 16px;
+}
+
+.question-respone .answer {
+    background-color: #3a3b3c;
+    border-radius: 16px;
+    font-weight: 200;
+    display: inline-block;
+}
+
+.question-respone .ans-posttime{
+    font-size: 14px;
+    color: rgb(170, 166, 166);
 }
 
 /* profile css */
 .emp-profile{
     padding: 3%;
-    margin-top: 10%;
+    margin-top: 6%;
     border: 1px solid #ccc;
     border-radius: 12px;
     padding: 64px;
@@ -688,6 +744,7 @@ body > .dropdown {
 .right-nav {
     color: #ccc;
     position: fixed;
+    z-index: 1;
     top: 24px;
     right: 92px;
 }

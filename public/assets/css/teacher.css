@@ -217,11 +217,12 @@ th {
 }
 /* css chart */
 .gpa-chart {
-    /* background-color: #fff; */
     /* border: 1px solid #fff; */
 }
 
 #myChart {
+    background-color: #fff;
+    border-radius: 8px;
 }
 /* css mục sinh viên*/
 .main .adding-member {
@@ -266,8 +267,6 @@ th {
   border-color: #ff695b;
   box-shadow: 0 0 0 4px #ffe2df;
 }
-
-
 
 .main .name-inf {
     font-size: 18px;
@@ -346,21 +345,15 @@ th {
     padding: 4px;
     border-radius: 12px;
     margin-left: 16px;
-
 }
 
-.mark {
+.mark, .work {
     border-collapse: collapse;
     width: 100%;
 }
 
-  /* Rèn luyện css */
-.work {
-    border-collapse: collapse;
-    width: 100%;
-}
 
-/* thông báo css */
+/* thông báo css
 .todo-dur-input>input {
     margin-bottom: 8px;
     padding: 8px;
@@ -410,7 +403,7 @@ th {
 .todo-opinion .todo-cmt-btn {
     text-decoration: none;
     color: #fff;
-}
+} */
 
 /* diễn đàn css */
 .main .question {

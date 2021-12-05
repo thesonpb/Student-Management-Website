@@ -1,7 +1,8 @@
 $(`li[data-rel="${2}"]`).addClass('active')
- 
+
 // lọc
 $('document').ready(function ($) {
+
     var rows2 = $('#marktable tbody tr').each(function () {
         var row = $(this);
         var columns = row.children('td');
@@ -10,13 +11,12 @@ $('document').ready(function ($) {
         row.data('canhbaohocvu', columns.eq(8).html());
         row.data('tinchi', columns.eq(6).html());
     });
-   
     $('#sem_hoctap, #classify').change(function () {
         var i = 1;
         var sem = $('#sem_hoctap').val().toString();
         var classify = parseInt($('#classify').val());
-
-        document.getElementById('download_hoctap').action = `/download/<%= diemSinhVien[0].malop %>/${sem}/${classify}`;
+        var malop = document.getElementById('malop').value;
+        document.getElementById('download_hoctap').action = `/download/${malop}/${sem}/${classify}`;
 
         rows2.each(function () {
             var row = $(this);

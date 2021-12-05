@@ -112,6 +112,9 @@ $("#myInput").on("keyup", function () {
 
 
 if (localStorage.getItem("myselect")) {
+    var a = document.getElementById('malopdangxem').value;
+    localStorage.setItem("myselect", a)
+
     $('.class-list').val(localStorage.getItem("myselect"))
 }
 

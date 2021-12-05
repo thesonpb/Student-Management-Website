@@ -47,7 +47,7 @@ const getUserInfo = async (req, res) => {
         userInfo.dataValues.username = username;
         
         
-        res.render('my', userInfo.dataValues);
+        res.redirect(`hoc-tap/${malop}`);
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);
         userInfo.dataValues.vaitro = 'covan';

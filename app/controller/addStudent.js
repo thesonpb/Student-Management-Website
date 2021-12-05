@@ -16,44 +16,60 @@ const addStudent = async (req, res) => {
     var sdt = (req.body.sdt);
     var sdtphuhuynh = (req.body.sdtphuhuynh);
     var diachi = (req.body.diachi);
-    await Sinhvien.create({
-        mssv: mssv, 
-        hoten: hoten,
-        email: email, 
-        ngaysinh: ngaysinh,
-        sdt: sdt,
-        khoa: "",
-        malop: malop,
-        avatar: "",
-        sdtphuhuynh: sdtphuhuynh, 
-        diachi: diachi
-    });
-    await Bangdiem.create({
-        malop: malop,
-        hocky: "", 
-        mssv: mssv, 
-        tinchi: 0, 
-        gpa: 0.0, 
-        canhbaohocvu: ""
-    });
-    await Diemrenluyen.create({
-        mssv: mssv, 
-        ythuc: 0, 
-        noiquy: 0, 
-        hoatdong: 0, 
-        phamchat: 0, 
-        phutrachlop: 0, 
-        hocky: ""
-    });
-    await Taikhoan.create({
-        tennguoidung: mssv, 
-        matkhau: "1", 
-        vaitro: "sinhvien"
-    });
+    try {
+        await Sinhvien.create({
+            mssv: mssv,
+            hoten: hoten,
+            email: email,
+            ngaysinh: ngaysinh,
+            sdt: sdt,
+            khoa: "",
+            malop: malop,
+            avatar: "",
+            sdtphuhuynh: sdtphuhuynh,
+            diachi: diachi
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    try {
+        await Bangdiem.create({
+            malop: malop,
+            hocky: "",
+            mssv: mssv,
+            tinchi: 0,
+            gpa: 0.0,
+            canhbaohocvu: ""
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    try {
+        await Diemrenluyen.create({
+            mssv: mssv,
+            ythuc: 0,
+            noiquy: 0,
+            hoatdong: 0,
+            phamchat: 0,
+            phutrachlop: 0,
+            hocky: ""
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    try {
+        await Taikhoan.create({
+            tennguoidung: mssv,
+            matkhau: "1",
+            vaitro: "sinhvien"
+        });
+    } catch (err) {
+        console.log(err);
+    }
     res.redirect(`/myclass/${emailcovan}/${malopcu}`);
 };
 
-const user ={
+const user = {
     addStudent: addStudent,
 }
 

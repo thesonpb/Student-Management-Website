@@ -20,6 +20,7 @@ module.exports = {
     getUserInfo: user.getUserInfo,
     getProfileCovan: profile.getProfileCovan,
     getProfile: profile.getProfile,
+    viewStudentProfile: profile.viewStudentProfile,
     upload : excel.upload,
     exportExcel: excel.exportExcel,
     exportHoctap: excel.exportHoctap,

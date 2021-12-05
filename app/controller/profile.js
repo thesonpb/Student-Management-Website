@@ -106,6 +106,24 @@ const uploadAvatar = async (req, res) => {
     res.redirect('/profile');
 }
 
+const viewStudentProfile = async (req, res) => {
+    let profile = '';
+    profile = await Sinhvien.findByPk(req.params.mssv);
+    const sinhviens = await Sinhvien.findAll({
+        where: { mssv: req.params.mssv },
+        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
+    });
+    const ngaysinhchuan = await Sinhvien.findOne({
+        where: { mssv: req.params.mssv },
+        attributes: ['ngaysinh']
+    });
+
+    profile.dataValues.ngaysinh = ngaysinhchuan.ngaysinh;
+    profile.dataValues.vaitro = 'sinhvien';
+    profile.dataValues.sinhvien = sinhviens;
+    res.render('profile', profile.dataValues);
+}
+
 
 
 const user = {
@@ -113,117 +131,7 @@ const user = {
     updateUserInfo: updateUserInfo,
     uploadAvatar: uploadAvatar,
     getProfileCovan: getProfileCovan,
+    viewStudentProfile: viewStudentProfile,
 }
 
 module.exports = user;
-
-// const db = require("../models/index");
-// const Sinhvien = db.Sinhvien;
-// const Bangdiem = db.Bangdiem;
-// const Diemrenluyen = db.Diemrenluyen;
-// const Covan = db.Covan;
-// const Lophoc = db.Lophoc;
-// const { QueryTypes, Sequelize } = require('sequelize');
-
-
-// const profileTeacher = async (req, res) => {
-//     const username = res.locals.user.tennguoidung;
-//     const userRole = res.locals.user.vaitro;
-//     let userInfo = '';
-//     userInfo = await Covan.findByPk(username);
-//     userInfo.dataValues.vaitro = 'covan';
-//     const diemsinhvien = await Sinhvien.findAll({
-//         where: { malop: req.params.malop },
-//         include: [
-//             {
-//                 model: Bangdiem,
-//                 where: {
-//                     mssv: Sequelize.col('sinhvien.mssv')
-//                 },
-
-//                 required: false
-//             }
-//         ],
-//         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
-//     });
-//     const sinhviens = await Sinhvien.findAll({
-//         where: { malop: req.params.malop },
-//         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
-//     });
-//     const drl = await Sinhvien.findAll({
-//         where: { malop: req.params.malop },
-//         include: [
-//             {
-//                 model: Diemrenluyen,
-//                 where: {
-//                     mssv: Sequelize.col('sinhvien.mssv')
-//                 },
-
-//                 required: false
-//             }
-//         ],
-//         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
-//     });
-//     const classId = await Lophoc.findAll({
-//         where: { emailcovan: username },
-//         attributes: ['malop'],
-//     });
-//     userInfo.dataValues.diemSinhVien = diemsinhvien;
-//     userInfo.dataValues.sinhvien = sinhviens;
-//     userInfo.dataValues.diemRenLuyen = drl;
-//     userInfo.dataValues.classId = classId;
-//     res.render('profile', userInfo.dataValues);
-// }
-// const profileStudent = async (req, res) => {
-//     const username = res.locals.user.tennguoidung;
-//     const userRole = res.locals.user.vaitro;
-//     let userInfo = '';
-//     userInfo = await Sinhvien.findByPk(username);
-//     userInfo.dataValues.vaitro = 'sinhvien';
-//     const diemsinhvien = await Sinhvien.findAll({
-//         where: { malop: req.params.malop },
-//         include: [
-//             {
-//                 model: Bangdiem,
-//                 where: {
-//                     mssv: Sequelize.col('sinhvien.mssv')
-//                 },
-
-//                 required: false
-//             }
-//         ],
-//         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
-//     });
-//     const sinhviens = await Sinhvien.findAll({
-//         where: { malop: req.params.malop },
-//         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
-//     });
-//     const drl = await Sinhvien.findAll({
-//         where: { malop: req.params.malop },
-//         include: [
-//             {
-//                 model: Diemrenluyen,
-//                 where: {
-//                     mssv: Sequelize.col('sinhvien.mssv')
-//                 },
-
-//                 required: false
-//             }
-//         ],
-//         attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
-//     });
-
-//     userInfo.dataValues.diemSinhVien = diemsinhvien;
-//     userInfo.dataValues.sinhvien = sinhviens;
-//     userInfo.dataValues.diemRenLuyen = drl;
-//     res.render('profile', userInfo.dataValues);
-// }
-
-
-// const user = {
-//     profileTeacher: profileTeacher,
-//     profileStudent: profileStudent,
-// }
-
-// module.exports = user;
-

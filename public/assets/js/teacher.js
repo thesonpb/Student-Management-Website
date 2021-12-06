@@ -1,5 +1,6 @@
 $(`li[data-rel="${1}"]`).addClass('active')
 
+var editionMode = false;
 var stdTable = $('#student-table');
 var tbody = $('.stu-table-body')
 
@@ -15,13 +16,12 @@ function onEditRow(e) {
 
     if (saveTableBtn.css('display') == 'none') {
         saveTableBtn.show('fast').css("display", "inline-block");
-        editTableBtn.hide('fast')
+        editTableBtn.hide('fast');
     } else {
         saveTableBtn.hide('fast');
         editTableBtn.show('fast');
         editStuInfor(e);
     }
-
     delete tds['0'];
     delete tds['1'];
     delete tds['9'];
@@ -34,9 +34,11 @@ function onEditRow(e) {
         td.contentEditable = !td.isContentEditable;
         if (td.contentEditable === 'false') {
             td.style.opacity = '1';
+            editionMode = false;
         } else {
             td.style.opacity = '0.5';
             td.value = "Save";
+            editionMode = true
         }
     }
 }
@@ -98,19 +100,21 @@ function editStuInfor(e) {
     editForm.empty()
 
     editForm.append(input1, input2, input3, input4, input5, input6, input7);
-    console.log(editForm.html())
     editForm.submit();
 };
+
 stdTable.click(openProfile);
+
+
 function openProfile(e) {
     var tableBtn = e.target;
     var tds = $(tableBtn).closest("tr").find('td');
     const profileForm = tds[0].firstChild.nextSibling;
     for(var i = 0; i < 9; i++) {
-        if(e.target === tds[i]) {
-            profileForm.submit();
+        if(e.target === tds[i] && !editionMode) {
+                profileForm.submit();
+            }
         }
-    }
 }
 
 // Tìm kiếm sinh viên

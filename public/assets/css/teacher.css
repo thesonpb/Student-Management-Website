@@ -503,12 +503,14 @@ p.post-time {
     font-size: 28px;
     font-weight: 400;
     margin: 16px 16px 8px;
+    word-wrap: break-word;
 }
 
 .question .question-content {
     font-size: 16px; 
     color: #ddd;
     font-weight: 200;
+    word-wrap: break-word;
 }
 
 .question .question-respone {
@@ -562,6 +564,10 @@ p.post-time {
     color: rgb(170, 166, 166);
 }
 
+.answer {
+    max-width: 95%;
+}
+
 .answer #more-drop {
     position: relative;
     min-width: 0;
@@ -599,6 +605,10 @@ p.post-time {
 
 .answer .more-ans:hover {
     background-color: #242526;
+}
+
+.answer .ans-content {
+    word-wrap: break-word;
 }
 
 /* profile css */
@@ -718,7 +728,7 @@ p.post-time {
 
 /* phần dropdown chọn để vào trang cá nhân */
 body > .dropdown {
-    position: fixed;
+    position: absolute;
     z-index: 1;
     top: 13px;
     right: 16px;
@@ -737,7 +747,7 @@ body > .dropdown {
 
 #dropdown-list {
     flex-direction: column;
-    position: absolute;
+    position: relative;
     z-index: 1;
     background-color: #1e1f26;
     min-width: 230px;
@@ -747,8 +757,7 @@ body > .dropdown {
     padding: 8px 16px;
     margin-top: 4px;
     border-radius: 8%;
-    top: 64px;
-    right: 4px;
+    left: -96px !important;
 }
 
 #dropdown-list a {
@@ -793,7 +802,7 @@ body > .dropdown {
 
 .right-nav {
     color: #ccc;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     top: 24px;
     right: 92px;

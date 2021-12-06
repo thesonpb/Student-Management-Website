@@ -483,6 +483,7 @@ p.post-time {
     border-radius: 12px;
     background-color: #3a3b3c;
     left: -70px !important;
+    top: 8px !important;
 }
 
 .ques-inf .del-ques {
@@ -568,6 +569,7 @@ p.post-time {
     border-radius: 12px;
     background-color: #242526;
     left: -70px !important;
+    top: 8px !important;
 
 }
 
@@ -587,7 +589,7 @@ p.post-time {
 .answer .more-ans {
     display: flex;
     border-radius: 50%;
-    width: 40px;
+    width: 115px;
     height: 40px;
     align-items: center;
     justify-content: center;

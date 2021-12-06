@@ -54,7 +54,7 @@ const diendan = async (req, res) => {
             attributes: ['macauhoi', 'nguoihoi', 'tieude', 'noidung', 'thoigian']
         });
         const cautraloi = await Cautraloi.findAll({
-            attributes: ['macauhoi', 'nguoitraloi', 'noidung', 'thoigian']
+            attributes: ['macautraloi', 'macauhoi', 'nguoitraloi', 'noidung', 'thoigian']
         });
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
@@ -107,7 +107,7 @@ const diendan = async (req, res) => {
             attributes: ['macauhoi', 'nguoihoi', 'tieude', 'noidung', 'thoigian']
         });
         const cautraloi = await Cautraloi.findAll({
-            attributes: ['macauhoi', 'nguoitraloi', 'noidung', 'thoigian']
+            attributes: ['macautraloi', 'macauhoi', 'nguoitraloi', 'noidung', 'thoigian']
         });
         
         userInfo.dataValues.diemSinhVien = diemsinhvien;

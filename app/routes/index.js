@@ -129,7 +129,7 @@ function route(app){
     app.post('/student/editprofile/:mssv', controller.studentEditProfile)
     app.post('/teacher/editprofile/:email/:malop', controller.teacherEditProfile)
 
-    app.post('/student/delete/:mssv/:email/:malop', controller.deleteStudent)
+    app.post('/student/delete/:mssv/:email/:malop', authJWT.isAdvisor, controller.deleteStudent)
     app.post('/teacher/delete/:email', controller.deleteTeacher)
 
     app.post('/upload/task', controller.uploadTask)
@@ -137,7 +137,10 @@ function route(app){
     app.post('/upload/question/:malop/:hoten', controller.uploadQuestion)
     app.post('/upload/answer/:malop/:hoten/:macauhoi', controller.uploadAnswer)
 
-    app.post('/editstudentinfo/:mssv/:email/:malop', controller.editStudentInfo)
+    app.post('/editstudentinfo/:mssv/:email/:malop', authJWT.isAdvisor, controller.editStudentInfo)
+
+    app.post('/question/delete/:macauhoi', authJWT.isAdvisor , controller.deleteQuestion)
+    app.post('/answer/delete/:macautraloi', authJWT.isAdvisor , controller.deleteAnswer)
 }
 
 module.exports = route;

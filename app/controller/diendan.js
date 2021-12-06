@@ -53,14 +53,24 @@ const diendan = async (req, res) => {
             where: { malop: req.params.malop },
             attributes: ['macauhoi', 'nguoihoi', 'tieude', 'noidung', 'thoigian']
         });
+        var quesTime = []
+        for (var i = 0; i < cauhoi.length; i++) {
+            quesTime.push(new Date(cauhoi[i].thoigian).toLocaleString('br-FR'));
+        }
         const cautraloi = await Cautraloi.findAll({
             attributes: ['macautraloi', 'macauhoi', 'nguoitraloi', 'noidung', 'thoigian']
         });
+        var ansTime = []
+        for (var i = 0; i < cautraloi.length; i++) {
+            ansTime.push(new Date(cautraloi[i].thoigian).toLocaleString('br-FR'));
+        }
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
         userInfo.dataValues.cauhoi = cauhoi;
         userInfo.dataValues.cautraloi = cautraloi;
+        userInfo.dataValues.quesTime = quesTime;
+        userInfo.dataValues.ansTime = ansTime;
         res.render('diendan', userInfo.dataValues);
 
     } else if (userRole == 'covan') {
@@ -106,16 +116,25 @@ const diendan = async (req, res) => {
             where: { malop: req.params.malop },
             attributes: ['macauhoi', 'nguoihoi', 'tieude', 'noidung', 'thoigian']
         });
+        var quesTime = []
+        for (var i = 0; i < cauhoi.length; i++) {
+            quesTime.push(new Date(cauhoi[i].thoigian).toLocaleString('br-FR'));
+        }
         const cautraloi = await Cautraloi.findAll({
             attributes: ['macautraloi', 'macauhoi', 'nguoitraloi', 'noidung', 'thoigian']
         });
-        
+        var ansTime = []
+        for (var i = 0; i < cautraloi.length; i++) {
+            ansTime.push(new Date(cautraloi[i].thoigian).toLocaleString('br-FR'));
+        }
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
         userInfo.dataValues.classId = classId;
         userInfo.dataValues.cauhoi = cauhoi;
         userInfo.dataValues.cautraloi = cautraloi;
+        userInfo.dataValues.quesTime = quesTime;
+        userInfo.dataValues.ansTime = ansTime;
         res.render('diendan', userInfo.dataValues);
     }
 }

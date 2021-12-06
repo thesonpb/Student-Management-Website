@@ -42,8 +42,7 @@
                         </div>
                     </form>
 
-
-                    <% if (cauhoi) { %>
+                    <% if (cauhoi && quesTime) { %>
                         <% for (var i=0; i < cauhoi.length; i++) { %>
                             <div class="question">
                                 <div class="ques-inf">
@@ -55,7 +54,7 @@
                                             <%= cauhoi[i].nguoihoi %>
                                         </p>
                                         <p class="post-time">
-                                            <%= cauhoi[i].thoigian %>
+                                            <%= quesTime[i] %>
                                         </p>
                                     </div>
                                     <div class="inf-item more dropdown">
@@ -92,7 +91,7 @@
                                             </div>
                                         </form>
 
-                                        <% if (cautraloi) { %>
+                                        <% if (cautraloi && ansTime) { %>
                                             <% for (var j=0; j < cautraloi.length; j++) { %>
                                                 <% if (cautraloi[j].macauhoi==cauhoi[i].macauhoi) { %>
                                                     <div class="answer ml-3 mt-4 p-3">
@@ -102,8 +101,7 @@
                                                                     <%= cautraloi[j].nguoitraloi %>
                                                                 </p>
                                                                 <p class="ans-posttime mt-1 ml-0 mb-2">
-                                                                    <%= cautraloi[j].thoigian %>
-                                                                </p>
+                                                                    <%= ansTime[j] %>                                                                </p>
                                                             </div>
                                                             <div class="more-ans dropdown">
                                                                 <i class="ti-more mr-0" data-toggle="dropdown"></i>

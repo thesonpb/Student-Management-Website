@@ -11,9 +11,11 @@
         <% if(user.vaitro == 'covan') { %>
         <a href="/myclass/<%= email %>/<%= sinhvien[0].malop %>"><li data-rel="1" class="">Sinh viên</li></a>
         <% } %>
+        <% if(sinhvien) { %>
         <a href="/hoc-tap/<%= sinhvien[0].malop %>"><li data-rel="2" class="">Học tập</li></a>
         <a href="/ren-luyen/<%= sinhvien[0].malop %>"><li data-rel="3" class="">Rèn luyện</li></a>
         <a href="/dien-dan/<%= sinhvien[0].malop %>"><li data-rel="5" class="">Diễn đàn</li></a>
+        <% } %>
     </ul>
 
     <label for="">Khác</label>

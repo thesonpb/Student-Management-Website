@@ -49,9 +49,18 @@ const diendan = async (req, res) => {
             ],
             attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
         });
+        const cauhoi = await Cauhoi.findAll({
+            where: { malop: req.params.malop },
+            attributes: ['macauhoi', 'nguoihoi', 'tieude', 'noidung', 'thoigian']
+        });
+        const cautraloi = await Cautraloi.findAll({
+            attributes: ['macauhoi', 'nguoitraloi', 'noidung', 'thoigian']
+        });
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
+        userInfo.dataValues.cauhoi = cauhoi;
+        userInfo.dataValues.cautraloi = cautraloi;
         res.render('diendan', userInfo.dataValues);
 
     } else if (userRole == 'covan') {

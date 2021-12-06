@@ -575,7 +575,7 @@ p.post-time {
     border-radius: 12px;
     background-color: #444857;
     left: -70px !important;
-    top: 8px !important;
+    top: -8px !important;
 
 }
 
@@ -610,11 +610,41 @@ p.post-time {
 .answer .ans-content {
     word-wrap: break-word;
 }
-
 /* profile css */
+/* profile css */
+#malop {
+    display: none;
+}
+
+input#save[type="submit"] {
+    display: none;
+}
+
+#uploadAvatar{
+    position: relative;
+    /* left: 35%; */
+    bottom: 16%;
+    /* overflow: hidden; */
+    border: none;
+    border-radius: 50%;
+    padding: 12px 0px;
+    background: #555;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+input[type=file]::file-selector-button {
+    display: none;
+}
+
+input {
+  width: 150px;
+}
+
 .emp-profile{
     padding: 3%;
-    margin-top: 6%;
+    margin-top: 10%;
     border: 1px solid #ccc;
     border-radius: 12px;
     padding: 64px;
@@ -640,9 +670,9 @@ p.post-time {
 }
 .profile-img .file {
     position: relative;
-    left: 56%;
+    /* left: 20%; */
     bottom: 16%;
-    overflow: hidden;
+    /* overflow: hidden; */
     border: none;
     border-radius: 50%;
     padding: 12px 0px;
@@ -703,7 +733,6 @@ p.post-time {
     font-weight: 600;
     color: #fff;
 }
-
 
 
 /* .rightsidebar {

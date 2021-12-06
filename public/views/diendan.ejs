@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Học tập</title>
+    <title>Diễn đàn</title>
     <link rel="stylesheet" href="/assets/css/teacher.css">
     <link rel="stylesheet" href="/assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
 
@@ -47,7 +47,11 @@
                             <div class="question">
                                 <div class="ques-inf">
                                     <div class="inf-item author-ava">
-                                        <img src="/assets/img/IMG_8672.png" alt="" class="">
+                                        <% if(avatar) {%>
+                                            <img src=<%= avatar %> alt=""/>
+                                        <% }else{ %>
+                                            <img src="/assets/img/IMG_8672.png" alt=""/>
+                                        <% } %>
                                     </div>
                                     <div class="inf-item">
                                         <p class="author-name">
@@ -80,7 +84,7 @@
                                     <!-- <p class="question-like"><i class="ti-heart"></i>Yêu thích</p> -->
                                     <button class=" question-cmt-btn ml-3 p-2" data-toggle="collapse"
                                         data-target="#respone-<%=i%>"><i class="ti-comment"></i>Bình luận</button>
-                                    <div id="respone-<%=i%>" class="collapse">
+                                    <div id="respone-<%=i%>" class="collapse show">
                                         <hr>
                                         <form
                                             action="/upload/answer/<%= sinhvien[0].malop %>/<%= hoten %>/<%= cauhoi[i].macauhoi %>"
@@ -94,15 +98,14 @@
                                         <% if (cautraloi && ansTime) { %>
                                             <% for (var j=0; j < cautraloi.length; j++) { %>
                                                 <% if (cautraloi[j].macauhoi==cauhoi[i].macauhoi) { %>
-                                                    <div id = "ans-<%=i%>" class="d-flex flex-column answer ml-3 mt-4 p-3">
+                                                    <div class="d-flex flex-column answer ml-3 mt-4 p-3">
                                                         <div class="d-flex justify-content-between">
                                                             <div class="col-md-11 pl-0">
                                                                 <p class="mt-0 ml-0 mb-0">
                                                                     <%= cautraloi[j].nguoitraloi %>
                                                                 </p>
                                                                 <p class="ans-posttime mt-1 ml-0 mb-2">
-                                                                    <%= ansTime[j] %>
-                                                                </p>
+                                                                    <%= ansTime[j] %>                                                                </p>
                                                             </div>
                                                             <div class="more-ans dropdown" data-toggle="dropdown">
                                                                 <i class="ti-more mr-0" ></i>

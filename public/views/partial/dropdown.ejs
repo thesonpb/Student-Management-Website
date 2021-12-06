@@ -2,7 +2,9 @@
 
 <!-- drop down -->
 <div class="dropdown">
-    <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="/assets/img/IMG_8672.png" alt=""
+    
+    <% if(avatar) {%>
+        <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src=<%= avatar %> alt=""
         data-toggle="dropdown">
     <!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
     <ul class="dropdown-menu" id="dropdown-list">
@@ -24,7 +26,3 @@
                 <li id="logout"><a href="/logout">Đăng xuất</a></li>
     </ul>
 </div>
-
-<script>
-
-</script>

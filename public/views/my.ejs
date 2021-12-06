@@ -48,7 +48,7 @@
                                         <div class="adding-id-inf col-md-4">
                                             <h2 class="name-inf">MSSV</h2>
                                             <input id="stu-id" autocomplete="off" type="text" class="input-inf" required
-                                                name="mssv" placeholder="mã sv" />
+                                                name="MSSV" placeholder="mã sv" />
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Họ tên</h2>
@@ -63,12 +63,12 @@
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Lớp khoá học</h2>
                                             <input id="stu-class-id" autocomplete="off" type="text" class="input-inf" required
-                                                placeholder="Mã lớp" name="malop" />
+                                                placeholder="Mã lớp" name="malop" readonly/>
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Email</h2>
                                             <input id="stu-email" autocomplete="off" type="email" class="input-inf" 
-                                                placeholder="email" name="email" />
+                                                placeholder="Email" name="email" />
                                         </div>
                                         <div class="adding-name-inf col-md-4">
                                             <h2 class="name-inf">Sđt</h2>
@@ -90,9 +90,7 @@
                                             class="adding-btn btn align-self-center ml-auto mr-auto col-md-2">
                                     </form>
                                         <!--CHART-->
-
                                     <div id="chart-static" class="collapse row justify-content-center mt-5">
-
                                         <div class="col-md-10">
                                             <canvas id="myChart"></canvas>
                                             <script>
@@ -141,7 +139,6 @@
                                                         },
                                                         responesive: true
                                                     }                                                        
-
                                                 });
                                             </script>
                                         </div>
@@ -213,7 +210,6 @@
                                                                     <td>
                                                                         <%= sinhvien[i].diachi %>
                                                                     </td>
-
                                                                     <td>
                                                                         <div data-toggle="modal" data-target="#del-stu"
                                                                             class="delete-btn btn red-btn mt-0"
@@ -231,14 +227,12 @@
                                                                                     <span class="close-del"
                                                                                         data-dismiss="modal"
                                                                                         title="Đóng">×</span>
-
                                                                                     <h1>Xoá sinh viên</h1>
                                                                                     <p>Bạn có muốn xoá sinh viên này
                                                                                         khỏi danh
                                                                                         sách và toàn bộ thông tin liên
                                                                                         quan đến
                                                                                         sinh viên?</p>
-
                                                                                     <div class="clearfix">
                                                                                         <button type="button"
                                                                                             data-dismiss="modal"
@@ -268,7 +262,6 @@
                                                                             <input type="submit" value="Xem hồ sơ">
                                                                         </form>
                                                                     </td> -->
-
                                                                     <% } %>
                                                             </tr>
                                                             <% } %>
@@ -278,9 +271,6 @@
                                         </div>
                     </div>
                 </div>
-
                 <script src="/assets/js/teacher.js"></script>
-
 </body>
-
 </html>

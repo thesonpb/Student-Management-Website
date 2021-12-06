@@ -29,8 +29,8 @@ const getProfile = async (req, res) => {
     });
 
     profile.dataValues.ngaysinhProfile = ngaysinhchuan.ngaysinh;
-    profile.dataValues.gpaProfile = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
-    profile.dataValues.tinchiProfile = tongtinchi;
+    profile.dataValues.gpa = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
+    profile.dataValues.tongtinchi = tongtinchi;
     profile.dataValues.vaitroProfile = 'sinhvien';
     profile.dataValues.sinhvien = sinhviens;
     profile.dataValues.hotenProfile = profile.dataValues.hoten;
@@ -65,6 +65,7 @@ const getProfileCovan = async (req, res) => {
     profile.dataValues.khoaProfile = profile.dataValues.khoa;
     profile.dataValues.emailProfile = username;
     profile.dataValues.sdtProfile = profile.dataValues.sdt;
+    profile.dataValues.malop = malop;
 
     res.render('profile', profile.dataValues);
 }
@@ -114,7 +115,8 @@ const uploadAvatar = async (req, res) => {
     await profile.update({ avatar: avatarPath });
     await profile.save();
 
-    res.redirect('/profile');
+
+    res.redirect('back');
 }
 
 const viewStudentProfile = async (req, res) => {

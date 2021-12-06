@@ -126,8 +126,8 @@ function route(app){
     app.post('/add/student/:email/:malop', controller.addStudent)
     app.get('/hoctap', controller.hoctap)
 
-    app.post('/student/editprofile/:mssv', controller.studentEditProfile)
-    app.post('/teacher/editprofile/:email/:malop', controller.teacherEditProfile)
+    app.patch('/student/editprofile/:mssv', controller.studentEditProfile)
+    app.patch('/teacher/editprofile/:email/:malop', controller.teacherEditProfile)
 
     app.post('/student/delete/:mssv/:email/:malop', authJWT.isAdvisor, controller.deleteStudent)
     app.post('/teacher/delete/:email', controller.deleteTeacher)

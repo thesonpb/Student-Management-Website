@@ -94,17 +94,18 @@
                                         <% if (cautraloi && ansTime) { %>
                                             <% for (var j=0; j < cautraloi.length; j++) { %>
                                                 <% if (cautraloi[j].macauhoi==cauhoi[i].macauhoi) { %>
-                                                    <div class="answer ml-3 mt-4 p-3">
+                                                    <div id = "ans-<%=i%>" class="d-flex flex-column answer ml-3 mt-4 p-3">
                                                         <div class="d-flex justify-content-between">
                                                             <div class="col-md-11 pl-0">
                                                                 <p class="mt-0 ml-0 mb-0">
                                                                     <%= cautraloi[j].nguoitraloi %>
                                                                 </p>
                                                                 <p class="ans-posttime mt-1 ml-0 mb-2">
-                                                                    <%= ansTime[j] %>                                                                </p>
+                                                                    <%= ansTime[j] %>
+                                                                </p>
                                                             </div>
-                                                            <div class="more-ans dropdown">
-                                                                <i class="ti-more mr-0" data-toggle="dropdown"></i>
+                                                            <div class="more-ans dropdown" data-toggle="dropdown">
+                                                                <i class="ti-more mr-0" ></i>
                                                                 <form method="post"
                                                                     action="/answer/delete/<%= cautraloi[j].macautraloi %>"
                                                                     class="dropdown-menu p-0" id="more-drop">

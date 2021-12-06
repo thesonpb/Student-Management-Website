@@ -22,6 +22,7 @@ html body {
     min-width: 86px;
     max-height: 50px;
     border-radius: 8px;
+    opacity: 0.9;
     cursor: pointer;
 }
 
@@ -40,12 +41,12 @@ html body {
 }
 
 .main .green-btn {
-    background-color: #47CF73;
+    background-color: #47CF73 !important;
     min-width: 40px;
 }
 
 .main .btn:hover {
-    opacity: 0.8;
+    opacity: 1;
     color: #fff;
 }
 
@@ -549,7 +550,7 @@ p.post-time {
 
 .question-respone .input-ans{
     width: 90%;
-    border-radius: 16px;
+    border-radius: 12px;
 }
 
 .question-respone .answer {
@@ -610,7 +611,7 @@ p.post-time {
 .answer .ans-content {
     word-wrap: break-word;
 }
-/* profile css */
+
 /* profile css */
 #malop {
     display: none;
@@ -627,8 +628,8 @@ input#save[type="submit"] {
     /* overflow: hidden; */
     border: none;
     border-radius: 50%;
-    padding: 12px 0px;
-    background: #555;
+    padding: 14px 0px;
+    background: #444857;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -676,10 +677,15 @@ input {
     border: none;
     border-radius: 50%;
     padding: 12px 0px;
-    background: #555;
+    background: #444857;
     width: 50px;
     height: 50px;
 }
+
+.profile-img .file:hover {
+    background-color: #5a6072;
+}
+
 .profile-img .file input {
     opacity: 0;
 }

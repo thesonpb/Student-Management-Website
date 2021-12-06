@@ -38,7 +38,7 @@
                         <input required role="textbox" spellcheck="true" class="input-content ml-1" name="content">
                         <div>
                             <input type="submit" value="Đăng lên" class="btn">
-                            <div class="btn red-btn js-close-btn">Huỷ bỏ</div>
+                            <div class="btn red-btn js-close-btn ml-2">Huỷ bỏ</div>
                         </div>
                     </form>
 
@@ -90,7 +90,7 @@
                                             action="/upload/answer/<%= sinhvien[0].malop %>/<%= hoten %>/<%= cauhoi[i].macauhoi %>"
                                             id="answer" class="d-flex flex-column" method="post">
                                             <div class="d-flex justify-content-between mt-2 ml-3">
-                                                <input class="input-ans" required type="text" name="content">
+                                                <input class="input-ans col-md-10" required type="text" name="content">
                                                 <input type="submit" value="Gửi" class="btn mt-0">
                                             </div>
                                         </form>
@@ -107,8 +107,10 @@
                                                                 <p class="ans-posttime mt-1 ml-0 mb-2">
                                                                     <%= ansTime[j] %>                                                                </p>
                                                             </div>
-                                                            <div class="more-ans dropdown" data-toggle="dropdown">
-                                                                <i class="ti-more mr-0" ></i>
+                                                            <div class="dropdown">
+                                                                <div class="more-ans" data-toggle="dropdown">
+                                                                    <i class="ti-more mr-0" ></i>
+                                                                </div>
                                                                 <form method="post"
                                                                     action="/answer/delete/<%= cautraloi[j].macautraloi %>"
                                                                     class="dropdown-menu p-0" id="more-drop">

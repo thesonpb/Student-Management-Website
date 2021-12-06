@@ -137,3 +137,36 @@ $('#logout').click(function () {
     $(".class-list").val($(".class-list option:first"));
     localStorage.removeItem("myselect");
 })
+
+const mssvWarning = document.getElementById('mssv-warning')
+const add_stu = document.querySelector('add-stu');
+    add_stu.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if(validate()){
+            const mssv = add_stu.mssv.value;
+            const hoten = add_stu.hoten.value;
+            const ngaysinh = add_stu.ngaysinh.value;
+            const malop = add_stu.malop.value;
+            const email = add_stu.email.value;
+            const sdt = add_stu.sdt.value;
+            const sdtphuhuynh = add_stu.sdtphuhuynh.value;
+            const diachi = add_stu.diachi.value;
+        
+            const emailcovan = document.getElementById('emaildangxem').value;
+            const malopdangxem = document.getElementById('malopdangxem').value;
+            try{
+                const res = await fetch(`/add/student/${emailcovan}/${malopdangxem}`, {
+                    method: 'POST',
+                    body: JSON.stringify({mssv, hoten, ngaysinh, malop, email, sdt, sdtphuhuynh, diachi}),
+                    headers: {'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                if(data.message){
+                    mssvWarning.innerHTML = data.message;
+                    mssvWarning.style.display = "block";
+                }
+            }catch(e){
+                console.log(e);
+            }
+        }
+    })

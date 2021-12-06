@@ -20,6 +20,7 @@
 
 <body>
     <input type="hidden" value="<%= malopdangxem %>" id="malopdangxem">
+    <input type="hidden" value="<%= email %>" id="emaildangxem">
     <%- include ("partial/leftsidebar") %>
         <%- include ("partial/dropdown") %>
             <%- include ("partial/chonlop") %>
@@ -42,6 +43,7 @@
                                     </button>
                                     <form id="add-stu" class="adding-member flex-wrap collapse"
                                         action="/add/student/<%= email %>/<%= sinhvien[0].malop %>" method="post">
+                                        <p id="mssv-warning"></p>
                                         <!-- <img src="/assets/img/IMG_8672.png" alt="" class="adding-avt"> -->
                                         <div class="adding-id-inf col-md-4">
                                             <h2 class="name-inf">MSSV</h2>

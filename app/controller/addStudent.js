@@ -6,6 +6,11 @@ const Taikhoan = db.Taikhoan;
 
 
 const addStudent = async (req, res) => {
+    await Sinhvien.findOne({ where: { mssv: req.body.mssv } }).then(user => {
+        if (user) {
+            return res.status(404).json({ message: "MSSV đã tồn tại" });
+        }
+    });
     var emailcovan = req.params.email;
     var malopcu = req.params.malop;
     var mssv = (req.body.mssv);

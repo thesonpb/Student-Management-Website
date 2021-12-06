@@ -10,23 +10,23 @@ html {
 
 html body {
     width: 100%;
-    background-color: #18191a;
+    background-color: #131417;
     color: #fff;
 }
 
 .main .btn {
     color: #fff;
-    background-color: #71be34;
+    background-color: #47CF73;
     padding: 8px 24px;
     margin-top: 16px;
     min-width: 86px;
     max-height: 50px;
-    border-radius: 16px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
 .main .red-btn {
-    background-color: #ff3333;
+    background-color: #f44336;
     min-width: 40px;
 }
 
@@ -40,7 +40,7 @@ html body {
 }
 
 .main .green-btn {
-    background-color: #71be34;
+    background-color: #47CF73;
     min-width: 40px;
 }
 
@@ -51,7 +51,7 @@ html body {
 
 /* css phần form nhập ở diễn đàn và thông báo */
 .form {
-    background-color: #3a3b3c;
+    background-color: #2c303a;
     padding: 16px;
     display: block;
     flex-direction: column;
@@ -112,13 +112,13 @@ html body {
 }
 
 tr {
-    background-color: #2a2b2c;
+    background-color: #1d1e22;
     border-radius: 16px;
     text-align: center;
 }
 
 tr:nth-child(odd){
-    background-color: #3a3b3c;
+    background-color: #40434d;
 }
 
 th { 
@@ -141,7 +141,7 @@ th {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #18191a;
+    background-color: #1e1f25;
     overflow-x: hidden;
     padding: 20px 10px 0 10px;
     border-radius: 5px;
@@ -227,7 +227,7 @@ th {
 /* css mục sinh viên*/
 .main .adding-member {
     display: flex;
-    background-color: #3a3b3c;
+    background-color: #2c303a;
     padding: 16px;
     border-radius: 12px;
     margin-top: 16px;
@@ -413,7 +413,7 @@ th {
 /* diễn đàn css */
 .main .question {
     color: #fff;
-    background-color: #242526;
+    background-color: #1e1f25;
     border-radius: 12px;
     padding: 16px;
     margin-top: 64px;
@@ -473,7 +473,7 @@ p.post-time {
 }
 
 .ques-inf .more:hover {
-    background-color: #3a3b3c;
+    background-color: #444857;
 }
 
 .ques-inf #more-drop {
@@ -481,13 +481,14 @@ p.post-time {
     min-width: 0;
     width: 80px;
     border-radius: 12px;
-    background-color: #3a3b3c;
+    background-color: #444857;
     left: -70px !important;
+    top: 8px !important;
 }
 
 .ques-inf .del-ques {
     width: 80px;
-    background-color: #3a3b3c;
+    background-color: #444857;
     border-radius: 12px;
     border: none;
     color: #fff;
@@ -533,15 +534,15 @@ p.post-time {
 .question .question-cmt-btn {
     cursor: pointer;
     color: #fff;
-    background-color: #242526;
-    border: 1px solid white ;
+    background-color: #444857;
     display: inline-block;
-    border-radius: 12px;
+    border-radius: 6px;
+    border: none;
     width: 180px;
 }
 
 .question .question-cmt-btn:hover {
-    background-color: #3a3b3c;
+    background-color: #5a6072;
 }
 
 .question-respone .input-ans{
@@ -550,7 +551,7 @@ p.post-time {
 }
 
 .question-respone .answer {
-    background-color: #3a3b3c;
+    background-color: #2c303a;
     border-radius: 16px;
     font-weight: 200;
     display: inline-block;
@@ -566,14 +567,15 @@ p.post-time {
     min-width: 0;
     width: 80px;
     border-radius: 12px;
-    background-color: #242526;
+    background-color: #444857;
     left: -70px !important;
+    top: 8px !important;
 
 }
 
 .answer .del-ans {
     width: 80px;
-    background-color: #242526;
+    background-color: #444857;
     border-radius: 12px;
     border: none;
     color: #fff;
@@ -587,7 +589,7 @@ p.post-time {
 .answer .more-ans {
     display: flex;
     border-radius: 50%;
-    width: 40px;
+    width: 115px;
     height: 40px;
     align-items: center;
     justify-content: center;
@@ -737,7 +739,7 @@ body > .dropdown {
     flex-direction: column;
     position: absolute;
     z-index: 1;
-    background-color: #242526;
+    background-color: #1e1f26;
     min-width: 230px;
     box-shadow: 0 0 2px rgba(192, 192, 192, 0.8);
     z-index: 1;
@@ -866,7 +868,7 @@ body > .dropdown {
   }
   
  .delete-confirmation .modal-content {
-    background-color: #242526;
+    background-color: #2c303a;
     border: 1px solid #888;    
   }
  

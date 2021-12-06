@@ -42,6 +42,7 @@
                         </div>
                     </form>
 
+
                     <% if (cauhoi) { %>
                         <% for (var i=0; i < cauhoi.length; i++) { %>
                             <div class="question">
@@ -95,23 +96,27 @@
                                             <% for (var j=0; j < cautraloi.length; j++) { %>
                                                 <% if (cautraloi[j].macauhoi==cauhoi[i].macauhoi) { %>
                                                     <div class="answer ml-3 mt-4 p-3">
-                                                        <p class="mt-0 ml-0 mb-0">
-                                                            <%= cautraloi[j].nguoitraloi %>
-                                                        </p>
-                                                        <p class="ans-posttime mt-1 ml-0 mb-2">
-                                                            <%= cautraloi[j].thoigian %>
-                                                        </p>
+                                                        <div class="d-flex justify-content-between">
+                                                            <div class="col-md-11 pl-0">
+                                                                <p class="mt-0 ml-0 mb-0">
+                                                                    <%= cautraloi[j].nguoitraloi %>
+                                                                </p>
+                                                                <p class="ans-posttime mt-1 ml-0 mb-2">
+                                                                    <%= cautraloi[j].thoigian %>
+                                                                </p>
+                                                            </div>
+                                                            <div class="more-ans dropdown">
+                                                                <i class="ti-more mr-0" data-toggle="dropdown"></i>
+                                                                <form method="post"
+                                                                    action="/answer/delete/<%= cautraloi[j].macautraloi %>"
+                                                                    class="dropdown-menu p-0" id="more-drop">
+                                                                    <button type="submit" class="del-ans">Xoá</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
                                                         <p class="mb-1">
                                                             <%= cautraloi[j].noidung %>
                                                         </p>
-                                                        <div class="inf-item more dropdown">
-                                                            <i class="ti-more " data-toggle="dropdown"></i>
-                                                            <form method="post"
-                                                                action="/answer/delete/<%= cautraloi[j].macautraloi %>"
-                                                                class="dropdown-menu p-0" id="more-drop">
-                                                                <button type="submit" class="del-ques">Xoá</button>
-                                                            </form>
-                                                        </div>
                                                     </div>
                                                     
                                                     <% } %>
@@ -122,6 +127,9 @@
                             </div>
                             <% } %>
                                 <% } %>
+
+                               
+
                 </div>
                 <script src="/assets/js/diendan.js"></script>
 

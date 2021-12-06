@@ -10,7 +10,6 @@ const Op = Sequelize.Op;
 //
 const teacherInfo = async (req, res) => {
     if (res.locals.user.vaitro == 'sinhvien') res.redirect('/my');
-    // const username = res.locals.user.tennguoidung;
     const username = req.params.email;
     let userInfo = '';
     let malop = req.params.malop;
@@ -22,10 +21,11 @@ const teacherInfo = async (req, res) => {
     userInfo.dataValues.vaitro = 'covan';
     const sinhviens = await Sinhvien.findAll({
         where: { malop: malop },
-        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi'],
+        attributes: ['mssv', 'hoten', 'ngaysinh', 'malop', 'email', 'sdt', 'sdtphuhuynh', 'diachi']
     });
+
     let arr = [];
-    for (var i=0; i < sinhviens.length; i++) {
+    for (var i = 0; i < sinhviens.length; i++) {
         let tonggpa = await Bangdiem.findAll({
             where: { mssv: sinhviens[i].mssv },
             attributes: [[Sequelize.literal('SUM(gpa * tinchi)'), 'result']]
@@ -35,11 +35,11 @@ const teacherInfo = async (req, res) => {
     }
     var xs = 0, g = 0, k = 0, tb = 0, y = 0;
     arr.forEach(a => {
-        if (a >= 3.6) xs ++;
-        if (a <3.6 && a >= 3.2) g ++;
-        if (a <3.2 && a >= 2.5) k ++;
-        if (a <2.5 && a >= 2) tb ++;
-        if (a <2) y ++;
+        if (a >= 3.6) xs++;
+        if (a < 3.6 && a >= 3.2) g++;
+        if (a < 3.2 && a >= 2.5) k++;
+        if (a < 2.5 && a >= 2) tb++;
+        if (a < 2) y++;
 
     })
     diemsinhvien = await Sinhvien.findAll({

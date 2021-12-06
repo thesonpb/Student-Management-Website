@@ -1,0 +1,24 @@
+<!-- chọn lớp -->
+<% if(user.vaitro=='covan' ) { %>
+    <form class="right-nav" method="get" action="">
+        <% if(user.tennguoidung) { %>
+            <input name="emailcovan" type="hidden" value="<%= user.tennguoidung %>">
+            <% } %>
+                <select name="class" class="selectpicker class-list" data-header="--Chọn mã lớp học--"
+                    onchange='
+                        if(this.value != 0) { 
+                            localStorage.setItem("myselect", this.value);
+                            var select = localStorage.getItem("myselect");
+                            this.form.action=`/myclass/<%= user.tennguoidung %>/${select}`;
+                            this.form.submit(); 
+                        }'>
+                    <% if(classId) { %>
+                        <% for (var i=0; i < classId.length; i++) { %>
+                            <option data-rel="1">
+                                <%= classId[i].malop %>
+                            </option>
+                            <% } %>
+                                <% } %>
+                </select>
+    </form>
+    <% } %>

@@ -3,6 +3,7 @@ $(`li[data-rel="${1}"]`).addClass('active')
 var editionMode = false;
 var stdTable = $('#student-table');
 var tbody = $('.stu-table-body')
+$('#stu-class-id').val(document.getElementById('malopdangxem').value);
 
 //Sửa 1 dong trong danh sách
 function onEditRow(e) {

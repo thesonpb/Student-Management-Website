@@ -61,7 +61,7 @@ const isStudent = (req, res, next) => {
     if(role == 'sinhvien'){
         next();
     }else{
-        res.status(403).send('Unauthorized');
+        res.status(403).render('403');
     }
 }
 
@@ -69,7 +69,7 @@ const isAdvisor = (req, res, next) => {
     if(role == 'covan'){
         next();
     }else{
-        res.status(403).send('Unauthorized');
+        res.status(403).render('403');
     }
 }
 
@@ -77,9 +77,10 @@ const isAdmin = (req, res, next) => {
     if(role == 'admin'){
         next();
     }else{
-        res.status(403).send('Unauthorized');
+        res.status(403).render('403');
     }
 }
+
 
 const authJWT = {
     verifyToken: verifyToken,

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Học tập</title>
+    <title>Diễn đàn</title>
     <link rel="stylesheet" href="/assets/css/teacher.css">
     <link rel="stylesheet" href="/assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
 
@@ -42,20 +42,23 @@
                         </div>
                     </form>
 
-
-                    <% if (cauhoi) { %>
+                    <% if (cauhoi && quesTime) { %>
                         <% for (var i=0; i < cauhoi.length; i++) { %>
                             <div class="question">
                                 <div class="ques-inf">
                                     <div class="inf-item author-ava">
-                                        <img src="/assets/img/IMG_8672.png" alt="" class="">
+                                        <% if(avatar) {%>
+                                            <img src=<%= avatar %> alt=""/>
+                                        <% }else{ %>
+                                            <img src="/assets/img/IMG_8672.png" alt=""/>
+                                        <% } %>
                                     </div>
                                     <div class="inf-item">
                                         <p class="author-name">
                                             <%= cauhoi[i].nguoihoi %>
                                         </p>
                                         <p class="post-time">
-                                            <%= cauhoi[i].thoigian %>
+                                            <%= quesTime[i] %>
                                         </p>
                                     </div>
                                     <div class="inf-item more dropdown">
@@ -71,7 +74,7 @@
                                     <h3 class="question-subject">
                                         <%= cauhoi[i].tieude %>
                                     </h3>
-                                    <p class="question-content ml-4">
+                                    <p class="question-content ml-3">
                                         <%= cauhoi[i].noidung %>
                                     </p>
                                 </div>
@@ -81,7 +84,7 @@
                                     <!-- <p class="question-like"><i class="ti-heart"></i>Yêu thích</p> -->
                                     <button class=" question-cmt-btn ml-3 p-2" data-toggle="collapse"
                                         data-target="#respone-<%=i%>"><i class="ti-comment"></i>Bình luận</button>
-                                    <div id="respone-<%=i%>" class="collapse">
+                                    <div id="respone-<%=i%>" class="collapse show">
                                         <hr>
                                         <form
                                             action="/upload/answer/<%= sinhvien[0].malop %>/<%= hoten %>/<%= cauhoi[i].macauhoi %>"
@@ -92,21 +95,20 @@
                                             </div>
                                         </form>
 
-                                        <% if (cautraloi) { %>
+                                        <% if (cautraloi && ansTime) { %>
                                             <% for (var j=0; j < cautraloi.length; j++) { %>
                                                 <% if (cautraloi[j].macauhoi==cauhoi[i].macauhoi) { %>
-                                                    <div class="answer ml-3 mt-4 p-3">
+                                                    <div class="d-flex flex-column answer ml-3 mt-4 p-3">
                                                         <div class="d-flex justify-content-between">
                                                             <div class="col-md-11 pl-0">
                                                                 <p class="mt-0 ml-0 mb-0">
                                                                     <%= cautraloi[j].nguoitraloi %>
                                                                 </p>
                                                                 <p class="ans-posttime mt-1 ml-0 mb-2">
-                                                                    <%= cautraloi[j].thoigian %>
-                                                                </p>
+                                                                    <%= ansTime[j] %>                                                                </p>
                                                             </div>
-                                                            <div class="more-ans dropdown">
-                                                                <i class="ti-more mr-0" data-toggle="dropdown"></i>
+                                                            <div class="more-ans dropdown" data-toggle="dropdown">
+                                                                <i class="ti-more mr-0" ></i>
                                                                 <form method="post"
                                                                     action="/answer/delete/<%= cautraloi[j].macautraloi %>"
                                                                     class="dropdown-menu p-0" id="more-drop">
@@ -114,7 +116,7 @@
                                                                 </form>
                                                             </div>
                                                         </div>
-                                                        <p class="mb-1">
+                                                        <p class="mb-1 ans-content">
                                                             <%= cautraloi[j].noidung %>
                                                         </p>
                                                     </div>

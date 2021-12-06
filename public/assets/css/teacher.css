@@ -503,12 +503,14 @@ p.post-time {
     font-size: 28px;
     font-weight: 400;
     margin: 16px 16px 8px;
+    word-wrap: break-word;
 }
 
 .question .question-content {
     font-size: 16px; 
     color: #ddd;
     font-weight: 200;
+    word-wrap: break-word;
 }
 
 .question .question-respone {
@@ -562,6 +564,10 @@ p.post-time {
     color: rgb(170, 166, 166);
 }
 
+.answer {
+    max-width: 95%;
+}
+
 .answer #more-drop {
     position: relative;
     min-width: 0;
@@ -569,7 +575,7 @@ p.post-time {
     border-radius: 12px;
     background-color: #444857;
     left: -70px !important;
-    top: 8px !important;
+    top: -8px !important;
 
 }
 
@@ -589,7 +595,7 @@ p.post-time {
 .answer .more-ans {
     display: flex;
     border-radius: 50%;
-    width: 115px;
+    width: 40px;
     height: 40px;
     align-items: center;
     justify-content: center;
@@ -601,10 +607,44 @@ p.post-time {
     background-color: #242526;
 }
 
+.answer .ans-content {
+    word-wrap: break-word;
+}
 /* profile css */
+/* profile css */
+#malop {
+    display: none;
+}
+
+input#save[type="submit"] {
+    display: none;
+}
+
+#uploadAvatar{
+    position: relative;
+    /* left: 35%; */
+    bottom: 16%;
+    /* overflow: hidden; */
+    border: none;
+    border-radius: 50%;
+    padding: 12px 0px;
+    background: #555;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+input[type=file]::file-selector-button {
+    display: none;
+}
+
+input {
+  width: 150px;
+}
+
 .emp-profile{
     padding: 3%;
-    margin-top: 6%;
+    margin-top: 10%;
     border: 1px solid #ccc;
     border-radius: 12px;
     padding: 64px;
@@ -630,9 +670,9 @@ p.post-time {
 }
 .profile-img .file {
     position: relative;
-    left: 56%;
+    /* left: 20%; */
     bottom: 16%;
-    overflow: hidden;
+    /* overflow: hidden; */
     border: none;
     border-radius: 50%;
     padding: 12px 0px;
@@ -693,7 +733,6 @@ p.post-time {
     font-weight: 600;
     color: #fff;
 }
-
 
 
 /* .rightsidebar {

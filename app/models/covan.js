@@ -21,6 +21,9 @@ module.exports = (sequelize, Sequelize) => {
         khoa: {
             type: Sequelize.STRING
         },
+        avatar: {
+            type: Sequelize.STRING
+        },
     }, {
         timestamps: false
     });

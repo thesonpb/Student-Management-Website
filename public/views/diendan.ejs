@@ -58,7 +58,7 @@
                                         </p>
                                     </div>
                                     <div class="inf-item more dropdown" data-toggle="dropdown">
-                                        <i class="ti-more" ></i>
+                                        <i class="ti-more"></i>
                                         <form method="post" action="/question/delete/<%= cauhoi[i].macauhoi %>"
                                             class="dropdown-menu p-0" id="more-drop">
                                             <button type="submit" class="del-ques">Xoá</button>
@@ -89,38 +89,39 @@
                                                 <input class="input-ans" required type="text" name="content">
                                                 <input type="submit" value="Gửi" class="btn mt-0">
                                             </div>
-                                            <% if (cautraloi) { %>
-                                            <% for (var j=0; j < cautraloi.length; j++) { %>
-                                            <% if (cautraloi[j].macauhoi == cauhoi[i].macauhoi) { %>
-                                            <div class="answer ml-3 mt-4 p-3">
-                                                <div class="d-flex justify-content-between">
-                                                    <div class="ans-info col-md-11">
-                                                        <p class="mt-0 ml-0 mb-0">
-                                                            <%= cautraloi[j].nguoitraloi %>
-                                                        </p>
-                                                        <p class="ans-posttime mt-1 ml-0 mb-2">
-                                                            <%= cautraloi[j].thoigian %>
-                                                        </p>
-                                                    </div>
-                                                    <div class="ans-info more dropdown more-ans" data-toggle="dropdown">
-                                                        <i class="ti-more mr-0"></i>
-                                                        <div class="dropdown-menu p-0" id="more-drop">
-                                                            <form method="post"
-                                                                action="/answer/delete/<%= cautraloi[j].macautraloi %>"
-                                                                class="dropdown-menu p-0" id="more-drop">
-                                                                <button type="submit" class="del-ans">Xoá</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-1 pl-3">
-                                                    <%= cautraloi[j].noidung %>
-                                                </p>
-                                            </div>
-                                            <% } %>
-                                            <% } %>
-                                            <% } %>
                                         </form>
+
+                                            <% if (cautraloi) { %>
+                                                <% for (var j=0; j < cautraloi.length; j++) { %>
+                                                    <% if (cautraloi[j].macauhoi==cauhoi[i].macauhoi) { %>
+                                                        <div class="answer ml-3 mt-4 p-3">
+                                                            <div class="d-flex justify-content-between">
+                                                                <div class="ans-info col-md-11">
+                                                                    <p class="mt-0 ml-0 mb-0">
+                                                                        <%= cautraloi[j].nguoitraloi %>
+                                                                    </p>
+                                                                    <p class="ans-posttime mt-1 ml-0 mb-2">
+                                                                        <%= cautraloi[j].thoigian %>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="ans-info more dropdown more-ans" data-toggle="dropdown">
+                                                                    <i class="ti-more mr-0"></i>
+                                                                    <div class="dropdown-menu p-0" id="more-drop">
+                                                                        <form method="post" action="/question/delete/<%= cauhoi[i].macauhoi %>"
+                                                                            >
+                                                                            <button type="submit" class="del-ans">Xoá</button>
+                                                                        </form>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            <p class="mb-1 pl-3">
+                                                                <%= cautraloi[j].noidung %>
+                                                            </p>
+                                                        </div>
+                                            <% } %>
+                                                <% } %>
+                                                    <% } %>
                                     </div>
                                 </div>
                             </div>

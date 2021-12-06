@@ -551,6 +551,32 @@ p.post-time {
     color: rgb(170, 166, 166);
 }
 
+.answer #more-drop {
+    position: relative;
+    min-width: 0;
+    width: 80px;
+    border-radius: 12px;
+    background-color: #3a3b3c;
+    left: -70px !important;
+}
+
+.answer .del-ans {
+    width: 80px;
+    background-color: #3a3b3c;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    padding: 4px;
+}
+
+.answer .del-ques:hover {
+    opacity: 0.8;
+}
+
+.answer .ans-info {
+    cursor: pointer;
+}
+
 /* profile css */
 .emp-profile{
     padding: 3%;

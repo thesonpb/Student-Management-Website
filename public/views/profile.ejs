@@ -25,15 +25,24 @@
       <div class="main emp-profile">
         <div class="row profile-header">
             <div class="profile-img col-md-4">
-                <img src="/assets/img/IMG_8672.png" alt="" />
-                <div class="file btn-lg btn-primary">
-                    <i class="ti-camera">
-                        <form action="">
-                            <input type="file" name="file" />
-                        </form>
-                    </i>
-                </div>
+                <% if(avatar) {%>
+                    <img src=<%= avatar %> alt=""/>
+                <% }else{ %>
+                    <img src="/assets/img/IMG_8672.png" alt=""/>
+                <% } %>
+                <% if (user.vaitro==vaitroProfile) { %>
+                    <form action="/uploadImage" enctype="multipart/form-data" method="post">
+                        <label for="img" class="file btn-lg btn-primary"><i class="ti-camera"></i></label>
+                        <input id="img" type="file" name="img"  accept="image/*"/>
+                        
+                        <label id="uploadAvatar" class="btn mt-0 green-btn">
+                            <i class="ti-save"></i>
+                            <input id="save" type="submit" disabled="true">
+                        </label>
+                    </form> 
+                <% } %>
             </div>
+            
             <div class="profile-title col-md-6">
                 <h5 class="profile-name">
                     <%= hotenProfile %>

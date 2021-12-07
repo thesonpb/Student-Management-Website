@@ -29,8 +29,8 @@ const getProfile = async (req, res) => {
     });
 
     profile.dataValues.ngaysinhProfile = ngaysinhchuan.ngaysinh;
-    profile.dataValues.gpa = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
-    profile.dataValues.tongtinchi = tongtinchi;
+    profile.dataValues.gpaProfile = (Math.round(tonggpa[0].dataValues.result / tongtinchi * 100) / 100).toFixed(2);
+    profile.dataValues.tinchiProfile = tongtinchi;
     profile.dataValues.vaitroProfile = 'sinhvien';
     profile.dataValues.sinhvien = sinhviens;
     profile.dataValues.hotenProfile = profile.dataValues.hoten;

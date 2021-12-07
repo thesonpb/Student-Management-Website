@@ -32,13 +32,18 @@
                             công
                             việc</button>
                         <form action="/upload/task" class="form js-todo-form collapse" id="todo-form" method="post">
-                            <label for="sendto">Gửi đến:</label>
-                            <select name="sendto" id="">
+                        <input type="hidden" value="<%= sinhvien[0].malop %>" name="malop">
+                        <input type="hidden" value="<%= email %>" name="email">
+                            
+                            <label for="mssv">Gửi đến:</label>
+                            <select name="mssv" id="">
                                 <option value="all">Cả lớp</option>
-                                <option value="one">Sinh viên</option>
+                            <% if (sinhvien) { %>
+                            <% for (var i=0; i < sinhvien.length; i++) { %>
+                                <option value="<%= sinhvien[i].mssv %>"><%= sinhvien[i].mssv %></option>
+                            <% } %>
+                            <% } %>
                             </select>
-                            <label for="mssv">MSSV:</label>
-                            <input type="text" name="mssv">
                             <label for="">Tiêu đề</label>
                             <input type="text" class="input-subject" name="subject">
                             <hr>

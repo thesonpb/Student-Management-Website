@@ -134,7 +134,7 @@ function route(app){
     app.post('/student/delete/:mssv/:email/:malop', authJWT.isAdvisor, controller.deleteStudent)
     app.post('/teacher/delete/:email', controller.deleteTeacher)
 
-    app.post('/upload/task', controller.uploadTask)
+    app.post('/upload/task', authJWT.isAdvisor, controller.uploadTask)
 
     app.post('/upload/question/:malop/:hoten', controller.uploadQuestion)
     app.post('/upload/answer/:malop/:hoten/:macauhoi', controller.uploadAnswer)

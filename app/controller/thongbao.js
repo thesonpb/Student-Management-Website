@@ -69,7 +69,7 @@ const thongbao = async (req, res) => {
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
-        userInfo.dataValues.thongbaochung = thongbaochung;
+        userInfo.dataValues.thongbaochung = thongbaocalop;
         userInfo.dataValues.thongbaorieng = thongbaorieng;
         userInfo.dataValues.thoigianchung = chung;
         userInfo.dataValues.thoigianrieng = rieng;
@@ -130,7 +130,7 @@ const thongbao = async (req, res) => {
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
         userInfo.dataValues.classId = classId;
-        userInfo.dataValues.thongbaocalop = thongbao;
+        userInfo.dataValues.thongbaochung = thongbao;
         userInfo.dataValues.thoigianchung = thoigian;
         res.render('thongbao', userInfo.dataValues);
     }

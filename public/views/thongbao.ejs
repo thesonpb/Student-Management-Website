@@ -22,27 +22,29 @@
     <%- include ("partial/leftsidebar") %>
         <%- include ("partial/dropdown") %>
             <%- include ("partial/chonlop") %>
-            <input type="hidden" value="<%= sinhvien[0].malop %>" id="malop">
+                <input type="hidden" value="<%= sinhvien[0].malop %>" id="malop">
 
                 <div class="main">
                     <h1 class="title-main">Thông báo</h1>
-                    <% if(user.vaitro == 'covan') { %>
+                    <% if(user.vaitro=='covan' ) { %>
                         <button data-toggle="collapse" data-target="#todo-form"
                             class="todo-add-btn js-add-todo btn">Thêm một
                             công
                             việc</button>
                         <form action="/upload/task" class="form js-todo-form collapse" id="todo-form" method="post">
-                        <input type="hidden" value="<%= sinhvien[0].malop %>" name="malop">
-                        <input type="hidden" value="<%= email %>" name="email">
-                            
+                            <input type="hidden" value="<%= sinhvien[0].malop %>" name="malop">
+                            <input type="hidden" value="<%= email %>" name="email">
+
                             <label for="mssv">Gửi đến:</label>
                             <select name="mssv" id="">
                                 <option value="all">Cả lớp</option>
-                            <% if (sinhvien) { %>
-                            <% for (var i=0; i < sinhvien.length; i++) { %>
-                                <option value="<%= sinhvien[i].mssv %>"><%= sinhvien[i].mssv %></option>
-                            <% } %>
-                            <% } %>
+                                <% if (sinhvien) { %>
+                                    <% for (var i=0; i < sinhvien.length; i++) { %>
+                                        <option value="<%= sinhvien[i].mssv %>">
+                                            <%= sinhvien[i].mssv %>
+                                        </option>
+                                        <% } %>
+                                            <% } %>
                             </select>
                             <label for="">Tiêu đề</label>
                             <input type="text" class="input-subject" name="subject">
@@ -55,22 +57,54 @@
                             </div>
                         </form>
                         <% } %>
-                            <div class="todo">
-                                <h3 class="todo-title">
-                                    <!-- thêm biến tiêu đề -->
-                                </h3>
-                                <div class="todo-intro">
-                                    <p class="todo-content">
-                                        <!-- Thêm biến nội dung -->
-                                    </p>
-                                    <div class="todo-duration">
-                                        <p class="todo-due">
-                                            <!--Thêm biến tgian-->
-                                        </p>
-                                    </div>
-                                </div>
+                            <% if (user.vaitro=='sinhvien' ) { %>
+                                <% if (thongbaorieng && thoigianrieng) { %>
+                                    <% for (var i=0; i < thongbaorieng.length; i++) { %>
+                                        <div class="todo">
+                                            <h3 class="todo-title">
+                                                <%= thongbaorieng[i].tieude %>
+                                            </h3>
+                                            <p>
+                                                Thông báo riêng
+                                            </p>
+                                            <div class="todo-intro">
+                                                <p class="todo-content">
+                                                    <%= thongbaorieng[i].noidung %>
+                                                </p>
+                                                <div class="todo-duration">
+                                                    <p class="todo-due">
+                                                        <%= thoigianrieng[i] %>
+                                                    </p>
+                                                </div>
+                                            </div>
 
-                            </div>
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+                                                <% } %>
+
+                                                    <% if (thongbaochung && thoigianchung) { %>
+                                                        <% for (var i=0; i < thongbaochung.length; i++) { %>
+                                                            <div class="todo">
+                                                                <h3 class="todo-title">
+                                                                    <%= thongbaochung[i].tieude %>
+                                                                </h3>
+                                                                <p>
+                                                                    Thông báo chung
+                                                                </p>
+                                                                <div class="todo-intro">
+                                                                    <p class="todo-content">
+                                                                        <%= thongbaochung[i].noidung %>
+                                                                    </p>
+                                                                    <div class="todo-duration">
+                                                                        <p class="todo-due">
+                                                                            <%= thoigianchung[i] %>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <% } %>
+                                                                <% } %>
                 </div>
 
 

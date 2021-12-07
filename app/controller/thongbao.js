@@ -4,19 +4,18 @@ const Bangdiem = db.Bangdiem;
 const Diemrenluyen = db.Diemrenluyen;
 const Covan = db.Covan;
 const Lophoc = db.Lophoc;
+const Thongbao = db.Thongbao;
 const { QueryTypes, Sequelize } = require('sequelize');
 
 
-const hoctap = async (req, res) => {
+const thongbao = async (req, res) => {
     const username = res.locals.user.tennguoidung;
     const userRole = res.locals.user.vaitro;
-    console.log(userRole);
     let userInfo = '';
     if (userRole == 'sinhvien') {
         userInfo = await Sinhvien.findByPk(username);
         userInfo.dataValues.vaitro = 'sinhvien';
-        if (req.params.malop != userInfo.dataValues.malop) 
-            res.redirect(`/hoc-tap/${userInfo.dataValues.malop}`);
+        if (req.params.malop != userInfo.dataValues.malop) res.redirect(`/thong-bao/${userInfo.dataValues.malop}`);
         const diemsinhvien = await Sinhvien.findAll({
             where: { mssv: username },
             include: [
@@ -49,10 +48,32 @@ const hoctap = async (req, res) => {
             ],
             attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
         });
+        const thongbaocalop = await Thongbao.findAll({
+            where: { malop: req.params.malop, calop: 'calop' }
+        });
+
+        const thongbaorieng = await Thongbao.findAll({
+            where: { mssv: username }
+        })
+
+        var chung = []
+        for (var i = 0; i < thongbaocalop.length; i++) {
+            chung.push(new Date(thongbaocalop[i].thoigian).toLocaleString('br-FR'));
+        }
+        var rieng = []
+        for (var i = 0; i < thongbaorieng.length; i++) {
+            rieng.push(new Date(thongbaorieng[i].thoigian).toLocaleString('br-FR'));
+        }
+        
+
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
-        res.render('hoctap_sinhvien', userInfo.dataValues);
+        userInfo.dataValues.thongbaochung = thongbaochung;
+        userInfo.dataValues.thongbaorieng = thongbaorieng;
+        userInfo.dataValues.thoigianchung = chung;
+        userInfo.dataValues.thoigianrieng = rieng;
+        res.render('thongbao', userInfo.dataValues);
 
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);
@@ -93,17 +114,31 @@ const hoctap = async (req, res) => {
             where: { emailcovan: username },
             attributes: ['malop'],
         });
+        
+
+        const thongbao = await Thongbao.findAll({
+            where: { malop: req.params.malop }
+        });
+
+
+        var thoigian = []
+        for (var i = 0; i < thongbao.length; i++) {
+            thoigian.push(new Date(thongbao[i].thoigian).toLocaleString('br-FR'));
+        }
+        
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
         userInfo.dataValues.classId = classId;
-        res.render('hoctap', userInfo.dataValues);
+        userInfo.dataValues.thongbaocalop = thongbao;
+        userInfo.dataValues.thoigianchung = thoigian;
+        res.render('thongbao', userInfo.dataValues);
     }
 }
 
 
 const user = {
-    hoctap: hoctap,
+    thongbao: thongbao,
 }
 
 module.exports = user;

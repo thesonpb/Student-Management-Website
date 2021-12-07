@@ -48,6 +48,8 @@ function route(app){
 
     app.get('/ren-luyen/:malop', authJwt.verifyToken, controller.renluyen);
 
+    app.get('/thong-bao/:malop', authJwt.verifyToken, controller.thongbao);
+
     // app.get('/test1', (req, res) => {
     //     res.render('test1');
     // })

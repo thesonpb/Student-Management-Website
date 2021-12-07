@@ -10,17 +10,24 @@ module.exports = (sequelize, Sequelize) => {
         malop: {
             type: Sequelize.STRING
         }, 
+        emailcovan: {
+            type: Sequelize.STRING
+        }, 
+        calop: {
+            type: Sequelize.STRING
+        }, 
+        mssv: {
+            type: Sequelize.INTEGER, 
+            default: null
+        }, 
         tieude: {
             type: Sequelize.TEXT
         }, 
         noidung: {
             type: Sequelize.TEXT
         }, 
-        batdau: {
-            type: Sequelize.DATE(6)
-        }, 
-        ketthuc: {
-            type: Sequelize.DATE(6)
+        thoigian: {
+            type: Sequelize.DATE
         }, 
     }, {
         timestamps: false

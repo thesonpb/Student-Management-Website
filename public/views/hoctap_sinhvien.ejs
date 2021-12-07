@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học tập</title>
+    <link rel="stylesheet" href="/assets/css/teacher.css">
+    <link rel="stylesheet" href="/assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+</head>
+
+<body>
+    <input type="hidden" value="<%= sinhvien[0].malop %>" id="malop">
+    <%- include ("partial/leftsidebar") %>
+        <%- include ("partial/dropdown") %>
+            <%- include ("partial/chonlop") %>
+
+                <!-- Học tập -->
+                <div class="main">
+                    <h1 class="title-main"><%= diemSinhVien[0].hoten %></h1>
+                    <div class="selections d-flex justify-content-between">
+                        <form>
+                            <label for="sem">Học kỳ:</label>
+                            <select name="sem" id="sem_hoctap">
+                                <option value="Học kỳ 1 năm 2019-2020">Học kỳ 1 năm 2019-2020</option>
+                                <option value="Học kỳ 2 năm 2019-2020">Học kỳ 2 năm 2019-2020</option>
+                                <option value="Học kỳ 1 năm 2020-2021">Học kỳ 1 năm 2020-2021</option>
+                                <option value="Học kỳ 2 năm 2020-2021">Học kỳ 2 năm 2020-2021</option>
+                            </select>
+                        </form>
+                    </div>
+
+                    <div class="" id="table">
+                        <% if(diemSinhVien) { %>
+                            <% for (var i=0; i < diemSinhVien.length; i++) { %>
+                                <section id="info" class="info" style="display: none;">
+                                    <!-- <div class="row"> -->
+                                        <label class="col-md-6"> Học kỳ:</label>
+                                        <p name="mssv" class="col-md-6">
+                                        <%= diemSinhVien[i].bangdiem['hocky'] %>
+                                        </p>
+                                    <!-- </div> -->
+                                    <!-- <div class="row"> -->
+                                        <label class="col-md-6"> Số tín chỉ:</label>
+                                        <p name="mssv" class="col-md-6">
+                                        <%= diemSinhVien[i].bangdiem['tinchi'] %>
+                                        </p>
+                                    <!-- </div> -->
+                                    <!-- <div class="row"> -->
+                                        <label class="col-md-6"> GPA:</label>
+                                        <p name="mssv" class="col-md-6">
+                                        <%= diemSinhVien[i].bangdiem['gpa'] %>
+                                        </p>
+                                    <!-- </div> -->
+                                    <!-- <div class="row"> -->
+                                        <label class="col-md-6"> Cảnh báo học vụ:</label>
+                                        <p name="mssv" class="col-md-6">
+                                        <%= diemSinhVien[i].bangdiem['canhbaohocvu'] %>
+                                        </p>
+                                    <!-- </div> -->
+                                </section>
+                        <% } %>
+                        <% } %>
+
+                    </div>
+
+                </div>
+                <script src="/assets/js/hoctap_sinhvien.js"></script>
+</body>
+
+</html>

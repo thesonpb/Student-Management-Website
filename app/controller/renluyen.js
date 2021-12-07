@@ -51,7 +51,7 @@ const renluyen = async (req, res) => {
         userInfo.dataValues.diemSinhVien = diemsinhvien;
         userInfo.dataValues.sinhvien = sinhviens;
         userInfo.dataValues.diemRenLuyen = drl;
-        res.render('renluyen', userInfo.dataValues);
+        res.render('renluyen_sinhvien', userInfo.dataValues);
 
     } else if (userRole == 'covan') {
         userInfo = await Covan.findByPk(username);

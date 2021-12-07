@@ -17,6 +17,7 @@ const uploadQuestion = require('./uploadQuestion');
 const uploadAnswer = require('./uploadAnswer');
 const deleteQuestion = require('./deleteQuestion');
 const deleteAnswer = require('./deleteAnswer');
+const thongbao = require('./thongbao');
 
 module.exports = {
     login : auth.login,
@@ -44,4 +45,5 @@ module.exports = {
     uploadAnswer: uploadAnswer.uploadAnswer,
     deleteQuestion: deleteQuestion.deleteQuestion,
     deleteAnswer: deleteAnswer.deleteAnswer,
+    thongbao: thongbao.thongbao,
 }

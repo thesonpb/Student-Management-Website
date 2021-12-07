@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diễn đàn</title>
+    <link rel="stylesheet" href="/assets/css/teacher.css">
+    <link rel="stylesheet" href="/assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+    <%- include ("partial/leftsidebar") %>
+        <%- include ("partial/dropdown") %>
+            <%- include ("partial/chonlop") %>
+            <input type="hidden" value="<%= sinhvien[0].malop %>" id="malop">
+
+                <div class="main">
+                    <h1 class="title-main">Thông báo</h1>
+                    <% if(user.vaitro == 'covan') { %>
+                        <button data-toggle="collapse" data-target="#todo-form"
+                            class="todo-add-btn js-add-todo btn">Thêm một
+                            công
+                            việc</button>
+                        <form action="/upload/task" class="form js-todo-form collapse" id="todo-form" method="post">
+                            <label for="sendto">Gửi đến:</label>
+                            <select name="sendto" id="">
+                                <option value="all">Cả lớp</option>
+                                <option value="one">Sinh viên</option>
+                            </select>
+                            <label for="mssv">MSSV:</label>
+                            <input type="text" name="mssv">
+                            <label for="">Tiêu đề</label>
+                            <input type="text" class="input-subject" name="subject">
+                            <hr>
+                            <label for="">Nội dung</label>
+                            <input role="textbox" spellcheck="true" class="input-content" name="content">
+                            <div>
+                                <input type="submit" value="Đăng lên" class="btn">
+                                <div class="btn red-btn">Huỷ bỏ</div>
+                            </div>
+                        </form>
+                        <% } %>
+                            <div class="todo">
+                                <h3 class="todo-title">
+                                    <!-- thêm biến tiêu đề -->
+                                </h3>
+                                <div class="todo-intro">
+                                    <p class="todo-content">
+                                        <!-- Thêm biến nội dung -->
+                                    </p>
+                                    <div class="todo-duration">
+                                        <p class="todo-due">
+                                            <!--Thêm biến tgian-->
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                </div>
+
+
+                <script src="/assets/js/thongbao.js"></script>
+
+</body>
+
+</html>

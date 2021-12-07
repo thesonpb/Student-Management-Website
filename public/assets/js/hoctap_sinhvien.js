@@ -2,23 +2,20 @@ $(`li[data-rel="${2}"]`).addClass('active')
 
 // lọc
 $('document').ready(function ($) {
-
-    var rows2 = $('#table section').each(function () {
-        var row = $(this);
-        var columns = row.children('p');
-        row.data('hocky', columns.eq(0).html());
-    });
     $('#sem_hoctap').change(function () {
-        var sem = $('#sem_hoctap').val().toString();
+        var sem = this.value.toString();
+        console.log(sem)
 
-        rows2.each(function () {
+        $('#info .row p[data-rel="hocky"]').each(function () {
             var row = $(this);
-            var sem_to_match = row.data('hocky').toString();
-            if (sem_to_match.includes(sem)) {
-                row.show();
+            var sem_to_match = row.html();
+            console.log(sem_to_match);
+
+            if (sem_to_match === sem ) {
+                console.log(true)
             }
             else {
-                row.hide();
+                console.log(false)
             }
         });
     });

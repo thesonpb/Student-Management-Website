@@ -359,7 +359,7 @@ th {
 }
 
 
-/* thông báo css
+thông báo css
 .todo-dur-input>input {
     margin-bottom: 8px;
     padding: 8px;
@@ -369,12 +369,20 @@ th {
 
 .main .todo {
     color: #e8e8e8;
-    background-color: #3a3b3c;
+    background-color: #444857;
     border-radius: 12px;
     padding: 16px;
     margin-top: 64px;
 }
+
+select#send-to {
+    border-radius: 12px;
+}
+
 .todo .todo-title {
+    font-size: 28px;
+    font-weight: 400;
+    word-wrap: break-word;
     margin: 0;
     padding: 16px;
 }
@@ -382,14 +390,15 @@ th {
 .todo .todo-intro {
     display: flex;
     padding: 8px;
+    
 }
 
 .todo .todo-content{
     display: block;
-    font-size: 20px;
-    width: 60%;
     word-wrap: break-word;
-    padding: 8px;
+    font-size: 16px; 
+    color: #ddd;
+    font-weight: 200;
 }
 
 .todo .todo-duration{
@@ -402,19 +411,49 @@ th {
 }
 
 .todo-opinion .todo-yk {
-    color: #ff695b;
+    color: #f44336;
     margin-right: 32px;
 }
 
 .todo-opinion .todo-cmt-btn {
     text-decoration: none;
     color: #fff;
-} */
+}
+
+#more-todo-drop {
+    position: relative;
+    min-width: 0;
+    width: 80px;
+    border-radius: 12px;
+    background-color: #444857;
+    left: -70px !important;
+    top: -8px !important;
+}
+
+.todo-more{
+    display: flex;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.todo-del{
+    width: 80px;
+    background-color: #444857;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    padding: 4px;
+}
 
 /* diễn đàn css */
 .main .question {
     color: #fff;
-    background-color: #1e1f25;
+    background-color: #444857;
     border-radius: 12px;
     padding: 16px;
     margin-top: 64px;
@@ -503,8 +542,8 @@ p.post-time {
 .question .question-subject {
     font-size: 28px;
     font-weight: 400;
-    margin: 16px 16px 8px;
     word-wrap: break-word;
+    margin: 16px 16px 8px;
 }
 
 .question .question-content {

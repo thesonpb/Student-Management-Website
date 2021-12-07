@@ -35,19 +35,21 @@
                             <input type="hidden" value="<%= sinhvien[0].malop %>" name="malop">
                             <input type="hidden" value="<%= email %>" name="email">
 
-                            <label for="mssv">Gửi đến:</label>
-                            <select name="mssv" id="">
-                                <option value="all">Cả lớp</option>
-                                <% if (sinhvien) { %>
-                                    <% for (var i=0; i < sinhvien.length; i++) { %>
-                                        <option value="<%= sinhvien[i].mssv %>">
-                                            <%= sinhvien[i].mssv %>
-                                        </option>
-                                        <% } %>
+                            <div class="mb-2">
+                                <label for="mssv">Gửi đến:</label>
+                                <select name="mssv" id ="send-to" class="ml-2 p-2">
+                                    <option value="all">Cả lớp</option>
+                                    <% if (sinhvien) { %>
+                                        <% for (var i=0; i < sinhvien.length; i++) { %>
+                                            <option value="<%= sinhvien[i].mssv %>">
+                                                <%= sinhvien[i].mssv %>
+                                            </option>
                                             <% } %>
-                            </select>
+                                                <% } %>
+                                </select>
+                            </div>
                             <label for="">Tiêu đề</label>
-                            <input type="text" class="input-subject" name="subject">
+                            <input type="text" class="input-subject ml-2" name="subject">
                             <hr>
                             <label for="">Nội dung</label>
                             <input role="textbox" spellcheck="true" class="input-content" name="content">
@@ -61,21 +63,23 @@
                                 <% if (thongbaorieng && thoigianrieng) { %>
                                     <% for (var i=0; i < thongbaorieng.length; i++) { %>
                                         <div class="todo">
-                                            <h3 class="todo-title">
-                                                <%= thongbaorieng[i].tieude %>
-                                            </h3>
-                                            <p>
-                                                Thông báo riêng
-                                            </p>
-                                            <div class="todo-intro">
-                                                <p class="todo-content">
-                                                    <%= thongbaorieng[i].noidung %>
+                                            <div class="d-flex justify-content-between">
+                                                <p class="col-md-4 h3">
+                                                    Thông báo riêng
                                                 </p>
-                                                <div class="todo-duration">
+                                                <div class="todo-duration col-md-7">
                                                     <p class="todo-due">
                                                         <%= thoigianrieng[i] %>
                                                     </p>
                                                 </div>
+                                            </div>
+                                            <h3 class="todo-title">
+                                                <%= thongbaorieng[i].tieude %>
+                                            </h3>
+                                            <div class="todo-intro">
+                                                <p class="todo-content">
+                                                    <%= thongbaorieng[i].noidung %>
+                                                </p>
                                             </div>
 
                                         </div>
@@ -86,26 +90,35 @@
                                                     <% if (thongbaochung && thoigianchung) { %>
                                                         <% for (var i=0; i < thongbaochung.length; i++) { %>
                                                             <div class="todo">
-                                                                <h3 class="todo-title">
-                                                                    <%= thongbaochung[i].tieude %>
-                                                                </h3>
-                                                                <% if (user.vaitro=='covan' ) { %>
-                                                                <form method="post" action="/task/delete/<%= sinhvien[0].malop %>/<%= thongbaochung[i].id %>">
-                                                                    <input type="submit" value="Xoá thông báo">
-                                                                </form>
-                                                                <% } %>
-                                                                <p>
-                                                                    Thông báo chung
-                                                                </p>
-                                                                <div class="todo-intro">
-                                                                    <p class="todo-content">
-                                                                        <%= thongbaochung[i].noidung %>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="col-md-4 h3">
+                                                                        Thông báo chung
                                                                     </p>
-                                                                    <div class="todo-duration">
+                                                                    <div class="todo-duration col-md-7">
                                                                         <p class="todo-due">
                                                                             <%= thoigianchung[i] %>
                                                                         </p>
                                                                     </div>
+                                                                    <% if (user.vaitro=='covan' ) { %>
+                                                                        <div class="dropdown col-md-1 align-self-center">
+                                                                            <div class="todo-more" data-toggle="dropdown">
+                                                                                <i class="ti-more mr-0"></i>
+                                                                            </div>
+                                                                            <form method="post" action="/task/delete/<%= sinhvien[0].malop %>/<%= thongbaochung[i].id %>"
+                                                                                class="dropdown-menu p-0 " id="more-todo-drop">
+                                                                                <button class="todo-del" type="submit">Xoá</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    <% } %>
+                                                                </div>
+                                                                <h3 class="todo-title pb-0">
+                                                                    <%= thongbaochung[i].tieude %>
+                                                                </h3>
+                                                                <div class="todo-intro ml-3">
+                                                                    <p class="todo-content">
+                                                                        <%= thongbaochung[i].noidung %>
+                                                                    </p>
+                                                                    
                                                                 </div>
                                                             </div>
                                                             <% } %>

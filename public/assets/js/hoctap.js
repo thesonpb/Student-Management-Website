@@ -26,6 +26,7 @@ $('document').ready(function ($) {
         rows2.each(function () {
             var row = $(this);
             var sem_to_match = row.data('sem').toString();
+            var canhbaohocvu_tomatch = row.data('canhbaohocvu').toString();
             var gpa = row.data('gpa');
             var canhbaohocvu = row.data('canhbaohocvu');
             var tinchi = row.data('tinchi');
@@ -41,7 +42,7 @@ $('document').ready(function ($) {
                     }
                 }
                 else if (classify == 2) {
-                    if (sem_to_match.includes(sem) && canhbaohocvu == "có") {
+                    if (sem_to_match.includes(sem) && canhbaohocvu_tomatch.includes('Cảnh cáo')) {
                         row.children('td').eq(0).html(i);
                         i++;
                         row.show();
@@ -83,7 +84,7 @@ $('document').ready(function ($) {
                     }
                 }
                 else if (classify == 2) {
-                    if (canhbaohocvu == "có") {
+                    if (canhbaohocvu_tomatch.includes('Cảnh cáo')) {
                         row.children('td').eq(0).html(i);
                         i++;
                         row.show();

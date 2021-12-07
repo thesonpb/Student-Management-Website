@@ -11,10 +11,10 @@ $('document').ready(function ($) {
         var i = 1;
         var sem = $('#sem').val().toString();
         var vaitro = document.getElementById('vaitro').value;
-
+        var malop = document.getElementById('malop').value;
          if ( vaitro == 'covan') { 
             console.log(vaitro)
-            document.getElementById('download_renluyen').action = `/download/<%= diemRenLuyen[0].malop %>/${sem}`;
+            document.getElementById('download_renluyen').action = `/download/${malop}/${sem}`;
          }
 
         rows.each(function () {

@@ -49,7 +49,7 @@ const thongbao = async (req, res) => {
             attributes: ['mssv', 'hoten', 'ngaysinh', 'malop']
         });
         const thongbaocalop = await Thongbao.findAll({
-            where: { malop: req.params.malop, calop: 'calop' }
+            where: { malop: req.params.malop, calop: 'all' }
         });
 
         const thongbaorieng = await Thongbao.findAll({

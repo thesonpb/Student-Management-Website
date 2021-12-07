@@ -89,6 +89,11 @@
                                                                 <h3 class="todo-title">
                                                                     <%= thongbaochung[i].tieude %>
                                                                 </h3>
+                                                                <% if (user.vaitro=='covan' ) { %>
+                                                                <form method="post" action="/task/delete/<%= sinhvien[0].malop %>/<%= thongbaochung[i].id %>">
+                                                                    <input type="submit" value="Xoá thông báo">
+                                                                </form>
+                                                                <% } %>
                                                                 <p>
                                                                     Thông báo chung
                                                                 </p>

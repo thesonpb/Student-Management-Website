@@ -7,9 +7,7 @@ const teacherEditProfile = async (req, res) => {
     a.hoten = req.body.hoten;
     a.sdt = req.body.sdt;
     await a.save();
-    return res.status(200).json({
-        message: "success!"
-    });
+    res.redirect(`/profile/${malopcu}`);
 }
 
 const user = {

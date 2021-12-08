@@ -90,6 +90,10 @@
                                             class="adding-btn btn align-self-center ml-auto mr-auto col-md-2">
                                     </form>
                                         <!--CHART-->
+                                    <div class="mt-3">
+                                        <h2>Tổng số sinh viên: <%= sinhvien.length %></h2>
+                                    </div>
+
                                     <div id="chart-static" class="collapse row justify-content-center mt-5">
                                         <div class="col-md-10">
                                             <canvas id="myChart"></canvas>
@@ -127,7 +131,7 @@
                                                         legend: { display: false },
                                                         title: {
                                                             display: true,
-                                                            text: "Điểm GPA <%= sinhvien[0].malop %>"
+                                                            text: "Thống kê điểm trung bình tích luỹ lớp <%= sinhvien[0].malop %>"
                                                         },
                                                         scales: {
                                                             yAxes: [{

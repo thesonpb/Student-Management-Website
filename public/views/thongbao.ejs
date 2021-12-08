@@ -91,9 +91,16 @@
                                                         <% for (var i=0; i < thongbaochung.length; i++) { %>
                                                             <div class="todo">
                                                                 <div class="d-flex justify-content-between">
+                                                                    <% if (thongbaochung[i].calop == 'all') { %>
                                                                     <p class="col-md-4 h3">
                                                                         Thông báo chung
                                                                     </p>
+                                                                    <% } %>
+                                                                    <% if (thongbaochung[i].calop == 'no') { %>
+                                                                    <p class="col-md-4 h3">
+                                                                        Thông báo riêng
+                                                                    </p>
+                                                                    <% } %>
                                                                     <div class="todo-duration col-md-7">
                                                                         <p class="todo-due">
                                                                             <%= thoigianchung[i] %>

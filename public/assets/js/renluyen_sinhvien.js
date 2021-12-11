@@ -1,28 +1,36 @@
 $(`li[data-rel="${3}"]`).addClass('active')
 
 $('document').ready(function ($) {
-    var rows = $('#table section').each(function () {
+    var rows = $('#worktable tbody tr').each(function () {
         var row = $(this);
-        var columns = row.children('p');
-        row.data('hocky', columns.eq(0).html());
-        var sem_to_match = row.data('hocky').toString();
-        if (!sem_to_match.includes(sem)) {
-            row.hide();
-        }
+        var columns = row.children('td');
+        row.data('sem', columns.eq(0).html());
     });
    
     $('#sem').change(function () {
         var sem = $('#sem').val().toString();
+        var vaitro = document.getElementById('vaitro').value;
+        var malop = document.getElementById('malop').value;
+         if ( vaitro == 'covan') { 
+            console.log(vaitro)
+            document.getElementById('download_renluyen').action = `/download/${malop}/${sem}`;
+         }
 
         rows.each(function () {
             var row = $(this);
-            var sem_to_match = row.data('hocky').toString();
-            if (sem_to_match.includes(sem)) {
-                row.show();
+            var sem_to_match = row.data('sem');
+            if (sem != 'all') {
+                if (sem_to_match.includes(sem)) {
+                    row.show();
+                }
+                else {
+                    row.hide();
+                }
             }
             else {
-                row.hide();
+                row.show();
             }
+
         });
     });
 });

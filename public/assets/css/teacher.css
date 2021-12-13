@@ -1,0 +1,987 @@
+/* css chung */
+html {
+    scroll-behavior: smooth;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html body {
+    width: 100%;
+    background-color: #131417;
+    color: #fff;
+}
+
+.main .btn {
+    color: #fff;
+    background-color: #47CF73;
+    padding: 8px 24px;
+    margin-top: 16px;
+    min-width: 86px;
+    max-height: 50px;
+    border-radius: 8px;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.main .red-btn {
+    background-color: #f44336;
+    min-width: 40px;
+}
+
+.main .blue-btn {
+    background-color: #0080ff;
+}
+
+.main .yellow-btn {
+    background-color: #ffa31a;
+    min-width: 40px;
+}
+
+.main .green-btn {
+    background-color: #47CF73 !important;
+    min-width: 40px;
+}
+
+.main .btn:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+/* css phần form nhập ở diễn đàn và thông báo */
+.form {
+    background-color: #2c303a;
+    padding: 16px;
+    display: block;
+    flex-direction: column;
+    border-radius: 12px;
+    margin-top: 16px;
+    animation: modalFadeIn ease .3s;
+}
+
+.form label {
+    margin-bottom: 8px;
+}
+
+.form .input-subject {
+    margin-bottom: 8px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 12px;
+    width: 90%;
+}
+
+.form hr {
+    background-color: #eef0fe;
+    margin: 16px 0;
+}
+
+
+.form .input-content {
+    background-color: #fff;
+    color: #000;
+    min-height: 200px;
+    font-size: 20px;
+    border-radius: 12px;
+    padding: 8px;
+    vertical-align:top;   
+    width: 90%;
+
+}
+
+/* css các cái bảng */
+#worktable td, 
+#worktable th {
+    border: 1px solid #fff;
+    padding: 8px;
+    text-align: center;
+    vertical-align: inherit;
+    margin: 0 4px;
+    color: #fff;
+}
+
+#marktable td, 
+#marktable th {
+    border: 1px solid #fff;
+    padding: 8px;
+    text-align: center;
+    vertical-align: inherit;
+    margin: 0 4px;
+    color: #fff;
+}
+
+tr {
+    background-color: #1d1e22;
+    border-radius: 16px;
+    text-align: center;
+}
+
+tr:nth-child(odd){
+    background-color: #40434d;
+}
+
+th { 
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+}
+
+/* css phần nav bên trái */
+.left-side, .rightsidebar, .main {
+    display: inline-block;
+}
+
+.left-side {
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #1e1f25;
+    overflow-x: hidden;
+    padding: 20px 10px 0 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(192, 192, 192, 0.4);
+}
+
+.left-side h1 {
+    display: inline-block;
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+.left-side label {
+    display: inline-block;
+    color: #999;
+    padding: 0px 16px;
+    margin-top: 64px;
+    margin-bottom: 8px;
+}
+
+.left-side .nav {
+    display: inline-block;
+    color: #fff;
+    font-size: 18px;
+    list-style: none;
+    padding-left: 8px;
+    margin: 0px 0;
+    width: 100%;
+}
+
+.left-side .nav li {
+    color: #fff;
+    padding: 20px 16px;
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.left-side .nav li:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+}
+
+.left-side .nav .active{
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+}
+
+.left-side .nav i {
+    padding-left: 8px;
+    display: inline-block;
+}
+
+
+/* css phần content ở giữa */
+.main {
+    margin-left: 15%;
+    padding: 0px 32px;
+    color: #e8e8e8;
+    width: 85%;
+}
+
+.content .main:first-of-type {
+    display: block;
+}
+
+.main .title-main {
+    margin: 32px 0;
+    font-size: 32px;
+}
+/* css chart */
+.gpa-chart {
+    /* border: 1px solid #fff; */
+}
+
+#myChart {
+    background-color: #fff;
+    border-radius: 8px;
+}
+/* css mục sinh viên*/
+.main .adding-member {
+    display: flex;
+    background-color: #2c303a;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 16px;
+    animation: modalFadeIn ease .3s;
+}
+
+/* .main .adding-avt {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 16px;
+} */
+
+.input-inf {
+  padding: 8px;
+  width: 100%;
+  display: block;
+  border: 1px solid #b5bfc9;
+  border-radius: 15px;
+  color: #0d1f36;
+  font-size: 20px;
+  outline: none;
+  background-color: white;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.input-inf::-webkit-input-placeholder {
+  color: #8d97a9;
+}
+
+.input-inf::-moz-input-placeholder {
+  color: #8d97a9;
+}
+
+.input-inf:focus {
+  border-color: #ff695b;
+  box-shadow: 0 0 0 4px #ffe2df;
+}
+
+.main .name-inf {
+    font-size: 18px;
+    padding-left: 8px;
+}
+
+/* .main .adding-btn {
+    align-self: end;
+    margin-bottom: 10px;
+} */
+
+/* .member-list {
+    padding-top: 64px;
+    display: flex;
+    justify-content: space-around;
+    align-content: space-between;
+    flex-wrap: wrap; 
+}
+.member-list .member {
+    background-color: #3a3b3c;
+    width: 200px;
+    height: 250px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 32px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+.member-list .member:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+}
+.member-list .member-ava {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.member-list .member-name {
+    margin: 16px 0 0;
+    font-size: 30px;
+}
+.member-list .member-pos {
+    margin-top: 4px;
+    font-size: 16px;
+    color: #999;
+} */
+
+#warning{
+    color: red;
+}
+
+#student-table th, 
+#student-table td{
+    border: 1px solid white;
+    color: white;
+    padding: 10px 2px;
+    text-align: center;
+    vertical-align: inherit;
+}
+
+#student-table td:nth-child(-n+9):hover{
+    cursor: pointer;
+}
+
+
+.stu-table-body .save-btn {
+    display: none;
+    max-width: 66.22px;
+}
+
+/* hoc tap css */
+.selections {
+    margin: 0 auto 32px;
+    width: 80%;
+}
+
+.selections label{
+    font-size: 24px;
+}
+
+.selections select {
+    color: #0062cc;
+    background-color: #FFF1A8;
+    padding: 4px;
+    border-radius: 12px;
+    margin-left: 16px;
+}
+
+.mark, .work {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+thông báo css
+.todo-dur-input>input {
+    margin-bottom: 8px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.main .todo {
+    color: #e8e8e8;
+    background-color: #444857;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 64px;
+}
+
+select#send-to {
+    border-radius: 12px;
+}
+
+.todo .todo-title {
+    font-size: 28px;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin: 0;
+    padding: 16px;
+}
+
+.todo .todo-intro {
+    display: flex;
+    padding: 8px;
+    
+}
+
+.todo .todo-content{
+    display: block;
+    word-wrap: break-word;
+    font-size: 16px; 
+    color: #ddd;
+    font-weight: 200;
+}
+
+.todo .todo-duration{
+    font-size: 16px;
+}
+
+.todo .todo-opinion {
+    font-size: 16px;
+    padding-left: 16px;
+}
+
+.todo-opinion .todo-yk {
+    color: #f44336;
+    margin-right: 32px;
+}
+
+.todo-opinion .todo-cmt-btn {
+    text-decoration: none;
+    color: #fff;
+}
+
+#more-todo-drop {
+    position: relative;
+    min-width: 0;
+    width: 80px;
+    border-radius: 12px;
+    background-color: #444857;
+    left: -70px !important;
+    top: -8px !important;
+}
+
+.todo-more{
+    display: flex;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.todo-del{
+    width: 80px;
+    background-color: #444857;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    padding: 4px;
+}
+
+/* diễn đàn css */
+.main .question {
+    color: #fff;
+    background-color: #444857;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 64px;
+}
+
+.ques-inf {
+    display: flex;
+    align-items: center;
+}
+
+.ques-inf .inf-item {
+    flex: 20;
+    justify-content: center;
+    align-content: center;
+    padding: 4px;
+}
+
+.ques-inf .author-ava {
+    padding: 4px;
+    flex: 1.5;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.ques-inf .author-ava > img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.ques-inf p {
+    margin: 0;
+    padding-left: 4px;
+}
+
+.ques-inf .author-name {
+    display: inline-block;
+    font-size: 26px;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+p.post-time {
+    font-size: 14px;
+    color: rgb(170, 166, 166);
+}
+
+.ques-inf .more {
+    flex: 1;
+    display: flex;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    padding: 0;
+}
+
+.ques-inf .more:hover {
+    background-color: #444857;
+}
+
+.ques-inf #more-drop {
+    position: relative;
+    min-width: 0;
+    width: 80px;
+    border-radius: 12px;
+    background-color: #444857;
+    left: -70px !important;
+    top: 8px !important;
+}
+
+.ques-inf .del-ques {
+    width: 80px;
+    background-color: #444857;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    padding: 4px;
+}
+
+.ques-inf .del-ques:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+}
+
+.question .question-subject {
+    font-size: 28px;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin: 16px 16px 8px;
+}
+
+.question .question-content {
+    font-size: 16px; 
+    color: #ddd;
+    font-weight: 200;
+    word-wrap: break-word;
+}
+
+.question .question-respone {
+    display: flex;
+    font-size: 18px;
+}
+
+.question-respone i {
+    margin-right: 8px;
+}
+
+.question .question-like {
+    cursor: pointer;
+}
+
+.question hr {
+    margin: 12px 0px 12px 16px;
+    background-color: #5a5b5c;
+    height: 0.7px;
+    border: none;
+}
+
+.question .question-cmt-btn {
+    cursor: pointer;
+    color: #fff;
+    background-color: #444857;
+    display: inline-block;
+    border-radius: 6px;
+    border: none;
+    width: 180px;
+}
+
+.question .question-cmt-btn:hover {
+    background-color: #5a6072;
+}
+
+.question-respone .input-ans{
+    width: 90%;
+    border-radius: 12px;
+}
+
+.question-respone .answer {
+    background-color: #2c303a;
+    border-radius: 16px;
+    font-weight: 200;
+    display: inline-block;
+}
+
+.question-respone .ans-posttime{
+    font-size: 14px;
+    color: rgb(170, 166, 166);
+}
+
+.answer {
+    max-width: 95%;
+}
+
+.answer #more-drop {
+    position: relative;
+    min-width: 0;
+    width: 80px;
+    border-radius: 12px;
+    background-color: #444857;
+    left: -70px !important;
+    top: -8px !important;
+
+}
+
+.answer .del-ans {
+    width: 80px;
+    background-color: #444857;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    padding: 4px;
+}
+
+.answer .del-ans:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+}
+
+.answer .more-ans {
+    display: flex;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.answer .more-ans:hover {
+    background-color: #242526;
+}
+
+.answer .ans-content {
+    word-wrap: break-word;
+}
+
+/* profile css */
+#malop {
+    display: none;
+}
+
+input#save[type="submit"] {
+    display: none;
+}
+
+#uploadAvatar{
+    position: relative;
+    /* left: 35%; */
+    bottom: 16%;
+    /* overflow: hidden; */
+    border: none;
+    border-radius: 50%;
+    padding: 14px 0px;
+    background: #444857;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+input[type=file]::file-selector-button {
+    display: none;
+}
+
+input {
+  width: 150px;
+}
+
+.emp-profile{
+    padding: 3%;
+    margin-top: 10%;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 64px;
+    margin-left: 18%;
+    width: 80%;
+}
+
+#xacnhan {
+    display: none;
+}
+
+.profile-img{
+    text-align: center;
+    position: absolute;
+}
+.profile-img img{
+    position: relative;
+    left: 0px;
+    bottom: 0px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+.profile-img .file {
+    position: relative;
+    /* left: 20%; */
+    bottom: 16%;
+    /* overflow: hidden; */
+    border: none;
+    border-radius: 50%;
+    padding: 12px 0px;
+    background: #444857;
+    width: 50px;
+    height: 50px;
+}
+
+.profile-img .file:hover {
+    background-color: #5a6072;
+}
+
+.profile-img .file input {
+    opacity: 0;
+}
+
+.profile-title .profile-name{
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.profile-title h6{
+    color: #0062cc;
+    font-size: 20px;
+}
+
+.profile-title .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-title .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-title .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+    background-color: #ccc;
+}
+
+.row.profile-content {
+    margin: 64px 48px;
+}
+
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #fff;
+}
+
+
+/* .rightsidebar {
+    height: 100%;
+    width: 7%;
+    z-index: 1;
+    top: 0;
+    border-radius: 5px;
+    background-color: #18191a;
+    overflow-x: hidden;
+    box-shadow: 0 0 3px rgba(192, 192, 192, 0.4);
+    position: fixed;
+    right: 0px;
+    transition: 0.3s;
+    padding: 15px;
+}
+.rightsidebar:hover {
+    position: absolute;
+    right: 0;
+    width: 22%;
+} */
+
+/* phần dropdown chọn để vào trang cá nhân */
+body > .dropdown {
+    position: absolute;
+    z-index: 1;
+    top: 13px;
+    right: 16px;
+    display: inline-block;
+}
+
+.dropdown .dropbtn {
+    background-color: #fff;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#dropdown-list {
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    background-color: #1e1f26;
+    min-width: 230px;
+    box-shadow: 0 0 2px rgba(192, 192, 192, 0.8);
+    z-index: 1;
+    list-style-type: none;
+    padding: 8px 16px;
+    margin-top: 4px;
+    border-radius: 8%;
+    left: -96px !important;
+}
+
+#dropdown-list a {
+    display: flex;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px 8px;
+}
+
+#dropdown-list a:hover {
+    background-image: linear-gradient(to right, #af92f2, #74c2ee);
+    text-decoration: none;
+    color: #fff;
+}
+
+#dropdown-list a > label {
+    font-size: 22px;
+    align-self: center;
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+#dropdown-list a > label:hover {
+    cursor: pointer;
+}
+
+#dropdown-list > hr {
+    border: 0;
+    height: 1px;
+    background-color: #dadde1;
+    margin: 8px 0;
+}
+
+/* .dropdown:hover #dropdown-list {display: block;} */
+
+.dropdown:hover .dropbtn {
+    opacity: 0.8;
+}
+
+
+.right-nav {
+    color: #ccc;
+    position: absolute;
+    z-index: 1;
+    top: 24px;
+    right: 92px;
+}
+
+/* .right-nav i {
+    padding-right: 4px;
+    font-size: 24px;
+    font-weight: 500;
+}
+.right-nav:hover .class-list{
+    display: block;
+} */
+
+/* phần chọn danh sách lớp */
+.right-nav .class-list {
+    color: #fff;
+    list-style-type: none;
+    background-color: #242526;
+    box-shadow: 0 0 2px rgba(192, 192, 192, 0.8);
+    position: absolute;
+    border-radius: 12px;
+    top: 2px;
+    right: 1px;
+    font-size: 15px;
+}
+
+/* css avatar chỗ chọn để dropdown */
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 8px;
+}
+
+#title:hover {
+    cursor: pointer;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    float: left;
+    width: 50%;
+  }
+
+  .cancelbtn:hover, .deletebtn:hover {
+    opacity: 1;;
+    }
+  
+  .cancelbtn {
+    background-color: #ccc;
+    color: black;
+  }
+  
+  .deletebtn {
+    background-color: #f44336;
+  }
+  
+  .container {
+    padding: 16px;
+    text-align: center;
+  }
+
+.delete-confirmation {
+    padding-left: 15%;
+  }
+  
+ .delete-confirmation .modal-content {
+    background-color: #2c303a;
+    border: 1px solid #888;    
+  }
+ 
+  .delete-confirmation .close-del {
+    position: absolute;
+    right: 9px;
+    top: -6px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .close-del:hover,
+  .close-del:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+  
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  @media screen and (max-width: 300px) {
+    .cancelbtn, .deletebtn {
+       width: 100%;
+    }
+  }

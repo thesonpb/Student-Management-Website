@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diễn đàn</title>
+    <link rel="stylesheet" href="/assets/css/teacher.css">
+    <link rel="stylesheet" href="/assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+    <%- include ("partial/leftsidebar") %>
+        <%- include ("partial/dropdown") %>
+            <%- include ("partial/chonlop") %>
+
+                <!--Diễn đàn -->
+                <div class="main">
+                    <h1 class="title-main">Diễn đàn</h1>
+                    <button data-toggle="collapse" data-target="#question-form" class="question-btn btn">Thêm một chủ đề
+                        thảo
+                        luận</button>
+                    <form action="/upload/question/<%= sinhvien[0].malop %>/<%= hoten %>" class="form collapse"
+                        id="question-form" method="post">
+                        <label for="">Tiêu đề</label>
+                        <input type="text" required class="input-subject ml-3" name="subject">
+                        <hr>
+                        <label for="">Nội dung</label>
+                        <input required role="textbox" spellcheck="true" class="input-content ml-1" name="content">
+                        <div>
+                            <input type="submit" value="Đăng lên" class="btn">
+                            <div class="btn red-btn js-close-btn ml-2">Huỷ bỏ</div>
+                        </div>
+                    </form>
+
+                    <% if (cauhoi && quesTime) { %>
+                        <% for (var i=0; i < cauhoi.length; i++) { %>
+                            <div class="question">
+                                <div class="ques-inf">
+                                    <div class="inf-item author-ava">
+                                            <img src="/assets/img/IMG_8672.png" alt=""/>
+                                    </div>
+                                    <div class="inf-item">
+                                        <p class="author-name">
+                                            <%= cauhoi[i].nguoihoi %>
+                                        </p>
+                                        <p class="post-time">
+                                            <%= quesTime[i] %>
+                                        </p>
+                                    </div>
+                                    <div class="inf-item more dropdown">
+                                        <i class="ti-more " data-toggle="dropdown"></i>
+                                        <form method="post" action="/question/delete/<%= cauhoi[i].macauhoi %>"
+                                            class="dropdown-menu p-0" id="more-drop">
+                                            <button type="submit" class="del-ques">Xoá</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="question-body">
+                                    <h3 class="question-subject">
+                                        <%= cauhoi[i].tieude %>
+                                    </h3>
+                                    <p class="question-content ml-3">
+                                        <%= cauhoi[i].noidung %>
+                                    </p>
+                                </div>
+
+                                <hr class="mt-3">
+                                <div class="question-respone flex-column">
+                                    <!-- <p class="question-like"><i class="ti-heart"></i>Yêu thích</p> -->
+                                    <button class=" question-cmt-btn ml-3 p-2" data-toggle="collapse"
+                                        data-target="#respone-<%=i%>"><i class="ti-comment"></i>Bình luận</button>
+                                    <div id="respone-<%=i%>" class="collapse show">
+                                        <hr>
+                                        <form
+                                            action="/upload/answer/<%= sinhvien[0].malop %>/<%= hoten %>/<%= cauhoi[i].macauhoi %>"
+                                            id="answer" class="d-flex flex-column" method="post">
+                                            <div class="d-flex justify-content-between mt-2 ml-3">
+                                                <input class="input-ans col-md-10" required type="text" name="content">
+                                                <input type="submit" value="Gửi" class="btn mt-0">
+                                            </div>
+                                        </form>
+
+                                        <% if (cautraloi && ansTime) { %>
+                                            <% for (var j=0; j < cautraloi.length; j++) { %>
+                                                <% if (cautraloi[j].macauhoi==cauhoi[i].macauhoi) { %>
+                                                    <div class="d-flex flex-column answer ml-3 mt-4 p-3">
+                                                        <div class="d-flex justify-content-between">
+                                                            <div class="col-md-11 pl-0">
+                                                                <p class="mt-0 ml-0 mb-0">
+                                                                    <%= cautraloi[j].nguoitraloi %>
+                                                                </p>
+                                                                <p class="ans-posttime mt-1 ml-0 mb-2">
+                                                                    <%= ansTime[j] %>                                                                </p>
+                                                            </div>
+                                                            <div class="dropdown">
+                                                                <div class="more-ans" data-toggle="dropdown">
+                                                                    <i class="ti-more mr-0" ></i>
+                                                                </div>
+                                                                <form method="post"
+                                                                    action="/answer/delete/<%= cautraloi[j].macautraloi %>"
+                                                                    class="dropdown-menu p-0" id="more-drop">
+                                                                    <button type="submit" class="del-ans">Xoá</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <p class="mb-1 ans-content">
+                                                            <%= cautraloi[j].noidung %>
+                                                        </p>
+                                                    </div>
+                                                    
+                                                    <% } %>
+                                                        <% } %>
+                                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                                <% } %>
+
+                               
+
+                </div>
+                <script src="/assets/js/diendan.js"></script>
+
+</body>
+
+</html>

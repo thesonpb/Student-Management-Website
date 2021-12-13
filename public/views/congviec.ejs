@@ -1,0 +1,70 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công việc</title>
+    <link rel="stylesheet" href="/assets/css/teacher.css">
+    <link rel="stylesheet" href="/assets/font/fontawesome/icon-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+</head>
+ 
+<body>
+    <%- include ("partial/leftsidebar") %>
+    <%- include ("partial/chonlop") %>
+
+    
+    <!-- Công việc -->
+    <div class="main">
+        <h1 class="title-main">Công việc</h1>
+        <button class="todo-add-btn js-add-todo btn">Thêm một công việc</button>
+        <form action="/upload/task" class="form js-todo-form" method="post">
+            <label for="">Tiêu đề</label>
+            <input type="text" class="input-subject" name="subject">
+            <hr>
+
+            <div class="todo-dur-input">
+                <label for="birthdaytime">Opened:</label>
+                <input type="datetime-local" name="opendate">
+                <label for="birthdaytime">Due:</label>
+                <input type="datetime-local" name="duedate">
+            </div>
+            <hr>
+            <label for="">Nội dung</label>
+            <input role="textbox" spellcheck="true" class="input-content" name="content">
+            <div>
+                <input type="submit" value="Đăng lên" class="btn">
+                <div class="btn js-close-todo-btn">Huỷ bỏ</div>
+            </div>
+        </form>
+
+        <div class="todo">
+            <h3 class="todo-title">
+                <!-- thêm biến tiêu đề -->
+            </h3>
+            <div class="todo-intro">
+                <p class="todo-content">
+                    <!-- Thêm biến nội dung -->
+                </p>
+                <div class="todo-duration">
+                    <p class="todo-opened">Opened:
+                        <!--Thêm biến tgian-->
+                    </p>
+                    <p class="todo-due">Due:
+                        <!--Thêm biến tgian-->
+                    </p>
+                </div>
+            </div>
+
+            <!-- <div class="todo-opinion">
+                <span class="todo-yk">Gửi ý kiến</span>
+                <a href="#" class="todo-cmt-btn"><i class="ti-angle-right"></i> Bình luận</a>
+            </div> -->
+        </div>
+    </div>     
+</body>
+ 

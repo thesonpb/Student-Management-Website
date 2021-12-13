@@ -1,0 +1,31 @@
+
+
+<!-- drop down -->
+<div class="dropdown">
+    
+    <% if(avatar) {%>
+        <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src=<%= avatar %> alt=""
+        data-toggle="dropdown">
+    <% }else{ %>
+        <img id="dropbtn" class="dropbtn js-dropbtn dropdown-toggle" src="/assets/img/IMG_8672.png" alt=""
+    data-toggle="dropdown">
+    <% } %>
+<!-- <button id="dropbtn " class="dropbtn js-dropbtn"><i class="fas fa-caret-down"></i></button> -->
+<ul class="dropdown-menu" id="dropdown-list">
+    
+    <li>
+        <% if (user.vaitro == 'sinhvien') { %>
+        <a class="profile" href="/profile">
+        <% } %>
+        <% if (user.vaitro == 'covan') { %>
+        <a class="profile" href="/profile/<%= sinhvien[0].malop %>">
+        <% } %>
+            <!-- <img class="margin-top avatar" id="" src="/assets/img/IMG_8672.png" alt=""> -->
+            <label for="" id="hoten">
+                <%= hoten %>
+            </label>
+        </a></li>
+            <hr>
+            <li id="logout"><a href="/logout">Đăng xuất</a></li>
+</ul>
+</div>

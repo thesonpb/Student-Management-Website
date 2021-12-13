@@ -8,6 +8,7 @@ const chatBox = require('./chat');
 const auth = require('../config/auth');
 const authJWT = require('../middleware/authJWT');
 
+
 function route(app){
     
 
@@ -126,6 +127,7 @@ function route(app){
     //**********************************************************************************************
 
     app.post('/add/student/:email/:malop', controller.addStudent)
+    app.post('/add/class/:email',upload.uploadFile.single("excelfile"), controller.addClass)
     app.get('/hoctap', controller.hoctap)
 
     app.post('/student/editprofile/:mssv', controller.studentEditProfile)

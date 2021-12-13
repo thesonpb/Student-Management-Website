@@ -3,6 +3,7 @@ $(`li[data-rel="${1}"]`).addClass('active')
 var editionMode = false;
 var stdTable = $('#student-table');
 var tbody = $('.stu-table-body')
+$('#warning').val('');
 
 //Sửa 1 dong trong danh sách
 function onEditRow(e) {
@@ -140,7 +141,7 @@ $('#logout').click(function () {
 
 const mssvWarning = document.getElementById('mssv-warning')
 const add_stu = document.querySelector('add-stu');
-    add_stu.addEventListener('submit', async (e) => {
+    $('#add-stud').submit = ( async (e) => {
         e.preventDefault();
         if(validate()){
             const mssv = add_stu.mssv.value;
@@ -170,3 +171,53 @@ const add_stu = document.querySelector('add-stu');
             }
         }
     })
+
+// $('#add-class').submit( async e =>{
+//     const malop = $('#class-id').val();
+//     if(malop){
+//         try{
+//             const res = await fetch('/add/class', {
+//                 method: 'POST',
+//                 body: JSON.stringify({username, password}),
+//                 headers: {'Content-Type': 'application/json'}
+//             });
+//             const data = await res.json();
+//             if(data.username){
+//                 location.assign('/my');
+//             }else{
+//                 passwordWarning.innerHTML = data.message;
+//                 passwordWarning.style.display = "block";
+//             }
+//         }catch(e){
+//             console.log(e);
+//         }
+//     }
+
+    
+// })
+
+
+
+// $('#add-class').submit( async (e) => {
+//     e.preventDefault();
+
+//     const malop = $('#class-id').val();
+//     const classListFile = document.querySelector('#classListFile');
+
+//     let formData = new FormData();
+//     formData.append('malop', malop);
+//     formData.append('classList', classListFile.files[0]);
+//     console.log('here')
+
+//     try{
+//         const res = await fetch('/add/class', {
+//             method: 'POST',
+//             body: formData,
+//         });
+        
+//     }catch(e){
+//         console.log(e);
+//     }
+
+
+// })

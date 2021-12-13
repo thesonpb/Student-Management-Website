@@ -35,12 +35,36 @@
                             <% } %>
 
                                 <% if(vaitro=='covan' ) { %>
+                                    <button data-toggle="collapse" data-target="#add-class" class="btn ml-3">
+                                        Thêm Lớp
+                                    </button>
+
                                     <button data-toggle="collapse" data-target="#add-stu" class="btn ml-3">
                                         Thêm sinh viên
                                     </button>
+                                   
                                     <button data-toggle="collapse" data-target="#chart-static" class="btn ml-3">
                                         Biểu đồ thống kê
                                     </button>
+
+                                    <form id="add-class" action="/add/class/<%= email %>" method="POST" enctype="multipart/form-data" class="adding-class flex-wrap collapse" >
+                                        <!-- <div class="adding-class-inf col-md-4">
+                                            <h2 class="class-inf">Mã lớp</h2>
+                                            <input id="class-id" autocomplete="off" type="text" class="input-inf" required
+                                                name="malop" placeholder="Mã lớp" />
+                                            <p id="warning"></p>
+                                        </div> -->
+                                        
+                                        <div class="adding-class-inf col-md-4">
+                                            <h2 class="class-inf">Danh sách lớp</h2>
+                                            <input type="file" name="excelfile" id="classListFile" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' >
+                                        </div>
+
+                                        <input type="submit" value="Tạo lớp" class="adding-btn btn align-self-center ml-auto mr-auto col-md-2">
+
+
+                                    </form>
+
                                     <form id="add-stu" class="adding-member flex-wrap collapse"
                                         action="/add/student/<%= email %>/<%= sinhvien[0].malop %>" method="post">
                                         <p id="mssv-warning"></p>

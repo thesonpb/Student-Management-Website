@@ -316,6 +316,10 @@ th {
     color: #999;
 } */
 
+#warning{
+    color: red;
+}
+
 #student-table th, 
 #student-table td{
     border: 1px solid white;

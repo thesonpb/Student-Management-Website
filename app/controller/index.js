@@ -32,6 +32,7 @@ module.exports = {
     exportHoctap: excel.exportHoctap,
     exportRenluyen: excel.exportRenluyen,
     addStudent: addStudent.addStudent,
+    addClass: addStudent.addClass,
     hoctap: hoctap.hoctap,
     renluyen: renluyen.renluyen,
     diendan: diendan.diendan,

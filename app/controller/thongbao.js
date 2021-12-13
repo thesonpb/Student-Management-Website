@@ -115,7 +115,7 @@ const thongbao = async (req, res) => {
             attributes: ['malop'],
         });
         
-
+        console.log(req.params.malop)
         const thongbao = await Thongbao.findAll({
             where: { malop: req.params.malop }
         });
